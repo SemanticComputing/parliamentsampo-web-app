@@ -1,7 +1,7 @@
 import { google } from 'googleapis'
 import { /* flatten, */ unflatten } from 'flat'
 import fs from 'fs-extra'
-import { readTranslationsFromGoogleSheets } from '../../../src/client/configs/sampo/GeneralConfig'
+import { readTranslationsFromGoogleSheets } from '../../../src/client/configs/ps/GeneralConfig'
 // import localeEN from '../../client/translations/sampo/localeEN'
 import dotenv from 'dotenv'
 

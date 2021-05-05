@@ -17,7 +17,7 @@ export const yasguiBaseUrl = 'https://yasgui.triply.cc'
 export const yasguiParams = {
   contentTypeConstruct: 'text/turtle',
   contentTypeSelect: 'application/sparql-results+json',
-  endpoint: 'http://ldf.fi/mmm/sparql',
+  endpoint: 'http://ldf.fi/semparl/sparql',
   requestMethod: 'POST',
   tabTitle: 'Exported query'
 }
