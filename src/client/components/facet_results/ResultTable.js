@@ -245,6 +245,7 @@ class ResultTable extends React.Component {
   render () {
     const { classes } = this.props
     const { resultCount, paginatedResults, page, pagesize, sortBy, sortDirection, fetching } = this.props.data
+    console.log(paginatedResults)
     return (
       <>
         <TablePagination

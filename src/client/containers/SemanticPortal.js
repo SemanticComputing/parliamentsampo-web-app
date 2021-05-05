@@ -31,9 +31,9 @@ import ClientFSMain from '../components/perspectives/sampo/client_fs/ClientFSMai
 import InstanceHomePage from '../components/perspectives/sampo/InstanceHomePage'
 import Footer from '../components/perspectives/sampo/Footer'
 import KnowledgeGraphMetadataTable from '../components/perspectives/sampo/KnowledgeGraphMetadataTable'
-import { perspectiveConfig } from '../configs/sampo/PerspectiveConfig'
-import { perspectiveConfigOnlyInfoPages } from '../configs/sampo/PerspectiveConfigOnlyInfoPages'
-import { rootUrl } from '../configs/sampo/GeneralConfig'
+import { perspectiveConfig } from '../configs/ps/PerspectiveConfig'
+import { perspectiveConfigOnlyInfoPages } from '../configs/ps/PerspectiveConfigOnlyInfoPages'
+import { rootUrl } from '../configs/ps/GeneralConfig'
 // ** Portal specific components and configs end **
 
 import {
@@ -626,19 +626,7 @@ const mapStateToProps = state => {
     perspective3: state.perspective3,
     perspective3Facets: state.perspective3Facets,
     perspective3FacetsConstrainSelf: state.perspective3FacetsConstrainSelf,
-    manuscripts: state.manuscripts,
-    works: state.works,
-    events: state.events,
-    actors: state.actors,
-    expressions: state.expressions,
-    collections: state.collections,
     places: state.places,
-    finds: state.finds,
-    findsFacets: state.findsFacets,
-    findsFacetsConstrainSelf: state.findsFacetsConstrainSelf,
-    emloActors: state.emloActors,
-    emloActorsFacets: state.emloActorsFacets,
-    emloActorsFacetsConstrainSelf: state.emloActorsFacetsConstrainSelf,
     leafletMap: state.leafletMap,
     fullTextSearch: state.fullTextSearch,
     clientFS: state.clientSideFacetedSearch,
