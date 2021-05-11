@@ -27,7 +27,7 @@
   "facetBar": {
     "results": "Tulokset",
     "activeFilters": "Valitut suodattimet",
-    "defaultMissingValueLabel": "?arvo puuttuu",
+    "defaultMissingValueLabel": "Tieto puuttuu",
     "removeAllFilters": "Poista kaikki",
     "narrowDownBy": "Rajoita",
     "filterOptions": "Suodatin valinnat",
@@ -117,7 +117,12 @@
         },
         "speaker": {
           "label": "Puhuja",
-          "description": "Puhuja"
+          "description": "Puhuja",
+          "missingValueLabel": "Puhujatieto puuttuu"
+        },
+        "party": {
+          "label": "Puolue",
+          "description": "Puolue"
         }
       }
     }

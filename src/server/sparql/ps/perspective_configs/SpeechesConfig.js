@@ -11,6 +11,7 @@ export const speechesConfig = {
     useAuth: true
   },
   facetClass: 'semparls:Speech',
+  langTag: 'fi',
   includeInSitemap: true,
   // defaultConstraint: `
   //   <SUBJECT> dct:source mmm-schema:Bibale .
@@ -25,18 +26,23 @@ export const speechesConfig = {
   },
   facets: {
     prefLabel: {
-      id: 'prefLabel',
       labelPath: 'skos:prefLabel',
       textQueryPredicate: '', // empty for querying the facetClass
       textQueryProperty: 'skos:prefLabel', // limit only to prefLabels
       type: 'text'
     },
     speaker: {
-      id: 'speaker',
       facetValueFilter: '',
       labelPath: 'semparls:speaker/skos:prefLabel',
       predicate: 'semparls:speaker',
       type: 'list'
+    },
+    party: {
+      facetValueFilter: '',
+      labelPath: 'semparls:party/skos:prefLabel',
+      predicate: 'semparls:party',
+      type: 'list',
+      facetLabelFilter: 'FILTER(LANG(?prefLabel_) = "<LANG>")'
     }
   }
 }
