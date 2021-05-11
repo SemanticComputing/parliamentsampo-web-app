@@ -23,14 +23,14 @@ import FacetBar from '../components/facet_bar/FacetBar'
 // ** General components end **
 
 // ** Portal specific components and configs **
-import TopBar from '../components/perspectives/sampo/TopBar'
-import FacetedSearchPerspective from '../components/perspectives/sampo/FacetedSearchPerspective'
-import FullTextSearch from '../components/perspectives/sampo/FullTextSearch'
-import ClientFSPerspective from '../components/perspectives/sampo/client_fs/ClientFSPerspective'
-import ClientFSMain from '../components/perspectives/sampo/client_fs/ClientFSMain'
-import InstanceHomePage from '../components/perspectives/sampo/InstanceHomePage'
-import Footer from '../components/perspectives/sampo/Footer'
-import KnowledgeGraphMetadataTable from '../components/perspectives/sampo/KnowledgeGraphMetadataTable'
+import TopBar from '../components/perspectives/ps/TopBar'
+import FacetedSearchPerspective from '../components/perspectives/ps/FacetedSearchPerspective'
+import FullTextSearch from '../components/perspectives/ps/FullTextSearch'
+// import ClientFSPerspective from '../components/perspectives/sampo/client_fs/ClientFSPerspective'
+// import ClientFSMain from '../components/perspectives/sampo/client_fs/ClientFSMain'
+import InstanceHomePage from '../components/perspectives/ps/InstanceHomePage'
+import Footer from '../components/perspectives/ps/Footer'
+import KnowledgeGraphMetadataTable from '../components/perspectives/ps/KnowledgeGraphMetadataTable'
 import { perspectiveConfig } from '../configs/ps/PerspectiveConfig'
 import { perspectiveConfigOnlyInfoPages } from '../configs/ps/PerspectiveConfigOnlyInfoPages'
 import { rootUrl } from '../configs/ps/GeneralConfig'
@@ -69,7 +69,7 @@ import {
   clientFSUpdateFacet,
   fetchKnowledgeGraphMetadata
 } from '../actions'
-import { filterResults } from '../selectors'
+// import { filterResults } from '../selectors'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -269,7 +269,7 @@ const SemanticPortal = props => {
   if (lgScreen) { screenSize = 'lg' }
   if (xlScreen) { screenSize = 'xl' }
   const rootUrlWithLang = `${rootUrl}/${props.options.currentLocale}`
-  const noResults = props.clientFS.results == null
+  // const noResults = props.clientFS.results == null
 
   useEffect(() => {
     document.title = intl.get('html.title')
@@ -530,53 +530,6 @@ const SemanticPortal = props => {
                 />
               </Switch>
             )}
-            <Route
-              path={`${rootUrlWithLang}/clientFSPlaces/federated-search`}
-              render={routeProps =>
-                <Grid container className={classes.mainContainerClientFS}>
-                  <Grid item sm={12} md={4} lg={3} className={classes.facetBarContainerClientFS}>
-                    <FacetBar
-                      facetedSearchMode='clientFS'
-                      facetClass='clientFSPlaces'
-                      resultClass='clientFSPlaces'
-                      facetData={props.clientFS}
-                      clientFSFacetValues={props.clientFSFacetValues}
-                      fetchingResultCount={props.clientFS.textResultsFetching}
-                      resultCount={noResults ? 0 : props.clientFS.results.length}
-                      clientFS={props.clientFS}
-                      clientFSToggleDataset={props.clientFSToggleDataset}
-                      clientFSFetchResults={props.clientFSFetchResults}
-                      clientFSClearResults={props.clientFSClearResults}
-                      clientFSUpdateQuery={props.clientFSUpdateQuery}
-                      clientFSUpdateFacet={props.clientFSUpdateFacet}
-                      defaultActiveFacets={perspectiveConfig.find(p => p.id === 'clientFSPlaces').defaultActiveFacets}
-                      leafletMap={props.leafletMap}
-                      updateMapBounds={props.updateMapBounds}
-                      screenSize={screenSize}
-                      showError={props.showError}
-                      rootUrl={rootUrlWithLang}
-                    />
-                  </Grid>
-                  <Grid item sm={12} md={8} lg={9} className={classes.resultsContainerClientFS}>
-                    {noResults && <ClientFSMain />}
-                    {!noResults &&
-                      <ClientFSPerspective
-                        routeProps={routeProps}
-                        perspective={perspectiveConfig.find(p => p.id === 'clientFSPlaces')}
-                        screenSize={screenSize}
-                        clientFS={props.clientFS}
-                        clientFSResults={props.clientFSResults}
-                        clientFSSortResults={props.clientFSSortResults}
-                        leafletMap={props.leafletMap}
-                        fetchGeoJSONLayersBackend={props.fetchGeoJSONLayersBackend}
-                        fetchGeoJSONLayers={props.fetchGeoJSONLayers}
-                        clearGeoJSONLayers={props.clearGeoJSONLayers}
-                        showError={props.showError}
-                        rootUrl={rootUrlWithLang}
-                      />}
-                  </Grid>
-                </Grid>}
-            />
             {/* create routes for info buttons */}
             {/* <Route
               path={`${rootUrlWithLang}/feedback`}
@@ -615,23 +568,17 @@ const SemanticPortal = props => {
 }
 
 const mapStateToProps = state => {
-  const { clientFSResults, clientFSFacetValues } = filterResults(state.clientSideFacetedSearch)
+  // const { clientFSResults, clientFSFacetValues } = filterResults(state.clientSideFacetedSearch)
   return {
-    perspective1: state.perspective1,
-    perspective1Facets: state.perspective1Facets,
-    perspective1FacetsConstrainSelf: state.perspective1FacetsConstrainSelf,
-    perspective2: state.perspective2,
-    perspective2Facets: state.perspective2Facets,
-    perspective2FacetsConstrainSelf: state.perspective2FacetsConstrainSelf,
-    perspective3: state.perspective3,
-    perspective3Facets: state.perspective3Facets,
-    perspective3FacetsConstrainSelf: state.perspective3FacetsConstrainSelf,
+    speeches: state.speeches,
+    speechesFacets: state.speechesFacets,
+    speechesFacetsConstrainSelf: state.speechesFacetsConstrainSelf,
     places: state.places,
     leafletMap: state.leafletMap,
     fullTextSearch: state.fullTextSearch,
-    clientFS: state.clientSideFacetedSearch,
-    clientFSResults,
-    clientFSFacetValues,
+    // clientFS: state.clientSideFacetedSearch,
+    // clientFSResults,
+    // clientFSFacetValues,
     animationValue: state.animation.value,
     options: state.options,
     error: state.error
@@ -681,37 +628,6 @@ SemanticPortal.propTypes = {
    * Errors shown with react-redux-toastr.
    */
   error: PropTypes.object.isRequired,
-  /**
-   * Faceted search configs and results of 'Perspective 1'.
-   */
-  perspective1: PropTypes.object.isRequired,
-  /**
-   * Facet configs and values of 'Perspective 1'.
-   */
-  perspective1Facets: PropTypes.object.isRequired,
-  /**
-   * Facet configs and values for facets that restrict themselves of 'Perspective 1'.
-   */
-  perspective1FacetsConstrainSelf: PropTypes.object.isRequired,
-  /**
-   * Faceted search configs and results of 'Perspective 2'.
-   */
-  perspective2: PropTypes.object.isRequired,
-  /**
-   * Facet configs and values of 'Perspective 2'.
-   */
-  perspective2Facets: PropTypes.object.isRequired,
-  /**
-   * Faceted search configs and results of 'Perspective 3'.
-   */
-  perspective3: PropTypes.object.isRequired,
-  /**
-   * Facet configs and values of 'Perspective 3'.
-   */
-  perspective3Facets: PropTypes.object.isRequired,
-  /**
-   * Faceted search configs and results of 'Places'.
-   */
   places: PropTypes.object.isRequired,
   /**
    * Leaflet map config and external layers.

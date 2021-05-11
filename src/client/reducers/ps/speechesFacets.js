@@ -41,10 +41,10 @@ export const INITIAL_STATE = {
   }
 }
 
-const perspective1Facets = (state = INITIAL_STATE, action) => {
-  if (action.facetClass === 'perspective1') {
+const speechesFacets = (state = INITIAL_STATE, action) => {
+  if (action.facetClass === 'speeches') {
     return handleFacetAction(state, action, INITIAL_STATE)
   } else return state
 }
 
-export default perspective1Facets
+export default speechesFacets

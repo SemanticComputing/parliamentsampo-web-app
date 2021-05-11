@@ -17,7 +17,7 @@ import manuscriptsImage from '../../img/main_page/manuscripts-452x262.jpg'
 
 export const perspectiveConfig = [
   {
-    id: 'perspective1',
+    id: 'speeches',
     frontPageImage: manuscriptsImage,
     perspectiveDescHeight: 160,
     defaultActiveFacets: new Set([]),

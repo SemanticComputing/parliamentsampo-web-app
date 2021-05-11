@@ -169,8 +169,8 @@
     }
   },
   "perspectives": {
-    "perspective1": {
-      "label": "Perspective 1",
+    "speeches": {
+      "label": "Speeches",
       "facetResultsType": "speeches",
       "shortDescription": "Perspective1 description",
       "longDescription": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Use this perspective to access data related to physical manuscript objects. If two or more source datasets include the same manuscript and this has been verified, the information from the source datasets has been merged into one manuscript. See <a href=\"/instructions\">instructions</a> for using the filters. The result view can be selected using the tabs: </p> <ul class=\"MuiTypography-root MuiTypography-body1\"> <li> <strong>TABLE</STRONG> view includes all manuscripts in the MMM data. One table row is equivalent to one manuscript. </li> <li> <strong>PRODUCTION PLACES</STRONG> view visualizes the connection between manuscripts and the places where they were produced. </li> <li> <strong>MIGRATIONS</strong> view visualizes the migration of a manuscript from place of production to its most recently observed location. </li> <li> <strong>EXPORT</strong> the SPARQL query used to generate the result table view into YASGUI query editor. </li> </ul>",

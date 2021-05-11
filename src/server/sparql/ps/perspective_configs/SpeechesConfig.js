@@ -1,10 +1,10 @@
 import {
   speechPropertiesFacetResults,
   speechPropertiesInstancePage
-} from '../sparql_queries/SparqlQueriesPerspective1'
+} from '../sparql_queries/SparqlQueriesSpeeches'
 import { prefixes } from '../sparql_queries/SparqlQueriesPrefixes'
 
-export const perspective1Config = {
+export const speechesConfig = {
   endpoint: {
     url: 'http://ldf.fi/semparl/sparql',
     prefixes,

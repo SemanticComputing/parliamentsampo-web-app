@@ -53,18 +53,13 @@ export const INITIAL_STATE = {
 }
 
 const resultClasses = new Set([
-  'perspective1',
-  'productionTimespanLineChart',
-  'eventLineChart',
-  'manuscriptInstancePageNetwork',
-  'manuscriptFacetResultsNetwork',
-  'perspective1KnowledgeGraphMetadata'
+  'speeches'
 ])
 
-const perspective1 = (state = INITIAL_STATE, action) => {
+const speeches = (state = INITIAL_STATE, action) => {
   if (resultClasses.has(action.resultClass)) {
     return handleDataFetchingAction(state, action)
   } else return state
 }
 
-export default perspective1
+export default speeches
