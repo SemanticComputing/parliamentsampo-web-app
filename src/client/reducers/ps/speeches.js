@@ -37,8 +37,7 @@ export const INITIAL_STATE = {
       makeLink: true,
       externalLink: false,
       sortValues: true,
-      numberedList: false,
-      minWidth: 250
+      numberedList: false
     },
     {
       id: 'speaker',
@@ -46,8 +45,29 @@ export const INITIAL_STATE = {
       makeLink: false,
       externalLink: false,
       sortValues: true,
-      numberedList: false,
-      minWidth: 200
+      numberedList: false
+    },
+    {
+      id: 'party',
+      valueType: 'object',
+      makeLink: false,
+      externalLink: false,
+      sortValues: true,
+      numberedList: false
+    },
+    {
+      id: 'speechType',
+      valueType: 'object',
+      makeLink: false,
+      externalLink: false,
+      sortValues: true,
+      numberedList: false
+    },
+    {
+      id: 'language',
+      valueType: 'string',
+      sortValues: false,
+      numberedList: false
     }
   ]
 }
