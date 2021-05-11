@@ -62,8 +62,8 @@ import { documentFinderAPIUrl } from '../configs/sampo/GeneralConfig'
 const apiUrl = process.env.API_URL
 
 export const availableLocales = {
-  en: localeEN,
-  fi: localeFI
+  fi: localeFI,
+  en: localeEN
 }
 
 let backendErrorText = null
