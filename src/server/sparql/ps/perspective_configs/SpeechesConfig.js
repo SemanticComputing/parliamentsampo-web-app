@@ -43,6 +43,18 @@ export const speechesConfig = {
       predicate: 'semparls:party',
       type: 'list',
       facetLabelFilter: 'FILTER(LANG(?prefLabel_) = "<LANG>")'
+    },
+    speechType: {
+      facetValueFilter: '',
+      labelPath: 'semparls:speechType/skos:prefLabel',
+      predicate: 'semparls:speechType',
+      type: 'list'
+    },
+    language: {
+      facetValueFilter: '',
+      labelPath: 'dct:language/skos:prefLabel',
+      predicate: 'dct:language',
+      type: 'list'
     }
   }
 }

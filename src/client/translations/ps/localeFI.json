@@ -30,7 +30,7 @@
     "defaultMissingValueLabel": "Tieto puuttuu",
     "removeAllFilters": "Poista kaikki",
     "narrowDownBy": "Rajoita",
-    "filterOptions": "Suodatin valinnat",
+    "filterOptions": "Suodattimen valinnat",
     "filterByName": "Suodata nimen perusteella",
     "filterByBoundingBox": "Suodata kartasta",
     "selectionOptions": "Hierarkisten valintojen asetukset",
@@ -123,6 +123,14 @@
         "party": {
           "label": "Puolue",
           "description": "Puolue"
+        },
+        "speechType": {
+          "label": "Tyyppi",
+          "description": "Tyyppi"
+        },
+        "language": {
+          "label": "Kieli",
+          "description": "Kieli"
         }
       }
     }
