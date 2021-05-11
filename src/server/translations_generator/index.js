@@ -19,7 +19,37 @@ const auth = new google.auth.GoogleAuth({
 
 const sheets = google.sheets({ version: 'v4', auth })
 
-const spreadsheetId = process.env.SHEETS_API_SHEET_ID
+const readFromGoogleSheet = async ({ spreadsheetId, ranges }) => {
+  try {
+    const result = await sheets.spreadsheets.values.batchGet({
+      spreadsheetId,
+      ranges
+    })
+    return result.data.valueRanges
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+const writeToFile = async (path, data) => {
+  const json = JSON.stringify(data, null, 2)
+
+  try {
+    await fs.writeFile(path, json)
+    console.log(`Saved translations from Google Sheets into '${path}'`)
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+const sheetValueRangesToFlatObject = valueRanges => {
+  const keyArray = valueRanges[0].values
+  const valueArray = valueRanges[1].values
+  return keyArray.reduce((result, item, index) => {
+    result[item[0]] = valueArray[index] ? valueArray[index][0] : ''
+    return result
+  }, {})
+}
 
 // const writeToGoogleSheet = async values => {
 //   try {
@@ -36,36 +66,6 @@ const spreadsheetId = process.env.SHEETS_API_SHEET_ID
 //     console.error(error.errors)
 //   }
 // }
-
-const readFromGoogleSheet = async () => {
-  try {
-    const result = await sheets.spreadsheets.values.get({
-      spreadsheetId,
-      range: 'A:B'
-    })
-    return result.data.values
-  } catch (error) {
-    console.log(error)
-  }
-}
-
-const writeToFile = async (path, data) => {
-  const json = JSON.stringify(data, null, 2)
-
-  try {
-    await fs.writeFile(path, json)
-    console.log('Saved data to file.')
-  } catch (error) {
-    console.error(error)
-  }
-}
-
-const sheetValuesToFlatObject = values => {
-  return values.reduce((result, item, index) => {
-    result[item[0]] = item[1]
-    return result
-  }, {})
-}
 
 // const flattened = flatten(localeEN)
 
@@ -85,8 +85,22 @@ const sheetValuesToFlatObject = values => {
 // writeToGoogleSheet(values)
 
 if (readTranslationsFromGoogleSheets) {
-  readFromGoogleSheet().then(data => {
-    const flatObject = sheetValuesToFlatObject(data)
-    writeToFile('src/client/translations/sampo/localeEN.json', unflatten(flatObject))
-  })
+  const spreadsheetId = process.env.SHEETS_API_SHEET_ID
+  readFromGoogleSheet({ spreadsheetId, ranges: ['Taulukko1!A:A', 'Taulukko1!B:B'] })
+    .then(data => {
+      if (data) {
+        const flatObject = sheetValueRangesToFlatObject(data)
+        writeToFile('src/client/translations/sampo/localeEN.json', unflatten(flatObject))
+      }
+    })
+    .catch(error => console.error(error))
+
+  readFromGoogleSheet({ spreadsheetId, ranges: ['Taulukko1!A:A', 'Taulukko1!C:C'] })
+    .then(data => {
+      if (data) {
+        const flatObject = sheetValueRangesToFlatObject(data)
+        writeToFile('src/client/translations/sampo/localeFI.json', unflatten(flatObject))
+      }
+    })
+    .catch(error => console.error(error))
 }
