@@ -74,7 +74,7 @@ export const getPaginatedResults = ({
   if (langTagSecondary) {
     q = q.replace(/<LANG_SECONDARY>/g, langTagSecondary)
   }
-  console.log(endpoint.prefixes + q)
+  // console.log(endpoint.prefixes + q)
   return runSelectQuery({
     query: endpoint.prefixes + q,
     endpoint: endpoint.url,
