@@ -72,8 +72,8 @@ export const INITIAL_STATE = {
       filterType: 'uriFilter',
       uriFilter: null
     },
-    birthplace: {
-      id: 'birthplace',
+    placeOfBirth: {
+      id: 'placeOfBirth',
       // predicate: defined in backend
       distinctValueCount: 0,
       values: [],

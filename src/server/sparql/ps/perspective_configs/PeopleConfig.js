@@ -52,7 +52,7 @@ export const peopleConfig = {
       type: 'list',
       facetLabelFilter: 'FILTER(LANG(?prefLabel_) = "<LANG>")'
     },
-    birthplace: {
+    placeOfBirth: {
       facetValueFilter: '',
       labelPath: 'crm:P98i_was_born/crm:P7_took_place_at/skos:prefLabel',
       predicate: 'crm:P98i_was_born/crm:P7_took_place_at',

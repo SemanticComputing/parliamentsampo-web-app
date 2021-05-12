@@ -169,9 +169,13 @@
           "label": "Sukupuoli",
           "description": "Sukupuoli"
         },
-        "birthplace": {
+        "placeOfBirth": {
           "label": "Syntymäpaikka",
           "description": "Syntymäpaikka"
+        },
+        "dateOfBirth": {
+          "label": "Syntymäaika",
+          "description": "Syntymäaika"
         }
       }
     }
