@@ -27,7 +27,7 @@
   "facetBar": {
     "results": "Tulokset",
     "activeFilters": "Valitut suodattimet",
-    "defaultMissingValueLabel": "Tieto puuttuu",
+    "defaultMissingValueLabel": "> Tieto puuttuu",
     "removeAllFilters": "Poista kaikki",
     "narrowDownBy": "Rajoita",
     "filterOptions": "Suodattimen valinnat",
@@ -153,9 +153,25 @@
           "description": "Nimi",
           "textFacetInputPlaceholder": "Hae..."
         },
+        "party": {
+          "label": "Puolue",
+          "description": "Puolue"
+        },
+        "occupation": {
+          "label": "Ammatti",
+          "description": "Ammatti"
+        },
         "relatedLink": {
           "label": "Linkki",
           "description": "Linkki"
+        },
+        "gender": {
+          "label": "Sukupuoli",
+          "description": "Sukupuoli"
+        },
+        "birthplace": {
+          "label": "Syntymäpaikka",
+          "description": "Syntymäpaikka"
         }
       }
     }

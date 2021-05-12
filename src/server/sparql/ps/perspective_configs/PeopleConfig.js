@@ -31,12 +31,6 @@ export const peopleConfig = {
       textQueryProperty: 'skos:prefLabel', // limit only to prefLabels
       type: 'text'
     },
-    speaker: {
-      facetValueFilter: '',
-      labelPath: 'semparls:speaker/skos:prefLabel',
-      predicate: 'semparls:speaker',
-      type: 'list'
-    },
     party: {
       facetValueFilter: '',
       labelPath: 'semparls:party/skos:prefLabel',
@@ -44,17 +38,26 @@ export const peopleConfig = {
       type: 'list',
       facetLabelFilter: 'FILTER(LANG(?prefLabel_) = "<LANG>")'
     },
-    speechType: {
+    occupation: {
       facetValueFilter: '',
-      labelPath: 'semparls:speechType/skos:prefLabel',
-      predicate: 'semparls:speechType',
-      type: 'list'
+      labelPath: 'bioc:has_occupation/skos:prefLabel',
+      predicate: 'bioc:has_occupation',
+      type: 'list',
+      facetLabelFilter: 'FILTER(LANG(?prefLabel_) = "<LANG>")'
     },
-    language: {
+    gender: {
       facetValueFilter: '',
-      labelPath: 'dct:language/skos:prefLabel',
-      predicate: 'dct:language',
-      type: 'list'
+      labelPath: 'bioc:has_gender/skos:prefLabel',
+      predicate: 'bioc:has_gender',
+      type: 'list',
+      facetLabelFilter: 'FILTER(LANG(?prefLabel_) = "<LANG>")'
+    },
+    birthplace: {
+      facetValueFilter: '',
+      labelPath: 'crm:P98i_was_born/crm:P7_took_place_at/skos:prefLabel',
+      predicate: 'crm:P98i_was_born/crm:P7_took_place_at',
+      type: 'list',
+      facetLabelFilter: 'FILTER(LANG(?prefLabel_) = "<LANG>")'
     }
   }
 }
