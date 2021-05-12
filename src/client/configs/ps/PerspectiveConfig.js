@@ -10,15 +10,13 @@ import CalendarViewDayIcon from '@material-ui/icons/CalendarViewDay'
 // import CloudDownloadIcon from '@material-ui/icons/CloudDownload'
 // import BubbleChartIcon from '@material-ui/icons/BubbleChart'
 // import LineChartIcon from '@material-ui/icons/ShowChart'
-import manuscriptsImage from '../../img/main_page/manuscripts-452x262.jpg'
-// import worksImage from '../../img/main_page/works-452x262.jpg'
-// import eventsImage from '../../img/main_page/events-452x262.jpg'
-// import placesImage from '../../img/main_page/places-452x262.jpg'
+import eventsImage from '../../img/main_page/events-452x262.jpg'
+import actorsImage from '../../img/main_page/actors-452x262_2.jpg'
 
 export const perspectiveConfig = [
   {
     id: 'speeches',
-    frontPageImage: manuscriptsImage,
+    frontPageImage: eventsImage,
     perspectiveDescHeight: 160,
     defaultActiveFacets: new Set([]),
     tabs: [
@@ -38,7 +36,7 @@ export const perspectiveConfig = [
   },
   {
     id: 'people',
-    frontPageImage: manuscriptsImage,
+    frontPageImage: actorsImage,
     perspectiveDescHeight: 160,
     defaultActiveFacets: new Set([]),
     tabs: [

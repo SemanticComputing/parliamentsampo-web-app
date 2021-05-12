@@ -97,7 +97,7 @@
   },
   "perspectives": {
     "speeches": {
-      "label": "Täysistuntujen puheenvuorot",
+      "label": "Täysistuntojen puheenvuorot",
       "facetResultsType": "puheenvuoroa",
       "shortDescription": "Hae täysistuntojen puheenvuoroja",
       "longDescription": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Use this perspective to ...  The results can be viewed using the following tabs: </p> <ul class=\"MuiTypography-root MuiTypography-body1\"> <li> <strong>TABLE</STRONG> ...</li> <li> ... </li>  </ul>",

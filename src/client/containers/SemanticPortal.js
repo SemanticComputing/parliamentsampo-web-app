@@ -18,12 +18,12 @@ import Grid from '@material-ui/core/Grid'
 import InfoHeader from '../components/main_layout/InfoHeader'
 import TextPage from '../components/main_layout/TextPage'
 import Message from '../components/main_layout/Message'
-import Main from '../components/main_layout/Main'
 import FacetBar from '../components/facet_bar/FacetBar'
 // ** General components end **
 
 // ** Portal specific components and configs **
 import TopBar from '../components/perspectives/ps/TopBar'
+import Main from '../components/perspectives/ps/Main'
 import FacetedSearchPerspective from '../components/perspectives/ps/FacetedSearchPerspective'
 import FullTextSearch from '../components/perspectives/ps/FullTextSearch'
 // import ClientFSPerspective from '../components/perspectives/sampo/client_fs/ClientFSPerspective'
