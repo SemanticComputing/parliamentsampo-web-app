@@ -34,6 +34,12 @@ export const personPropertiesInstancePage =
   {
     ?id crm:P98i_was_born/crm:P4_has_time_span/skos:prefLabel ?dateOfBirth .
   }
+  UNION 
+  {
+    ?id sch:relatedLink ?relatedLink__id .
+    BIND(?relatedLink__id as ?relatedLink__prefLabel)
+    BIND(?relatedLink__id as ?relatedLink__dataProviderUrl)
+  }
 `
 
 export const personPropertiesFacetResults =
