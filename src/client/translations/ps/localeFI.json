@@ -97,12 +97,12 @@
   },
   "perspectives": {
     "speeches": {
-      "label": "Puheet",
+      "label": "Täysistuntujen puheenvuorot",
       "facetResultsType": "puheenvuoroa",
       "shortDescription": "Hae täysistuntojen puheenvuoroja",
       "longDescription": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Use this perspective to ...  The results can be viewed using the following tabs: </p> <ul class=\"MuiTypography-root MuiTypography-body1\"> <li> <strong>TABLE</STRONG> ...</li> <li> ... </li>  </ul>",
       "instancePage": {
-        "label": "",
+        "label": "Täysistunnon puheenvuoro",
         "description": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Ohjeet tähän </p>"
       },
       "properties": {
@@ -131,6 +131,31 @@
         "language": {
           "label": "Kieli",
           "description": "Kieli"
+        }
+      }
+    },
+    "people": {
+      "label": "Henkilöt",
+      "facetResultsType": "henkilöä",
+      "shortDescription": "Hae henkilöitä",
+      "longDescription": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Use this perspective to ...  The results can be viewed using the following tabs: </p> <ul class=\"MuiTypography-root MuiTypography-body1\"> <li> <strong>TABLE</STRONG> ...</li> <li> ... </li>  </ul>",
+      "instancePage": {
+        "label": "Henkilö",
+        "description": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Ohjeet tähän </p>"
+      },
+      "properties": {
+        "uri": {
+          "label": "URI",
+          "description": ""
+        },
+        "prefLabel": {
+          "label": "Nimi",
+          "description": "Nimi",
+          "textFacetInputPlaceholder": "Hae..."
+        },
+        "relatedLink": {
+          "label": "Linkki",
+          "description": "Linkki"
         }
       }
     }

@@ -1,11 +1,13 @@
 import { speechesConfig } from './perspective_configs/SpeechesConfig'
+import { peopleConfig } from './perspective_configs/PeopleConfig'
 import { fullTextSearchProperties } from './sparql_queries/SparqlQueriesFullText'
 import { sitemapInstancePageQuery } from '../SparqlQueriesGeneral'
 
 export const backendSearchConfig = {
   speeches: speechesConfig,
+  people: peopleConfig,
   jenaText: {
-    perspectiveID: 'perspective1',
+    perspectiveID: 'speeches',
     properties: fullTextSearchProperties
   },
   sitemapConfig: {

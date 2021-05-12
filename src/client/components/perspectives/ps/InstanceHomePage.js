@@ -60,7 +60,7 @@ class InstanceHomePage extends React.Component {
 
   fetchTableData = () => {
     let uri = ''
-    const base = 'http://ldf.fi/mmm'
+    const base = 'http://ldf.fi/semparl'
     const locationArr = this.props.routeProps.location.pathname.split('/')
     let localID = locationArr.pop()
     this.props.tabs.map(tab => {
@@ -70,47 +70,11 @@ class InstanceHomePage extends React.Component {
     })
     this.setState({ localID: localID })
     switch (this.props.resultClass) {
-      case 'perspective1':
-        uri = `${base}/manifestation_singleton/${localID}`
+      case 'speeches':
+        uri = `${base}/${localID}`
         break
-      case 'perspective2':
-        uri = `${base}/work/${localID}`
-        break
-      case 'perspective3':
-        uri = `${base}/event/${localID}`
-        break
-      case 'manuscripts':
-        uri = `${base}/manifestation_singleton/${localID}`
-        break
-      case 'expressions':
-        uri = `${base}/expression/${localID}`
-        break
-      case 'collections':
-        uri = `${base}/collection/${localID}`
-        break
-      case 'works':
-        uri = `${base}/work/${localID}`
-        break
-      case 'events':
-        uri = `${base}/event/${localID}`
-        break
-      case 'actors':
-        uri = `${base}/actor/${localID}`
-        break
-      case 'places':
-        uri = `${base}/place/${localID}`
-        break
-      case 'finds':
-        uri = `http://ldf.fi/findsampo/finds/${localID}`
-        break
-      case 'emloActors':
-        uri = `http://emlo.bodleian.ox.ac.uk/id/${localID}`
-        break
-      case 'emloLetters':
-        uri = `http://emlo.bodleian.ox.ac.uk/id/${localID}`
-        break
-      case 'emloPlaces':
-        uri = `http://emlo.bodleian.ox.ac.uk/id/${localID}`
+      case 'people':
+        uri = `${base}/people/${localID}`
         break
     }
     this.props.fetchByURI({

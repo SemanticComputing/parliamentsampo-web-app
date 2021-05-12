@@ -7,8 +7,8 @@ import CalendarViewDayIcon from '@material-ui/icons/CalendarViewDay'
 // import StarIcon from '@material-ui/icons/Star'
 // import RedoIcon from '@material-ui/icons/Redo'
 // import PieChartIcon from '@material-ui/icons/PieChart'
-import CloudDownloadIcon from '@material-ui/icons/CloudDownload'
-import BubbleChartIcon from '@material-ui/icons/BubbleChart'
+// import CloudDownloadIcon from '@material-ui/icons/CloudDownload'
+// import BubbleChartIcon from '@material-ui/icons/BubbleChart'
 // import LineChartIcon from '@material-ui/icons/ShowChart'
 import manuscriptsImage from '../../img/main_page/manuscripts-452x262.jpg'
 // import worksImage from '../../img/main_page/works-452x262.jpg'
@@ -33,16 +33,26 @@ export const perspectiveConfig = [
         id: 'table',
         value: 0,
         icon: <CalendarViewDayIcon />
-      },
+      }
+    ]
+  },
+  {
+    id: 'people',
+    frontPageImage: manuscriptsImage,
+    perspectiveDescHeight: 160,
+    defaultActiveFacets: new Set([]),
+    tabs: [
       {
-        id: 'network',
-        value: 1,
-        icon: <BubbleChartIcon />
-      },
+        id: 'table',
+        value: 0,
+        icon: <CalendarViewDayIcon />
+      }
+    ],
+    instancePageTabs: [
       {
-        id: 'export',
-        value: 2,
-        icon: <CloudDownloadIcon />
+        id: 'table',
+        value: 0,
+        icon: <CalendarViewDayIcon />
       }
     ]
   }

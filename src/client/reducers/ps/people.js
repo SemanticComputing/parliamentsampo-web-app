@@ -9,8 +9,8 @@ export const INITIAL_STATE = {
   resultCount: 0,
   page: -1,
   pagesize: 10,
-  sortBy: null,
-  sortDirection: null,
+  sortBy: 'prefLabel',
+  sortDirection: 'asc',
   fetching: false,
   fetchingResultCount: false,
   fetchingInstanceAnalysisData: false,
@@ -27,7 +27,7 @@ export const INITIAL_STATE = {
       valueType: 'object',
       makeLink: true,
       externalLink: true,
-      sortValues: false,
+      sortValues: true,
       numberedList: false,
       onlyOnInstancePage: true
     },
@@ -36,52 +36,29 @@ export const INITIAL_STATE = {
       valueType: 'object',
       makeLink: true,
       externalLink: false,
-      sortValues: false,
+      sortValues: true,
       numberedList: false
     },
     {
-      id: 'speaker',
+      id: 'relatedLink',
       valueType: 'object',
       makeLink: true,
-      externalLink: false,
-      sortValues: false,
-      numberedList: false
-    },
-    {
-      id: 'party',
-      valueType: 'object',
-      makeLink: false,
-      externalLink: false,
+      externalLink: true,
       sortValues: true,
-      numberedList: false
-    },
-    {
-      id: 'speechType',
-      valueType: 'object',
-      makeLink: false,
-      externalLink: false,
-      sortValues: true,
-      numberedList: false
-    },
-    {
-      id: 'language',
-      valueType: 'string',
-      makeLink: false,
-      externalLink: false,
-      sortValues: false,
-      numberedList: false
+      numberedList: false,
+      onlyOnInstancePage: true
     }
   ]
 }
 
 const resultClasses = new Set([
-  'speeches'
+  'people'
 ])
 
-const speeches = (state = INITIAL_STATE, action) => {
+const people = (state = INITIAL_STATE, action) => {
   if (resultClasses.has(action.resultClass)) {
     return handleDataFetchingAction(state, action)
   } else return state
 }
 
-export default speeches
+export default people

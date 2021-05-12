@@ -1,16 +1,22 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+// import intl from 'react-intl-universal'
 import { Route, Redirect } from 'react-router-dom'
 import PerspectiveTabs from '../../main_layout/PerspectiveTabs'
 import ResultTable from '../../facet_results/ResultTable'
-import LeafletMap from '../../facet_results/LeafletMap'
+// import LeafletMap from '../../facet_results/LeafletMap'
 // import Deck from '../../facet_results/Deck'
+// import ApexChart from '../../facet_results/ApexChart'
 // import Network from '../../facet_results/Network'
 import Export from '../../facet_results/Export'
-// import MigrationsMapLegend from './MigrationsMapLegend'
-// import { MAPBOX_ACCESS_TOKEN, MAPBOX_STYLE } from '../../../configs/emlo/GeneralConfig'
+// import { MAPBOX_ACCESS_TOKEN, MAPBOX_STYLE } from '../../../configs/sampo/GeneralConfig'
+// import {
+//   createSingleLineChartData,
+//   createMultipleLineChartData
+// } from '../../../configs/sampo/ApexCharts/LineChartConfig'
+// import { coseLayout, cytoscapeStyle, preprocess } from '../../../configs/sampo/Cytoscape.js/NetworkConfig'
 
-const EmloActors = props => {
+const People = props => {
   const { rootUrl, perspective } = props
   return (
     <>
@@ -29,8 +35,8 @@ const EmloActors = props => {
           <ResultTable
             data={props.facetResults}
             facetUpdateID={props.facetData.facetUpdateID}
-            resultClass='emloActors'
-            facetClass='emloActors'
+            resultClass='people'
+            facetClass='people'
             fetchPaginatedResults={props.fetchPaginatedResults}
             updatePage={props.updatePage}
             updateRowsPerPage={props.updateRowsPerPage}
@@ -40,35 +46,12 @@ const EmloActors = props => {
           />}
       />
       <Route
-        path={`${rootUrl}/${perspective.id}/faceted-search/map`}
-        render={() =>
-          <LeafletMap
-            center={[22.43, 10.37]}
-            zoom={2}
-            results={props.placesResults.results}
-            layers={props.leafletMapLayers}
-            pageType='facetResults'
-            facetUpdateID={props.facetData.facetUpdateID}
-            facetID=''
-            resultClass='emloPlacesActors'
-            facetClass='emloActors'
-            mapMode='cluster'
-            instance={props.placesResults.instanceTableData}
-            fetchResults={props.fetchResults}
-            fetchByURI={props.fetchByURI}
-            fetching={props.placesResults.fetching}
-            showInstanceCountInClusters
-            updateFacetOption={props.updateFacetOption}
-            showExternalLayers={false}
-          />}
-      />
-      <Route
         path={`${rootUrl}/${perspective.id}/faceted-search/export`}
         render={() =>
           <Export
             data={props.facetResults}
-            resultClass='emloActors'
-            facetClass='emloActors'
+            resultClass='people'
+            facetClass='people'
             pageType='facetResults'
             fetchPaginatedResults={props.fetchPaginatedResults}
             updatePage={props.updatePage}
@@ -78,11 +61,12 @@ const EmloActors = props => {
   )
 }
 
-EmloActors.propTypes = {
+People.propTypes = {
   facetResults: PropTypes.object.isRequired,
   placesResults: PropTypes.object.isRequired,
   leafletMapLayers: PropTypes.object.isRequired,
   facetData: PropTypes.object.isRequired,
+  facetDataConstrainSelf: PropTypes.object,
   fetchResults: PropTypes.func.isRequired,
   clearGeoJSONLayers: PropTypes.func.isRequired,
   fetchGeoJSONLayers: PropTypes.func.isRequired,
@@ -102,4 +86,4 @@ EmloActors.propTypes = {
   showError: PropTypes.func.isRequired
 }
 
-export default EmloActors
+export default People

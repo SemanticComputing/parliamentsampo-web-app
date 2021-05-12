@@ -10,12 +10,18 @@ import fullTextSearch from './ps/fullTextSearch'
 import speeches from './ps/speeches'
 import speechesFacets from './ps/speechesFacets'
 import speechesFacetsConstrainSelf from './ps/speechesFacetsConstrainSelf'
+import people from './ps/people'
+import peopleFacets from './ps/peopleFacets'
+import peopleFacetsConstrainSelf from './ps/peopleFacetsConstrainSelf'
 import places from './ps/places'
 
 const reducer = combineReducers({
   speeches,
   speechesFacets,
   speechesFacetsConstrainSelf,
+  people,
+  peopleFacets,
+  peopleFacetsConstrainSelf,
   places,
   leafletMap,
   animation,
