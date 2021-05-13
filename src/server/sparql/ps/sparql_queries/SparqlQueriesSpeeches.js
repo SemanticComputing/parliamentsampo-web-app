@@ -4,7 +4,7 @@ export const speechPropertiesInstancePage =
 ` 
   # ?id skos:prefLabel ?prefLabel__id . 
   BIND(?id as ?prefLabel__id )
-  BIND (?prefLabel__id as ?prefLabel__prefLabel)
+  BIND(REPLACE(STR(?id), "http://ldf.fi/semparl/", "") as ?prefLabel__prefLabel)
   BIND(?id as ?uri__id)
   BIND(?id as ?uri__dataProviderUrl)
   BIND(?id as ?uri__prefLabel)
@@ -27,14 +27,23 @@ export const speechPropertiesInstancePage =
   }
   UNION
   {
-    ?id dct:language ?language
+    ?id dct:language ?language_ .
+    BIND(REPLACE(STR(?language_), "http://id.loc.gov/vocabulary/iso639-2/", "") as ?language)
+  }
+  UNION
+  {
+    ?id dct:date ?date .
+  }
+  UNION
+  {
+    ?id semparls:content ?content .
   }
 `
 
 export const speechPropertiesFacetResults =
 ` # ?id skos:prefLabel ?prefLabel__id . 
   BIND(?id as ?prefLabel__id )
-  BIND (?prefLabel__id as ?prefLabel__prefLabel)
+  BIND(REPLACE(STR(?id), "http://ldf.fi/semparl/", "") as ?prefLabel__prefLabel)
   BIND(CONCAT("/${perspectiveID}/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
   BIND(?id as ?uri__id)
   BIND(?id as ?uri__dataProviderUrl)
@@ -54,10 +63,15 @@ export const speechPropertiesFacetResults =
   {
     ?id semparls:speechType ?speechType__id .
     # ?speechType__id skos:prefLabel ?speechType__prefLabel .
-    BIND(?speechType__id as ?speechType__prefLabel)
+    BIND(REPLACE(STR(?speechType__id), "http://ldf.fi/semparl/", "") as ?speechType__prefLabel)
   }
   UNION
   {
-    ?id dct:language ?language
+    ?id dct:language ?language_ .
+    BIND(REPLACE(STR(?language_), "http://id.loc.gov/vocabulary/iso639-2/", "") as ?language)
+  }
+  UNION
+  {
+    ?id dct:date ?date .
   }
 `

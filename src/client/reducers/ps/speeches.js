@@ -70,6 +70,23 @@ export const INITIAL_STATE = {
       externalLink: false,
       sortValues: false,
       numberedList: false
+    },
+    {
+      id: 'date',
+      valueType: 'string',
+      makeLink: false,
+      externalLink: false,
+      sortValues: false,
+      numberedList: false
+    },
+    {
+      id: 'content',
+      valueType: 'string',
+      makeLink: false,
+      externalLink: false,
+      sortValues: false,
+      numberedList: false,
+      onlyOnInstancePage: true
     }
   ]
 }

@@ -55,6 +55,9 @@ export const speechesConfig = {
       labelPath: 'dct:language/skos:prefLabel',
       predicate: 'dct:language',
       type: 'list'
+    },
+    date: {
+      labelPath: 'dct:date'
     }
   }
 }
