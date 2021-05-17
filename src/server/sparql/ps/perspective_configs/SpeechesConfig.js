@@ -28,7 +28,7 @@ export const speechesConfig = {
     prefLabel: {
       labelPath: 'skos:prefLabel',
       textQueryPredicate: '', // empty for querying the facetClass
-      textQueryProperty: 'skos:prefLabel', // limit only to prefLabels
+      textQueryProperty: 'semparls:content',
       type: 'text'
     },
     speaker: {
