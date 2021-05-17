@@ -104,10 +104,14 @@
           "label": "URI",
           "description": "Uniform Resource Identifier"
         },
+        "contentTextFacet": {
+          "label": "Content",
+          "description": "Content",
+          "textFacetInputPlaceholder": "Search..."
+        },
         "prefLabel": {
           "label": "Label",
-          "description": "Label",
-          "textFacetInputPlaceholder": "Search..."
+          "description": "Label"
         },
         "speaker": {
           "label": "Speaker",

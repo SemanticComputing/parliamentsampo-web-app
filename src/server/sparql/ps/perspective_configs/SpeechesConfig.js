@@ -25,11 +25,13 @@ export const speechesConfig = {
     defaultTab: 'table'
   },
   facets: {
-    prefLabel: {
-      labelPath: 'skos:prefLabel',
+    contentTextFacet: {
       textQueryPredicate: '', // empty for querying the facetClass
       textQueryProperty: 'semparls:content',
       type: 'text'
+    },
+    prefLabel: {
+      labelPath: 'skos:prefLabel'
     },
     speaker: {
       facetValueFilter: '',

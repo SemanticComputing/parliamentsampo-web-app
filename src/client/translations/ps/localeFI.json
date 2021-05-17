@@ -110,6 +110,11 @@
           "label": "URI",
           "description": ""
         },
+        "contentTextFacet": {
+          "label": "Sisältö",
+          "description": "Sisältö",
+          "textFacetInputPlaceholder": "Hae..."
+        },
         "prefLabel": {
           "label": "Puheenvuoro",
           "description": "Puheenvuoro",
