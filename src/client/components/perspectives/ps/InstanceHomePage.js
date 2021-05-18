@@ -71,7 +71,7 @@ class InstanceHomePage extends React.Component {
     this.setState({ localID: localID })
     switch (this.props.resultClass) {
       case 'speeches':
-        uri = `${base}/${localID}`
+        uri = `${base}/speeches/${localID}`
         break
       case 'people':
         uri = `${base}/people/${localID}`
