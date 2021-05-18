@@ -34,6 +34,12 @@ export const speechPropertiesInstancePage =
   {
     ?id dct:date ?date .
   }
+  UNION 
+  {
+    ?id semparl_linguistics:referenceToPlaceName/semparl_linguistics:link ?referencedPlace__id .
+    ?referencedPlace__id skos:prefLabel ?referencedPlace__prefLabel .
+    FILTER(LANG(?referencedPlace__prefLabel) = "<LANG>")
+  }
   UNION
   {
     ?id semparls:content ?content .
@@ -73,5 +79,11 @@ export const speechPropertiesFacetResults =
   UNION
   {
     ?id dct:date ?date .
+  }
+  UNION 
+  {
+    ?id semparl_linguistics:referenceToPlaceName/semparl_linguistics:link ?referencedPlace__id .
+    ?referencedPlace__id skos:prefLabel ?referencedPlace__prefLabel .
+    FILTER(LANG(?referencedPlace__prefLabel) = "<LANG>")
   }
 `

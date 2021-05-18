@@ -19,5 +19,6 @@ export const prefixes = `
   PREFIX foaf: <http://xmlns.com/foaf/0.1/>
   PREFIX gn: <http://www.geonames.org/ontology#>
   PREFIX semparls: <http://ldf.fi/schema/semparl/>
+  PREFIX semparl_linguistics: <http://ldf.fi/schema/semparl/linguistics/>
   PREFIX bioc: <http://ldf.fi/schema/bioc/>
 `

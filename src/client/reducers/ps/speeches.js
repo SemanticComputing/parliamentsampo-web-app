@@ -71,6 +71,14 @@ export const INITIAL_STATE = {
       sortValues: false,
       numberedList: false
     },
+    // {
+    //   id: 'referencedPlace',
+    //   valueType: 'object',
+    //   makeLink: false,
+    //   externalLink: false,
+    //   sortValues: false,
+    //   numberedList: false
+    // },
     {
       id: 'date',
       valueType: 'string',

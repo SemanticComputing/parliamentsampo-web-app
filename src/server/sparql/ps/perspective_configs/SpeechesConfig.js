@@ -60,6 +60,13 @@ export const speechesConfig = {
     },
     date: {
       labelPath: 'dct:date'
+    },
+    referencedPlace: {
+      facetValueFilter: '',
+      labelPath: 'semparl_linguistics:referenceToPlaceName/semparl_linguistics:link/skos:prefLabel',
+      predicate: 'semparl_linguistics:referenceToPlaceName/semparl_linguistics:link',
+      type: 'list',
+      facetLabelFilter: 'FILTER(LANG(?prefLabel_) = "<LANG>")'
     }
   }
 }
