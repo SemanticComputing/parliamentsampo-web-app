@@ -63,6 +63,16 @@ export const generateConstraintsBlock = ({
             inverse: inverse
           })
           break
+        case 'dateNoTimespanFilter':
+          filterStr += generateDateNoTimespanFilter({
+            backendSearchConfig,
+            facetClass: facetClass,
+            facetID: c.facetID,
+            filterTarget: filterTarget,
+            values: c.values,
+            inverse: inverse
+          })
+          break
         case 'integerFilter':
         case 'integerFilterRange':
           filterStr += generateIntegerFilter({
@@ -211,6 +221,41 @@ const generateIntegerFilter = ({
     ${typecasting}
     FILTER(
       ${integerFilter}
+    )
+  `
+  if (inverse) {
+    return `
+    FILTER NOT EXISTS {
+        ${filterStr}
+    }
+    `
+  } else {
+    return filterStr
+  }
+}
+
+const generateDateNoTimespanFilter = ({
+  backendSearchConfig,
+  facetClass,
+  facetID,
+  filterTarget,
+  values,
+  inverse
+}) => {
+  const facetConfig = backendSearchConfig[facetClass].facets[facetID]
+  const { start, end } = values
+  let datefilter = ''
+  if (start === '') {
+    datefilter = `?value <= "${end}"^^xsd:date`
+  } else if (end === '') {
+    datefilter = `?value >= "${start}"^^xsd:date`
+  } else {
+    datefilter = `?value >= "${start}"^^xsd:date && ?value <= "${end}"^^xsd:date`
+  }
+  const filterStr = `
+    ?${filterTarget} ${facetConfig.predicate} ?value .
+    FILTER(
+      ${datefilter}
     )
   `
   if (inverse) {

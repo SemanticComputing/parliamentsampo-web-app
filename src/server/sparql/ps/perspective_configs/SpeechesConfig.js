@@ -59,7 +59,10 @@ export const speechesConfig = {
       type: 'list'
     },
     date: {
-      labelPath: 'dct:date'
+      facetValueFilter: '',
+      labelPath: 'dct:date',
+      predicate: 'dct:date',
+      type: 'dateNoTimespan'
     },
     referencedPlace: {
       facetValueFilter: '?id skos:prefLabel []',

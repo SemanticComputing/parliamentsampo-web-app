@@ -89,6 +89,16 @@ export const INITIAL_STATE = {
       filterType: 'uriFilter',
       uriFilter: null
     },
+    date: {
+      id: 'date',
+      isFetching: false,
+      containerClass: 'three',
+      filterType: 'dateNoTimespanFilter',
+      min: '1907-05-23',
+      max: '2021-04-29',
+      dateNoTimespanFilter: null,
+      type: 'date'
+    },
     referencedPlace: {
       id: 'referencedPlace',
       // predicate: defined in backend

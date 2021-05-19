@@ -67,6 +67,13 @@ export const stateToUrl = ({
           priority: value.priority,
           values: value.timespanFilter
         })
+      } else if (has(value, 'dateNoTimespanFilter') && value.dateNoTimespanFilter !== null) {
+        constraints.push({
+          facetID: key,
+          filterType: value.filterType,
+          priority: value.priority,
+          values: value.dateNoTimespanFilter
+        })
       } else if (has(value, 'integerFilter') && value.integerFilter !== null) {
         constraints.push({
           facetID: key,

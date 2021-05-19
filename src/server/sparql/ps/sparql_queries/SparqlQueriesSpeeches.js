@@ -31,7 +31,12 @@ export const speechPropertiesInstancePage =
   }
   UNION
   {
-    ?id dct:date ?date .
+    ?id dct:date ?date_ .
+    BIND(CONCAT(STR(DAY(?date_)), 
+                     ".", 
+                     STR(MONTH(?date_)), 
+                     ".", 
+                    STR(YEAR(?date_))) as ?date)
   }
   UNION 
   {
@@ -76,7 +81,12 @@ export const speechPropertiesFacetResults =
   }
   UNION
   {
-    ?id dct:date ?date .
+    ?id dct:date ?date_ .
+    BIND(CONCAT(STR(DAY(?date_)), 
+                     ".", 
+                     STR(MONTH(?date_)), 
+                     ".", 
+                    STR(YEAR(?date_))) as ?date)
   }
   UNION 
   {
