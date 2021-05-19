@@ -56,11 +56,13 @@ class FacetInfo extends React.Component {
     const spatialFilters = {}
     const textFilters = {}
     const timespanFilters = {}
+    const dateNoTimespanFilters = {}
     const integerFilters = {}
     let activeUriFilters = false
     let activeSpatialFilters = false
     let activeTextFilters = false
     let activeTimespanFilters = false
+    let activeDateNoTimespanFilters = false
     let activeIntegerFilters = false
     Object.entries(facets).forEach(entry => {
       const [key, value] = entry
@@ -80,6 +82,10 @@ class FacetInfo extends React.Component {
         activeTimespanFilters = true
         timespanFilters[key] = value.timespanFilter
       }
+      if (has(value, 'dateNoTimespanFilter') && value.dateNoTimespanFilter !== null) {
+        activeDateNoTimespanFilters = true
+        dateNoTimespanFilters[key] = value.dateNoTimespanFilter
+      }
       if (has(value, 'integerFilter') && value.integerFilter !== null) {
         activeIntegerFilters = true
         integerFilters[key] = value.integerFilter
@@ -95,6 +101,7 @@ class FacetInfo extends React.Component {
           activeSpatialFilters ||
           activeTextFilters ||
           activeTimespanFilters ||
+          activeDateNoTimespanFilters ||
           activeIntegerFilters
         ) &&
           <>
@@ -118,6 +125,7 @@ class FacetInfo extends React.Component {
                 spatialFilters={spatialFilters}
                 textFilters={textFilters}
                 timespanFilters={timespanFilters}
+                dateNoTimespanFilters={dateNoTimespanFilters}
                 integerFilters={integerFilters}
                 updateFacetOption={this.props.updateFacetOption}
                 someFacetIsFetching={someFacetIsFetching}

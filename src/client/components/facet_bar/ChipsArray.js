@@ -4,6 +4,8 @@ import { withStyles } from '@material-ui/core/styles'
 import Chip from '@material-ui/core/Chip'
 import Tooltip from '@material-ui/core/Tooltip'
 import { ISOStringToYear } from './FacetHelpers'
+import { format } from 'date-fns'
+import intl from 'react-intl-universal'
 
 const styles = theme => ({
   root: {
@@ -84,6 +86,12 @@ const ChipsArray = props => {
           key = item.facetID
           valueLabel = `${ISOStringToYear(item.value.start)} to
             ${ISOStringToYear(item.value.end)}`
+        }
+        if (item.filterType === 'dateNoTimespanFilter') {
+          key = item.facetID
+          const start = format(new Date(item.value.start), 'dd.MM.yyyy')
+          const end = format(new Date(item.value.end), 'dd.MM.yyyy')
+          valueLabel = `${start} ${intl.get('facets.dateFacet.to')} ${end}`
         }
         if (item.filterType === 'integerFilter') {
           const { start, end } = item.value

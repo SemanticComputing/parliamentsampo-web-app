@@ -64,7 +64,8 @@
       "maxDate": "Myöhäisin sallittu päivämäärä on {maxDate}",
       "cancel": "Peruuta",
       "fromLabel": "Alku",
-      "toLabel": "Loppu"
+      "toLabel": "Loppu",
+      "to": "–"
     },
     "textFacet": {
       "inputLabel": "Etsi nimellä"
