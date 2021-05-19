@@ -191,9 +191,9 @@
           "label": "Syntymäpaikka",
           "description": "Syntymäpaikka"
         },
-        "dateOfBirth": {
-          "label": "Syntymäaika",
-          "description": "Syntymäaika"
+        "dateOfBirthTimespan": {
+          "label": "Syntymävuosi",
+          "description": "Syntymävuosi"
         }
       }
     }

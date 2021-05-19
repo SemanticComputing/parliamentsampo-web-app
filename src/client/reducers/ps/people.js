@@ -40,15 +40,15 @@ export const INITIAL_STATE = {
       numberedList: false
     },
     {
-      id: 'party',
-      valueType: 'object',
+      id: 'dateOfBirthTimespan',
+      valueType: 'string',
       makeLink: false,
       externalLink: false,
       sortValues: true,
       numberedList: false
     },
     {
-      id: 'occupation',
+      id: 'placeOfBirth',
       valueType: 'object',
       makeLink: false,
       externalLink: false,
@@ -64,7 +64,7 @@ export const INITIAL_STATE = {
       numberedList: false
     },
     {
-      id: 'placeOfBirth',
+      id: 'occupation',
       valueType: 'object',
       makeLink: false,
       externalLink: false,
@@ -72,8 +72,8 @@ export const INITIAL_STATE = {
       numberedList: false
     },
     {
-      id: 'dateOfBirth',
-      valueType: 'string',
+      id: 'party',
+      valueType: 'object',
       makeLink: false,
       externalLink: false,
       sortValues: true,

@@ -21,25 +21,27 @@ export const INITIAL_STATE = {
       filterType: 'textFilter',
       textFilter: null
     },
-    party: {
-      id: 'party',
+    dateOfBirthTimespan: {
+      id: 'dateOfBirthTimespan',
       // predicate: defined in backend
       distinctValueCount: 0,
       values: [],
       flatValues: [],
-      sortBy: 'instanceCount',
-      sortDirection: 'desc',
-      sortButton: true,
+      sortBy: null,
+      sortDirection: null,
+      sortButton: false,
       spatialFilterButton: false,
-      pieChartButton: false,
       isFetching: false,
-      searchField: true,
-      containerClass: 'ten',
-      filterType: 'uriFilter',
-      uriFilter: null
+      searchField: false,
+      containerClass: 'four',
+      filterType: 'timespanFilter',
+      min: null,
+      max: null,
+      timespanFilter: null,
+      type: 'timespan'
     },
-    occupation: {
-      id: 'occupation',
+    placeOfBirth: {
+      id: 'placeOfBirth',
       // predicate: defined in backend
       distinctValueCount: 0,
       values: [],
@@ -72,8 +74,25 @@ export const INITIAL_STATE = {
       filterType: 'uriFilter',
       uriFilter: null
     },
-    placeOfBirth: {
-      id: 'placeOfBirth',
+    occupation: {
+      id: 'occupation',
+      // predicate: defined in backend
+      distinctValueCount: 0,
+      values: [],
+      flatValues: [],
+      sortBy: 'instanceCount',
+      sortDirection: 'desc',
+      sortButton: true,
+      spatialFilterButton: false,
+      pieChartButton: false,
+      isFetching: false,
+      searchField: true,
+      containerClass: 'ten',
+      filterType: 'uriFilter',
+      uriFilter: null
+    },
+    party: {
+      id: 'party',
       // predicate: defined in backend
       distinctValueCount: 0,
       values: [],
