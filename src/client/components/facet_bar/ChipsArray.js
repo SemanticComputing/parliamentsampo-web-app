@@ -35,6 +35,7 @@ const ChipsArray = props => {
           })
           break
         case 'textFilter':
+        case 'dateNoTimespanFilter':
           props.updateFacetOption({
             facetClass: props.facetClass,
             facetID: item.facetID,
