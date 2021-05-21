@@ -76,7 +76,7 @@ export const INITIAL_STATE = {
       valueType: 'object',
       makeLink: false,
       externalLink: false,
-      sortValues: false,
+      sortValues: true,
       numberedList: false
     },
     {

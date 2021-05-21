@@ -65,7 +65,7 @@ export const speechesConfig = {
       type: 'dateNoTimespan'
     },
     referencedPlace: {
-      facetValueFilter: '?id skos:prefLabel []',
+      facetValueFilter: '?id a crm:E53_Place', // use only semparl places
       labelPath: 'semparl_linguistics:referenceToPlaceName/semparl_linguistics:link/skos:prefLabel',
       predicate: 'semparl_linguistics:referenceToPlaceName/semparl_linguistics:link',
       type: 'list',

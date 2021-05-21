@@ -29,7 +29,7 @@
     "activeFilters": "Valitut suodattimet",
     "defaultMissingValueLabel": "> Tieto puuttuu",
     "removeAllFilters": "Poista kaikki",
-    "narrowDownBy": "Rajoita",
+    "narrowDownBy": "Rajaa",
     "filterOptions": "Suodattimen valinnat",
     "filterByName": "Suodata nimen perusteella",
     "filterByBoundingBox": "Suodata kartasta",
