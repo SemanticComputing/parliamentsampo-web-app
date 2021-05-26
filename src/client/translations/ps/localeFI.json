@@ -140,7 +140,8 @@
         },
         "referencedPlace": {
           "label": "Mainittu paikka (autom. tunnistettu)",
-          "description": "Mainittu paikka (autom. tunnistettu)"
+          "description": "Mainittu paikka (autom. tunnistettu)",
+          "missingValueLabel": "> Ei tunnistettuja paikkoja"
         },
         "date": {
           "label": "Aika",
