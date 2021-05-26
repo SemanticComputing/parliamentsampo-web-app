@@ -26,7 +26,7 @@ export const peopleConfig = {
   },
   facets: {
     prefLabel: {
-      labelPath: 'skos:prefLabel',
+      labelPath: 'semparls:sortingLabel',
       textQueryPredicate: '', // empty for querying the facetClass
       textQueryProperty: 'skos:prefLabel', // limit only to prefLabels
       type: 'text'
