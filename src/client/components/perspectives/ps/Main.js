@@ -5,7 +5,7 @@ import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import MainCard from '../../main_layout/MainCard'
-import bannerImage from '../../../img/main_page/mmm-banner.jpg'
+import bannerImage from '../../../img/main_page/museovirasto.5F9DFF58A0BB75BA9995BC6EE207E415_0_cropped.jpg'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -17,13 +17,13 @@ const useStyles = makeStyles(theme => ({
     }
   },
   banner: {
-    background: `linear-gradient( rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45) ), url(${bannerImage})`,
+    background: `linear-gradient( rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60) ), url(${bannerImage})`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     height: 220,
     [theme.breakpoints.up('xl')]: {
-      height: 300
+      height: 400
     },
     width: '100%',
     boxShadow: '0 -15px 15px 0px #bdbdbd inset',
