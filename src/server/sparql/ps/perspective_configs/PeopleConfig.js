@@ -33,9 +33,9 @@ export const peopleConfig = {
     },
     dateOfBirthTimespan: {
       facetValueFilter: '',
-      sortByAscPredicate: 'crm:P98i_was_born/crm:P4_has_time_span/crm:P81a_begin_of_the_begin',
-      sortByDescPredicate: 'crm:P98i_was_born/crm:P4_has_time_span/crm:P82b_end_of_the_end',
-      predicate: 'crm:P98i_was_born/crm:P4_has_time_span',
+      sortByAscPredicate: 'crm:P98i_was_born/crm:P4_has_time-span/crm:P81a_begin_of_the_begin',
+      sortByDescPredicate: 'crm:P98i_was_born/crm:P4_has_time-span/crm:P82b_end_of_the_end',
+      predicate: 'crm:P98i_was_born/crm:P4_has_time-span',
       startProperty: 'crm:P81a_begin_of_the_begin',
       endProperty: 'crm:P82b_end_of_the_end',
       type: 'timespan'
