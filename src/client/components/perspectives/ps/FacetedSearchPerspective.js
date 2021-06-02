@@ -12,61 +12,11 @@ const FacetedSearchPerspective = props => {
     switch (props.perspective.id) {
       case 'speeches':
         perspectiveElement =
-          <Speeches
-            facetResults={props.facetResults}
-            placesResults={props.placesResults}
-            leafletMapLayers={props.leafletMap}
-            facetData={props.facetData}
-            facetDataConstrainSelf={props.facetDataConstrainSelf}
-            fetchPaginatedResults={props.fetchPaginatedResults}
-            fetchResults={props.fetchResults}
-            fetchInstanceAnalysis={props.fetchInstanceAnalysis}
-            fetchFacetConstrainSelf={props.fetchFacetConstrainSelf}
-            fetchGeoJSONLayers={props.fetchGeoJSONLayers}
-            fetchGeoJSONLayersBackend={props.fetchGeoJSONLayersBackend}
-            clearGeoJSONLayers={props.clearGeoJSONLayers}
-            fetchByURI={props.fetchByURI}
-            updatePage={props.updatePage}
-            updateRowsPerPage={props.updateRowsPerPage}
-            updateFacetOption={props.updateFacetOption}
-            sortResults={props.sortResults}
-            showError={props.showError}
-            routeProps={props.routeProps}
-            perspective={props.perspective}
-            animationValue={props.animationValue}
-            animateMap={props.animateMap}
-            screenSize={props.screenSize}
-            rootUrl={props.rootUrl}
-          />
+          <Speeches {...props} />
         break
       case 'people':
         perspectiveElement =
-          <People
-            facetResults={props.facetResults}
-            placesResults={props.placesResults}
-            leafletMapLayers={props.leafletMap}
-            facetData={props.facetData}
-            facetDataConstrainSelf={props.facetDataConstrainSelf}
-            fetchPaginatedResults={props.fetchPaginatedResults}
-            fetchResults={props.fetchResults}
-            fetchInstanceAnalysis={props.fetchInstanceAnalysis}
-            fetchFacetConstrainSelf={props.fetchFacetConstrainSelf}
-            fetchGeoJSONLayers={props.fetchGeoJSONLayers}
-            fetchGeoJSONLayersBackend={props.fetchGeoJSONLayersBackend}
-            clearGeoJSONLayers={props.clearGeoJSONLayers}
-            fetchByURI={props.fetchByURI}
-            updatePage={props.updatePage}
-            updateRowsPerPage={props.updateRowsPerPage}
-            updateFacetOption={props.updateFacetOption}
-            sortResults={props.sortResults}
-            showError={props.showError}
-            routeProps={props.routeProps}
-            perspective={props.perspective}
-            animationValue={props.animationValue}
-            animateMap={props.animateMap}
-            screenSize={props.screenSize}
-            rootUrl={props.rootUrl}
-          />
+          <People {...props} />
         break
       default:
         perspectiveElement = <div />
@@ -85,23 +35,19 @@ FacetedSearchPerspective.propTypes = {
   /**
    * Faceted search configs and results of this perspective.
    */
-  facetResults: PropTypes.object.isRequired,
+  perspectiveState: PropTypes.object.isRequired,
   /**
    * Faceted search configs and results of places related to this perspective.
    */
-  placesResults: PropTypes.object.isRequired,
-  /**
-   * Facet configs and values.
-   */
-  facetData: PropTypes.object.isRequired,
+  facetState: PropTypes.object.isRequired,
   /**
    * Facet values where facets constrain themselves, used for statistics.
    */
-  facetDataConstrainSelf: PropTypes.object.isRequired,
+  facetConstrainSelfState: PropTypes.object.isRequired,
   /**
    * Leaflet map config and external layers.
    */
-  leafletMap: PropTypes.object.isRequired,
+  leafletMapState: PropTypes.object.isRequired,
   /**
    * Redux action for fetching paginated results.
    */
