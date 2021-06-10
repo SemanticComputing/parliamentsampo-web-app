@@ -6,6 +6,7 @@
   },
   "appTitle": {
     "short": "Parlamenttisampo",
+    "mobile": "P",
     "long": "Parlamenttisampo",
     "subheading": "Eduskunta semanttisessa webissä"
   },

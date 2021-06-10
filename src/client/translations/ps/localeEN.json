@@ -6,6 +6,7 @@
   },
   "appTitle": {
     "short": "ParliamentSampo",
+    "mobile": "P",
     "long": "ParliamentSampo",
     "subheading": "Parliament of Finland on the Semantic Web"
   },

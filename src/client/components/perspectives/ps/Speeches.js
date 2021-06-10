@@ -17,20 +17,24 @@ import Export from '../../facet_results/Export'
 // import { coseLayout, cytoscapeStyle, preprocess } from '../../../configs/sampo/Cytoscape.js/NetworkConfig'
 
 const Speeches = props => {
-  const { rootUrl, perspectiveConfig } = props
+  const { rootUrl, perspective /* screenSize */ } = props
+  // const layerControlExpanded = screenSize === 'md' ||
+  //   screenSize === 'lg' ||
+  //   screenSize === 'xl'
   return (
     <>
       <PerspectiveTabs
         routeProps={props.routeProps}
         tabs={props.perspective.tabs}
         screenSize={props.screenSize}
+        layoutConfig={props.layoutConfig}
       />
       <Route
-        exact path={`${rootUrl}/${perspectiveConfig.id}/faceted-search`}
-        render={() => <Redirect to={`${rootUrl}/${perspectiveConfig.id}/faceted-search/table`} />}
+        exact path={`${rootUrl}/${perspective.id}/faceted-search`}
+        render={() => <Redirect to={`${rootUrl}/${perspective.id}/faceted-search/table`} />}
       />
       <Route
-        path={[`${props.rootUrl}/${perspectiveConfig.id}/faceted-search/table`, '/iframe.html']}
+        path={[`${props.rootUrl}/${perspective.id}/faceted-search/table`, '/iframe.html']}
         render={routeProps =>
           <ResultTable
             data={props.perspectiveState}
@@ -43,10 +47,11 @@ const Speeches = props => {
             sortResults={props.sortResults}
             routeProps={routeProps}
             rootUrl={rootUrl}
+            layoutConfig={props.layoutConfig}
           />}
       />
       <Route
-        path={`${rootUrl}/${perspectiveConfig.id}/faceted-search/export`}
+        path={`${rootUrl}/${perspective.id}/faceted-search/export`}
         render={() =>
           <Export
             data={props.perspectiveState}
@@ -55,6 +60,7 @@ const Speeches = props => {
             pageType='facetResults'
             fetchPaginatedResults={props.fetchPaginatedResults}
             updatePage={props.updatePage}
+            layoutConfig={props.layoutConfig}
           />}
       />
     </>

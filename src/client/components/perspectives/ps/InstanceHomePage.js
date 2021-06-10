@@ -21,11 +21,12 @@ const styles = () => ({
     width: '100%',
     height: '100%'
   },
-  content: {
+  content: props => ({
+    padding: 0,
     width: '100%',
-    height: 'calc(100% - 72px)',
+    height: `calc(100% - ${props.layoutConfig.tabHeight}px)`,
     overflow: 'auto'
-  },
+  }),
   spinnerContainer: {
     display: 'flex',
     width: '100%',
@@ -115,7 +116,7 @@ class InstanceHomePage extends React.Component {
   }
 
   render = () => {
-    const { classes, perspectiveState, perspectiveConfig, rootUrl, screenSize } = this.props
+    const { classes, perspectiveState, perspectiveConfig, rootUrl, screenSize, layoutConfig } = this.props
     const { instanceTableData, fetching } = perspectiveState
     const resultClass = perspectiveConfig.id
     const hasTableData = this.hasTableData()
@@ -125,6 +126,7 @@ class InstanceHomePage extends React.Component {
           routeProps={this.props.routeProps}
           tabs={perspectiveConfig.instancePageTabs}
           screenSize={screenSize}
+          layoutConfig={layoutConfig}
         />
         <Paper square className={classes.content}>
           {fetching && !hasTableData &&
@@ -241,7 +243,8 @@ InstanceHomePage.propTypes = {
   /**
     * Root url of the application.
     */
-  rootUrl: PropTypes.string.isRequired
+  rootUrl: PropTypes.string.isRequired,
+  layoutConfig: PropTypes.object.isRequired
 }
 
 export const InstanceHomePageComponent = InstanceHomePage
