@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import ReduxToastr from 'react-redux-toastr'
@@ -10,6 +10,8 @@ import { availableLocales } from './epics/index.js'
 import { loadLocales } from './actions'
 import { defaultLocale } from './configs/ps/GeneralConfig'
 import { updateLocaleToPathname } from './helpers/helpers'
+import CircularProgress from '@material-ui/core/CircularProgress'
+import purple from '@material-ui/core/colors/purple'
 
 import './index.css'
 import 'react-sortable-tree/style.css'
@@ -27,12 +29,16 @@ if (Object.prototype.hasOwnProperty.call(availableLocales, localeFromUrl)) {
 } else {
   // support urls without a locale
   locale = defaultLocale
+  const { pathname, hash } = window.location
   const newPathname = updateLocaleToPathname({
-    pathname: window.location.pathname,
+    pathname,
     locale,
     replaceOld: false
   })
-  history.push({ pathname: newPathname })
+  history.push({
+    pathname: newPathname,
+    hash
+  })
 }
 store.dispatch(loadLocales(locale))
 
@@ -40,7 +46,22 @@ render(
   <Provider store={store}>
     <div id='app'>
       <Router history={history}>
-        <App />
+        <Suspense
+          fallback={
+            <div style={{
+              width: '100%',
+              height: '100%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}
+            >
+              <CircularProgress style={{ color: purple[500] }} thickness={5} />
+            </div>
+          }
+        >
+          <App />
+        </Suspense>
       </Router>
       <ReduxToastr
         timeOut={0}
