@@ -31,7 +31,7 @@ export const INITIAL_STATE = {
       sortDirection: 'desc',
       sortButton: true,
       spatialFilterButton: false,
-      pieChartButton: false,
+      pieChartButton: true,
       isFetching: false,
       searchField: true,
       containerClass: 'ten',
