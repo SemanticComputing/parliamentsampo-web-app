@@ -95,7 +95,7 @@ export const INITIAL_STATE = {
       containerClass: 'three',
       filterType: 'dateNoTimespanFilter',
       min: '1907-05-23',
-      max: '2021-04-29',
+      max: '2021-06-11',
       dateNoTimespanFilter: null,
       type: 'date'
     },
