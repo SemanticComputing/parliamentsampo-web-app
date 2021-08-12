@@ -48,6 +48,17 @@ export const personPropertiesInstancePage =
   }
   UNION
   {
+    ?id crm:P100i_died_in/crm:P7_took_place_at ?placeOfDeath__id .
+    ?placeOfDeath__id skos:prefLabel ?placeOfDeath__prefLabel .
+    FILTER(LANG(?placeOfDeath__prefLabel) = "<LANG>")
+  }
+  UNION
+  {
+    ?id crm:P100i_died_in/crm:P4_has_time-span/crm:P81a_begin_of_the_begin ?ddate_ .
+    BIND(YEAR(?ddate_) as ?dateOfDeathTimespan)
+  }
+  UNION
+  {
     ?id bioc:bearer_of/crm:P11i_participated_in [
         a semparls:ElectoralDistrictCandidature ;
         semparls:organization ?district__id ] .
@@ -61,7 +72,7 @@ export const personPropertiesInstancePage =
         a semparls:ParliamentaryGroupMembership  ;
         semparls:organization ?parliamentaryGroup__id ] .
     ?parliamentaryGroup__id skos:prefLabel ?parliamentaryGroup__prefLabel .
-    FILTER(LANG(?parliamentaryGroup__prefLabel) = "fi")
+    FILTER(LANG(?parliamentaryGroup__prefLabel) = "<LANG>")
     BIND(?parliamentaryGroup__id as ?parliamentaryGroup__dataProviderUrl)
   }
   UNION
@@ -71,12 +82,12 @@ export const personPropertiesInstancePage =
     {
         ?evt semparls:organization ?parliament__id .
         ?parliament__id skos:prefLabel ?parliament__prefLabel .
-        FILTER(LANG(?parliament__prefLabel) = "fi")
+        FILTER(LANG(?parliament__prefLabel) = "<LANG>")
         BIND(?parliament__id as ?parliament__dataProviderUrl)
     } UNION {
         ?evt crm:P10_falls_within ?electoralTerm__id .
         ?electoralTerm__id skos:prefLabel ?electoralTerm__prefLabel .
-        FILTER(LANG(?electoralTerm__prefLabel) = "fi")
+        FILTER(LANG(?electoralTerm__prefLabel) = "<LANG>")
         BIND(?electoralTerm__id as ?electoralTerm__dataProviderUrl)
     }
   }

@@ -59,6 +59,14 @@ export const INITIAL_STATE = {
       hideHeader: false
     },
     {
+      id: 'gender',
+      valueType: 'object',
+      makeLink: false,
+      externalLink: false,
+      sortValues: true,
+      numberedList: false
+    },
+    {
       id: 'dateOfBirthTimespan',
       valueType: 'string',
       makeLink: false,
@@ -75,7 +83,15 @@ export const INITIAL_STATE = {
       numberedList: false
     },
     {
-      id: 'gender',
+      id: 'dateOfDeathTimespan',
+      valueType: 'string',
+      makeLink: false,
+      externalLink: false,
+      sortValues: true,
+      numberedList: false
+    },
+    {
+      id: 'placeOfDeath',
       valueType: 'object',
       makeLink: false,
       externalLink: false,
