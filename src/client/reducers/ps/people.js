@@ -80,6 +80,30 @@ export const INITIAL_STATE = {
       numberedList: false
     },
     {
+      id: 'district',
+      valueType: 'object',
+      makeLink: false,
+      externalLink: false,
+      sortValues: true,
+      numberedList: false
+    },
+    {
+      id: 'parliamentaryGroup',
+      valueType: 'object',
+      makeLink: false,
+      externalLink: false,
+      sortValues: false,
+      numberedList: false
+    },
+    {
+      id: 'exlink',
+      valueType: 'object',
+      makeLink: true,
+      externalLink: true,
+      sortValues: false,
+      numberedList: false
+    },
+    {
       id: 'relatedLink',
       valueType: 'object',
       makeLink: true,

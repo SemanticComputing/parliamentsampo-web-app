@@ -35,6 +35,30 @@ export const personPropertiesInstancePage =
     ?id crm:P98i_was_born/crm:P4_has_time-span/crm:P81a_begin_of_the_begin ?date_ .
     BIND(YEAR(?date_) as ?dateOfBirthTimespan)
   }
+  UNION
+  {
+    ?id bioc:bearer_of/crm:P11i_participated_in [
+        a semparls:ElectoralDistrictCandidature ;
+        semparls:organization ?district__id ] .
+    ?district__id skos:prefLabel ?district__prefLabel .
+    FILTER(LANG(?district__prefLabel) = "<LANG>")
+    BIND(?district__id as ?district__dataProviderUrl)
+  }
+  UNION
+  {
+    ?id bioc:bearer_of/crm:P11i_participated_in [ 
+        a semparls:ParliamentaryGroupMembership  ;
+        semparls:organization ?parliamentaryGroup__id ] .
+    ?parliamentaryGroup__id skos:prefLabel ?parliamentaryGroup__prefLabel .
+    FILTER(LANG(?parliamentaryGroup__prefLabel) = "fi")
+    BIND(?parliamentaryGroup__id as ?parliamentaryGroup__dataProviderUrl)
+  }
+  UNION 
+  {
+    ?id sch:sameAs ?exlink__id .
+    ?exlink__id a/skos:prefLabel ?exlink__prefLabel .
+    BIND(?exlink__id AS ?exlink__dataProviderUrl)
+  }
   UNION 
   {
     ?id sch:relatedLink ?relatedLink__id .

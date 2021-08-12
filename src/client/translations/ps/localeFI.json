@@ -186,6 +186,18 @@
           "label": "Linkki",
           "description": "Linkki"
         },
+        "parliamentaryGroup": {
+          "label": "Eduskuntaryhmä",
+          "description": "Eduskuntaryhmät joihin henkilö on kuulunut"
+        },
+        "exlink": {
+          "label": "Ulkoinen linkki",
+          "description": "Linkki ulkoiseen tietokantaan"
+        },
+        "district": {
+          "label": "Vaalipiiri",
+          "description": "Vaalipiiri"
+        },
         "gender": {
           "label": "Sukupuoli",
           "description": "Sukupuoli"
