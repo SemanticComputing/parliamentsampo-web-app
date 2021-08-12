@@ -53,6 +53,22 @@ export const personPropertiesInstancePage =
     FILTER(LANG(?parliamentaryGroup__prefLabel) = "fi")
     BIND(?parliamentaryGroup__id as ?parliamentaryGroup__dataProviderUrl)
   }
+  UNION
+  {
+    ?id bioc:bearer_of/crm:P11i_participated_in ?evt .
+    ?evt a semparls:ParliamentMembership .
+    {
+        ?evt semparls:organization ?parliament__id .
+        ?parliament__id skos:prefLabel ?parliament__prefLabel .
+        FILTER(LANG(?parliament__prefLabel) = "fi")
+        BIND(?parliament__id as ?parliament__dataProviderUrl)
+    } UNION {
+        ?evt crm:P10_falls_within ?electoralTerm__id .
+        ?electoralTerm__id skos:prefLabel ?electoralTerm__prefLabel .
+        FILTER(LANG(?electoralTerm__prefLabel) = "fi")
+        BIND(?electoralTerm__id as ?electoralTerm__dataProviderUrl)
+    }
+  }
   UNION 
   {
     ?id sch:sameAs ?exlink__id .

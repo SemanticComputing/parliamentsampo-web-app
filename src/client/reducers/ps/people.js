@@ -88,6 +88,22 @@ export const INITIAL_STATE = {
       numberedList: false
     },
     {
+      id: 'parliament',
+      valueType: 'object',
+      makeLink: false,
+      externalLink: false,
+      sortValues: true,
+      numberedList: true
+    },
+    {
+      id: 'electoralTerm',
+      valueType: 'object',
+      makeLink: false,
+      externalLink: false,
+      sortValues: true,
+      numberedList: false
+    },
+    {
       id: 'parliamentaryGroup',
       valueType: 'object',
       makeLink: false,

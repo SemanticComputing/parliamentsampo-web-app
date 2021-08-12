@@ -186,6 +186,14 @@
           "label": "Linkki",
           "description": "Linkki"
         },
+        "parliament": {
+          "label": "Edustajuus",
+          "description": "Eduskunnat joihin henkilö on kuulunut"
+        },
+        "electoralTerm": {
+          "label": "Vaalikausi",
+          "description": "Vaalikaudet joina henkilö on ollut edustajana"
+        },
         "parliamentaryGroup": {
           "label": "Eduskuntaryhmä",
           "description": "Eduskuntaryhmät joihin henkilö on kuulunut"
