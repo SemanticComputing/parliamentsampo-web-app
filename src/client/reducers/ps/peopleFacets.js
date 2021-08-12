@@ -57,6 +57,23 @@ export const INITIAL_STATE = {
       filterType: 'uriFilter',
       uriFilter: null
     },
+    electoralTerm: {
+      id: 'electoralTerm',
+      // predicate: defined in backend
+      distinctValueCount: 0,
+      values: [],
+      flatValues: [],
+      sortBy: 'prefLabel',
+      sortDirection: 'asc',
+      sortButton: true,
+      spatialFilterButton: false,
+      pieChartButton: false,
+      isFetching: false,
+      searchField: true,
+      containerClass: 'ten',
+      filterType: 'uriFilter',
+      uriFilter: null
+    },
     gender: {
       id: 'gender',
       // predicate: defined in backend
@@ -67,7 +84,7 @@ export const INITIAL_STATE = {
       sortDirection: 'desc',
       sortButton: true,
       spatialFilterButton: false,
-      pieChartButton: false,
+      pieChartButton: true,
       isFetching: false,
       searchField: false,
       containerClass: 'three',

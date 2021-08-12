@@ -154,4 +154,10 @@ export const personPropertiesFacetResults =
     ?id crm:P98i_was_born/crm:P4_has_time-span/crm:P81a_begin_of_the_begin ?date_ .
     BIND(YEAR(?date_) as ?dateOfBirthTimespan)
   }
+  UNION
+  {
+    ?id bioc:bearer_of/crm:P11i_participated_in/crm:P10_falls_within ?electoralTerm__id .
+        ?electoralTerm__id skos:prefLabel ?electoralTerm__prefLabel .
+        FILTER(LANG(?electoralTerm__prefLabel) = "<LANG>")
+  }
 `

@@ -144,7 +144,8 @@ export const INITIAL_STATE = {
       makeLink: false,
       externalLink: false,
       sortValues: true,
-      numberedList: true
+      numberedList: true,
+      onlyOnInstancePage: true
     },
     {
       id: 'party',
@@ -160,7 +161,8 @@ export const INITIAL_STATE = {
       makeLink: true,
       externalLink: true,
       sortValues: false,
-      numberedList: false
+      numberedList: false,
+      onlyOnInstancePage: true
     },
     {
       id: 'relatedLink',
