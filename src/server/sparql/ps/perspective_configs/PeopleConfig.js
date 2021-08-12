@@ -67,6 +67,9 @@ export const peopleConfig = {
       predicate: 'bioc:has_gender',
       type: 'list',
       facetLabelFilter: 'FILTER(LANG(?prefLabel_) = "<LANG>")'
+    },
+    image: {
+      labelPath: 'sch:image'
     }
   }
 }

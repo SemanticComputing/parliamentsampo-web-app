@@ -40,6 +40,25 @@ export const INITIAL_STATE = {
       numberedList: false
     },
     {
+      id: 'altLabel',
+      valueType: 'string',
+      makeLink: false,
+      externalLink: false,
+      sortValues: true,
+      numberedList: false
+    },
+    {
+      id: 'image',
+      valueType: 'image',
+      previewImageHeight: 160,
+      makeLink: true,
+      externalLink: true,
+      sortValues: false,
+      numberedList: false,
+      minWidth: 120,
+      hideHeader: false
+    },
+    {
       id: 'dateOfBirthTimespan',
       valueType: 'string',
       makeLink: false,
@@ -64,7 +83,7 @@ export const INITIAL_STATE = {
       numberedList: false
     },
     {
-      id: 'occupation',
+      id: 'education',
       valueType: 'object',
       makeLink: false,
       externalLink: false,
@@ -72,7 +91,7 @@ export const INITIAL_STATE = {
       numberedList: false
     },
     {
-      id: 'party',
+      id: 'occupation',
       valueType: 'object',
       makeLink: false,
       externalLink: false,
@@ -85,7 +104,7 @@ export const INITIAL_STATE = {
       makeLink: false,
       externalLink: false,
       sortValues: true,
-      numberedList: false
+      numberedList: true
     },
     {
       id: 'parliament',
@@ -101,15 +120,23 @@ export const INITIAL_STATE = {
       makeLink: false,
       externalLink: false,
       sortValues: true,
-      numberedList: false
+      numberedList: true
     },
     {
       id: 'parliamentaryGroup',
       valueType: 'object',
       makeLink: false,
       externalLink: false,
-      sortValues: false,
-      numberedList: false
+      sortValues: true,
+      numberedList: true
+    },
+    {
+      id: 'party',
+      valueType: 'object',
+      makeLink: false,
+      externalLink: false,
+      sortValues: true,
+      numberedList: true
     },
     {
       id: 'exlink',

@@ -20,5 +20,6 @@ export const prefixes = `
   PREFIX gn: <http://www.geonames.org/ontology#>
   PREFIX semparls: <http://ldf.fi/schema/semparl/>
   PREFIX semparl_linguistics: <http://ldf.fi/schema/semparl/linguistics/>
+  PREFIX xl: <http://www.w3.org/2008/05/skos-xl#>
   PREFIX bioc: <http://ldf.fi/schema/bioc/>
 `

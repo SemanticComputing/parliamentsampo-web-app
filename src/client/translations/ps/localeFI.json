@@ -174,9 +174,21 @@
           "description": "Nimi",
           "textFacetInputPlaceholder": "Hae..."
         },
+        "altLabel": {
+          "label": "Vaihtoehtoinen nimi",
+          "description": "Vaihtoehtoinen nimi"
+        },
+        "image": {
+          "label": "Kuvatiedosto",
+          "description": "Kuvatiedosto"
+        },
         "party": {
           "label": "Puolue",
           "description": "Puolue"
+        },
+        "education": {
+          "label": "Koulutus / oppiarvo",
+          "description": "Henkilön koulutus tai oppiarvo"
         },
         "occupation": {
           "label": "Ammatti / arvo",

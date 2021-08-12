@@ -7,6 +7,11 @@ export const personPropertiesInstancePage =
   BIND(?id as ?uri__id)
   BIND(?id as ?uri__dataProviderUrl)
   BIND(?id as ?uri__prefLabel)
+
+  {
+    ?id xl:altLabel/skos:prefLabel ?altLabel .
+  }
+  UNION
   {
     ?id semparls:party ?party__id .
     ?party__id skos:prefLabel ?party__prefLabel .
@@ -17,6 +22,12 @@ export const personPropertiesInstancePage =
     ?id bioc:has_occupation ?occupation__id .
     ?occupation__id skos:prefLabel ?occupation__prefLabel .
     FILTER(LANG(?occupation__prefLabel) = "<LANG>")
+  }
+  UNION
+  {
+    ?id semparls:has_education ?education__id .
+    ?education__id skos:prefLabel ?education__prefLabel .
+    FILTER(LANG(?education__prefLabel) = "<LANG>")
   }
   UNION
   {
@@ -81,6 +92,13 @@ export const personPropertiesInstancePage =
     BIND(?relatedLink__id as ?relatedLink__prefLabel)
     BIND(?relatedLink__id as ?relatedLink__dataProviderUrl)
   }
+  UNION 
+  {
+    ?id sch:image ?image__id ;
+      skos:prefLabel ?image__description ;
+      skos:prefLabel ?image__title .
+      BIND(URI(CONCAT(REPLACE(STR(?image__id), "https*:", ""), "?width=600")) as ?image__url)
+  }
 `
 
 export const personPropertiesFacetResults =
@@ -94,6 +112,13 @@ export const personPropertiesFacetResults =
     ?id semparls:party ?party__id .
     ?party__id skos:prefLabel ?party__prefLabel .
     FILTER(LANG(?party__prefLabel) = "<LANG>")
+  }
+  UNION
+  {
+    ?id sch:image ?image__id ;
+      skos:prefLabel ?image__description ;
+      skos:prefLabel ?image__title .
+      BIND(URI(CONCAT(REPLACE(STR(?image__id), "https*:", ""), "?width=200")) as ?image__url)
   }
   UNION
   {
