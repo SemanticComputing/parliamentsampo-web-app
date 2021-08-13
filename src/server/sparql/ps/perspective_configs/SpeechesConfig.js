@@ -56,7 +56,8 @@ export const speechesConfig = {
       facetValueFilter: '',
       labelPath: 'dct:language/skos:prefLabel',
       predicate: 'dct:language',
-      type: 'list'
+      type: 'list',
+      facetLabelFilter: 'FILTER(LANG(?prefLabel_) = "<LANG>")'
     },
     date: {
       facetValueFilter: '',
