@@ -213,7 +213,7 @@ export const personEventsQuery =
     OPTIONAL { ?evt__id skos:prefLabel ?evt__prefLabel . FILTER(LANG(?evt__prefLabel)='fi') }
   
     OPTIONAL {  ?evt__id  crm:P4_has_time-span ?time__id .
-        # OPTIONAL { ?time__id skos:prefLabel ?time__prefLabel }
+        OPTIONAL { ?time__id skos:prefLabel ?time__prefLabel }
         OPTIONAL { ?time__id crm:P81a_begin_of_the_begin ?time__start }
         OPTIONAL { ?time__id crm:P82b_end_of_the_end ?time__end }
     }
@@ -229,6 +229,8 @@ export const personEventsQuery =
       STR(?evt__prefLabel),
       CONCAT(?role__prefLabel, ': ', ?evt__prefLabel)) 
       AS ?event__prefLabel)
+
+    BIND(COALESCE(?time__prefLabel, '') AS ?event__date)
 
   } ORDER BY ?time__start ?time__end 
 `
