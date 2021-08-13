@@ -46,7 +46,17 @@ export const peopleConfig = {
       predicate: 'crm:P98i_was_born/crm:P7_took_place_at',
       type: 'list',
       facetLabelFilter: 'FILTER(LANG(?prefLabel_) = "<LANG>")'
+    }, /**
+    parliamentPeriod: {
+      facetValueFilter: '',
+      sortByAscPredicate: 'bioc:bearer_of/crm:P11i_participated_in/crm:P4_has_time-span/crm:P81a_begin_of_the_begin',
+      sortByDescPredicate: 'bioc:bearer_of/crm:P11i_participated_in/crm:P4_has_time-span/crm:P82b_end_of_the_end',
+      predicate: 'bioc:bearer_of/crm:P11i_participated_in',
+      startProperty: 'crm:P4_has_time-span/crm:P81a_begin_of_the_begin',
+      endProperty: 'crm:P4_has_time-span/crm:P82b_end_of_the_end',
+      type: 'timespan'
     },
+    */
     electoralTerm: {
       facetValueFilter: '',
       labelPath: 'bioc:bearer_of/crm:P11i_participated_in/crm:P10_falls_within/skos:prefLabel',

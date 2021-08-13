@@ -53,6 +53,7 @@
   },
   "tabs": {
     "table": "taulukko",
+    "personEvents": "tapahtumat",
     "export": "SPARQL-kysely"
   },
   "table": {
@@ -237,6 +238,10 @@
         "dateOfDeathTimespan": {
           "label": "Kuolinvuosi",
           "description": "Mahdollinen kuolinvuosi"
+        },
+        "event": {
+          "label": "Tapahtumat",
+          "description": "Tapahtumat"
         }
       }
     }

@@ -4,7 +4,7 @@ import CalendarViewDayIcon from '@material-ui/icons/CalendarViewDay'
 // import LocationOnIcon from '@material-ui/icons/LocationOn'
 // import AddLocationIcon from '@material-ui/icons/AddLocation'
 // import SettingsBrightnessIcon from '@material-ui/icons/SettingsBrightness'
-// import StarIcon from '@material-ui/icons/Star'
+import Person from '@material-ui/icons/Person'
 // import RedoIcon from '@material-ui/icons/Redo'
 // import PieChartIcon from '@material-ui/icons/PieChart'
 // import CloudDownloadIcon from '@material-ui/icons/CloudDownload'
@@ -43,13 +43,18 @@ export const perspectiveConfig = [
       {
         id: 'table',
         value: 0,
-        icon: <CalendarViewDayIcon />
+        icon: <Person />
       }
     ],
     instancePageTabs: [
       {
         id: 'table',
         value: 0,
+        icon: <Person />
+      },
+      {
+        id: 'personEvents',
+        value: 1,
         icon: <CalendarViewDayIcon />
       }
     ]

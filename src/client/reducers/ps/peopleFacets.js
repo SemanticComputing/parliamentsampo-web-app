@@ -56,7 +56,26 @@ export const INITIAL_STATE = {
       containerClass: 'ten',
       filterType: 'uriFilter',
       uriFilter: null
+    }, /**
+    parliamentPeriod: {
+      id: 'parliamentPeriod',
+      distinctValueCount: 0,
+      values: [],
+      flatValues: [],
+      sortBy: null,
+      sortDirection: null,
+      sortButton: false,
+      spatialFilterButton: false,
+      isFetching: false,
+      searchField: false,
+      containerClass: 'four',
+      filterType: 'timespanFilter',
+      min: null,
+      max: null,
+      timespanFilter: null,
+      type: 'timespan'
     },
+    */
     electoralTerm: {
       id: 'electoralTerm',
       // predicate: defined in backend

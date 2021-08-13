@@ -156,6 +156,42 @@ class InstanceHomePage extends React.Component {
                     screenSize={screenSize}
                   />}
               />
+              <Route
+                path={`${rootUrl}/${resultClass}/page/${this.state.localID}/personEvents`}
+                render={() =>
+                  <InstanceHomePageTable
+                    resultClass={resultClass}
+                    resultClassVariant='personEvents'
+                    fetchResultsWhenMounted
+                    data={perspectiveState.results ? perspectiveState.results[0] : null}
+                    resultUpdateID={perspectiveState.resultUpdateID}
+                    fetchResults={this.props.fetchResults}
+                    uri={instanceTableData.id}
+                    layoutConfig={layoutConfig}
+                    properties={[
+                      {
+                        id: 'prefLabel',
+                        valueType: 'object',
+                        makeLink: false,
+                        externalLink: false,
+                        sortValues: true,
+                        numberedList: false,
+                        onlyOnInstancePage: true
+                      },
+                      {
+                        id: 'event',
+                        valueType: 'object',
+                        makeLink: false,
+                        externalLink: false,
+                        sortValues: false,
+                        numberedList: true,
+                        containerClass: 'ten',
+                        minWidth: 220,
+                        onlyOnInstancePage: true
+                      }
+                    ]}
+                  />}
+              />
             </>}
         </Paper>
       </div>

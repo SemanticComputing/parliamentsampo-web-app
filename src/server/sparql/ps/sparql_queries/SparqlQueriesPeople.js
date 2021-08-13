@@ -156,6 +156,24 @@ export const personPropertiesFacetResults =
   }
   UNION
   {
+    ?id crm:P100i_died_in/crm:P7_took_place_at ?placeOfDeath__id .
+    ?placeOfDeath__id skos:prefLabel ?placeOfDeath__prefLabel .
+    FILTER(LANG(?placeOfDeath__prefLabel) = "<LANG>")
+  }
+  UNION
+  {
+    ?id crm:P100i_died_in/crm:P4_has_time-span/crm:P81a_begin_of_the_begin ?ddate_ .
+    BIND(YEAR(?ddate_) as ?dateOfDeathTimespan)
+  }
+  UNION
+  {
+    ?id bioc:bearer_of/crm:P11i_participated_in [
+      a semparls:ParliamentMembership ;
+      crm:P4_has_time-span ?parliamentPeriod__id ] .
+    ?parliamentPeriod__id skos:prefLabel ?parliamentPeriod__prefLabel .
+  }
+  UNION
+  {
     ?id bioc:bearer_of/crm:P11i_participated_in/crm:P10_falls_within ?electoralTerm__id .
         ?electoralTerm__id skos:prefLabel ?electoralTerm__prefLabel .
         FILTER(LANG(?electoralTerm__prefLabel) = "<LANG>")
@@ -167,4 +185,50 @@ export const personPropertiesFacetResults =
     FILTER(LANG(?datasource__prefLabel) = "<LANG>")
     BIND(?datasource__id as ?datasource__dataProviderUrl)
   }
+`
+
+export const personEventsQuery =
+` SELECT DISTINCT * 
+  WHERE {
+    BIND(<ID> as ?id)
+    BIND(?id as ?uri__id)
+    BIND(?id as ?uri__prefLabel)
+    BIND(?id as ?uri__dataProviderUrl)
+  
+    ?id skos:prefLabel ?prefLabel__id .
+    BIND (?prefLabel__id as ?prefLabel__prefLabel)
+  
+  
+    { ?id bioc:bearer_of ?role__id .
+      ?role__id crm:P11i_participated_in ?evt__id ;
+                skos:prefLabel ?role__prefLabel .
+      FILTER (LANG(?role__prefLabel)='fi')
+    } 
+    UNION
+    {
+      ?id bioc:has_career|bioc:has_education ?evt__id .
+      BIND('' AS ?role__prefLabel)
+    }
+    
+    OPTIONAL { ?evt__id skos:prefLabel ?evt__prefLabel . FILTER(LANG(?evt__prefLabel)='fi') }
+  
+    OPTIONAL {  ?evt__id  crm:P4_has_time-span ?time__id .
+        # OPTIONAL { ?time__id skos:prefLabel ?time__prefLabel }
+        OPTIONAL { ?time__id crm:P81a_begin_of_the_begin ?time__start }
+        OPTIONAL { ?time__id crm:P82b_end_of_the_end ?time__end }
+    }
+    # OPTIONAL { ?evt__id semparls:is_current ?current }
+    # OPTIONAL { ?evt__id semparls:organization|semparls:school ?group__id .
+    # OPTIONAL { ?group__id skos:prefLabel ?group__prefLabel . FILTER(LANG(?group__prefLabel)='fi') }
+    #   OPTIONAL { ?group__id a ?group__class }
+    # }
+    
+    BIND(?evt__id AS ?event__id)
+
+    BIND(IF(REGEX(STR(?evt__prefLabel), STR(?role__prefLabel)), 
+      STR(?evt__prefLabel),
+      CONCAT(?role__prefLabel, ': ', ?evt__prefLabel)) 
+      AS ?event__prefLabel)
+
+  } ORDER BY ?time__start ?time__end 
 `

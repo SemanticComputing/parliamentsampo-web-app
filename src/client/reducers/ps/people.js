@@ -36,7 +36,8 @@ export const INITIAL_STATE = {
       makeLink: false,
       externalLink: false,
       sortValues: true,
-      numberedList: false
+      numberedList: false,
+      onlyOnInstancePage: true
     },
     {
       id: 'image',
@@ -95,7 +96,8 @@ export const INITIAL_STATE = {
       makeLink: false,
       externalLink: false,
       sortValues: true,
-      numberedList: false
+      numberedList: false,
+      onlyOnInstancePage: true
     },
     {
       id: 'occupation',
@@ -117,11 +119,19 @@ export const INITIAL_STATE = {
     {
       id: 'parliament',
       valueType: 'object',
-      makeLink: false,
+      makeLink: true,
       externalLink: false,
       sortValues: true,
       numberedList: true,
       onlyOnInstancePage: true
+    },
+    {
+      id: 'parliamentPeriod',
+      valueType: 'object',
+      makeLink: false,
+      externalLink: false,
+      sortValues: true,
+      numberedList: true
     },
     {
       id: 'electoralTerm',
@@ -179,7 +189,8 @@ export const INITIAL_STATE = {
 }
 
 const resultClasses = new Set([
-  'people'
+  'people',
+  'personEvents'
 ])
 
 const people = (state = INITIAL_STATE, action) => {
