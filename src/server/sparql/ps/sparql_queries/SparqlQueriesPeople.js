@@ -13,6 +13,14 @@ export const personPropertiesInstancePage =
   }
   UNION
   {
+    ?id semparls:extra_info ?extraInfo .
+  }
+  UNION
+  {
+    ?id semparls:authored ?authored .
+  }
+  UNION
+  {
     ?id semparls:party ?party__id .
     ?party__id skos:prefLabel ?party__prefLabel .
     FILTER(LANG(?party__prefLabel) = "<LANG>")
@@ -222,33 +230,43 @@ export const personEventsQuery =
     ?id skos:prefLabel ?prefLabel__id .
     BIND (?prefLabel__id as ?prefLabel__prefLabel)
   
-  
     { ?id bioc:bearer_of ?role__id .
-      ?role__id crm:P11i_participated_in ?evt__id ;
+      ?role__id crm:P11i_participated_in ?event__id ;
                 skos:prefLabel ?role__prefLabel .
       FILTER (LANG(?role__prefLabel)='fi')
+    
+      OPTIONAL { ?event__id skos:prefLabel ?evt__prefLabel . FILTER(LANG(?evt__prefLabel)='fi') }
     } 
     UNION
     {
-      ?id bioc:has_career|bioc:has_education ?evt__id .
-      BIND('' AS ?role__prefLabel)
+      ?id semparls:has_career|semparls:has_education|semparls:has_honour ?event__id .
+      OPTIONAL { ?event__id skos:prefLabel ?evt__prefLabel . FILTER(LANG(?evt__prefLabel)='fi') }
+      BIND(?evt__prefLabel AS ?role__prefLabel)
     }
-    
-    OPTIONAL { ?evt__id skos:prefLabel ?evt__prefLabel . FILTER(LANG(?evt__prefLabel)='fi') }
+    UNION
+    {
+      ?id semparls:authored ?event__id .
+      OPTIONAL { ?event__id skos:prefLabel ?evt__prefLabel }
+      BIND('Henkilön julkaisu' AS ?role__prefLabel)
+    }
+    UNION
+    {
+      ?id crm:P129i_is_subject_of ?event__id .
+      OPTIONAL { ?event__id skos:prefLabel ?evt__prefLabel }
+        BIND('Henkilöön liittyvä julkaisu' AS ?role__prefLabel)
+    }
   
-    OPTIONAL {  ?evt__id  crm:P4_has_time-span ?time__id .
+    OPTIONAL {  ?event__id  crm:P4_has_time-span ?time__id .
         OPTIONAL { ?time__id skos:prefLabel ?time__prefLabel }
         OPTIONAL { ?time__id crm:P81a_begin_of_the_begin ?time__start }
         OPTIONAL { ?time__id crm:P82b_end_of_the_end ?time__end }
     }
 
-    # OPTIONAL { ?evt__id semparls:is_current ?current }
-    OPTIONAL { ?evt__id semparls:organization|semparls:school ?group__id .
+    # OPTIONAL { ?event__id semparls:is_current ?current }
+    OPTIONAL { ?event__id semparls:organization|semparls:school ?group__id .
       # OPTIONAL { ?group__id skos:prefLabel ?group__prefLabel . FILTER(LANG(?group__prefLabel)='fi') }
       # OPTIONAL { ?group__id a ?group__class }
     }
-    
-    BIND(?evt__id AS ?event__id)
 
     BIND(IF(REGEX(STR(?evt__prefLabel), STR(?role__prefLabel)), 
       STR(?evt__prefLabel),
