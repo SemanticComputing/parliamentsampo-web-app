@@ -124,6 +124,23 @@ export const INITIAL_STATE = {
       containerClass: 'ten',
       filterType: 'uriFilter',
       uriFilter: null
+    },
+    datasource: {
+      id: 'datasource',
+      // predicate: defined in backend
+      distinctValueCount: 0,
+      values: [],
+      flatValues: [],
+      sortBy: 'instanceCount',
+      sortDirection: 'desc',
+      sortButton: false,
+      spatialFilterButton: false,
+      pieChartButton: false,
+      isFetching: false,
+      searchField: false,
+      containerClass: 'three',
+      filterType: 'uriFilter',
+      uriFilter: null
     }
   }
 }

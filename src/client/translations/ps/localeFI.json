@@ -194,9 +194,9 @@
           "label": "Ammatti / arvo",
           "description": "Ammatti / arvo"
         },
-        "relatedLink": {
-          "label": "Linkki",
-          "description": "Linkki"
+        "datasource": {
+          "label": "Tietolähde",
+          "description": "Tietolähde, josta henkilön tiedot ovat peräisin"
         },
         "parliament": {
           "label": "Edustajuus",

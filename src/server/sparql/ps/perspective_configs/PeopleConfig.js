@@ -75,6 +75,13 @@ export const peopleConfig = {
       type: 'list',
       facetLabelFilter: 'FILTER(LANG(?prefLabel_) = "<LANG>")'
     },
+    datasource: {
+      facetValueFilter: '',
+      labelPath: 'dct:source/a/skos:prefLabel',
+      predicate: 'dct:source/a',
+      type: 'list',
+      facetLabelFilter: 'FILTER(LANG(?prefLabel_) = "<LANG>")'
+    },
     image: {
       labelPath: 'sch:image'
     }

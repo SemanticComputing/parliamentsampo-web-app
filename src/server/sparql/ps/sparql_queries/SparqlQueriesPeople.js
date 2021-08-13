@@ -99,9 +99,9 @@ export const personPropertiesInstancePage =
   }
   UNION 
   {
-    ?id sch:relatedLink ?relatedLink__id .
-    BIND(?relatedLink__id as ?relatedLink__prefLabel)
-    BIND(?relatedLink__id as ?relatedLink__dataProviderUrl)
+    ?id dct:source ?datasource__id .
+    ?datasource__id a/skos:prefLabel ?datasource__prefLabel .
+    BIND(?datasource__id as ?datasource__dataProviderUrl)
   }
   UNION 
   {
@@ -159,5 +159,12 @@ export const personPropertiesFacetResults =
     ?id bioc:bearer_of/crm:P11i_participated_in/crm:P10_falls_within ?electoralTerm__id .
         ?electoralTerm__id skos:prefLabel ?electoralTerm__prefLabel .
         FILTER(LANG(?electoralTerm__prefLabel) = "<LANG>")
+  }
+  UNION
+  {
+    ?id dct:source/a ?datasource__id .
+    ?datasource__id skos:prefLabel ?datasource__prefLabel .
+    FILTER(LANG(?datasource__prefLabel) = "<LANG>")
+    BIND(?datasource__id as ?datasource__dataProviderUrl)
   }
 `

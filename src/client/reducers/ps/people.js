@@ -23,15 +23,6 @@ export const INITIAL_STATE = {
   instanceSparqlQuery: null,
   properties: [
     {
-      id: 'uri',
-      valueType: 'object',
-      makeLink: true,
-      externalLink: true,
-      sortValues: true,
-      numberedList: false,
-      onlyOnInstancePage: true
-    },
-    {
       id: 'prefLabel',
       valueType: 'object',
       makeLink: true,
@@ -120,7 +111,8 @@ export const INITIAL_STATE = {
       makeLink: false,
       externalLink: false,
       sortValues: true,
-      numberedList: true
+      numberedList: true,
+      onlyOnInstancePage: true
     },
     {
       id: 'parliament',
@@ -128,7 +120,8 @@ export const INITIAL_STATE = {
       makeLink: false,
       externalLink: false,
       sortValues: true,
-      numberedList: true
+      numberedList: true,
+      onlyOnInstancePage: true
     },
     {
       id: 'electoralTerm',
@@ -160,12 +153,21 @@ export const INITIAL_STATE = {
       valueType: 'object',
       makeLink: true,
       externalLink: true,
-      sortValues: false,
+      sortValues: true,
       numberedList: false,
       onlyOnInstancePage: true
     },
     {
-      id: 'relatedLink',
+      id: 'datasource',
+      valueType: 'object',
+      makeLink: true,
+      externalLink: true,
+      sortValues: true,
+      numberedList: false,
+      onlyOnInstancePage: true
+    },
+    {
+      id: 'uri',
       valueType: 'object',
       makeLink: true,
       externalLink: true,
