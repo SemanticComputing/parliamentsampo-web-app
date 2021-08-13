@@ -89,6 +89,9 @@ export const personPropertiesInstancePage =
         ?electoralTerm__id skos:prefLabel ?electoralTerm__prefLabel .
         FILTER(LANG(?electoralTerm__prefLabel) = "<LANG>")
         BIND(?electoralTerm__id as ?electoralTerm__dataProviderUrl)
+    } UNION {
+        ?evt crm:P4_has_time-span ?parliamentPeriod__id .
+        ?parliamentPeriod__id skos:prefLabel ?parliamentPeriod__prefLabel .
     }
   }
   UNION 
@@ -129,7 +132,7 @@ export const personPropertiesFacetResults =
     ?id sch:image ?image__id ;
       skos:prefLabel ?image__description ;
       skos:prefLabel ?image__title .
-      BIND(URI(CONCAT(REPLACE(STR(?image__id), "https*:", ""), "?width=200")) as ?image__url)
+      BIND(URI(CONCAT(REPLACE(STR(?image__id), "https*:", ""), "?width=600")) as ?image__url)
   }
   UNION
   {
@@ -187,6 +190,26 @@ export const personPropertiesFacetResults =
   }
 `
 
+export const personSpeechesQuery =
+` SELECT DISTINCT *
+WHERE {
+  BIND(<ID> as ?id)
+  BIND(?id as ?uri__id)
+  BIND(?id as ?uri__prefLabel)
+  BIND(?id as ?uri__dataProviderUrl)
+
+  ?id skos:prefLabel ?prefLabel__id .
+  BIND (?prefLabel__id as ?prefLabel__prefLabel)
+
+  ?speech__id semparls:speaker ?id ; skos:prefLabel ?speech__prefLabel .
+  OPTIONAL { ?speech__id dct:date ?speech__date }
+  OPTIONAL { ?speech__id semparls:speechOrder ?_ord }
+
+  BIND(CONCAT("/speeches/page/", REPLACE(STR(?speech__id), "^.*\\\\/(.+)", "$1")) AS ?speech__dataProviderUrl)
+  
+} ORDER BY COALESCE(?speech__date, "2999-01-01"^^xsd:date) ?_ord
+`
+
 export const personEventsQuery =
 ` SELECT DISTINCT * 
   WHERE {
@@ -217,6 +240,7 @@ export const personEventsQuery =
         OPTIONAL { ?time__id crm:P81a_begin_of_the_begin ?time__start }
         OPTIONAL { ?time__id crm:P82b_end_of_the_end ?time__end }
     }
+
     # OPTIONAL { ?evt__id semparls:is_current ?current }
     # OPTIONAL { ?evt__id semparls:organization|semparls:school ?group__id .
     # OPTIONAL { ?group__id skos:prefLabel ?group__prefLabel . FILTER(LANG(?group__prefLabel)='fi') }
@@ -230,7 +254,7 @@ export const personEventsQuery =
       CONCAT(?role__prefLabel, ': ', ?evt__prefLabel)) 
       AS ?event__prefLabel)
 
-    BIND(COALESCE(?time__prefLabel, '') AS ?event__date)
+    BIND(COALESCE(?time__prefLabel, '(aika ei tiedossa)') AS ?event__date)
 
-  } ORDER BY ?time__start ?time__end 
+  } ORDER BY COALESCE(?time__start, ?time__end, "2999-01-01"^^xsd:date) ?time__end 
 `

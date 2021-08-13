@@ -1,10 +1,11 @@
 import React from 'react'
 import CalendarViewDayIcon from '@material-ui/icons/CalendarViewDay'
+import CalendarToday from '@material-ui/icons/CalendarToday'
 // import TripOriginIcon from '@material-ui/icons/TripOrigin'
 // import LocationOnIcon from '@material-ui/icons/LocationOn'
 // import AddLocationIcon from '@material-ui/icons/AddLocation'
-// import SettingsBrightnessIcon from '@material-ui/icons/SettingsBrightness'
-import Person from '@material-ui/icons/Person'
+import KeyboardVoice from '@material-ui/icons/KeyboardVoice'
+import Portrait from '@material-ui/icons/Portrait'
 // import RedoIcon from '@material-ui/icons/Redo'
 // import PieChartIcon from '@material-ui/icons/PieChart'
 // import CloudDownloadIcon from '@material-ui/icons/CloudDownload'
@@ -43,19 +44,24 @@ export const perspectiveConfig = [
       {
         id: 'table',
         value: 0,
-        icon: <Person />
+        icon: <Portrait />
       }
     ],
     instancePageTabs: [
       {
         id: 'table',
         value: 0,
-        icon: <Person />
+        icon: <Portrait />
       },
       {
         id: 'personEvents',
         value: 1,
-        icon: <CalendarViewDayIcon />
+        icon: <CalendarToday />
+      },
+      {
+        id: 'personSpeeches',
+        value: 2,
+        icon: <KeyboardVoice />
       }
     ]
   }

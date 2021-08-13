@@ -54,6 +54,7 @@
   "tabs": {
     "table": "taulukko",
     "personEvents": "tapahtumat",
+    "personSpeeches": "puheenvuorot",
     "export": "SPARQL-kysely"
   },
   "table": {
@@ -231,6 +232,10 @@
           "label": "Syntymävuosi",
           "description": "Syntymävuosi"
         },
+        "parliamentPeriod": {
+          "label": "Kansanedustajakausi",
+          "description": "Kaudet kansanedustajana"
+        },
         "placeOfDeath": {
           "label": "Kuolinpaikka",
           "description": "Mahdollinen kuolinpaikka"
@@ -242,6 +247,10 @@
         "event": {
           "label": "Tapahtumat",
           "description": "Tapahtumat"
+        },
+        "speech": {
+          "label": "Puheenvuorot",
+          "description": "Puheenvuorot"
         }
       }
     }

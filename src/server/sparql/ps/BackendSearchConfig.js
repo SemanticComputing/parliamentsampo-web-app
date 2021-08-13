@@ -4,7 +4,8 @@ import { makeObjectList } from '../SparqlObjectMapper'
 import { fullTextSearchProperties } from './sparql_queries/SparqlQueriesFullText'
 import { sitemapInstancePageQuery } from '../SparqlQueriesGeneral'
 import {
-  personEventsQuery
+  personEventsQuery,
+  personSpeechesQuery
 } from './sparql_queries/SparqlQueriesPeople'
 
 export const backendSearchConfig = {
@@ -13,6 +14,11 @@ export const backendSearchConfig = {
   personEvents: {
     perspectiveID: 'people',
     q: personEventsQuery,
+    resultMapper: makeObjectList
+  },
+  personSpeeches: {
+    perspectiveID: 'people',
+    q: personSpeechesQuery,
     resultMapper: makeObjectList
   },
   jenaText: {
