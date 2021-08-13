@@ -201,13 +201,14 @@ WHERE {
   ?id skos:prefLabel ?prefLabel__id .
   BIND (?prefLabel__id as ?prefLabel__prefLabel)
 
-  ?speech__id semparls:speaker ?id ; skos:prefLabel ?speech__prefLabel .
-  OPTIONAL { ?speech__id dct:date ?speech__date }
-  OPTIONAL { ?speech__id semparls:speechOrder ?_ord }
+  ?event__id semparls:speaker ?id ; skos:prefLabel ?event__prefLabel .
+  OPTIONAL { ?event__id dct:date ?_date }
+  OPTIONAL { ?event__id semparls:speechOrder ?_ord }
 
-  BIND(CONCAT("/speeches/page/", REPLACE(STR(?speech__id), "^.*\\\\/(.+)", "$1")) AS ?speech__dataProviderUrl)
+  BIND(CONCAT("/speeches/page/", REPLACE(STR(?event__id), "^.*\\\\/(.+)", "$1")) AS ?event__dataProviderUrl)
+  BIND(COALESCE(?_date, '(aika ei tiedossa)') AS ?event__date)
   
-} ORDER BY COALESCE(?speech__date, "2999-01-01"^^xsd:date) ?_ord
+} ORDER BY COALESCE(?_date, "2999-01-01"^^xsd:date) ?_ord
 `
 
 export const personEventsQuery =
@@ -242,19 +243,20 @@ export const personEventsQuery =
     }
 
     # OPTIONAL { ?evt__id semparls:is_current ?current }
-    # OPTIONAL { ?evt__id semparls:organization|semparls:school ?group__id .
-    # OPTIONAL { ?group__id skos:prefLabel ?group__prefLabel . FILTER(LANG(?group__prefLabel)='fi') }
-    #   OPTIONAL { ?group__id a ?group__class }
-    # }
+    OPTIONAL { ?evt__id semparls:organization|semparls:school ?group__id .
+      # OPTIONAL { ?group__id skos:prefLabel ?group__prefLabel . FILTER(LANG(?group__prefLabel)='fi') }
+      # OPTIONAL { ?group__id a ?group__class }
+    }
     
     BIND(?evt__id AS ?event__id)
 
     BIND(IF(REGEX(STR(?evt__prefLabel), STR(?role__prefLabel)), 
       STR(?evt__prefLabel),
-      CONCAT(?role__prefLabel, ': ', ?evt__prefLabel)) 
+      CONCAT(?role__prefLabel, ': ', ?evt__prefLabel))
       AS ?event__prefLabel)
 
     BIND(COALESCE(?time__prefLabel, '(aika ei tiedossa)') AS ?event__date)
+    # BIND(CONCAT("/events/page/", REPLACE(STR(COALESCE(?group__id, ?event__id)), "^.*\\\\/(.+)", "$1")) AS ?event__dataProviderUrl)
 
   } ORDER BY COALESCE(?time__start, ?time__end, "2999-01-01"^^xsd:date) ?time__end 
 `

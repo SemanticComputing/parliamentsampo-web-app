@@ -215,7 +215,7 @@ class InstanceHomePage extends React.Component {
                         onlyOnInstancePage: true
                       },
                       {
-                        id: 'speech',
+                        id: 'event',
                         valueType: 'object',
                         makeLink: true,
                         externalLink: false,
