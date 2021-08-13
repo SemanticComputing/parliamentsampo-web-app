@@ -114,6 +114,12 @@ export const personPropertiesInstancePage =
     ?datasource__id a/skos:prefLabel ?datasource__prefLabel .
     BIND(?datasource__id as ?datasource__dataProviderUrl)
   }
+  UNION
+  {
+    ?id bioc:has_family_relation [ skos:prefLabel ?relative__prefLabel ; bioc:inheres_in ?relative__id ] .
+    FILTER (LANG(?relative__prefLabel)='fi')
+    BIND(CONCAT("/people/page/", REPLACE(STR(?relative__id), "^.*\\\\/(.+)", "$1")) AS ?relative__dataProviderUrl)
+  }
   UNION 
   {
     ?id sch:image ?image__id ;

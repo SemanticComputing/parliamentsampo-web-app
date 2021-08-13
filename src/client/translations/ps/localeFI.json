@@ -184,9 +184,17 @@
           "label": "Kuvatiedosto",
           "description": "Kuvatiedosto"
         },
+        "extraInfo": {
+          "label": "Lisätietoja",
+          "description": "Lisätietoja henkilöstä"
+        },
         "party": {
           "label": "Puolue",
           "description": "Puolue"
+        },
+        "relative": {
+          "label": "Sukulaiset",
+          "description": "Parlamenttidatassa mainitut henkilön mahdolliset sukulaiset"
         },
         "education": {
           "label": "Koulutus / oppiarvo",

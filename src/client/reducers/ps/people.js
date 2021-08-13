@@ -108,6 +108,15 @@ export const INITIAL_STATE = {
       numberedList: false
     },
     {
+      id: 'extraInfo',
+      valueType: 'string',
+      makeLink: false,
+      externalLink: false,
+      sortValues: true,
+      numberedList: false,
+      onlyOnInstancePage: true
+    },
+    {
       id: 'district',
       valueType: 'object',
       makeLink: false,
@@ -157,6 +166,15 @@ export const INITIAL_STATE = {
       externalLink: false,
       sortValues: true,
       numberedList: true
+    },
+    {
+      id: 'relative',
+      valueType: 'object',
+      makeLink: true,
+      externalLink: false,
+      sortValues: true,
+      numberedList: true,
+      onlyOnInstancePage: true
     },
     {
       id: 'exlink',
