@@ -235,62 +235,59 @@ WHERE {
 } ORDER BY COALESCE(?_date, "2999-01-01"^^xsd:date) ?_ord
 `
 
+//  https://api.triplydb.com/s/1OUQE49vA
 export const personEventsQuery =
-` SELECT DISTINCT * 
-  WHERE {
-    BIND(<ID> as ?id)
-    BIND(?id as ?uri__id)
-    BIND(?id as ?uri__prefLabel)
-    BIND(?id as ?uri__dataProviderUrl)
-  
-    ?id skos:prefLabel ?prefLabel__id .
-    BIND (?prefLabel__id as ?prefLabel__prefLabel)
-  
-    { ?id bioc:bearer_of ?role__id .
+` SELECT DISTINCT ?id ?prefLabel__id ?prefLabel__prefLabel ?uri__id ?uri__prefLabel ?uri__dataProviderUrl ?event__id ?event__prefLabel ?event__dataProviderUrl ?event__date 
+WHERE {
+  BIND(<ID> as ?id)
+  BIND(?id as ?uri__id)
+  BIND(?id as ?uri__prefLabel)
+  BIND(?id as ?uri__dataProviderUrl)
+
+  ?id skos:prefLabel ?prefLabel__id .
+  BIND (?prefLabel__id as ?prefLabel__prefLabel)
+
+  { 
+    ?id bioc:bearer_of ?role__id .
       ?role__id crm:P11i_participated_in ?event__id ;
-                skos:prefLabel ?role__prefLabel .
-      FILTER (LANG(?role__prefLabel)="<LANG>")
-    
-      OPTIONAL { ?event__id skos:prefLabel ?evt__prefLabel . FILTER(LANG(?evt__prefLabel)="<LANG>") }
-    } 
-    UNION
-    {
-      ?id semparls:has_career|semparls:has_education|semparls:has_honour ?event__id .
-      OPTIONAL { ?event__id skos:prefLabel ?evt__prefLabel . FILTER(LANG(?evt__prefLabel)="<LANG>") }
-      BIND(?evt__prefLabel AS ?role__prefLabel)
-    }
-    UNION
-    {
-      ?id semparls:authored ?event__id .
-      OPTIONAL { ?event__id skos:prefLabel ?evt__prefLabel }
-      BIND('Henkilön julkaisu' AS ?role__prefLabel)
-    }
-    UNION
-    {
-      ?id crm:P129i_is_subject_of ?event__id .
-      OPTIONAL { ?event__id skos:prefLabel ?evt__prefLabel }
-        BIND('Henkilöön liittyvä julkaisu' AS ?role__prefLabel)
-    }
+              skos:prefLabel ?role__prefLabel .
+      FILTER(LANG(?role__prefLabel)="fi")
+     ?event__id skos:prefLabel ?evt__prefLabel . FILTER(LANG(?evt__prefLabel)="fi")
+    BIND(CONCAT("/events/page/", REPLACE(STR(?event__id), "^.*\\\\/(.+)", "$1")) AS ?event__dataProviderUrl)
+  } 
+  UNION
+  {
+    ?id semparls:has_career|semparls:has_education|semparls:has_honour ?event__id .
+    ?event__id skos:prefLabel ?evt__prefLabel . FILTER(LANG(?evt__prefLabel)="fi")
+    BIND(CONCAT("/events/page/", REPLACE(STR(?event__id), "^.*\\\\/(.+)", "$1")) AS ?event__dataProviderUrl)
+  BIND('' AS ?role__prefLabel)
+  }
+  UNION
+  {
+    ?id semparls:authored ?event__id .
+    ?event__id skos:prefLabel ?evt__prefLabel .
+    BIND('Henkilön julkaisu' AS ?role__prefLabel)
+    BIND(CONCAT("/publications/page/", REPLACE(STR(?event__id), "^.*\\\\/(.+)", "$1")) AS ?event__dataProviderUrl)
+  }
+  UNION
+  {
+    ?id crm:P129i_is_subject_of ?event__id .
+    OPTIONAL { ?event__id skos:prefLabel ?evt__prefLabel }
+      BIND('Henkilöä käsittelevä julkaisu' AS ?role__prefLabel)
+    BIND(CONCAT("/publications/page/", REPLACE(STR(?event__id), "^.*\\\\/(.+)", "$1")) AS ?event__dataProviderUrl)
+  }
+
+  OPTIONAL {  ?event__id  crm:P4_has_time-span ?time__id .
+      OPTIONAL { ?time__id skos:prefLabel ?time__prefLabel }
+      OPTIONAL { ?time__id crm:P81a_begin_of_the_begin ?time__start }
+      OPTIONAL { ?time__id crm:P82b_end_of_the_end ?time__end }
+  }
+
+BIND(IF(REGEX(STR(?evt__prefLabel), STR(?role__prefLabel)), 
+    STR(?evt__prefLabel),
+    CONCAT(?role__prefLabel, ': ', ?evt__prefLabel))
+    AS ?event__prefLabel)
+  BIND(COALESCE(?time__prefLabel, '(aika ei tiedossa)') AS ?event__date)
   
-    OPTIONAL {  ?event__id  crm:P4_has_time-span ?time__id .
-        OPTIONAL { ?time__id skos:prefLabel ?time__prefLabel }
-        OPTIONAL { ?time__id crm:P81a_begin_of_the_begin ?time__start }
-        OPTIONAL { ?time__id crm:P82b_end_of_the_end ?time__end }
-    }
-
-    # OPTIONAL { ?event__id semparls:is_current ?current }
-    OPTIONAL { ?event__id semparls:organization|semparls:school ?group__id .
-      # OPTIONAL { ?group__id skos:prefLabel ?group__prefLabel . FILTER(LANG(?group__prefLabel)="<LANG>") }
-      # OPTIONAL { ?group__id a ?group__class }
-    }
-
-    BIND(IF(REGEX(STR(?evt__prefLabel), STR(?role__prefLabel)), 
-      STR(?evt__prefLabel),
-      CONCAT(?role__prefLabel, ': ', ?evt__prefLabel))
-      AS ?event__prefLabel)
-
-    BIND(COALESCE(?time__prefLabel, '(aika ei tiedossa)') AS ?event__date)
-    BIND(CONCAT("/events/page/", REPLACE(STR(COALESCE(?group__id, ?event__id)), "^.*\\\\/(.+)", "$1")) AS ?event__dataProviderUrl)
-
-  } ORDER BY COALESCE(?time__start, ?time__end, "2999-01-01"^^xsd:date) ?time__end 
+} ORDER BY COALESCE(?time__start, ?time__end, "2999-01-01"^^xsd:date) ?time__end  
 `

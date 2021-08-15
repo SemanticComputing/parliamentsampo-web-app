@@ -197,6 +197,17 @@ class InstanceHomePage extends React.Component {
                         containerClass: 'ten',
                         minWidth: 220,
                         onlyOnInstancePage: true
+                      },
+                      {
+                        id: 'uri',
+                        valueType: 'object',
+                        makeLink: true,
+                        externalLink: true,
+                        sortValues: false,
+                        numberedList: true,
+                        containerClass: 'three',
+                        minWidth: 220,
+                        onlyOnInstancePage: true
                       }
                     ]}
                   />}
