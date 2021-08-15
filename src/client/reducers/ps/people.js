@@ -101,7 +101,7 @@ export const INITIAL_STATE = {
     {
       id: 'education',
       valueType: 'object',
-      makeLink: false,
+      makeLink: true,
       externalLink: false,
       sortValues: true,
       numberedList: false,
@@ -110,7 +110,7 @@ export const INITIAL_STATE = {
     {
       id: 'occupation',
       valueType: 'object',
-      makeLink: false,
+      makeLink: true,
       externalLink: false,
       sortValues: true,
       numberedList: false
@@ -127,7 +127,7 @@ export const INITIAL_STATE = {
     {
       id: 'district',
       valueType: 'object',
-      makeLink: false,
+      makeLink: true,
       externalLink: false,
       sortValues: true,
       numberedList: true,
@@ -161,16 +161,16 @@ export const INITIAL_STATE = {
     {
       id: 'parliamentaryGroup',
       valueType: 'object',
-      makeLink: false,
+      makeLink: true,
       externalLink: false,
-      sortValues: true,
+      sortValues: false,
       numberedList: true,
       onlyOnInstancePage: true
     },
     {
       id: 'party',
       valueType: 'object',
-      makeLink: false,
+      makeLink: true,
       externalLink: false,
       sortValues: true,
       numberedList: true

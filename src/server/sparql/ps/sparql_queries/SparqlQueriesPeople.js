@@ -24,18 +24,21 @@ export const personPropertiesInstancePage =
     ?id semparls:party ?party__id .
     ?party__id skos:prefLabel ?party__prefLabel .
     FILTER(LANG(?party__prefLabel) = "<LANG>")
+    BIND(CONCAT("/groups/page/", REPLACE(STR(?party__id), "^.*\\\\/(.+)", "$1")) AS ?party__dataProviderUrl)
   }
   UNION
   {
     ?id bioc:has_occupation ?occupation__id .
     ?occupation__id skos:prefLabel ?occupation__prefLabel .
     FILTER(LANG(?occupation__prefLabel) = "<LANG>")
+    BIND(CONCAT("/occupations/page/", REPLACE(STR(?occupation__id), "^.*\\\\/(.+)", "$1")) AS ?occupation__dataProviderUrl)
   }
   UNION
   {
     ?id semparls:has_education ?education__id .
     ?education__id skos:prefLabel ?education__prefLabel .
     FILTER(LANG(?education__prefLabel) = "<LANG>")
+    BIND(CONCAT("/occupations/page/", REPLACE(STR(?education__id), "^.*\\\\/(.+)", "$1")) AS ?education__dataProviderUrl)
   }
   UNION
   {
@@ -76,7 +79,7 @@ export const personPropertiesInstancePage =
         semparls:organization ?district__id ] .
     ?district__id skos:prefLabel ?district__prefLabel .
     FILTER(LANG(?district__prefLabel) = "<LANG>")
-    BIND(?district__id as ?district__dataProviderUrl)
+    BIND(CONCAT("/districts/page/", REPLACE(STR(?district__id), "^.*\\\\/(.+)", "$1")) AS ?district__dataProviderUrl)
   }
   UNION
   {
@@ -85,7 +88,7 @@ export const personPropertiesInstancePage =
         semparls:organization ?parliamentaryGroup__id ] .
     ?parliamentaryGroup__id skos:prefLabel ?parliamentaryGroup__prefLabel .
     FILTER(LANG(?parliamentaryGroup__prefLabel) = "<LANG>")
-    BIND(?parliamentaryGroup__id as ?parliamentaryGroup__dataProviderUrl)
+    BIND(CONCAT("/groups/page/", REPLACE(STR(?parliamentaryGroup__id), "^.*\\\\/(.+)", "$1")) AS ?parliamentaryGroup__dataProviderUrl)
   }
   UNION
   {
@@ -95,7 +98,7 @@ export const personPropertiesInstancePage =
         ?evt semparls:organization ?parliament__id .
         ?parliament__id skos:prefLabel ?parliament__prefLabel .
         FILTER(LANG(?parliament__prefLabel) = "<LANG>")
-        BIND(?parliament__id as ?parliament__dataProviderUrl)
+        BIND(CONCAT("/groups/page/", REPLACE(STR(?parliament__id), "^.*\\\\/(.+)", "$1")) AS ?parliament__dataProviderUrl)
     } UNION {
         ?evt crm:P10_falls_within ?electoralTerm__id .
         ?electoralTerm__id skos:prefLabel ?electoralTerm__prefLabel .
@@ -116,7 +119,7 @@ export const personPropertiesInstancePage =
   {
     ?id dct:source ?datasource__id .
     ?datasource__id a/skos:prefLabel ?datasource__prefLabel .
-    BIND(?datasource__id as ?datasource__dataProviderUrl)
+    # BIND(?datasource__id as ?datasource__dataProviderUrl)
   }
   UNION
   {
@@ -287,7 +290,7 @@ export const personEventsQuery =
       AS ?event__prefLabel)
 
     BIND(COALESCE(?time__prefLabel, '(aika ei tiedossa)') AS ?event__date)
-    # BIND(CONCAT("/events/page/", REPLACE(STR(COALESCE(?group__id, ?event__id)), "^.*\\\\/(.+)", "$1")) AS ?event__dataProviderUrl)
+    BIND(CONCAT("/events/page/", REPLACE(STR(COALESCE(?group__id, ?event__id)), "^.*\\\\/(.+)", "$1")) AS ?event__dataProviderUrl)
 
   } ORDER BY COALESCE(?time__start, ?time__end, "2999-01-01"^^xsd:date) ?time__end 
 `

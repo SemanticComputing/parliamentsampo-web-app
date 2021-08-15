@@ -7,6 +7,9 @@ import {
   personEventsQuery,
   personSpeechesQuery
 } from './sparql_queries/SparqlQueriesPeople'
+import { eventPropertiesInstancePage } from './sparql_queries/SparqlQueriesEvents'
+import { groupPropertiesInstancePage } from './sparql_queries/SparqlQueriesGroups'
+import { occupationPropertiesInstancePage } from './sparql_queries/SparqlQueriesOccupations'
 
 export const backendSearchConfig = {
   speeches: speechesConfig,
@@ -20,6 +23,27 @@ export const backendSearchConfig = {
     perspectiveID: 'people',
     q: personSpeechesQuery,
     resultMapper: makeObjectList
+  },
+  events: {
+    perspectiveID: 'people',
+    instance: {
+      properties: eventPropertiesInstancePage,
+      relatedInstances: ''
+    }
+  },
+  groups: {
+    perspectiveID: 'people',
+    instance: {
+      properties: groupPropertiesInstancePage,
+      relatedInstances: ''
+    }
+  },
+  occupations: {
+    perspectiveID: 'people',
+    instance: {
+      properties: occupationPropertiesInstancePage,
+      relatedInstances: ''
+    }
   },
   jenaText: {
     perspectiveID: 'speeches',

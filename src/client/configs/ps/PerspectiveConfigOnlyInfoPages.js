@@ -4,40 +4,6 @@ import CloudDownloadIcon from '@material-ui/icons/CloudDownload'
 
 export const perspectiveConfigOnlyInfoPages = [
   {
-    id: 'manuscripts',
-    perspectiveDescHeight: 160,
-    instancePageTabs: [
-      {
-        id: 'table',
-        value: 0,
-        icon: <CalendarViewDayIcon />
-      },
-
-      {
-        id: 'export',
-        value: 1,
-        icon: <CloudDownloadIcon />
-      }
-    ]
-  },
-  {
-    id: 'works',
-    perspectiveDescHeight: 160,
-    instancePageTabs: [
-      {
-        id: 'table',
-        value: 0,
-        icon: <CalendarViewDayIcon />
-      },
-
-      {
-        id: 'export',
-        value: 1,
-        icon: <CloudDownloadIcon />
-      }
-    ]
-  },
-  {
     id: 'events',
     perspectiveDescHeight: 160,
     instancePageTabs: [
@@ -46,7 +12,22 @@ export const perspectiveConfigOnlyInfoPages = [
         value: 0,
         icon: <CalendarViewDayIcon />
       },
-
+      {
+        id: 'export',
+        value: 1,
+        icon: <CloudDownloadIcon />
+      }
+    ]
+  },
+  {
+    id: 'groups',
+    perspectiveDescHeight: 160,
+    instancePageTabs: [
+      {
+        id: 'table',
+        value: 0,
+        icon: <CalendarViewDayIcon />
+      },
       {
         id: 'export',
         value: 1,
@@ -63,7 +44,6 @@ export const perspectiveConfigOnlyInfoPages = [
         value: 0,
         icon: <CalendarViewDayIcon />
       },
-
       {
         id: 'export',
         value: 1,
@@ -80,7 +60,6 @@ export const perspectiveConfigOnlyInfoPages = [
         value: 0,
         icon: <CalendarViewDayIcon />
       },
-
       {
         id: 'export',
         value: 1,
@@ -89,7 +68,7 @@ export const perspectiveConfigOnlyInfoPages = [
     ]
   },
   {
-    id: 'expressions',
+    id: 'occupations',
     perspectiveDescHeight: 160,
     instancePageTabs: [
       {
@@ -97,24 +76,6 @@ export const perspectiveConfigOnlyInfoPages = [
         value: 0,
         icon: <CalendarViewDayIcon />
       },
-
-      {
-        id: 'export',
-        value: 1,
-        icon: <CloudDownloadIcon />
-      }
-    ]
-  },
-  {
-    id: 'collections',
-    perspectiveDescHeight: 160,
-    instancePageTabs: [
-      {
-        id: 'table',
-        value: 0,
-        icon: <CalendarViewDayIcon />
-      },
-
       {
         id: 'export',
         value: 1,

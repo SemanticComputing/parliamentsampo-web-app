@@ -269,6 +269,101 @@
           "description": "Puheenvuorot"
         }
       }
+    },
+    "occupations": {
+      "label": "Arvot / ammatit",
+      "facetResultsType": "arvo/ammatti",
+      "shortDescription": "Hae ammatteja",
+      "longDescription": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Use this perspective to ...  The results can be viewed using the following tabs: </p> <ul class=\"MuiTypography-root MuiTypography-body1\"> <li> <strong>TABLE</STRONG> ...</li> <li> ... </li>  </ul>",
+      "instancePage": {
+        "label": "Arvo / ammatti",
+        "description": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Ohjeet tähän </p>"
+      },
+      "properties": {
+        "uri": {
+          "label": "URI",
+          "description": ""
+        },
+        "prefLabel": {
+          "label": "Nimi",
+          "description": "Nimi",
+          "textFacetInputPlaceholder": "Hae..."
+        },
+        "altLabel": {
+          "label": "Vaihtoehtoinen nimi",
+          "description": "Vaihtoehtoinen nimi"
+        }
+      }
+    },
+    "events": {
+      "label": "Tapahtumat",
+      "facetResultsType": "tapahtumaa",
+      "shortDescription": "Hae tapahtumia",
+      "longDescription": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Use this perspective to ...  The results can be viewed using the following tabs: </p> <ul class=\"MuiTypography-root MuiTypography-body1\"> <li> <strong>TABLE</STRONG> ...</li> <li> ... </li>  </ul>",
+      "instancePage": {
+        "label": "Tapahtuma",
+        "description": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Ohjeet tähän </p>"
+      },
+      "properties": {
+        "uri": {
+          "label": "URI",
+          "description": ""
+        },
+        "prefLabel": {
+          "label": "Nimi",
+          "description": "Nimi",
+          "textFacetInputPlaceholder": "Hae..."
+        },
+        "altLabel": {
+          "label": "Vaihtoehtoinen nimi",
+          "description": "Vaihtoehtoinen nimi"
+        }
+      }
+    },
+    "groups": {
+      "label": "Ryhmät / Organisaatiot",
+      "facetResultsType": "ryhmää",
+      "shortDescription": "Hae ryhmiä",
+      "longDescription": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Use this perspective to ...  The results can be viewed using the following tabs: </p> <ul class=\"MuiTypography-root MuiTypography-body1\"> <li> <strong>TABLE</STRONG> ...</li> <li> ... </li>  </ul>",
+      "instancePage": {
+        "label": "Ryhmä / Organisaatio",
+        "description": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Ohjeet tähän </p>"
+      },
+      "properties": {
+        "uri": {
+          "label": "URI",
+          "description": ""
+        },
+        "prefLabel": {
+          "label": "Nimi",
+          "description": "Nimi",
+          "textFacetInputPlaceholder": "Hae..."
+        },
+        "altLabel": {
+          "label": "Vaihtoehtoinen nimi",
+          "description": "Vaihtoehtoinen nimi"
+        },
+        "image": {
+          "label": "Kuvatiedosto",
+          "description": "Kuvatiedosto"
+        },
+        "extraInfo": {
+          "label": "Lisätietoja",
+          "description": "Lisätietoja"
+        },
+        "party": {
+          "label": "Puolue",
+          "description": "Puolue"
+        },
+        "datasource": {
+          "label": "Tietolähde",
+          "description": "Tietolähde, josta ryhmän tiedot ovat peräisin"
+        },
+        "exlink": {
+          "label": "Ulkoinen linkki",
+          "description": "Linkki ulkoiseen tietokantaan"
+        }
+      }
     }
   }
 }
