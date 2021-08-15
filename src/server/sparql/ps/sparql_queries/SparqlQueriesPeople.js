@@ -119,7 +119,7 @@ export const personPropertiesInstancePage =
   {
     ?id dct:source ?datasource__id .
     ?datasource__id a/skos:prefLabel ?datasource__prefLabel .
-    # BIND(?datasource__id as ?datasource__dataProviderUrl)
+    BIND(?datasource__id as ?datasource__dataProviderUrl)
   }
   UNION
   {
