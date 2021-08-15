@@ -75,6 +75,14 @@ export const INITIAL_STATE = {
       numberedList: false
     },
     {
+      id: 'home_location',
+      valueType: 'string',
+      makeLink: false,
+      externalLink: false,
+      sortValues: true,
+      numberedList: false
+    },
+    {
       id: 'dateOfDeathTimespan',
       valueType: 'string',
       makeLink: false,
@@ -135,7 +143,7 @@ export const INITIAL_STATE = {
       onlyOnInstancePage: true
     },
     {
-      id: 'parliamentPeriod',
+      id: 'representativePeriod',
       valueType: 'object',
       makeLink: false,
       externalLink: false,
@@ -162,6 +170,14 @@ export const INITIAL_STATE = {
     {
       id: 'party',
       valueType: 'object',
+      makeLink: false,
+      externalLink: false,
+      sortValues: true,
+      numberedList: true
+    },
+    {
+      id: 'affiliation',
+      valueType: 'string',
       makeLink: false,
       externalLink: false,
       sortValues: true,

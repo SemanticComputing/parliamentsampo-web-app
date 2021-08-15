@@ -192,6 +192,10 @@
           "label": "Puolue",
           "description": "Puolue"
         },
+        "affiliation": {
+          "label": "Sidonnaisuudet",
+          "description": "Sidonnaisuudet"
+        },
         "relative": {
           "label": "Sukulaiset",
           "description": "Parlamenttidatassa mainitut henkilön mahdolliset sukulaiset"
@@ -240,7 +244,11 @@
           "label": "Syntymävuosi",
           "description": "Syntymävuosi"
         },
-        "parliamentPeriod": {
+        "home_location": {
+          "label": "Kotipaikkakunta",
+          "description": "Kotipaikkakunta"
+        },
+        "representativePeriod": {
           "label": "Kansanedustajakausi",
           "description": "Kaudet kansanedustajana"
         },

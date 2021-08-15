@@ -56,6 +56,10 @@ export const personPropertiesInstancePage =
   }
   UNION
   {
+    ?id semparls:home_location ?home_location
+  }
+  UNION
+  {
     ?id crm:P100i_died_in/crm:P7_took_place_at ?placeOfDeath__id .
     ?placeOfDeath__id skos:prefLabel ?placeOfDeath__prefLabel .
     FILTER(LANG(?placeOfDeath__prefLabel) = "<LANG>")
@@ -117,8 +121,13 @@ export const personPropertiesInstancePage =
   UNION
   {
     ?id bioc:has_family_relation [ skos:prefLabel ?relative__prefLabel ; bioc:inheres_in ?relative__id ] .
-    FILTER (LANG(?relative__prefLabel)='fi')
+    FILTER (LANG(?relative__prefLabel)='<LANG>')
     BIND(CONCAT("/people/page/", REPLACE(STR(?relative__id), "^.*\\\\/(.+)", "$1")) AS ?relative__dataProviderUrl)
+  }
+  UNION
+  {
+    ?id semparls:has_affiliation [ skos:prefLabel ?_afft ; semparls:affiliation_group/skos:prefLabel ?_afft2 ]
+    BIND(CONCAT(?_afft, ' (', ?_afft2, ')') AS ?affiliation)
   }
   UNION 
   {
@@ -184,10 +193,8 @@ export const personPropertiesFacetResults =
   }
   UNION
   {
-    ?id bioc:bearer_of/crm:P11i_participated_in [
-      a semparls:ParliamentMembership ;
-      crm:P4_has_time-span ?parliamentPeriod__id ] .
-    ?parliamentPeriod__id skos:prefLabel ?parliamentPeriod__prefLabel .
+    ?id semparls:representative_period ?representativePeriod__id .
+    ?representativePeriod__id skos:prefLabel ?representativePeriod__prefLabel .
   }
   UNION
   {
@@ -239,14 +246,14 @@ export const personEventsQuery =
     { ?id bioc:bearer_of ?role__id .
       ?role__id crm:P11i_participated_in ?event__id ;
                 skos:prefLabel ?role__prefLabel .
-      FILTER (LANG(?role__prefLabel)='fi')
+      FILTER (LANG(?role__prefLabel)="<LANG>")
     
-      OPTIONAL { ?event__id skos:prefLabel ?evt__prefLabel . FILTER(LANG(?evt__prefLabel)='fi') }
+      OPTIONAL { ?event__id skos:prefLabel ?evt__prefLabel . FILTER(LANG(?evt__prefLabel)="<LANG>") }
     } 
     UNION
     {
       ?id semparls:has_career|semparls:has_education|semparls:has_honour ?event__id .
-      OPTIONAL { ?event__id skos:prefLabel ?evt__prefLabel . FILTER(LANG(?evt__prefLabel)='fi') }
+      OPTIONAL { ?event__id skos:prefLabel ?evt__prefLabel . FILTER(LANG(?evt__prefLabel)="<LANG>") }
       BIND(?evt__prefLabel AS ?role__prefLabel)
     }
     UNION
@@ -270,7 +277,7 @@ export const personEventsQuery =
 
     # OPTIONAL { ?event__id semparls:is_current ?current }
     OPTIONAL { ?event__id semparls:organization|semparls:school ?group__id .
-      # OPTIONAL { ?group__id skos:prefLabel ?group__prefLabel . FILTER(LANG(?group__prefLabel)='fi') }
+      # OPTIONAL { ?group__id skos:prefLabel ?group__prefLabel . FILTER(LANG(?group__prefLabel)="<LANG>") }
       # OPTIONAL { ?group__id a ?group__class }
     }
 
