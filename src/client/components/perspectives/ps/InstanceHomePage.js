@@ -83,7 +83,7 @@ class InstanceHomePage extends React.Component {
         uri = `${base}/people/${localID}`
         break
       case 'districts':
-        uri = `${base}/districts/${localID}`
+        uri = `${base}/groups/districts/${localID}`
         break
       case 'events':
         uri = `${base}/events/${localID}`

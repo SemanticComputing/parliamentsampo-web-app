@@ -270,6 +270,39 @@
         }
       }
     },
+    "districts": {
+      "label": "Vaalipiirit",
+      "facetResultsType": "vaalipiiri",
+      "shortDescription": "Hae vaalipiirejä",
+      "longDescription": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Use this perspective to ...  The results can be viewed using the following tabs: </p> <ul class=\"MuiTypography-root MuiTypography-body1\"> <li> <strong>TABLE</STRONG> ...</li> <li> ... </li>  </ul>",
+      "instancePage": {
+        "label": "Vaalipiiri",
+        "description": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Ohjeet tähän </p>"
+      },
+      "properties": {
+        "uri": {
+          "label": "URI",
+          "description": ""
+        },
+        "prefLabel": {
+          "label": "Nimi",
+          "description": "Vaalipiirin nimi",
+          "textFacetInputPlaceholder": "Hae..."
+        },
+        "altLabel": {
+          "label": "Vaihtoehtoinen nimi",
+          "description": "Vaalipiirin nimi"
+        },
+        "person": {
+          "label": "Ehdokkaat",
+          "description": "Ehdokkaat"
+        },
+        "other": {
+          "label": "Muita vaalipiirejä",
+          "description": "Muita vaalipiirejä, joissa on ollut samoja henkilöitä ehdokkaina"
+        }
+      }
+    },
     "occupations": {
       "label": "Arvot / ammatit",
       "facetResultsType": "arvo/ammatti",

@@ -101,7 +101,7 @@ export const INITIAL_STATE = {
     {
       id: 'education',
       valueType: 'object',
-      makeLink: true,
+      makeLink: false,
       externalLink: false,
       sortValues: true,
       numberedList: false,
@@ -181,7 +181,8 @@ export const INITIAL_STATE = {
       makeLink: false,
       externalLink: false,
       sortValues: true,
-      numberedList: true
+      numberedList: true,
+      onlyOnInstancePage: true
     },
     {
       id: 'relative',
