@@ -7,9 +7,11 @@ import {
   personEventsQuery,
   personSpeechesQuery
 } from './sparql_queries/SparqlQueriesPeople'
+import { districtPropertiesInstancePage } from './sparql_queries/SparqlQueriesDistricts'
 import { eventPropertiesInstancePage } from './sparql_queries/SparqlQueriesEvents'
 import { groupPropertiesInstancePage } from './sparql_queries/SparqlQueriesGroups'
 import { occupationPropertiesInstancePage } from './sparql_queries/SparqlQueriesOccupations'
+import { publicationPropertiesInstancePage } from './sparql_queries/SparqlQueriesPublications'
 
 export const backendSearchConfig = {
   speeches: speechesConfig,
@@ -23,6 +25,13 @@ export const backendSearchConfig = {
     perspectiveID: 'people',
     q: personSpeechesQuery,
     resultMapper: makeObjectList
+  },
+  districts: {
+    perspectiveID: 'people',
+    instance: {
+      properties: districtPropertiesInstancePage,
+      relatedInstances: ''
+    }
   },
   events: {
     perspectiveID: 'people',
@@ -42,6 +51,13 @@ export const backendSearchConfig = {
     perspectiveID: 'people',
     instance: {
       properties: occupationPropertiesInstancePage,
+      relatedInstances: ''
+    }
+  },
+  publications: {
+    perspectiveID: 'people',
+    instance: {
+      properties: publicationPropertiesInstancePage,
       relatedInstances: ''
     }
   },

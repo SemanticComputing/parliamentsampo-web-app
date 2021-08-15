@@ -629,10 +629,12 @@ const mapStateToProps = state => {
     people: state.people,
     peopleFacets: state.peopleFacets,
     peopleFacetsConstrainSelf: state.peopleFacetsConstrainSelf,
+    districts: state.districts,
     events: state.events,
     groups: state.groups,
     places: state.places,
     occupations: state.occupations,
+    publications: state.publications,
     leafletMap: state.leafletMap,
     fullTextSearch: state.fullTextSearch,
     // clientFSState: state.clientSideFacetedSearch,
@@ -686,10 +688,12 @@ SemanticPortal.propTypes = {
   /**
    * Errors shown with react-redux-toastr.
    */
+  districts: PropTypes.object.isRequired,
   error: PropTypes.object.isRequired,
   events: PropTypes.object.isRequired,
   places: PropTypes.object.isRequired,
   occupations: PropTypes.object.isRequired,
+  publications: PropTypes.object.isRequired,
   groups: PropTypes.object.isRequired,
   /**
    * Leaflet map config and external layers.

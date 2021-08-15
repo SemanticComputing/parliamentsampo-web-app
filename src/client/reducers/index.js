@@ -13,9 +13,11 @@ import speechesFacetsConstrainSelf from './ps/speechesFacetsConstrainSelf'
 import people from './ps/people'
 import peopleFacets from './ps/peopleFacets'
 import peopleFacetsConstrainSelf from './ps/peopleFacetsConstrainSelf'
+import districts from './ps/districts'
 import events from './ps/events'
 import groups from './ps/groups'
 import occupations from './ps/occupations'
+import publications from './ps/publications'
 import places from './ps/places'
 
 const reducer = combineReducers({
@@ -25,10 +27,12 @@ const reducer = combineReducers({
   people,
   peopleFacets,
   peopleFacetsConstrainSelf,
+  districts,
   events,
   groups,
   places,
   occupations,
+  publications,
   leafletMap,
   animation,
   options,

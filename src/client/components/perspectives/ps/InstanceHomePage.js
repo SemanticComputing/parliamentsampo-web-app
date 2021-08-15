@@ -82,6 +82,9 @@ class InstanceHomePage extends React.Component {
       case 'people':
         uri = `${base}/people/${localID}`
         break
+      case 'districts':
+        uri = `${base}/districts/${localID}`
+        break
       case 'events':
         uri = `${base}/events/${localID}`
         break
@@ -90,6 +93,9 @@ class InstanceHomePage extends React.Component {
         break
       case 'occupations':
         uri = `${base}/occupations/${localID}`
+        break
+      case 'publications':
+        uri = `${base}/publications/${localID}`
         break
     }
     this.props.fetchByURI({
@@ -242,6 +248,17 @@ class InstanceHomePage extends React.Component {
                         sortValues: false,
                         numberedList: true,
                         containerClass: 'ten',
+                        minWidth: 220,
+                        onlyOnInstancePage: true
+                      },
+                      {
+                        id: 'uri',
+                        valueType: 'object',
+                        makeLink: true,
+                        externalLink: true,
+                        sortValues: false,
+                        numberedList: true,
+                        containerClass: 'three',
                         minWidth: 220,
                         onlyOnInstancePage: true
                       }

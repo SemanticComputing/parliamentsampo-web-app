@@ -52,6 +52,22 @@ export const perspectiveConfigOnlyInfoPages = [
     ]
   },
   {
+    id: 'districts',
+    perspectiveDescHeight: 160,
+    instancePageTabs: [
+      {
+        id: 'table',
+        value: 0,
+        icon: <CalendarViewDayIcon />
+      },
+      {
+        id: 'export',
+        value: 1,
+        icon: <CloudDownloadIcon />
+      }
+    ]
+  },
+  {
     id: 'places',
     perspectiveDescHeight: 160,
     instancePageTabs: [
@@ -69,6 +85,22 @@ export const perspectiveConfigOnlyInfoPages = [
   },
   {
     id: 'occupations',
+    perspectiveDescHeight: 160,
+    instancePageTabs: [
+      {
+        id: 'table',
+        value: 0,
+        icon: <CalendarViewDayIcon />
+      },
+      {
+        id: 'export',
+        value: 1,
+        icon: <CloudDownloadIcon />
+      }
+    ]
+  },
+  {
+    id: 'publications',
     perspectiveDescHeight: 160,
     instancePageTabs: [
       {
