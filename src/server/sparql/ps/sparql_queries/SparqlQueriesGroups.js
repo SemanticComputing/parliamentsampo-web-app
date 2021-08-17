@@ -15,6 +15,11 @@ export const groupPropertiesInstancePage =
   }
   UNION
   {
+    ?id a/skos:prefLabel ?type 
+    FILTER(LANG(?type)='<LANG>')
+  }
+  UNION
+  {
     ?id crm:P4_has_time-span/skos:prefLabel ?timespan
   }
   UNION
@@ -34,6 +39,20 @@ export const groupPropertiesInstancePage =
       BIND(CONCAT(?_label, ' (', ?role__label, ': ', COALESCE(?_date, ''), ')') AS ?person__prefLabel)
       BIND(CONCAT("/people/page/", REPLACE(STR(?person__id), "^.*\\\\/(.+)", "$1")) AS ?person__dataProviderUrl)
     } ORDER BY ?_start ?_label
+  }
+  UNION
+  {
+    SELECT DISTINCT ?id ?related__id ?related__prefLabel ?related__dataProviderUrl 
+    WHERE {
+      ?id ^(bioc:bearer_of/crm:P11i_participated_in/semparls:organization) ?prs ; a ?idtype .
+      ?prs bioc:bearer_of/crm:P11i_participated_in/semparls:organization ?related__id .
+      ?related__id skos:prefLabel ?related__prefLabel ; a ?reltype .
+      FILTER(?related__id!=?id && ?reltype=?idtype)
+      FILTER(LANG(?related__prefLabel)='<LANG>')
+      BIND(CONCAT("/groups/page/", REPLACE(STR(?related__id), "^.*\\\\/(.+)", "$1")) AS ?related__dataProviderUrl)
+    } 
+    GROUP BY ?id ?related__id ?related__prefLabel ?related__dataProviderUrl 
+    ORDER BY DESC(COUNT(?prs))
   }
   UNION
   {
