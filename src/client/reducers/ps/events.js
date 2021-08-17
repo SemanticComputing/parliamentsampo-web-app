@@ -41,6 +41,33 @@ export const INITIAL_STATE = {
       minWidth: 170
     },
     {
+      id: 'timespan',
+      valueType: 'string',
+      makeLink: false,
+      externalLink: false,
+      sortValues: true,
+      numberedList: false,
+      minWidth: 170
+    },
+    {
+      id: 'person',
+      valueType: 'object',
+      makeLink: true,
+      externalLink: false,
+      sortValues: true,
+      numberedList: true,
+      minWidth: 170
+    },
+    {
+      id: 'group',
+      valueType: 'object',
+      makeLink: true,
+      externalLink: false,
+      sortValues: true,
+      numberedList: true,
+      minWidth: 170
+    },
+    {
       id: 'uri',
       valueType: 'object',
       makeLink: true,

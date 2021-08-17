@@ -387,6 +387,18 @@
         "altLabel": {
           "label": "Vaihtoehtoinen nimi",
           "description": "Vaihtoehtoinen nimi"
+        },
+        "timespan": {
+          "label": "Ajankohta",
+          "description": "Tapahtuman ajankohta"
+        },
+        "person": {
+          "label": "Henkilöt",
+          "description": "Lista tapahtumaan liittyvistä henkilöistä"
+        },
+        "group": {
+          "label": "Ryhmät / organisaatiot",
+          "description": "Lista tapahtumaan liittyvistä ryhmistä"
         }
       }
     },
@@ -412,6 +424,10 @@
         "altLabel": {
           "label": "Vaihtoehtoinen nimi",
           "description": "Vaihtoehtoinen nimi"
+        },
+        "timespan": {
+          "label": "Ajankohta",
+          "description": "Tapahtuman ajankohta"
         },
         "image": {
           "label": "Kuvatiedosto",

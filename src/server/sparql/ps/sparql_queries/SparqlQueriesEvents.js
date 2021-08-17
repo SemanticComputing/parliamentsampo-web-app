@@ -7,15 +7,39 @@ export const eventPropertiesInstancePage =
   {
     ?id skos:prefLabel ?prefLabel__id .
     BIND(?prefLabel__id as ?prefLabel__prefLabel)
-    FILTER(LANG(?prefLabel__prefLabel)='fi')
+    FILTER(LANG(?prefLabel__prefLabel)='<LANG>')
   }
   UNION
   {
-    ?id skos:altLabel ?altLabel .
+    ?id skos:altLabel ?altLabel
+  }
+  UNION
+  {
+    ?id crm:P4_has_time-span/skos:prefLabel ?timespan
   }
   UNION
   {
     ?id crm:P10_falls_within/skos:prefLabel ?period .
-    FILTER(LANG(?period)='fi')
+    FILTER(LANG(?period)='<LANG>')
+  }
+  UNION
+  {
+    ?id semparls:organization ?group__id .
+    ?group__id skos:prefLabel ?group__prefLabel .
+    FILTER(LANG(?group__prefLabel)='<LANG>')
+    BIND(CONCAT("/groups/page/", REPLACE(STR(?group__id), "^.*\\\\/(.+)", "$1")) AS ?group__dataProviderUrl)
+  }
+  UNION
+  {
+    SELECT DISTINCT ?id ?person__id ?person__prefLabel ?person__dataProviderUrl 
+    WHERE {
+      ?id ^crm:P11i_participated_in ?role__id .
+      ?person__id bioc:bearer_of ?role__id ;
+                  xl:prefLabel/skos:prefLabel ?_label .
+      ?role__id skos:prefLabel ?role__label . FILTER(LANG(?role__label)='<LANG>')
+      OPTIONAL { ?id crm:P4_has_time-span [ skos:prefLabel ?_date ; crm:P81a_begin_of_the_begin ?_start ] }
+      BIND(CONCAT(?_label, ' (', ?role__label, ')') AS ?person__prefLabel)
+      BIND(CONCAT("/people/page/", REPLACE(STR(?person__id), "^.*\\\\/(.+)", "$1")) AS ?person__dataProviderUrl)
+    } ORDER BY ?_start ?_label
   }
 `
