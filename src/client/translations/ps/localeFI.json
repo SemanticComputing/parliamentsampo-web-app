@@ -417,9 +417,9 @@
           "label": "Kuvatiedosto",
           "description": "Kuvatiedosto"
         },
-        "extraInfo": {
-          "label": "Lisätietoja",
-          "description": "Lisätietoja"
+        "person": {
+          "label": "Henkilöt",
+          "description": "Lista ryhmään liittyvistä henkilöistä"
         },
         "party": {
           "label": "Puolue",
