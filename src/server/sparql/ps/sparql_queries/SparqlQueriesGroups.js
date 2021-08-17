@@ -7,7 +7,7 @@ export const groupPropertiesInstancePage =
   {
     ?id skos:prefLabel ?prefLabel__id .
     BIND(?prefLabel__id as ?prefLabel__prefLabel)
-    FILTER(LANG(?prefLabel__prefLabel)='fi')
+    FILTER(LANG(?prefLabel__prefLabel)='<LANG>')
   }
   UNION
   {
@@ -29,7 +29,7 @@ export const groupPropertiesInstancePage =
       ?person__id bioc:bearer_of ?role__id ;
                   xl:prefLabel/skos:prefLabel ?_label .
       OPTIONAL { ?evt crm:P4_has_time-span [ skos:prefLabel ?_date ; crm:P81a_begin_of_the_begin ?_start ] }
-      ?role__id skos:prefLabel ?role__label . FILTER(LANG(?role__label)='fi')
+      ?role__id skos:prefLabel ?role__label . FILTER(LANG(?role__label)='<LANG>')
       
       BIND(CONCAT(?_label, ' (', ?role__label, ': ', COALESCE(?_date, ''), ')') AS ?person__prefLabel)
       BIND(CONCAT("/people/page/", REPLACE(STR(?person__id), "^.*\\\\/(.+)", "$1")) AS ?person__dataProviderUrl)
@@ -38,6 +38,6 @@ export const groupPropertiesInstancePage =
   UNION
   {
     ?id crm:P10_falls_within/skos:prefLabel ?period .
-    FILTER(LANG(?period)='fi')
+    FILTER(LANG(?period)='<LANG>')
   }
 `

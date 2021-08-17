@@ -7,7 +7,7 @@ export const publicationPropertiesInstancePage =
   {
     ?id skos:prefLabel ?prefLabel__id .
     BIND(?prefLabel__id as ?prefLabel__prefLabel)
-    # FILTER(LANG(?prefLabel__prefLabel)='fi')
+    # FILTER(LANG(?prefLabel__prefLabel)='<LANG>')
   }
   UNION
   {

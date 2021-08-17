@@ -41,6 +41,15 @@ export const INITIAL_STATE = {
       minWidth: 170
     },
     {
+      id: 'type',
+      valueType: 'string',
+      makeLink: false,
+      externalLink: false,
+      sortValues: true,
+      numberedList: false,
+      minWidth: 170
+    },
+    {
       id: 'timespan',
       valueType: 'string',
       makeLink: false,
@@ -53,6 +62,24 @@ export const INITIAL_STATE = {
       id: 'person',
       valueType: 'object',
       makeLink: true,
+      externalLink: false,
+      sortValues: true,
+      numberedList: true,
+      minWidth: 170
+    },
+    {
+      id: 'occupation',
+      valueType: 'object',
+      makeLink: true,
+      externalLink: false,
+      sortValues: true,
+      numberedList: true,
+      minWidth: 170
+    },
+    {
+      id: 'organization',
+      valueType: 'string',
+      makeLink: false,
       externalLink: false,
       sortValues: true,
       numberedList: true,

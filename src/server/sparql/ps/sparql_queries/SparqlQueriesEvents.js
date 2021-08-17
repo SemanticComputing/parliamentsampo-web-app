@@ -15,12 +15,28 @@ export const eventPropertiesInstancePage =
   }
   UNION
   {
+    ?id a/skos:prefLabel ?type 
+    FILTER(LANG(?type)='<LANG>')
+  }
+  UNION
+  {
     ?id crm:P4_has_time-span/skos:prefLabel ?timespan
   }
   UNION
   {
     ?id crm:P10_falls_within/skos:prefLabel ?period .
     FILTER(LANG(?period)='<LANG>')
+  }
+  UNION
+  {
+    ?id bioc:has_occupation ?occupation__id .
+    ?occupation__id skos:prefLabel ?occupation__prefLabel .
+    FILTER(LANG(?occupation__prefLabel)='<LANG>')
+    BIND(CONCAT("/occupations/page/", REPLACE(STR(?occupation__id), "^.*\\\\/(.+)", "$1")) AS ?occupation__dataProviderUrl)
+  }
+  UNION
+  {
+    ?id semparls:school/skos:prefLabel ?organization 
   }
   UNION
   {
@@ -41,5 +57,11 @@ export const eventPropertiesInstancePage =
       BIND(CONCAT(?_label, ' (', ?role__label, ')') AS ?person__prefLabel)
       BIND(CONCAT("/people/page/", REPLACE(STR(?person__id), "^.*\\\\/(.+)", "$1")) AS ?person__dataProviderUrl)
     } ORDER BY ?_start ?_label
+  }
+  UNION
+  {
+    ?person__id semparls:has_education ?id ;
+        skos:prefLabel ?person__prefLabel .
+        BIND(CONCAT("/people/page/", REPLACE(STR(?person__id), "^.*\\\\/(.+)", "$1")) AS ?person__dataProviderUrl)
   }
 `

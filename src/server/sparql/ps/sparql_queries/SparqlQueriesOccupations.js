@@ -7,7 +7,7 @@ export const occupationPropertiesInstancePage =
   {
     ?id skos:prefLabel ?prefLabel__id .
     BIND(?prefLabel__id as ?prefLabel__prefLabel)
-    FILTER(LANG(?prefLabel__prefLabel)='fi')
+    FILTER(LANG(?prefLabel__prefLabel)='<LANG>')
   }
   UNION
   {
@@ -15,7 +15,26 @@ export const occupationPropertiesInstancePage =
   }
   UNION
   {
+    ?person__id bioc:has_occupation ?id ; a bioc:Person ; skos:prefLabel ?person__prefLabel .
+    BIND(CONCAT("/people/page/", REPLACE(STR(?person__id), "^.*\\\\/(.+)", "$1")) AS ?person__dataProviderUrl)
+  }
+  UNION
+  { 
+    SELECT ?id ?related__id ?related__prefLabel ?related__dataProviderUrl 
+      WHERE {
+        ?id ^bioc:has_occupation ?person__id .
+        ?person__id bioc:has_occupation ?related__id ; a bioc:Person .
+        FILTER(?related__id != ?id)
+        ?related__id skos:prefLabel ?related__prefLabel .
+        FILTER(LANG(?related__prefLabel)='<LANG>')
+        BIND(CONCAT("/occupations/page/", REPLACE(STR(?related__id), "^.*\\\\/(.+)", "$1")) AS ?related__dataProviderUrl)
+      } 
+      GROUPBY ?id ?related__id ?related__prefLabel ?related__dataProviderUrl 
+      ORDER BY DESC (COUNT(?person__id))
+    }
+  UNION
+  {
     ?id crm:P10_falls_within/skos:prefLabel ?period .
-    FILTER(LANG(?period)='fi')
+    FILTER(LANG(?period)='<LANG>')
   }
 `

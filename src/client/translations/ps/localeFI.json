@@ -324,7 +324,15 @@
         },
         "altLabel": {
           "label": "Vaihtoehtoinen nimi",
-          "description": "Vaihtoehtoinen nimi"
+          "description": "Vaihtoehtoinen nimi tai lyhenne"
+        },
+        "person": {
+          "label": "Henkilöt",
+          "description": "Lista ammattiin liittyvistä henkilöistä"
+        },
+        "related": {
+          "label": "Samankaltaisia ammatteja",
+          "description": "Samankaltaisia ammatteja"
         }
       }
     },
@@ -388,6 +396,10 @@
           "label": "Vaihtoehtoinen nimi",
           "description": "Vaihtoehtoinen nimi"
         },
+        "type": {
+          "label": "Tapahtuman tyyppi",
+          "description": "Tapahtuman tyyppi"
+        },
         "timespan": {
           "label": "Ajankohta",
           "description": "Tapahtuman ajankohta"
@@ -395,6 +407,14 @@
         "person": {
           "label": "Henkilöt",
           "description": "Lista tapahtumaan liittyvistä henkilöistä"
+        },
+        "occupation": {
+          "label": "Arvo, ammatti",
+          "description": "Lista tapahtumaan liittyvistä arvoista ja ammateista"
+        },
+        "organization": {
+          "label": "Järjestö",
+          "description": "Lista tapahtumaan liittyvistä järjestöistä"
         },
         "group": {
           "label": "Ryhmät / organisaatiot",

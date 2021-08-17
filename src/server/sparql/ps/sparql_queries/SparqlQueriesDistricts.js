@@ -7,7 +7,7 @@ export const districtPropertiesInstancePage =
   {
     ?id skos:prefLabel ?prefLabel__id .
     BIND(?prefLabel__id as ?prefLabel__prefLabel)
-    FILTER(LANG(?prefLabel__prefLabel)='fi')
+    FILTER(LANG(?prefLabel__prefLabel)='<LANG>')
   }
   UNION
   {
@@ -33,7 +33,7 @@ export const districtPropertiesInstancePage =
               bioc:bearer_of/crm:P11i_participated_in ?_evt .
       ?_evt semparls:organization ?other__id ; a semparls:ElectoralDistrictCandidature .
       FILTER (?other__id!=?id)
-      ?other__id skos:prefLabel ?other__prefLabel . FILTER(LANG(?other__prefLabel)='fi')
+      ?other__id skos:prefLabel ?other__prefLabel . FILTER(LANG(?other__prefLabel)='<LANG>')
       BIND(CONCAT("/districts/page/", REPLACE(STR(?other__id), "^.*\\\\/(.+)", "$1")) AS ?other__dataProviderUrl)
     } 
     GROUPBY ?id ?other__id ?other__prefLabel ?other__dataProviderUrl 
