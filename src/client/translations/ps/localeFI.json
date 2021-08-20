@@ -443,7 +443,7 @@
         },
         "altLabel": {
           "label": "Vaihtoehtoinen nimi",
-          "description": "Vaihtoehtoinen nimi"
+          "description": "Vaihtoehtoinen nimi tai lyhenne"
         },
         "timespan": {
           "label": "Ajankohta",

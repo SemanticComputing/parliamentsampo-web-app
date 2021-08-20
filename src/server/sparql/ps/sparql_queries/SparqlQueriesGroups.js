@@ -15,6 +15,10 @@ export const groupPropertiesInstancePage =
   }
   UNION
   {
+    ?id semparls:abbrev ?altLabel .
+  }
+  UNION
+  {
     ?id a/skos:prefLabel ?type 
     FILTER(LANG(?type)='<LANG>')
   }
@@ -51,6 +55,13 @@ export const groupPropertiesInstancePage =
   }
   UNION
   {
+    ?id a/semparls:party ?related__id .
+    ?related__id skos:prefLabel ?related__prefLabel .
+    FILTER(LANG(?related__prefLabel)='<LANG>')
+    BIND(CONCAT("/groups/page/", REPLACE(STR(?related__id), "^.*\\\\/(.+)", "$1")) AS ?related__dataProviderUrl)
+  }
+  UNION
+  {
     SELECT DISTINCT ?id ?related__id ?related__prefLabel ?related__dataProviderUrl 
     WHERE {
       {
@@ -69,6 +80,19 @@ export const groupPropertiesInstancePage =
     } 
     GROUP BY ?id ?related__id ?related__prefLabel ?related__dataProviderUrl 
     ORDER BY DESC(COUNT(?prs))
+  }
+  UNION
+  {
+    ?id sch:sameAs ?exlink__id .
+    ?exlink__id a/skos:prefLabel ?exlink__prefLabel .
+    BIND(?exlink__id AS ?exlink__dataProviderUrl)
+  }
+  UNION
+  {
+    ?id sch:image ?image__id ;
+      skos:prefLabel ?image__description ;
+      skos:prefLabel ?image__title .
+      BIND(URI(CONCAT(REPLACE(STR(?image__id), "https*:", ""), "?width=600")) as ?image__url)
   }
   UNION
   {

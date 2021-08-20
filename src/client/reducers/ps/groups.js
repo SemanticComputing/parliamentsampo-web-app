@@ -50,6 +50,17 @@ export const INITIAL_STATE = {
       minWidth: 170
     },
     {
+      id: 'image',
+      valueType: 'image',
+      previewImageHeight: 160,
+      makeLink: true,
+      externalLink: true,
+      sortValues: false,
+      numberedList: false,
+      minWidth: 120,
+      hideHeader: false
+    },
+    {
       id: 'timespan',
       valueType: 'string',
       makeLink: false,
@@ -75,6 +86,15 @@ export const INITIAL_STATE = {
       sortValues: false,
       numberedList: true,
       minWidth: 170
+    },
+    {
+      id: 'exlink',
+      valueType: 'object',
+      makeLink: true,
+      externalLink: true,
+      sortValues: true,
+      numberedList: false,
+      onlyOnInstancePage: true
     },
     {
       id: 'uri',
