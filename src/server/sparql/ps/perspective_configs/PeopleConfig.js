@@ -65,8 +65,8 @@ export const peopleConfig = {
     },
     party: {
       facetValueFilter: '',
-      labelPath: 'semparls:party/skos:prefLabel',
-      predicate: 'semparls:party',
+      labelPath: 'semparls:has_party_membership/semparls:party/skos:prefLabel',
+      predicate: 'semparls:has_party_membership/semparls:party',
       type: 'list',
       facetLabelFilter: 'FILTER(LANG(?prefLabel_) = "<LANG>")'
     },

@@ -453,9 +453,17 @@
           "label": "Kuvatiedosto",
           "description": "Kuvatiedosto"
         },
+        "type": {
+          "label": "Tyyppi",
+          "description": "Ryhmän tyyppi"
+        },
         "person": {
           "label": "Henkilöt",
           "description": "Lista ryhmään liittyvistä henkilöistä"
+        },
+        "related": {
+          "label": "Samankaltaisia ryhmiä",
+          "description": "Muita ryhmiä, joissa on samoja henkilöjä jäseninä"
         },
         "party": {
           "label": "Puolue",

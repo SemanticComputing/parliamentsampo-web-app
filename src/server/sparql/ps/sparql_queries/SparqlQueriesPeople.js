@@ -21,7 +21,7 @@ export const personPropertiesInstancePage =
   }
   UNION
   {
-    ?id semparls:party ?party__id .
+    ?id semparls:has_party_membership/semparls:party ?party__id .
     ?party__id skos:prefLabel ?party__prefLabel .
     FILTER(LANG(?party__prefLabel) = "<LANG>")
     BIND(CONCAT("/groups/page/", REPLACE(STR(?party__id), "^.*\\\\/(.+)", "$1")) AS ?party__dataProviderUrl)
@@ -149,9 +149,10 @@ export const personPropertiesFacetResults =
   BIND(?id as ?uri__dataProviderUrl)
   BIND(?id as ?uri__prefLabel)
   {
-    ?id semparls:party ?party__id .
+    ?id semparls:has_party_membership/semparls:party ?party__id .
     ?party__id skos:prefLabel ?party__prefLabel .
     FILTER(LANG(?party__prefLabel) = "<LANG>")
+    BIND(CONCAT("/groups/page/", REPLACE(STR(?party__id), "^.*\\\\/(.+)", "$1")) AS ?party__dataProviderUrl)
   }
   UNION
   {
