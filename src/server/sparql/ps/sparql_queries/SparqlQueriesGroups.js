@@ -42,10 +42,26 @@ export const groupPropertiesInstancePage =
   }
   UNION
   {
+    SELECT DISTINCT ?id ?person__id ?person__prefLabel ?person__dataProviderUrl 
+    WHERE {
+      ?id ^semparls:party ?evt .
+      ?person__id semparls:has_party_membership ?evt ; skos:prefLabel ?person__prefLabel .
+      BIND(CONCAT("/people/page/", REPLACE(STR(?person__id), "^.*\\\\/(.+)", "$1")) AS ?person__dataProviderUrl)
+    } ORDER BY ?person__prefLabel 
+  }
+  UNION
+  {
     SELECT DISTINCT ?id ?related__id ?related__prefLabel ?related__dataProviderUrl 
     WHERE {
-      ?id ^(bioc:bearer_of/crm:P11i_participated_in/semparls:organization) ?prs ; a ?idtype .
-      ?prs bioc:bearer_of/crm:P11i_participated_in/semparls:organization ?related__id .
+      {
+        ?id ^(bioc:bearer_of/crm:P11i_participated_in/semparls:organization) ?prs ; a ?idtype .
+        ?prs bioc:bearer_of/crm:P11i_participated_in/semparls:organization ?related__id .
+      }
+      UNION
+      {
+        ?id ^(semparls:has_party_membership/semparls:party) ?prs ; a ?idtype .
+        ?prs semparls:has_party_membership/semparls:party ?related__id .
+      }
       ?related__id skos:prefLabel ?related__prefLabel ; a ?reltype .
       FILTER(?related__id!=?id && ?reltype=?idtype)
       FILTER(LANG(?related__prefLabel)='<LANG>')
