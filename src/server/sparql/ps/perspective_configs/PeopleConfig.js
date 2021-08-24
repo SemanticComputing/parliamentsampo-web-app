@@ -47,7 +47,23 @@ export const peopleConfig = {
       type: 'list',
       facetLabelFilter: 'FILTER(LANG(?prefLabel_) = "<LANG>")'
     },
-    representativePeriod: {
+    dateOfDeathTimespan: {
+      facetValueFilter: '',
+      sortByAscPredicate: 'crm:P100i_died_in/crm:P4_has_time-span/crm:P81a_begin_of_the_begin',
+      sortByDescPredicate: 'crm:P100i_died_in/crm:P4_has_time-span/crm:P82b_end_of_the_end',
+      predicate: 'crm:P100i_died_in/crm:P4_has_time-span',
+      startProperty: 'crm:P81a_begin_of_the_begin',
+      endProperty: 'crm:P82b_end_of_the_end',
+      type: 'timespan'
+    },
+    placeOfDeath: {
+      facetValueFilter: '',
+      labelPath: 'crm:P100i_died_in/crm:P7_took_place_at/skos:prefLabel',
+      predicate: 'crm:P100i_died_in/crm:P7_took_place_at',
+      type: 'list',
+      facetLabelFilter: 'FILTER(LANG(?prefLabel_) = "<LANG>")'
+    },
+    representativePeriodTimespan: {
       facetValueFilter: '',
       sortByAscPredicate: 'semparls:representative_period/crm:P81a_begin_of_the_begin',
       sortByDescPredicate: 'semparls:representative_period/crm:P82b_end_of_the_end',
@@ -58,8 +74,8 @@ export const peopleConfig = {
     },
     electoralTerm: {
       facetValueFilter: '',
-      labelPath: 'bioc:bearer_of/crm:P11i_participated_in ?evt . ?evt a semparls:ParliamentMembership ; crm:P10_falls_within/skos:prefLabel',
-      predicate: 'bioc:bearer_of/crm:P11i_participated_in  ?evt . ?evt a semparls:ParliamentMembership ; crm:P10_falls_within',
+      labelPath: 'bioc:bearer_of/crm:P11i_participated_in/crm:P10_falls_within/skos:prefLabel',
+      predicate: 'bioc:bearer_of/crm:P11i_participated_in ?evt . ?evt a semparls:ParliamentMembership ; crm:P10_falls_within',
       type: 'list',
       facetLabelFilter: 'FILTER(LANG(?prefLabel_) = "<LANG>")'
     },

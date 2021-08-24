@@ -248,7 +248,7 @@
           "label": "Kotipaikkakunta",
           "description": "Kotipaikkakunta"
         },
-        "representativePeriod": {
+        "representativePeriodTimespan": {
           "label": "Kansanedustajakausi",
           "description": "Kaudet kansanedustajana"
         },
