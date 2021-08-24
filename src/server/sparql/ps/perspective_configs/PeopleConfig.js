@@ -58,8 +58,8 @@ export const peopleConfig = {
     },
     electoralTerm: {
       facetValueFilter: '',
-      labelPath: 'bioc:bearer_of/crm:P11i_participated_in/crm:P10_falls_within/skos:prefLabel',
-      predicate: 'bioc:bearer_of/crm:P11i_participated_in/crm:P10_falls_within',
+      labelPath: 'bioc:bearer_of/crm:P11i_participated_in ?evt . ?evt a semparls:ParliamentMembership ; crm:P10_falls_within/skos:prefLabel',
+      predicate: 'bioc:bearer_of/crm:P11i_participated_in  ?evt . ?evt a semparls:ParliamentMembership ; crm:P10_falls_within',
       type: 'list',
       facetLabelFilter: 'FILTER(LANG(?prefLabel_) = "<LANG>")'
     },

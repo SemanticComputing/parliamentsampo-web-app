@@ -202,7 +202,9 @@ export const personPropertiesFacetResults =
   }
   UNION
   {
-    ?id bioc:bearer_of/crm:P11i_participated_in/crm:P10_falls_within ?electoralTerm__id .
+    ?id bioc:bearer_of/crm:P11i_participated_in [ 
+          a semparls:ParliamentaryGroupMembership ; 
+          crm:P10_falls_within ?electoralTerm__id ] .
         ?electoralTerm__id skos:prefLabel ?electoralTerm__prefLabel .
         FILTER(LANG(?electoralTerm__prefLabel) = "<LANG>")
   }
