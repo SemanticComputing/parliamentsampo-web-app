@@ -17,6 +17,7 @@ export const speechPropertiesInstancePage =
     ?id semparls:party ?party__id .
     ?party__id skos:prefLabel ?party__prefLabel .
     FILTER(LANG(?party__prefLabel) = "<LANG>")
+    BIND(CONCAT("/groups/page/", REPLACE(STR(?party__id), "^.*\\\\/(.+)", "$1")) AS ?party__dataProviderUrl)
   }
   UNION
   {
@@ -67,6 +68,7 @@ export const speechPropertiesFacetResults =
     ?id semparls:party ?party__id .
     ?party__id skos:prefLabel ?party__prefLabel .
     FILTER(LANG(?party__prefLabel) = "<LANG>")
+    BIND(CONCAT("/groups/page/", REPLACE(STR(?party__id), "^.*\\\\/(.+)", "$1")) AS ?party__dataProviderUrl)
   }
   UNION 
   {
