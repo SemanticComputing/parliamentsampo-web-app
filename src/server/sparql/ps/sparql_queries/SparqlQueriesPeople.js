@@ -197,8 +197,7 @@ export const personPropertiesFacetResults =
   }
   UNION
   {
-    ?id semparls:representative_period ?representativePeriod__id .
-    ?representativePeriod__id skos:prefLabel ?representativePeriod__prefLabel .
+    ?id semparls:representative_period/skos:prefLabel ?representativePeriodTimespan .
   }
   UNION
   {

@@ -143,12 +143,12 @@ export const INITIAL_STATE = {
       onlyOnInstancePage: true
     },
     {
-      id: 'representativePeriod',
-      valueType: 'object',
+      id: 'representativePeriodTimespan',
+      valueType: 'string',
       makeLink: false,
       externalLink: false,
       sortValues: true,
-      numberedList: true
+      numberedList: false
     },
     {
       id: 'electoralTerm',

@@ -57,8 +57,8 @@ export const INITIAL_STATE = {
       filterType: 'uriFilter',
       uriFilter: null
     },
-    representativePeriod: {
-      id: 'representativePeriod',
+    representativePeriodTimespan: {
+      id: 'representativePeriodTimespan',
       distinctValueCount: 0,
       values: [],
       flatValues: [],
