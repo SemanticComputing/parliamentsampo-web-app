@@ -186,6 +186,10 @@ export const personPropertiesFacetResults =
   }
   UNION
   {
+    ?id semparls:home_location ?home_location
+  }
+  UNION
+  {
     ?id crm:P100i_died_in/crm:P7_took_place_at ?placeOfDeath__id .
     ?placeOfDeath__id skos:prefLabel ?placeOfDeath__prefLabel .
     FILTER(LANG(?placeOfDeath__prefLabel) = "<LANG>")

@@ -31,6 +31,10 @@ export const peopleConfig = {
       textQueryProperty: 'skos:prefLabel', // limit only to prefLabels
       type: 'text'
     },
+    home_location: {
+      labelPath: 'semparls:home_location',
+      type: 'text'
+    },
     dateOfBirthTimespan: {
       facetValueFilter: '',
       sortByAscPredicate: 'crm:P98i_was_born/crm:P4_has_time-span/crm:P81a_begin_of_the_begin',
