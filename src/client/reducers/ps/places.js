@@ -23,15 +23,6 @@ export const INITIAL_STATE = {
   instanceSparqlQuery: null,
   properties: [
     {
-      id: 'uri',
-      valueType: 'object',
-      makeLink: true,
-      externalLink: true,
-      sortValues: true,
-      numberedList: false,
-      onlyOnInstancePage: true
-    },
-    {
       id: 'prefLabel',
       valueType: 'object',
       makeLink: true,
@@ -41,7 +32,7 @@ export const INITIAL_STATE = {
       minWidth: 170
     },
     {
-      id: 'placeType',
+      id: 'altLabel',
       valueType: 'string',
       makeLink: false,
       externalLink: false,
@@ -50,61 +41,40 @@ export const INITIAL_STATE = {
       minWidth: 170
     },
     {
-      id: 'area',
+      id: 'broader',
       valueType: 'object',
       makeLink: true,
       externalLink: false,
-      sortValues: true,
+      sortValues: false,
       numberedList: false,
       minWidth: 170
     },
     {
-      id: 'manuscriptProduced',
+      id: 'narrower',
       valueType: 'object',
       makeLink: true,
       externalLink: false,
-      sortValues: true,
+      sortValues: false,
       numberedList: false,
-      minWidth: 250,
-      onlyOnInstancePage: true
+      minWidth: 170
     },
     {
-      id: 'manuscriptTransferred',
+      id: 'related',
       valueType: 'object',
       makeLink: true,
       externalLink: false,
-      sortValues: true,
+      sortValues: false,
       numberedList: false,
-      minWidth: 250,
-      onlyOnInstancePage: true
+      minWidth: 170
     },
     {
-      id: 'manuscriptObserved',
-      valueType: 'object',
-      makeLink: true,
-      externalLink: false,
-      sortValues: true,
-      numberedList: false,
-      minWidth: 250,
-      onlyOnInstancePage: true
-    },
-    {
-      id: 'actor',
-      valueType: 'object',
-      makeLink: true,
-      externalLink: false,
-      sortValues: true,
-      numberedList: false,
-      minWidth: 250,
-      onlyOnInstancePage: true
-    },
-    {
-      id: 'source',
+      id: 'uri',
       valueType: 'object',
       makeLink: true,
       externalLink: true,
       sortValues: true,
-      numberedList: false
+      numberedList: false,
+      onlyOnInstancePage: true
     }
   ]
 }

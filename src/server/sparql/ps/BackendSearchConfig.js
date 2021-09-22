@@ -12,6 +12,7 @@ import { itemPropertiesInstancePage } from './sparql_queries/SparqlQueriesSpeech
 import { eventPropertiesInstancePage } from './sparql_queries/SparqlQueriesEvents'
 import { groupPropertiesInstancePage } from './sparql_queries/SparqlQueriesGroups'
 import { occupationPropertiesInstancePage } from './sparql_queries/SparqlQueriesOccupations'
+import { placePropertiesInstancePage } from './sparql_queries/SparqlQueriesPlaces'
 import { publicationPropertiesInstancePage } from './sparql_queries/SparqlQueriesPublications'
 
 export const backendSearchConfig = {
@@ -59,6 +60,13 @@ export const backendSearchConfig = {
     perspectiveID: 'people',
     instance: {
       properties: occupationPropertiesInstancePage,
+      relatedInstances: ''
+    }
+  },
+  places: {
+    perspectiveID: 'people',
+    instance: {
+      properties: placePropertiesInstancePage,
       relatedInstances: ''
     }
   },

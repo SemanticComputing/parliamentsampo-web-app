@@ -51,6 +51,8 @@ export const personPropertiesInstancePage =
     ?id crm:P98i_was_born/crm:P7_took_place_at ?placeOfBirth__id .
     ?placeOfBirth__id skos:prefLabel ?placeOfBirth__prefLabel .
     FILTER(LANG(?placeOfBirth__prefLabel) = "<LANG>")
+    BIND(CONCAT("/places/page/", REPLACE(STR(?placeOfBirth__id), "^.*\\\\/(.+)", "$1")) 
+      AS ?placeOfBirth__dataProviderUrl)
   }
   UNION
   {
@@ -66,6 +68,8 @@ export const personPropertiesInstancePage =
     ?id crm:P100i_died_in/crm:P7_took_place_at ?placeOfDeath__id .
     ?placeOfDeath__id skos:prefLabel ?placeOfDeath__prefLabel .
     FILTER(LANG(?placeOfDeath__prefLabel) = "<LANG>")
+    BIND(CONCAT("/places/page/", REPLACE(STR(?placeOfDeath__id), "^.*\\\\/(.+)", "$1")) 
+      AS ?placeOfDeath__dataProviderUrl)
   }
   UNION
   {
@@ -178,6 +182,8 @@ export const personPropertiesFacetResults =
     ?id crm:P98i_was_born/crm:P7_took_place_at ?placeOfBirth__id .
     ?placeOfBirth__id skos:prefLabel ?placeOfBirth__prefLabel .
     FILTER(LANG(?placeOfBirth__prefLabel) = "<LANG>")
+    BIND(CONCAT("/places/page/", REPLACE(STR(?placeOfBirth__id), "^.*\\\\/(.+)", "$1")) 
+      AS ?placeOfBirth__dataProviderUrl)
   }
   UNION
   {
@@ -193,6 +199,8 @@ export const personPropertiesFacetResults =
     ?id crm:P100i_died_in/crm:P7_took_place_at ?placeOfDeath__id .
     ?placeOfDeath__id skos:prefLabel ?placeOfDeath__prefLabel .
     FILTER(LANG(?placeOfDeath__prefLabel) = "<LANG>")
+    BIND(CONCAT("/places/page/", REPLACE(STR(?placeOfDeath__id), "^.*\\\\/(.+)", "$1")) 
+      AS ?placeOfDeath__dataProviderUrl)
   }
   UNION
   {
@@ -240,6 +248,13 @@ WHERE {
   
 } ORDER BY COALESCE(?_date, "2999-01-01"^^xsd:date) ?_ord
 `
+
+/**
+ * TODO:
+ * statistics, e.g.:
+ * https://api.triplydb.com/s/JKZPf3Gnx
+ * https://api.triplydb.com/s/Ms1mzdywj
+*/
 
 //  https://api.triplydb.com/s/1OUQE49vA
 export const personEventsQuery =
@@ -289,11 +304,11 @@ WHERE {
       OPTIONAL { ?time__id crm:P82b_end_of_the_end ?time__end }
   }
 
-BIND(IF(REGEX(STR(?evt__prefLabel), STR(?role__prefLabel)), 
-    STR(?evt__prefLabel),
-    CONCAT(?role__prefLabel, ': ', ?evt__prefLabel))
-    AS ?event__prefLabel)
-  BIND(COALESCE(?time__prefLabel, '(aika ei tiedossa)') AS ?event__date)
-  
-} ORDER BY COALESCE(?time__start, ?time__end, "2999-01-01"^^xsd:date) ?time__end  
+  BIND(IF(REGEX(STR(?evt__prefLabel), STR(?role__prefLabel)), 
+      STR(?evt__prefLabel),
+      CONCAT(?role__prefLabel, ': ', ?evt__prefLabel))
+      AS ?event__prefLabel)
+    BIND(COALESCE(?time__prefLabel, '(aika ei tiedossa)') AS ?event__date) 
+  }
+  ORDER BY COALESCE(?time__start, ?time__end, "2999-01-01"^^xsd:date) ?time__end 
 `

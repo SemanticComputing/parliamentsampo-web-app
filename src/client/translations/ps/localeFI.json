@@ -344,6 +344,43 @@
         }
       }
     },
+    "places": {
+      "label": "Paikat",
+      "facetResultsType": "paikat",
+      "shortDescription": "Hae paikkoja",
+      "longDescription": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Use this perspective to ...  The results can be viewed using the following tabs: </p> <ul class=\"MuiTypography-root MuiTypography-body1\"> <li> <strong>TABLE</STRONG> ...</li> <li> ... </li>  </ul>",
+      "instancePage": {
+        "label": "Paikka",
+        "description": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Ohjeet tähän </p>"
+      },
+      "properties": {
+        "uri": {
+          "label": "URI",
+          "description": ""
+        },
+        "prefLabel": {
+          "label": "Nimi",
+          "description": "Paikan nimi",
+          "textFacetInputPlaceholder": "Hae..."
+        },
+        "altLabel": {
+          "label": "Vaihtoehtoinen nimi",
+          "description": "Vaalipiirin nimi"
+        },
+        "broader": {
+          "label": "Yläkäsitteet",
+          "description": "Paikat, joiden sisällä tämä sijaitsee"
+        },
+        "narrower": {
+          "label": "Alakäsitteet",
+          "description": "Paikat, jotka sijaitsevat tämän sisällä"
+        },
+        "related": {
+          "label": "Läheisiä paikkoja",
+          "description": "Paikkoja, jotka sijaitsevat tämän lähellä samalla hierarkiatasolla"
+        }
+      }
+    },
     "publications": {
       "label": "Julkaisut",
       "facetResultsType": "julkaisu",
@@ -378,6 +415,10 @@
         "subject": {
           "label": "Henkilö, jota julkaisu koskee",
           "description": "Henkilö, jota julkaisu koskee"
+        },
+        "related": {
+          "label": "Muita julkaisuja",
+          "description": "Muita julkaisuja samalta kirjoittajalta"
         }
       }
     },
