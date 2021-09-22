@@ -158,6 +158,10 @@
         "item": {
           "label": "Asiakohta",
           "description": "Istunnon asiakohta, johon puheenvuoro liittyy."
+        },
+        "documentType": {
+          "label": "Asiakirjatyyppi",
+          "description": "Puheen asiakohtaan liittyvän eduskunnan asiakirjan tyyppi."
         }
       }
     },
