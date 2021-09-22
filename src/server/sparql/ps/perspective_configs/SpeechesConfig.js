@@ -72,6 +72,13 @@ export const speechesConfig = {
       type: 'list',
       facetLabelFilter: `
         FILTER(LANG(?prefLabel_) = "<LANG>")`
+    },
+    documentType: {
+      facetValueFilter: '',
+      // labelPath: 'semparls:item/(semparls:relatedDocument|semparls:legislativeMotion|semparls:account|semparls:debateMotion|semparls:committeeReport|semparls:governmentProposal)/a',
+      labelPath: 'semparls:item/semparls:governmentProposal/a',
+      predicate: 'semparls:item/semparls:governmentProposal/a',
+      type: 'list'
     }
   }
 }
