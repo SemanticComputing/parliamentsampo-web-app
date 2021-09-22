@@ -8,6 +8,7 @@ import leafletMap from './general/leafletMap'
 // portal spefic reducers:
 import fullTextSearch from './ps/fullTextSearch'
 import speeches from './ps/speeches'
+import items from './ps/items'
 import speechesFacets from './ps/speechesFacets'
 import speechesFacetsConstrainSelf from './ps/speechesFacetsConstrainSelf'
 import people from './ps/people'
@@ -24,6 +25,7 @@ const reducer = combineReducers({
   speeches,
   speechesFacets,
   speechesFacetsConstrainSelf,
+  items,
   people,
   peopleFacets,
   peopleFacetsConstrainSelf,

@@ -100,6 +100,9 @@ class InstanceHomePage extends React.Component {
       case 'publications':
         uri = `${base}/publications/${localID}`
         break
+      case 'items':
+        uri = `${base}/items/${localID}`
+        break
     }
     this.props.fetchByURI({
       resultClass,
@@ -126,7 +129,7 @@ class InstanceHomePage extends React.Component {
     const instanceClass = instanceTableData.type ? instanceTableData.type.id : ''
     rows.map(row => {
       if ((has(row, 'onlyForClass') && row.onlyForClass === instanceClass) ||
-       !has(row, 'onlyForClass')) {
+        !has(row, 'onlyForClass')) {
         visibleRows.push(row)
       }
     })
