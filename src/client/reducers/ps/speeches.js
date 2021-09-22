@@ -72,6 +72,15 @@ export const INITIAL_STATE = {
       numberedList: false
     },
     {
+      id: 'item',
+      valueType: 'object',
+      makeLink: false,
+      externalLink: false,
+      // collapsedMaxWords: 2,
+      sortValues: false,
+      numberedLispt: false
+    },
+    {
       id: 'referencedPlace',
       valueType: 'object',
       makeLink: false,

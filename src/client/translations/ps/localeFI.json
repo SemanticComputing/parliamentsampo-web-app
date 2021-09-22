@@ -154,6 +154,10 @@
         "content": {
           "label": "Sisältö",
           "description": "Sisältö"
+        },
+        "item": {
+          "label": "Asiakohta",
+          "description": "Istunnon asiakohta, johon puheenvuoro liittyy."
         }
       }
     },
