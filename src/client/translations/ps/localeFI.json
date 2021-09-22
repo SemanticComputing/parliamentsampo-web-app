@@ -363,6 +363,14 @@
           "label": "Vaihtoehtoinen nimi",
           "description": "Vaalipiirin nimi"
         },
+        "born": {
+          "label": "Syntyneet",
+          "description": "Täällä syntyneet henkilöt"
+        },
+        "deceased": {
+          "label": "Kuolleet",
+          "description": "Täällä kuolleet henkilöt"
+        },
         "broader": {
           "label": "Yläkäsitteet",
           "description": "Paikat, joiden sisällä tämä sijaitsee"
