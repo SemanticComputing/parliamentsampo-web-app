@@ -51,6 +51,8 @@ export const personPropertiesInstancePage =
     ?id crm:P98i_was_born/crm:P7_took_place_at ?placeOfBirth__id .
     ?placeOfBirth__id skos:prefLabel ?placeOfBirth__prefLabel .
     FILTER(LANG(?placeOfBirth__prefLabel) = "<LANG>")
+    BIND(CONCAT("/places/page/", REPLACE(STR(?placeOfBirth__id), "^.*\\\\/(.+)", "$1")) 
+      AS ?placeOfBirth__dataProviderUrl)
   }
   UNION
   {
@@ -66,6 +68,8 @@ export const personPropertiesInstancePage =
     ?id crm:P100i_died_in/crm:P7_took_place_at ?placeOfDeath__id .
     ?placeOfDeath__id skos:prefLabel ?placeOfDeath__prefLabel .
     FILTER(LANG(?placeOfDeath__prefLabel) = "<LANG>")
+    BIND(CONCAT("/places/page/", REPLACE(STR(?placeOfDeath__id), "^.*\\\\/(.+)", "$1")) 
+      AS ?placeOfDeath__dataProviderUrl)
   }
   UNION
   {
@@ -178,6 +182,8 @@ export const personPropertiesFacetResults =
     ?id crm:P98i_was_born/crm:P7_took_place_at ?placeOfBirth__id .
     ?placeOfBirth__id skos:prefLabel ?placeOfBirth__prefLabel .
     FILTER(LANG(?placeOfBirth__prefLabel) = "<LANG>")
+    BIND(CONCAT("/places/page/", REPLACE(STR(?placeOfBirth__id), "^.*\\\\/(.+)", "$1")) 
+      AS ?placeOfBirth__dataProviderUrl)
   }
   UNION
   {
@@ -193,6 +199,8 @@ export const personPropertiesFacetResults =
     ?id crm:P100i_died_in/crm:P7_took_place_at ?placeOfDeath__id .
     ?placeOfDeath__id skos:prefLabel ?placeOfDeath__prefLabel .
     FILTER(LANG(?placeOfDeath__prefLabel) = "<LANG>")
+    BIND(CONCAT("/places/page/", REPLACE(STR(?placeOfDeath__id), "^.*\\\\/(.+)", "$1")) 
+      AS ?placeOfDeath__dataProviderUrl)
   }
   UNION
   {

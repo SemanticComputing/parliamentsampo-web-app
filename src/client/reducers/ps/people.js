@@ -69,7 +69,7 @@ export const INITIAL_STATE = {
     {
       id: 'placeOfBirth',
       valueType: 'object',
-      makeLink: false,
+      makeLink: true,
       externalLink: false,
       sortValues: true,
       numberedList: false
@@ -93,7 +93,7 @@ export const INITIAL_STATE = {
     {
       id: 'placeOfDeath',
       valueType: 'object',
-      makeLink: false,
+      makeLink: true,
       externalLink: false,
       sortValues: true,
       numberedList: false
