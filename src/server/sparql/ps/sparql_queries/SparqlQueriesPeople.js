@@ -229,7 +229,9 @@ export const personPropertiesFacetResults =
 `
 
 export const personSpeechesQuery =
-` SELECT DISTINCT *
+` SELECT DISTINCT ?id ?uri__id ?uri__prefLabel ?uri__dataProviderUrl 
+?prefLabel__id ?prefLabel__prefLabel
+?event__id ?event__prefLabel ?event__dataProviderUrl ?event__date 
 WHERE {
   BIND(<ID> as ?id)
   BIND(?id as ?uri__id)
@@ -239,10 +241,13 @@ WHERE {
   ?id skos:prefLabel ?prefLabel__id .
   BIND (?prefLabel__id as ?prefLabel__prefLabel)
 
-  ?event__id semparls:speaker ?id ; skos:prefLabel ?event__prefLabel .
+  ?event__id semparls:speaker ?id ;
+             skos:prefLabel ?event__label ;
+             semparls:content ?content .
   OPTIONAL { ?event__id dct:date ?_date }
   OPTIONAL { ?event__id semparls:speechOrder ?_ord }
 
+  BIND (CONCAT(REPLACE(?event__label, ' [(][^)]+[)]$', ''), ": (", SUBSTR(?content,1,50), "...)") AS ?event__prefLabel)
   BIND(CONCAT("/speeches/page/", REPLACE(STR(?event__id), "^.*\\\\/(.+)", "$1")) AS ?event__dataProviderUrl)
   BIND(COALESCE(?_date, '(aika ei tiedossa)') AS ?event__date)
   
