@@ -28,7 +28,8 @@ export const eventPropertiesInstancePage =
     FILTER(LANG(?period)='<LANG>')
   }
   UNION
-  {
+  { # https://dev.parlamenttisampo.fi/fi/events/page/e3028040393270193031/table
+    # Check also the occupations by role
     ?id bioc:has_occupation ?occupation__id .
     ?occupation__id skos:prefLabel ?occupation__prefLabel .
     FILTER(LANG(?occupation__prefLabel)='<LANG>')

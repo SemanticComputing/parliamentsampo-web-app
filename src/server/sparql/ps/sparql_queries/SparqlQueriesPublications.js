@@ -17,12 +17,18 @@ export const publicationPropertiesInstancePage =
   {
     ?id crm:P4_has_time-span/skos:prefLabel ?timespan 
   }
-
   UNION
   {
     ?author__id semparls:authored ?id ;
                 skos:prefLabel ?author__prefLabel .
     BIND(CONCAT("/people/page/", REPLACE(STR(?author__id), "^.*\\\\/(.+)", "$1")) AS ?author__dataProviderUrl)
+
+    OPTIONAL {
+      ?author__id semparls:authored ?related__id .
+      FILTER (?related__id!=?id)
+      ?related__id skos:prefLabel ?related__prefLabel .
+      BIND(CONCAT("/publications/page/", REPLACE(STR(?related__id), "^.*\\\\/(.+)", "$1")) AS ?related__dataProviderUrl)
+    }
   }
   UNION
   {

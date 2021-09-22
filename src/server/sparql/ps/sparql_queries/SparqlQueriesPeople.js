@@ -241,6 +241,13 @@ WHERE {
 } ORDER BY COALESCE(?_date, "2999-01-01"^^xsd:date) ?_ord
 `
 
+/**
+ * TODO:
+ * statistics, e.g.:
+ * https://api.triplydb.com/s/JKZPf3Gnx
+ * https://api.triplydb.com/s/Ms1mzdywj
+*/
+
 //  https://api.triplydb.com/s/1OUQE49vA
 export const personEventsQuery =
 ` SELECT DISTINCT ?id ?prefLabel__id ?prefLabel__prefLabel ?uri__id ?uri__prefLabel ?uri__dataProviderUrl ?event__id ?event__prefLabel ?event__dataProviderUrl ?event__date 
@@ -289,11 +296,11 @@ WHERE {
       OPTIONAL { ?time__id crm:P82b_end_of_the_end ?time__end }
   }
 
-BIND(IF(REGEX(STR(?evt__prefLabel), STR(?role__prefLabel)), 
-    STR(?evt__prefLabel),
-    CONCAT(?role__prefLabel, ': ', ?evt__prefLabel))
-    AS ?event__prefLabel)
-  BIND(COALESCE(?time__prefLabel, '(aika ei tiedossa)') AS ?event__date)
-  
-} ORDER BY COALESCE(?time__start, ?time__end, "2999-01-01"^^xsd:date) ?time__end  
+  BIND(IF(REGEX(STR(?evt__prefLabel), STR(?role__prefLabel)), 
+      STR(?evt__prefLabel),
+      CONCAT(?role__prefLabel, ': ', ?evt__prefLabel))
+      AS ?event__prefLabel)
+    BIND(COALESCE(?time__prefLabel, '(aika ei tiedossa)') AS ?event__date) 
+  }
+  ORDER BY COALESCE(?time__start, ?time__end, "2999-01-01"^^xsd:date) ?time__end 
 `

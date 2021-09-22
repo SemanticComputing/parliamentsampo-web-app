@@ -370,6 +370,10 @@
         "subject": {
           "label": "Henkilö, jota julkaisu koskee",
           "description": "Henkilö, jota julkaisu koskee"
+        },
+        "related": {
+          "label": "Muita julkaisuja",
+          "description": "Muita julkaisuja samalta kirjoittajalta"
         }
       }
     },
