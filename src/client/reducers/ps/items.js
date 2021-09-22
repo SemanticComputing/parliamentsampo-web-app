@@ -23,40 +23,24 @@ export const INITIAL_STATE = {
   instanceSparqlQuery: null,
   properties: [
     {
-      id: 'uri',
-      valueType: 'object',
-      makeLink: true,
-      externalLink: true,
-      sortValues: false,
-      numberedList: false,
-      onlyOnInstancePage: true
-    },
-    {
       id: 'prefLabel',
       valueType: 'object',
       makeLink: true,
       externalLink: false,
-      sortValues: false,
-      numberedList: false
-    },
-    {
-      id: 'speaker',
-      valueType: 'object',
-      makeLink: true,
-      externalLink: false,
-      sortValues: false,
-      numberedList: false
-    },
-    {
-      id: 'party',
-      valueType: 'object',
-      makeLink: true,
-      externalLink: false,
       sortValues: true,
       numberedList: false
     },
+    // {
+    //   id: 'altLabel',
+    //   valueType: 'string',
+    //   makeLink: false,
+    //   externalLink: false,
+    //   sortValues: true,
+    //   numberedList: false,
+    //   minWidth: 170
+    // },
     {
-      id: 'speechType',
+      id: 'plenarySession',
       valueType: 'object',
       makeLink: false,
       externalLink: false,
@@ -64,24 +48,15 @@ export const INITIAL_STATE = {
       numberedList: false
     },
     {
-      id: 'language',
-      valueType: 'string',
-      makeLink: false,
-      externalLink: false,
-      sortValues: false,
-      numberedList: false
-    },
-    {
-      id: 'item',
+      id: 'diary',
       valueType: 'object',
       makeLink: true,
-      externalLink: false,
-      // collapsedMaxWords: 2,
+      externalLink: true,
       sortValues: false,
       numberedList: false
     },
     {
-      id: 'referencedPlace',
+      id: 'governmentProposal',
       valueType: 'object',
       makeLink: false,
       externalLink: false,
@@ -89,33 +64,32 @@ export const INITIAL_STATE = {
       numberedList: false
     },
     {
-      id: 'date',
-      valueType: 'string',
-      makeLink: false,
+      id: 'speech',
+      valueType: 'object',
+      makeLink: true,
       externalLink: false,
-      sortValues: false,
-      numberedList: false
+      sortValues: true,
+      numberedList: true
     },
     {
-      id: 'content',
-      valueType: 'string',
-      makeLink: false,
-      externalLink: false,
-      sortValues: false,
-      numberedList: false,
-      onlyOnInstancePage: true
+      id: 'uri',
+      valueType: 'object',
+      makeLink: true,
+      externalLink: true,
+      sortValues: true,
+      numberedList: false
     }
   ]
 }
 
 const resultClasses = new Set([
-  'speeches'
+  'items'
 ])
 
-const speeches = (state = INITIAL_STATE, action) => {
+const groups = (state = INITIAL_STATE, action) => {
   if (resultClasses.has(action.resultClass)) {
     return handleDataFetchingAction(state, action)
   } else return state
 }
 
-export default speeches
+export default groups

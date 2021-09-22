@@ -482,6 +482,39 @@
           "description": "Linkki ulkoiseen tietokantaan"
         }
       }
+    },
+    "items": {
+      "instancePage": {
+        "label": "Asiakohta",
+        "description": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Pöytäkirjan asiakohta </p>"
+      },
+      "properties": {
+        "uri": {
+          "label": "URI",
+          "description": ""
+        },
+        "prefLabel": {
+          "label": "Otsikko",
+          "description": "Otsikko",
+          "textFacetInputPlaceholder": "Hae..."
+        },
+        "speech": {
+          "label": "Puheenvuorot",
+          "description": "Asiakohtaan liittyvät puheenvuorot"
+        },
+        "governmentProposal": {
+          "label": "Asiakirja",
+          "description": "Asiakohtaan liitettyt eduskunnan asiakirjat."
+        },
+        "diary": {
+          "label": "Pöytäkirja",
+          "description": "Linkki alkuperäiseen pöytäkirjaan."
+        },
+        "plenarySession": {
+          "label": "Täysistunto",
+          "description": "Täysistunto, jossa asiakohta käsitelty."
+        }
+      }
     }
   }
 }

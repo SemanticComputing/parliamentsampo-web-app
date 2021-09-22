@@ -105,5 +105,40 @@ export const speechPropertiesFacetResults =
   {
     ?id semparls:item ?item__id .
     ?item__id skos:prefLabel ?item__prefLabel .
+    BIND(CONCAT("/items/page/", REPLACE(STR(?item__id), "^.*\\\\/(.+)", "$1")) AS ?item__dataProviderUrl) .
+  }
+`
+
+export const itemPropertiesInstancePage = `
+  BIND(?id as ?uri__id)
+  BIND(?id as ?uri__dataProviderUrl)
+  BIND(?id as ?uri__prefLabel)
+
+  {
+    ?id skos:prefLabel ?prefLabel__id .
+    BIND(?prefLabel__id as ?prefLabel__prefLabel)
+    FILTER(LANG(?prefLabel__prefLabel)='<LANG>')
+  }
+  UNION
+  {
+    ?id semparls:plenarySession ?plenarySession__id .
+    ?plenarySession__id skos:prefLabel ?plenarySession__prefLabel .
+  }
+  UNION
+  {
+    ?id semparls:governmentProposal ?governmentProposal__id .
+    ?governmentProposal__id skos:prefLabel ?governmentProposal__prefLabel .
+  }
+  UNION
+  {
+    ?id semparls:diary ?diary__id .
+    BIND(?diary__id as ?diary__prefLabel) .
+    BIND(?diary__id as ?diary__dataProviderUrl)
+  }
+  UNION
+  {
+    ?speech__id semparls:item ?id .
+    ?speech__id skos:prefLabel ?speech__prefLabel .
+    BIND(CONCAT("/speeches/page/", REPLACE(STR(?speech__id), "^.*\\\\/(.+)", "$1")) AS ?speech__dataProviderUrl) .
   }
 `
