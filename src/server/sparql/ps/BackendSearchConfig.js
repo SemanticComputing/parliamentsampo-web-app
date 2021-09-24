@@ -5,7 +5,8 @@ import { fullTextSearchProperties } from './sparql_queries/SparqlQueriesFullText
 import { sitemapInstancePageQuery } from '../SparqlQueriesGeneral'
 import {
   personEventsQuery,
-  personSpeechesQuery
+  personSpeechesQuery,
+  ageQuery
 } from './sparql_queries/SparqlQueriesPeople'
 import { districtPropertiesInstancePage } from './sparql_queries/SparqlQueriesDistricts'
 import { itemPropertiesInstancePage } from './sparql_queries/SparqlQueriesSpeeches'
@@ -14,6 +15,7 @@ import { groupPropertiesInstancePage } from './sparql_queries/SparqlQueriesGroup
 import { occupationPropertiesInstancePage } from './sparql_queries/SparqlQueriesOccupations'
 import { placePropertiesInstancePage } from './sparql_queries/SparqlQueriesPlaces'
 import { publicationPropertiesInstancePage } from './sparql_queries/SparqlQueriesPublications'
+import { mapMultipleLineChart } from '../Mappers'
 
 export const backendSearchConfig = {
   speeches: speechesConfig,
@@ -34,6 +36,15 @@ export const backendSearchConfig = {
     perspectiveID: 'people',
     q: personSpeechesQuery,
     resultMapper: makeObjectList
+  },
+  personAges: {
+    perspectiveID: 'people',
+    q: ageQuery,
+    filterTarget: 'person__id',
+    resultMapper: mapMultipleLineChart,
+    resultMapperConfig: {
+      fillEmptyValues: true
+    }
   },
   districts: {
     perspectiveID: 'people',
