@@ -6,14 +6,14 @@ import PerspectiveTabs from '../../main_layout/PerspectiveTabs'
 import ResultTable from '../../facet_results/ResultTable'
 // import LeafletMap from '../../facet_results/LeafletMap'
 // import Deck from '../../facet_results/Deck'
-// import ApexChart from '../../facet_results/ApexChart'
+import ApexChart from '../../facet_results/ApexChart'
 // import Network from '../../facet_results/Network'
 import Export from '../../facet_results/Export'
 // import { MAPBOX_ACCESS_TOKEN, MAPBOX_STYLE } from '../../../configs/sampo/GeneralConfig'
-// import {
-//   createSingleLineChartData,
-//   createMultipleLineChartData
-// } from '../../../configs/sampo/ApexCharts/LineChartConfig'
+import {
+  // createSingleLineChartData,
+  createMultipleLineChartData
+} from '../../../configs/sampo/ApexCharts/LineChartConfig'
 // import { coseLayout, cytoscapeStyle, preprocess } from '../../../configs/sampo/Cytoscape.js/NetworkConfig'
 
 const People = props => {
@@ -47,6 +47,31 @@ const People = props => {
             sortResults={props.sortResults}
             routeProps={routeProps}
             rootUrl={rootUrl}
+            layoutConfig={props.layoutConfig}
+          />}
+      />
+      <Route
+        path={`${rootUrl}/${perspective.id}/faceted-search/by_age`}
+        render={routeProps =>
+          <ApexChart
+            pageType='facetResults'
+            rawData={props.perspectiveState.results}
+            rawDataUpdateID={props.perspectiveState.resultUpdateID}
+            facetUpdateID={props.facetState.facetUpdateID}
+            fetching={props.perspectiveState.fetching}
+            fetchData={props.fetchResults}
+            createChartData={createMultipleLineChartData}
+            title='Edustajien iät kauden alkaessa ja loppuessa'
+            xaxisTitle='Ikä'
+            xaxisType='category'
+            xaxisTickAmount={20}
+            yaxisTitle='Henkilöä'
+            stroke={{
+              curve: 'straight',
+              width: 2
+            }}
+            resultClass='personAges'
+            facetClass='people'
             layoutConfig={props.layoutConfig}
           />}
       />

@@ -55,10 +55,15 @@
     "table": "taulukko",
     "personEvents": "tapahtumat",
     "personSpeeches": "puheenvuorot",
+    "by_age": "ikäjakauma",
     "export": "SPARQL-kysely"
   },
   "table": {
     "rowsPerPage": "Riviä sivulla"
+  },
+  "lineChart": {
+    "age_at_start": "Aloitusikä",
+    "age_at_end": "Lopetusikä"
   },
   "facets": {
     "dateFacet": {

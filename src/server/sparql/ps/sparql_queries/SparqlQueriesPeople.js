@@ -317,3 +317,27 @@ WHERE {
   }
   ORDER BY COALESCE(?time__start, ?time__end, "2999-01-01"^^xsd:date) ?time__end 
 `
+
+export const ageQuery = `
+SELECT ?category (count(?time1) AS ?age_at_start) (count(?time2) AS ?age_at_end)
+WHERE {
+  <FILTER>
+  ?person__id a bioc:Person ;
+    crm:P98i_was_born/crm:P4_has_time-span ?bspan ;
+    bioc:bearer_of/crm:P11i_participated_in [
+      a semparls:ParliamentMembership ;
+      crm:P4_has_time-span ?membspan ] .
+  
+  {
+    ?bspan crm:P81a_begin_of_the_begin ?byear .
+    ?membspan crm:P81a_begin_of_the_begin ?time1 .
+    BIND (STR(year(?time1)-year(?byear)) AS ?category)
+  } 
+  UNION {
+    ?bspan crm:P81a_begin_of_the_begin ?byear .
+    ?membspan crm:P82b_end_of_the_end ?time2 .
+    BIND (STR(year(?time2)-year(?byear)) AS ?category)
+  }
+  
+} GROUPBY ?category ORDER BY ?category
+`
