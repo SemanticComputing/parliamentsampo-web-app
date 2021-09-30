@@ -541,6 +541,43 @@
         }
       }
     },
+    "terms": {
+      "label": "Vaalikaudet",
+      "facetResultsType": "vaalikausi",
+      "shortDescription": "Hae vaalikausia",
+      "longDescription": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Use this perspective to ...  The results can be viewed using the following tabs: </p> <ul class=\"MuiTypography-root MuiTypography-body1\"> <li> <strong>TABLE</STRONG> ...</li> <li> ... </li>  </ul>",
+      "instancePage": {
+        "label": "Julkaisu",
+        "description": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Ohjeet tähän </p>"
+      },
+      "properties": {
+        "uri": {
+          "label": "URI",
+          "description": ""
+        },
+        "prefLabel": {
+          "label": "Nimi",
+          "description": "Vaalikauden nimi",
+          "textFacetInputPlaceholder": "Hae..."
+        },
+        "timespan": {
+          "label": "Alku- ja loppuhetki",
+          "description": "Alku- ja loppuhetket"
+        },
+        "group": {
+          "label": "Eduskuntaryhmät ja toimielimet",
+          "description": "Eduskuntaryhmät ja toimielimet"
+        },
+        "member": {
+          "label": "Edustajat",
+          "description": "Edustajat"
+        },
+        "exlink": {
+          "label": "Ulkoinen linkki",
+          "description": "Linkki ulkoiseen tietokantaan"
+        }
+      }
+    },
     "items": {
       "instancePage": {
         "label": "Asiakohta",

@@ -15,6 +15,7 @@ import { groupPropertiesInstancePage } from './sparql_queries/SparqlQueriesGroup
 import { occupationPropertiesInstancePage } from './sparql_queries/SparqlQueriesOccupations'
 import { placePropertiesInstancePage } from './sparql_queries/SparqlQueriesPlaces'
 import { publicationPropertiesInstancePage } from './sparql_queries/SparqlQueriesPublications'
+import { termPropertiesInstancePage} from './sparql_queries/SparqlQueriesTerms'
 import { mapMultipleLineChart } from '../Mappers'
 
 export const backendSearchConfig = {
@@ -85,6 +86,13 @@ export const backendSearchConfig = {
     perspectiveID: 'people',
     instance: {
       properties: publicationPropertiesInstancePage,
+      relatedInstances: ''
+    }
+  },
+  terms: {
+    perspectiveID: 'people',
+    instance: {
+      properties: termPropertiesInstancePage,
       relatedInstances: ''
     }
   },

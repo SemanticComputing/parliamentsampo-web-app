@@ -153,7 +153,7 @@ export const INITIAL_STATE = {
     {
       id: 'electoralTerm',
       valueType: 'object',
-      makeLink: false,
+      makeLink: true,
       externalLink: false,
       sortValues: true,
       numberedList: true

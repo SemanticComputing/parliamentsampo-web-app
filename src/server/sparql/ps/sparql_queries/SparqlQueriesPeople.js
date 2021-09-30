@@ -107,7 +107,7 @@ export const personPropertiesInstancePage =
         ?evt crm:P10_falls_within ?electoralTerm__id .
         ?electoralTerm__id skos:prefLabel ?electoralTerm__prefLabel .
         FILTER(LANG(?electoralTerm__prefLabel) = "<LANG>")
-        BIND(?electoralTerm__id as ?electoralTerm__dataProviderUrl)
+        BIND(CONCAT("/terms/page/", REPLACE(STR(?electoralTerm__id), "^.*\\\\/(.+)", "$1")) AS ?electoralTerm__dataProviderUrl)
     } UNION {
         ?evt crm:P4_has_time-span ?parliamentPeriod__id .
         ?parliamentPeriod__id skos:prefLabel ?parliamentPeriod__prefLabel .
@@ -218,6 +218,7 @@ export const personPropertiesFacetResults =
           crm:P10_falls_within ?electoralTerm__id ] .
         ?electoralTerm__id skos:prefLabel ?electoralTerm__prefLabel .
         FILTER(LANG(?electoralTerm__prefLabel) = "<LANG>")
+        BIND(CONCAT("/terms/page/", REPLACE(STR(?electoralTerm__id), "^.*\\\\/(.+)", "$1")) AS ?electoralTerm__dataProviderUrl)
   }
   UNION
   {

@@ -636,6 +636,7 @@ const mapStateToProps = state => {
     places: state.places,
     occupations: state.occupations,
     publications: state.publications,
+    terms: state.terms,
     leafletMap: state.leafletMap,
     fullTextSearch: state.fullTextSearch,
     // clientFSState: state.clientSideFacetedSearch,
@@ -695,6 +696,7 @@ SemanticPortal.propTypes = {
   places: PropTypes.object.isRequired,
   occupations: PropTypes.object.isRequired,
   publications: PropTypes.object.isRequired,
+  terms: PropTypes.object.isRequired,
   groups: PropTypes.object.isRequired,
   /**
    * Leaflet map config and external layers.

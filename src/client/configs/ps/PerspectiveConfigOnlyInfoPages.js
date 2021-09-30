@@ -116,6 +116,22 @@ export const perspectiveConfigOnlyInfoPages = [
     ]
   },
   {
+    id: 'terms',
+    perspectiveDescHeight: 160,
+    instancePageTabs: [
+      {
+        id: 'table',
+        value: 0,
+        icon: <CalendarViewDayIcon />
+      },
+      {
+        id: 'export',
+        value: 1,
+        icon: <CloudDownloadIcon />
+      }
+    ]
+  },
+  {
     id: 'items',
     perspectiveDescHeight: 160,
     instancePageTabs: [

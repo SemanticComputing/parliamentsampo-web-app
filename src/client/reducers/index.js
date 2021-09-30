@@ -20,6 +20,7 @@ import groups from './ps/groups'
 import occupations from './ps/occupations'
 import publications from './ps/publications'
 import places from './ps/places'
+import terms from './ps/terms'
 
 const reducer = combineReducers({
   speeches,
@@ -35,6 +36,7 @@ const reducer = combineReducers({
   places,
   occupations,
   publications,
+  terms,
   leafletMap,
   animation,
   options,
