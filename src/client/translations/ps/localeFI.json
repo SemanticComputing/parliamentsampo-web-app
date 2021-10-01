@@ -574,7 +574,7 @@
         },
         "related": {
           "label": "Muita vaalikausia",
-          "description": "Muita vaalikausia"
+          "description": "Muita vaalikausia (numero suluissa on yhteisten edustajien lukumäärä)"
         },
         "member": {
           "label": "Edustajat",
