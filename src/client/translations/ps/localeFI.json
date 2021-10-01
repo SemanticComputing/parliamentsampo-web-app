@@ -568,6 +568,14 @@
           "label": "Eduskuntaryhmät ja toimielimet",
           "description": "Eduskuntaryhmät ja toimielimet"
         },
+        "session": {
+          "label": "Valtiopäivät",
+          "description": "Valtiopäivät"
+        },
+        "related": {
+          "label": "Muita vaalikausia",
+          "description": "Muita vaalikausia"
+        },
         "member": {
           "label": "Edustajat",
           "description": "Edustajat"

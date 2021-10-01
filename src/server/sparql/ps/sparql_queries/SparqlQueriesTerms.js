@@ -22,12 +22,29 @@ UNION
   FILTER(LANG(?group__prefLabel) = "<LANG>")
   BIND(CONCAT("/groups/page/", REPLACE(STR(?group__id), "^.*\\\\/(.+)", "$1")) AS ?group__dataProviderUrl)
 }
+UNiON
+{
+  ?session__id semparls:electoralTerm ?id ;
+               skos:prefLabel ?session__prefLabel .
+  FILTER(LANG(?session__prefLabel) = "<LANG>")
+  BIND(CONCAT("/sessions/page/", REPLACE(STR(?session__id), "^.*\\\\/(.+)", "$1")) AS ?session__dataProviderUrl)
+} 
 UNION
 {
   SELECT DISTINCT ?id ?member__id ?member__prefLabel ?member__dataProviderUrl WHERE {
       ?member__id bioc:bearer_of/crm:P11i_participated_in/semparls:organization/crm:P10_falls_within ?id ;
                  skos:prefLabel ?member__prefLabel .
      BIND(CONCAT("/people/page/", REPLACE(STR(?member__id), "^.*\\\\/(.+)", "$1")) AS ?member__dataProviderUrl)
+   }
+}
+UNION
+{
+   SELECT DISTINCT ?id ?related__id ?related__prefLabel ?related__dataProviderUrl WHERE { 
+       ?prs bioc:bearer_of/crm:P11i_participated_in/semparls:organization/crm:P10_falls_within ?id ;
+           bioc:bearer_of/crm:P11i_participated_in/semparls:organization/crm:P10_falls_within ?related__id .
+    FILTER (?related__id!=?id)
+    ?related__id skos:prefLabel ?related__prefLabel .
+    BIND(CONCAT("/people/page/", REPLACE(STR(?related__id), "^.*\\\\/(.+)", "$1")) AS ?related__dataProviderUrl)
    }
 }
 UNION

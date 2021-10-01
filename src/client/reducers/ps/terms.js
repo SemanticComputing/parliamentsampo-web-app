@@ -59,6 +59,23 @@ export const INITIAL_STATE = {
       onlyOnInstancePage: true
     },
     {
+      id: 'session',
+      valueType: 'object',
+      makeLink: false,
+      externalLink: false,
+      sortValues: true,
+      numberedList: false,
+      onlyOnInstancePage: true
+    },
+    { id: 'related',
+      valueType: 'object',
+      makeLink: true,
+      externalLink: false,
+      sortValues: true,
+      numberedList: true,
+      onlyOnInstancePage: true
+    },
+    {
       id: 'exlink',
       valueType: 'object',
       makeLink: true,
