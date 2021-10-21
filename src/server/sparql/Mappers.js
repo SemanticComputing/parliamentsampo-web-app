@@ -1,4 +1,4 @@
-import { has } from 'lodash'
+import { has, cloneDeep } from 'lodash'
 import { getTreeFromFlatData } from '@nosferatu500/react-sortable-tree'
 
 export const mapPlaces = sparqlBindings => {
@@ -85,7 +85,7 @@ export const mapLineChart = ({ sparqlBindings, config }) => {
   const seriesData = []
   const categoriesData = []
   const sparqlBindingsLength = sparqlBindings.length
-  sparqlBindings.map((b, index, bindings) => {
+  sparqlBindings.forEach((b, index, bindings) => {
     const currentCategory = parseInt(b.category.value)
     const currentValue = parseInt(b.count.value)
     seriesData.push(currentValue)
@@ -129,7 +129,7 @@ export const mapMultipleLineChart = ({ sparqlBindings, config }) => {
   if (config && config.fillEmptyValues) {
     //  fill the missing years with zeroes
     const valmax = Math.max(...category)
-    for (var i = Math.min(...category); i <= valmax; i++) {
+    for (let i = Math.min(...category); i <= valmax; i++) {
       for (const p in res) {
         if (p !== 'category') {
           res[p][i] = 0
@@ -149,7 +149,7 @@ export const mapMultipleLineChart = ({ sparqlBindings, config }) => {
 
   // sort by year and remove empty sequence at start and end
   for (const p in res) {
-    var arr = Object.entries(res[p])
+    const arr = Object.entries(res[p])
       .map(p => [parseFloat(p[0]), p[1]])
       .sort((a, b) => ((a[0] < b[0]) ? -1 : ((a[0] > b[0]) ? 1 : 0)))
     res[p] = trimResult(arr)
@@ -213,6 +213,7 @@ const mapFacetValues = sparqlBindings => {
     } catch (err) {
       console.log(err)
     }
+    return null
   })
   return results
 }
@@ -241,4 +242,69 @@ const recursiveSortAndSelectChildren = nodes => {
     }
   })
   return nodes
+}
+
+export const toBarChartRaceFormat = ({ data, config }) => {
+  const { step } = config
+  const firstKey = parseInt(data[0].id)
+  const lastKey = parseInt(data[data.length - 1].id)
+  const resultObj = {}
+  let rawDataIndex = 0
+  let lastNonNullIndex = null
+  for (let i = firstKey; i <= lastKey; i += step) {
+    const dataItemExists = parseInt(data[rawDataIndex].id) === i
+    if (dataItemExists) {
+      const currentDataItem = dataItemToObject(data[rawDataIndex].dataItem)
+      if (i === firstKey) {
+        resultObj[i] = currentDataItem
+      } else {
+        resultObj[i] = mergeDataItems(resultObj[lastNonNullIndex], currentDataItem)
+      }
+      lastNonNullIndex = i
+      rawDataIndex++
+    } else {
+      resultObj[i] = null
+    }
+  }
+  // const initialItem = cloneDeep(resultObj[lastKey])
+  // for (const key in initialItem) {
+  //   initialItem[key].value = 0
+  // }
+  // resultObj[firstKey - step] = initialItem
+  return resultObj
+}
+
+const dataItemToObject = dataItem => {
+  if (Array.isArray(dataItem)) {
+    return dataItem.reduce((obj, item) => {
+      return {
+        ...obj,
+        [item.id]: {
+          prefLabel: item.prefLabel,
+          value: parseInt(item.value)
+        }
+      }
+    }, {})
+  } else {
+    return {
+      [dataItem.id]: {
+        prefLabel: dataItem.prefLabel,
+        value: parseInt(dataItem.value)
+      }
+    }
+  }
+}
+
+const mergeDataItems = (itemA, itemB) => {
+  const merged = cloneDeep(itemA)
+  const keys = Object.keys(itemB)
+  for (let i = 0; i < keys.length; i++) {
+    const itemBkey = keys[i]
+    if (Object.prototype.hasOwnProperty.call(itemA, itemBkey)) {
+      merged[itemBkey].value += itemB[itemBkey].value
+    } else {
+      merged[itemBkey] = itemB[itemBkey]
+    }
+  }
+  return merged
 }

@@ -286,10 +286,12 @@ const resultClasses = new Set([
   'placesMsMigrations',
   'placesMsMigrationsDialog',
   'productionTimespanLineChart',
+  'productionsByDecadeAndCountry',
   'eventLineChart',
   'manuscriptInstancePageNetwork',
   'manuscriptFacetResultsNetwork',
-  'perspective1KnowledgeGraphMetadata'
+  'perspective1KnowledgeGraphMetadata',
+  'speechesByYearAndParty'
 ])
 
 const perspective1 = (state = INITIAL_STATE, action) => {

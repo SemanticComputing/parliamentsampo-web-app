@@ -9,7 +9,7 @@ const ActiveFilters = props => {
     facetClass, someFacetIsFetching, fetchingResultCount
   } = props
   const facetValues = []
-  Object.keys(uriFilters).map(activeFacetID => {
+  Object.keys(uriFilters).forEach(activeFacetID => {
     // URI filter may have multiple values
     Object.values(uriFilters[activeFacetID]).forEach(value => {
       facetValues.push({
@@ -20,7 +20,7 @@ const ActiveFilters = props => {
       })
     })
   })
-  Object.keys(textFilters).map(facetID => {
+  Object.keys(textFilters).forEach(facetID => {
     facetValues.push({
       facetID: facetID,
       facetLabel: intl.get(`perspectives.${facetClass}.properties.${facetID}.label`),
@@ -28,7 +28,7 @@ const ActiveFilters = props => {
       value: textFilters[facetID]
     })
   })
-  Object.keys(timespanFilters).map(facetID => {
+  Object.keys(timespanFilters).forEach(facetID => {
     facetValues.push({
       facetID: facetID,
       facetLabel: intl.get(`perspectives.${facetClass}.properties.${facetID}.label`),
@@ -36,7 +36,7 @@ const ActiveFilters = props => {
       value: timespanFilters[facetID]
     })
   })
-  Object.keys(dateNoTimespanFilters).map(facetID => {
+  Object.keys(dateNoTimespanFilters).forEach(facetID => {
     facetValues.push({
       facetID: facetID,
       facetLabel: intl.get(`perspectives.${facetClass}.properties.${facetID}.label`),
@@ -44,7 +44,7 @@ const ActiveFilters = props => {
       value: dateNoTimespanFilters[facetID]
     })
   })
-  Object.keys(integerFilters).map(facetID => {
+  Object.keys(integerFilters).forEach(facetID => {
     facetValues.push({
       facetID: facetID,
       facetLabel: intl.get(`perspectives.${facetClass}.properties.${facetID}.label`),
