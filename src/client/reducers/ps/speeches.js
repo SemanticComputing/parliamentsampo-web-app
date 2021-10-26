@@ -76,7 +76,7 @@ export const INITIAL_STATE = {
       valueType: 'object',
       makeLink: true,
       externalLink: false,
-      // collapsedMaxWords: 2,
+      collapsedMaxWords: 4,
       sortValues: false,
       numberedList: false
     },
