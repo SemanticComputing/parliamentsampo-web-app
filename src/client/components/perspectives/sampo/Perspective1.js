@@ -205,6 +205,28 @@ const Perspective1 = props => {
           />}
       />
       <Route
+        path={`${rootUrl}/${perspective.id}/faceted-search/choropleth_map`}
+        render={() =>
+          <Deck
+            center={props.perspectiveState.maps.casualtiesByMunicipality.center}
+            zoom={props.perspectiveState.maps.casualtiesByMunicipality.zoom}
+            results={props.perspectiveState.results}
+            facetUpdateID={props.facetState.facetUpdateID}
+            instanceAnalysisData={props.perspectiveState.instanceAnalysisData}
+            instanceAnalysisDataUpdateID={props.perspectiveState.instanceAnalysisDataUpdateID}
+            resultClass='casualtiesByMunicipality'
+            facetClass='perspective1'
+            fetchResults={props.fetchResults}
+            fetchInstanceAnalysis={props.fetchInstanceAnalysis}
+            fetching={props.perspectiveState.fetching}
+            fetchingInstanceAnalysisData={props.perspectiveState.fetchingInstanceAnalysisData}
+            layerType='polygonLayer'
+            mapBoxAccessToken={MAPBOX_ACCESS_TOKEN}
+            mapBoxStyle={MAPBOX_STYLE}
+            layoutConfig={props.layoutConfig}
+          />}
+      />
+      <Route
         path={`${rootUrl}/${perspective.id}/faceted-search/production_dates`}
         render={() =>
           <ApexChart

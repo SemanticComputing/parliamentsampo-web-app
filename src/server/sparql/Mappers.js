@@ -171,15 +171,17 @@ export const mapPieChart = sparqlBindings => {
 export const linearScale = ({ data, config }) => {
   const { variable, minAllowed, maxAllowed } = config
   const length = data.length
-  const min = data[length - 1][variable]
-  const max = data[0][variable]
+  const min = Number(data[length - 1][variable])
+  const max = Number(data[0][variable])
   data.forEach(item => {
     if (item[variable]) {
-      const unscaledNum = item[variable]
+      const unscaledNum = Number(item[variable])
       // https://stackoverflow.com/a/31687097
-      item[`${variable}Scaled`] = (maxAllowed - minAllowed) * (unscaledNum - min) / (max - min) + minAllowed
+      const scaled = (maxAllowed - minAllowed) * (unscaledNum - min) / (max - min) + minAllowed
+      item[`${variable}Scaled`] = parseFloat(scaled.toFixed(2))
     }
   })
+  return data
 }
 
 /* Data processing as in:
@@ -266,11 +268,6 @@ export const toBarChartRaceFormat = ({ data, config }) => {
       resultObj[i] = null
     }
   }
-  // const initialItem = cloneDeep(resultObj[lastKey])
-  // for (const key in initialItem) {
-  //   initialItem[key].value = 0
-  // }
-  // resultObj[firstKey - step] = initialItem
   return resultObj
 }
 
@@ -307,4 +304,23 @@ const mergeDataItems = (itemA, itemB) => {
     }
   }
   return merged
+}
+
+export const toPolygonLayerFormat = ({ data, config }) => {
+  const scaledData = linearScale({ data, config })
+  scaledData.forEach(item => {
+    const pointArray = item.polygon.split(' ')
+    const deckGlArray = pointArray.map(point => {
+      const latLng = point.split(',')
+      return [
+        parseFloat(parseFloat(latLng[0]).toFixed(4)),
+        parseFloat(parseFloat(latLng[1]).toFixed(4))
+      ]
+    })
+    item.polygon = deckGlArray
+  })
+  // const example = scaledData[0].polygon[0][0]
+  // console.log(typeof example)
+  // console.log(example)
+  return scaledData
 }

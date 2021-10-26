@@ -5,6 +5,7 @@ import { findsConfig } from './perspective_configs/FindsConfig'
 import { actorsConfig } from './perspective_configs/EmloActorsConfig'
 import { hellerauConfig } from './perspective_configs/HellerauConfig'
 import { speechesConfig } from './perspective_configs/SemparlSpeechesConfig'
+import { warsaConfig } from './perspective_configs/WarsaConfig'
 import {
   productionPlacesQuery,
   lastKnownLocationsQuery,
@@ -19,7 +20,8 @@ import {
   manuscriptInstancePageNetworkLinksQuery,
   manuscriptFacetResultsNetworkLinksQuery,
   manuscriptNetworkNodesQuery,
-  knowledgeGraphMetadataQuery
+  knowledgeGraphMetadataQuery,
+  choroplethQuery
 } from './sparql_queries/SparqlQueriesPerspective1'
 import {
   workProperties
@@ -64,7 +66,8 @@ import {
   mapLineChart,
   mapMultipleLineChart,
   linearScale,
-  toBarChartRaceFormat
+  toBarChartRaceFormat,
+  toPolygonLayerFormat
 } from '../Mappers'
 
 export const backendSearchConfig = {
@@ -75,6 +78,7 @@ export const backendSearchConfig = {
   emloActors: actorsConfig,
   hellerau: hellerauConfig,
   semparlSpeeches: speechesConfig,
+  warsa: warsaConfig,
   manuscripts: {
     perspectiveID: 'perspective1', // get rest of the config from 'perspective1'
     instance: {
@@ -163,6 +167,19 @@ export const backendSearchConfig = {
         variable: 'instanceCount',
         minAllowed: 3,
         maxAllowed: 30
+      }
+    }
+  },
+  casualtiesByMunicipality: {
+    perspectiveID: 'warsa',
+    q: choroplethQuery,
+    resultMapper: makeObjectList,
+    postprocess: {
+      func: toPolygonLayerFormat,
+      config: {
+        variable: 'instanceCount',
+        minAllowed: 0,
+        maxAllowed: 255
       }
     }
   },
