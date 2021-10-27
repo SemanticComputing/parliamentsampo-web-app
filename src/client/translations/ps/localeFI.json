@@ -669,6 +669,14 @@
         "parliamentarySession": {
           "label": "Valtiopäivät",
           "description": "Valtiopäivät"
+        },
+        "speech": {
+          "label": "Puheenvuorot",
+          "description": "Istuntoon liittyvät puheenvuorot"
+        },
+        "item": {
+          "label": "Asiakohdat",
+          "description": "Istunnossa käsitellyt asiakohdat"
         }
       }
     }

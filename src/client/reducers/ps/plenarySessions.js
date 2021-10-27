@@ -72,23 +72,22 @@ export const INITIAL_STATE = {
             sortValues: false,
             numberedList: false
         },
-        // {
-        //   id: 'governmentProposal',
-        //   valueType: 'object',
-        //   makeLink: false,
-        //   externalLink: false,
-        //   sortValues: true,
-        //   numberedList: false
-        // },
-        // {
-        //   id: 'speech',
-        //   valueType: 'object',
-        //   makeLink: true,
-        //   externalLink: false,
-        //   sortValues: true,
-        //   numberedList: true
-        // },
-        // {
+        {
+            id: 'speech',
+            valueType: 'object',
+            makeLink: true,
+            externalLink: false,
+            sortValues: true,
+            numberedList: false
+        },
+        {
+            id: 'item',
+            valueType: 'object',
+            makeLink: true,
+            externalLink: false,
+            sortValues: true,
+            numberedList: false
+        }
 
     ]
 }

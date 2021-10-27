@@ -207,4 +207,18 @@ export const plenarySessionPropertiesInstancePage = `
     BIND(?transcript__id as ?transcript__prefLabel) .
     BIND(?transcript__id as ?transcript__dataProviderUrl)
   }
+  UNION
+  {
+    ?speech__id semparls:plenarySession ?id .
+    ?speech__id a <http://ldf.fi/schema/semparl/Speech> .
+    ?speech__id skos:prefLabel ?speech__prefLabel .
+    BIND(CONCAT("/speeches/page/", REPLACE(STR(?speech__id), "^.*\\\\/(.+)", "$1")) AS ?speech__dataProviderUrl) .
+  }
+  UNION
+  {
+    ?item__id semparls:plenarySession ?id .
+    ?item__id a <http://ldf.fi/schema/semparl/Item> .
+    ?item__id skos:prefLabel ?item__prefLabel .
+    BIND(CONCAT("/items/page/", REPLACE(STR(?item__id), "^.*\\\\/(.+)", "$1")) AS ?item__dataProviderUrl) .
+  }
 `
