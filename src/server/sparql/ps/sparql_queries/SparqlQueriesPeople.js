@@ -99,11 +99,6 @@ export const personPropertiesInstancePage =
     ?id bioc:bearer_of/crm:P11i_participated_in ?evt .
     ?evt a semparls:ParliamentMembership .
     {
-        ?evt semparls:organization ?parliament__id .
-        ?parliament__id skos:prefLabel ?parliament__prefLabel .
-        FILTER(LANG(?parliament__prefLabel) = "<LANG>")
-        BIND(CONCAT("/groups/page/", REPLACE(STR(?parliament__id), "^.*\\\\/(.+)", "$1")) AS ?parliament__dataProviderUrl)
-    } UNION {
         ?evt crm:P10_falls_within ?electoralTerm__id .
         ?electoralTerm__id skos:prefLabel ?electoralTerm__prefLabel .
         FILTER(LANG(?electoralTerm__prefLabel) = "<LANG>")
@@ -115,12 +110,17 @@ export const personPropertiesInstancePage =
   }
   UNION 
   {
-    ?id bioc:bearer_of/crm:P11i_participated_in [
-      a semparls:GovernmentMembership ;
-		  semparls:organization ?parliament__id ] .
-    ?parliament__id skos:prefLabel ?parliament__prefLabel .
-    FILTER(LANG(?parliament__prefLabel) = "<LANG>")
-    BIND(CONCAT("/groups/page/", REPLACE(STR(?parliament__id), "^.*\\\\/(.+)", "$1")) AS ?parliament__dataProviderUrl)
+    SELECT DISTINCT ?id ?parliament__id ?parliament__prefLabel ?parliament__dataProviderUrl
+    WHERE {
+        VALUES ?eclass { semparls:GovernmentMembership semparls:ParliamentMembership }
+        ?id bioc:bearer_of/crm:P11i_participated_in [ a ?eclass ;
+          semparls:organization ?parliament__id ] .
+        
+        ?parliament__id skos:prefLabel ?parliament__prefLabel .
+        FILTER(LANG(?parliament__prefLabel) = "<LANG>")
+        BIND(CONCAT("/groups/page/", REPLACE(STR(?parliament__id), "^.*\\\\/(.+)", "$1")) AS ?parliament__dataProviderUrl)
+        OPTIONAL { ?parliament__id (crm:P4_has_time-span|crm:P10_falls_within)/crm:P81a_begin_of_the_begin ?evt_start }
+    } ORDER BY COALESCE(str(?evt_start),'9999')
   }
   UnION
   {
