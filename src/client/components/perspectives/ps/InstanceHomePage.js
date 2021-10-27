@@ -71,7 +71,6 @@ class InstanceHomePage extends React.Component {
   fetchTableData = () => {
     const { perspectiveConfig } = this.props
     const localID = this.getLocalIDFromURL()
-    console.log(localID)
     this.setState({ localID })
     let uri = ''
     const base = 'http://ldf.fi/semparl'

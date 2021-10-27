@@ -76,8 +76,8 @@ export const speechesConfig = {
     documentType: {
       facetValueFilter: '',
       // labelPath: 'semparls:item/(semparls:relatedDocument|semparls:legislativeMotion|semparls:account|semparls:debateMotion|semparls:committeeReport|semparls:governmentProposal)/a',
-      labelPath: 'semparls:item/semparls:governmentProposal/a',
-      predicate: 'semparls:item/semparls:governmentProposal/a',
+      labelPath: 'semparls:item/semparls:relatedDocument/a',
+      predicate: 'semparls:item/semparls:relatedDocument/a',
       type: 'list'
     }
   }
