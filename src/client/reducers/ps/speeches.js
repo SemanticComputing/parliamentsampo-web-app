@@ -53,7 +53,8 @@ export const INITIAL_STATE = {
       makeLink: false,
       externalLink: false,
       sortValues: false,
-      numberedList: false
+      numberedList: false,
+      onlyOnInstancePage: true
     },
     {
       id: 'party',
@@ -62,6 +63,24 @@ export const INITIAL_STATE = {
       externalLink: false,
       sortValues: true,
       numberedList: false
+    },
+    {
+      id: 'parliamentaryRole',
+      valueType: 'object',
+      makeLink: false,
+      externalLink: false,
+      sortValues: true,
+      numberedList: false,
+      onlyOnInstancePage: true
+    },
+    {
+      id: 'groupOfSpeaker',
+      valueType: 'object',
+      makeLink: true,
+      externalLink: false,
+      sortValues: true,
+      numberedList: false,
+      onlyOnInstancePage: true
     },
     {
       id: 'speechType',
@@ -77,7 +96,8 @@ export const INITIAL_STATE = {
       makeLink: false,
       externalLink: false,
       sortValues: false,
-      numberedList: false
+      numberedList: false,
+      onlyOnInstancePage: true
     },
     {
       id: 'language',
@@ -113,6 +133,15 @@ export const INITIAL_STATE = {
       numberedList: false
     },
     {
+      id: 'plenarySession',
+      valueType: 'object',
+      makeLink: true,
+      externalLink: false,
+      sortValues: false,
+      numberedList: false,
+      onlyOnInstancePage: true
+    },
+    {
       id: 'content',
       valueType: 'string',
       makeLink: false,
@@ -120,7 +149,16 @@ export const INITIAL_STATE = {
       sortValues: false,
       numberedList: false,
       onlyOnInstancePage: true
-    }
+    },
+    {
+      id: 'diary',
+      valueType: 'object',
+      makeLink: true,
+      externalLink: true,
+      sortValues: false,
+      numberedList: false,
+      onlyOnInstancePage: true
+    },
   ]
 }
 

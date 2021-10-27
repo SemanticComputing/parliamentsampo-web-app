@@ -153,8 +153,8 @@
           "missingValueLabel": "> Ei tunnistettuja paikkoja"
         },
         "date": {
-          "label": "Aika",
-          "description": "Aika"
+          "label": "Päivämäärä",
+          "description": "Puheen päivämäärä"
         },
         "content": {
           "label": "Sisältö",
@@ -174,7 +174,23 @@
         },
         "orderNumber": {
           "label": "Puheen järjestysnumero",
-          "description": "Puhevuoron järjestysnumero kyseisen istunnon alusta laskien."
+          "description": "Puhevuoron järjestysnumero kyseisen istunnon alusta laskien puhemiehen puheenvuorot mukaanlukien."
+        },
+        "parliamentaryRole": {
+          "label": "Puolueen rooli",
+          "description": "Puhujan puoleen sen hetkinen parlamentaarinen rooli."
+        },
+        "groupOfSpeaker": {
+          "label": "Puhujan ryhmä",
+          "description": "Ryhmä."
+        },
+        "diary": {
+          "label": "Pöytäkirja",
+          "description": "Istunnon pöytäkirja eduskunnan verkkosivuilla."
+        },
+        "plenarySession": {
+          "label": "Täysistunto",
+          "description": "Täyistunnon tunniste."
         }
       }
     },
