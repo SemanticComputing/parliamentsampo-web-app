@@ -48,6 +48,14 @@ export const INITIAL_STATE = {
       numberedList: false
     },
     {
+      id: 'roleGivenInSource',
+      valueType: 'string',
+      makeLink: false,
+      externalLink: false,
+      sortValues: false,
+      numberedList: false
+    },
+    {
       id: 'party',
       valueType: 'object',
       makeLink: true,
@@ -61,6 +69,14 @@ export const INITIAL_STATE = {
       makeLink: false,
       externalLink: false,
       sortValues: true,
+      numberedList: false
+    },
+    {
+      id: 'orderNumber',
+      valueType: 'string',
+      makeLink: false,
+      externalLink: false,
+      sortValues: false,
       numberedList: false
     },
     {

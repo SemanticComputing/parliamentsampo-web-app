@@ -22,8 +22,9 @@ export const speechPropertiesInstancePage =
   UNION
   {
     ?id semparls:speechType ?speechType__id .
-    # ?speechType__id skos:prefLabel ?speechType__prefLabel .
-    BIND(?speechType__id as ?speechType__prefLabel)
+    ?speechType__id skos:prefLabel ?speechType__prefLabel .
+    # BIND(?speechType__id as ?speechType__prefLabel)
+ 
   }
   UNION
   {
@@ -53,6 +54,14 @@ export const speechPropertiesInstancePage =
   {
     ?id semparls:item ?item__id .
     ?item__id skos:prefLabel ?item__prefLabel .
+  }
+  UNION
+  {
+    ?id semparls:roleGivenInSource ?roleGivenInSource .
+  }
+  UNION
+  {
+    ?id semparls:orderNumber ?orderNumber .
   }
 `
 

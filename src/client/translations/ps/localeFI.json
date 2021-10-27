@@ -167,6 +167,14 @@
         "documentType": {
           "label": "Asiakirjatyyppi",
           "description": "Puheen asiakohtaan liittyvän eduskunnan asiakirjan tyyppi."
+        },
+        "roleGivenInSource": {
+          "label": "Puhujan rooli",
+          "description": "Alkuperäisessä pöytäkirjassa mainittu puhujan rooli."
+        },
+        "orderNumber": {
+          "label": "Puheen järjestysnumero",
+          "description": "Puhevuoron järjestysnumero kyseisen istunnon alusta laskien."
         }
       }
     },
