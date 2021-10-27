@@ -10,12 +10,13 @@ import {
 } from './sparql_queries/SparqlQueriesPeople'
 import { districtPropertiesInstancePage } from './sparql_queries/SparqlQueriesDistricts'
 import { itemPropertiesInstancePage } from './sparql_queries/SparqlQueriesSpeeches'
+import { plenarySessionPropertiesInstancePage } from './sparql_queries/SparqlQueriesSpeeches'
 import { eventPropertiesInstancePage } from './sparql_queries/SparqlQueriesEvents'
 import { groupPropertiesInstancePage } from './sparql_queries/SparqlQueriesGroups'
 import { occupationPropertiesInstancePage } from './sparql_queries/SparqlQueriesOccupations'
 import { placePropertiesInstancePage } from './sparql_queries/SparqlQueriesPlaces'
 import { publicationPropertiesInstancePage } from './sparql_queries/SparqlQueriesPublications'
-import { termPropertiesInstancePage} from './sparql_queries/SparqlQueriesTerms'
+import { termPropertiesInstancePage } from './sparql_queries/SparqlQueriesTerms'
 import { mapMultipleLineChart } from '../Mappers'
 
 export const backendSearchConfig = {
@@ -30,6 +31,13 @@ export const backendSearchConfig = {
     perspectiveID: 'speeches',
     instance: {
       properties: itemPropertiesInstancePage,
+      relatedInstances: ''
+    }
+  },
+  plenarySessions: {
+    perspectiveID: 'speeches',
+    instance: {
+      properties: plenarySessionPropertiesInstancePage,
       relatedInstances: ''
     }
   },

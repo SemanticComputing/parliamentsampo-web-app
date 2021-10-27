@@ -80,6 +80,7 @@ export const speechPropertiesInstancePage =
   {
     ?id semparls:plenarySession ?plenarySession__id .
     ?plenarySession__id skos:prefLabel ?plenarySession__prefLabel .
+    BIND(CONCAT("/plenarySessions/page/", REPLACE(STR(?plenarySession__id), "^.*\\\\/(.+)", "$1")) AS ?plenarySession__dataProviderUrl)
   }
   UNION
   {
@@ -156,6 +157,7 @@ export const itemPropertiesInstancePage = `
   {
     ?id semparls:plenarySession ?plenarySession__id .
     ?plenarySession__id skos:prefLabel ?plenarySession__prefLabel .
+    BIND(CONCAT("/plenarySessions/page/", REPLACE(STR(?plenarySession__id), "^.*\\\\/(.+)", "$1")) AS ?plenarySession__dataProviderUrl)
   }
   UNION
   {
@@ -173,5 +175,36 @@ export const itemPropertiesInstancePage = `
     ?speech__id semparls:item ?id .
     ?speech__id skos:prefLabel ?speech__prefLabel .
     BIND(CONCAT("/speeches/page/", REPLACE(STR(?speech__id), "^.*\\\\/(.+)", "$1")) AS ?speech__dataProviderUrl) .
+  }
+`
+
+export const plenarySessionPropertiesInstancePage = `
+  BIND(?id as ?uri__id)
+  BIND(?id as ?uri__dataProviderUrl)
+  BIND(?id as ?uri__prefLabel)
+
+  {
+    ?id skos:prefLabel ?prefLabel__id .
+    BIND(?prefLabel__id as ?prefLabel__prefLabel)
+  }
+  UNION
+  {
+    ?id dct:date ?date_ .
+    BIND(CONCAT(STR(DAY(?date_)), 
+                     ".", 
+                     STR(MONTH(?date_)), 
+                     ".", 
+                    STR(YEAR(?date_))) as ?date)
+  }
+  UNION
+  {
+    ?id semparls:parliamentarySession ?parliamentarySession__id .
+    ?parliamentarySession__id skos:prefLabel ?parliamentarySession__prefLabel .
+  }
+  UNION
+  {
+    ?id semparls:transcript ?transcript__id .
+    BIND(?transcript__id as ?transcript__prefLabel) .
+    BIND(?transcript__id as ?transcript__dataProviderUrl)
   }
 `

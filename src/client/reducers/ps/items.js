@@ -42,7 +42,7 @@ export const INITIAL_STATE = {
     {
       id: 'plenarySession',
       valueType: 'object',
-      makeLink: false,
+      makeLink: true,
       externalLink: false,
       sortValues: true,
       numberedList: false
@@ -86,10 +86,10 @@ const resultClasses = new Set([
   'items'
 ])
 
-const groups = (state = INITIAL_STATE, action) => {
+const items = (state = INITIAL_STATE, action) => {
   if (resultClasses.has(action.resultClass)) {
     return handleDataFetchingAction(state, action)
   } else return state
 }
 
-export default groups
+export default items

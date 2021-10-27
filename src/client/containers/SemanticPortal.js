@@ -131,20 +131,18 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(0.5),
     width: `calc(100% - ${theme.spacing(1)}px)`,
     [theme.breakpoints.up(layoutConfig.hundredPercentHeightBreakPoint)]: {
-      height: `calc(100% - ${
-        layoutConfig.topBar.reducedHeight +
+      height: `calc(100% - ${layoutConfig.topBar.reducedHeight +
         layoutConfig.infoHeader.reducedHeight.height +
         layoutConfig.infoHeader.reducedHeight.expandedContentHeight +
         theme.spacing(3.5)
-      }px)`
+        }px)`
     },
     [theme.breakpoints.up(layoutConfig.reducedHeightBreakpoint)]: {
-      height: `calc(100% - ${
-        layoutConfig.topBar.defaultHeight +
+      height: `calc(100% - ${layoutConfig.topBar.defaultHeight +
         layoutConfig.infoHeader.default.height +
         layoutConfig.infoHeader.default.expandedContentHeight +
         theme.spacing(3.5)
-      }px)`
+        }px)`
     }
   },
   // perspective container is divided into two columns:
@@ -208,20 +206,18 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(0.5),
     width: `calc(100% - ${theme.spacing(1)}px)`,
     [theme.breakpoints.up(layoutConfig.hundredPercentHeightBreakPoint)]: {
-      height: `calc(100% - ${
-        layoutConfig.topBar.reducedHeight +
+      height: `calc(100% - ${layoutConfig.topBar.reducedHeight +
         2 * layoutConfig.infoHeader.reducedHeight.height +
         layoutConfig.infoHeader.reducedHeight.expandedContentHeight +
         theme.spacing(3.5)
-      }px)`
+        }px)`
     },
     [theme.breakpoints.up(layoutConfig.reducedHeightBreakpoint)]: {
-      height: `calc(100% - ${
-        layoutConfig.topBar.defaultHeight +
+      height: `calc(100% - ${layoutConfig.topBar.defaultHeight +
         89 +
         layoutConfig.infoHeader.default.expandedContentHeight +
         theme.spacing(3.5)
-      }px)`
+        }px)`
     }
   },
   instancePageContent: {
@@ -627,6 +623,7 @@ const mapStateToProps = state => {
     speechesFacets: state.speechesFacets,
     speechesFacetsConstrainSelf: state.speechesFacetsConstrainSelf,
     items: state.items,
+    plenarySessions: state.plenarySessions,
     people: state.people,
     peopleFacets: state.peopleFacets,
     peopleFacetsConstrainSelf: state.peopleFacetsConstrainSelf,

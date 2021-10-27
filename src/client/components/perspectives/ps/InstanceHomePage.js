@@ -40,7 +40,7 @@ const styles = () => ({
  * A component for generating a landing page for a single entity.
  */
 class InstanceHomePage extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       localID: null
@@ -71,6 +71,7 @@ class InstanceHomePage extends React.Component {
   fetchTableData = () => {
     const { perspectiveConfig } = this.props
     const localID = this.getLocalIDFromURL()
+    console.log(localID)
     this.setState({ localID })
     let uri = ''
     const base = 'http://ldf.fi/semparl'
@@ -105,6 +106,9 @@ class InstanceHomePage extends React.Component {
         break
       case 'items':
         uri = `${base}/items/${localID}`
+        break
+      case 'plenarySessions':
+        uri = `${base}/times/plenary-sessions/${localID}`
         break
     }
     this.props.fetchByURI({

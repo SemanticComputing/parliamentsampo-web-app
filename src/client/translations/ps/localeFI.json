@@ -642,6 +642,35 @@
           "description": "Täysistunto, jossa asiakohta käsitelty."
         }
       }
+    },
+    "plenarySessions": {
+      "instancePage": {
+        "label": "Täysistunto",
+        "description": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Eduskunnan täysistunto </p>"
+      },
+      "properties": {
+        "uri": {
+          "label": "URI",
+          "description": ""
+        },
+        "prefLabel": {
+          "label": "Tunniste",
+          "description": "Tunniste",
+          "textFacetInputPlaceholder": "Hae..."
+        },
+        "date": {
+          "label": "Päivämäärä",
+          "description": "Istunnon päivämäärä"
+        },
+        "transcript": {
+          "label": "Pöytäkirja",
+          "description": "Linkki alkuperäiseen pöytäkirjaan."
+        },
+        "parliamentarySession": {
+          "label": "Valtiopäivät",
+          "description": "Valtiopäivät"
+        }
+      }
     }
   }
 }
