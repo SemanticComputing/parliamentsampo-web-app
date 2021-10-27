@@ -247,15 +247,15 @@
         },
         "datasource": {
           "label": "Tietolähde",
-          "description": "Tietolähde, josta henkilön tiedot ovat peräisin"
+          "description": "Tietolähde josta henkilön tiedot ovat peräisin"
         },
         "parliament": {
           "label": "Edustajuus",
-          "description": "Eduskunnat joihin henkilö on kuulunut"
+          "description": "Eduskunnat ja hallitukset joihin henkilö on kuulunut"
         },
         "electoralTerm": {
           "label": "Vaalikausi",
-          "description": "Vaalikaudet joina henkilö on ollut edustajana"
+          "description": "Vaalikaudet jolloin henkilö on ollut edustajana"
         },
         "parliamentaryGroup": {
           "label": "Eduskuntaryhmä",

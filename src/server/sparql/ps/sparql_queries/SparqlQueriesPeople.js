@@ -115,6 +115,15 @@ export const personPropertiesInstancePage =
   }
   UNION 
   {
+    ?id bioc:bearer_of/crm:P11i_participated_in [
+      a semparls:GovernmentMembership ;
+		  semparls:organization ?parliament__id ] .
+    ?parliament__id skos:prefLabel ?parliament__prefLabel .
+    FILTER(LANG(?parliament__prefLabel) = "<LANG>")
+    BIND(CONCAT("/groups/page/", REPLACE(STR(?parliament__id), "^.*\\\\/(.+)", "$1")) AS ?parliament__dataProviderUrl)
+  }
+  UnION
+  {
     ?id sch:sameAs ?exlink__id .
     ?exlink__id a/skos:prefLabel ?exlink__prefLabel .
     BIND(?exlink__id AS ?exlink__dataProviderUrl)
