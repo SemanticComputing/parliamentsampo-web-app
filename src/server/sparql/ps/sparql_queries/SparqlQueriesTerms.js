@@ -32,8 +32,9 @@ UNiON
 UNION
 {
   SELECT DISTINCT ?id ?member__id ?member__prefLabel ?member__dataProviderUrl WHERE {
-      ?member__id bioc:bearer_of/crm:P11i_participated_in/semparls:organization/crm:P10_falls_within ?id ;
-                 skos:prefLabel ?member__prefLabel .
+    ?member__id bioc:bearer_of/crm:P11i_participated_in 
+      [ a semparls:ParliamentMembership ; crm:P10_falls_within ?id ] ;
+      skos:prefLabel ?member__prefLabel .
      BIND(CONCAT("/people/page/", REPLACE(STR(?member__id), "^.*\\\\/(.+)", "$1")) AS ?member__dataProviderUrl)
    }
 }
