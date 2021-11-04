@@ -56,11 +56,11 @@ export const INITIAL_STATE = {
       numberedList: false
     },
     {
-      id: 'governmentProposal',
+      id: 'document',
       valueType: 'object',
-      makeLink: false,
+      makeLink: true,
       externalLink: false,
-      sortValues: true,
+      sortValues: false,
       numberedList: false
     },
     {

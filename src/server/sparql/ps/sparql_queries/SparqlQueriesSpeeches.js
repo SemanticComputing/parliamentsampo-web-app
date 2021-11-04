@@ -78,6 +78,13 @@ export const speechPropertiesInstancePage =
   }
   UNION
   {
+    ?id semparls:item ?item__id .
+    ?item__id semparls:relatedDocument ?document__id .
+    ?document__id skos:prefLabel ?document__prefLabel .
+    BIND(CONCAT("/documents/page/", REPLACE(STR(?document__id), "^.*\\\\/(.+)", "$1")) AS ?document__dataProviderUrl)
+  }
+  UNION
+  {
     ?id semparls:plenarySession ?plenarySession__id .
     ?plenarySession__id skos:prefLabel ?plenarySession__prefLabel .
     BIND(CONCAT("/plenarySessions/page/", REPLACE(STR(?plenarySession__id), "^.*\\\\/(.+)", "$1")) AS ?plenarySession__dataProviderUrl)
@@ -175,6 +182,12 @@ export const itemPropertiesInstancePage = `
     ?speech__id semparls:item ?id .
     ?speech__id skos:prefLabel ?speech__prefLabel .
     BIND(CONCAT("/speeches/page/", REPLACE(STR(?speech__id), "^.*\\\\/(.+)", "$1")) AS ?speech__dataProviderUrl) .
+  }
+  UNION
+  {
+    ?id semparls:relatedDocument ?document__id .
+    ?document__id skos:prefLabel ?document__prefLabel .
+    BIND(CONCAT("/documents/page/", REPLACE(STR(?document__id), "^.*\\\\/(.+)", "$1")) AS ?document__dataProviderUrl)
   }
 `
 

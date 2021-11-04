@@ -191,6 +191,10 @@
         "plenarySession": {
           "label": "Täysistunto",
           "description": "Täyistunnon tunniste."
+        },
+        "document": {
+          "label": "Asiakirjat",
+          "description": "Asiakohtaan liitetyt eduskunnan asiakirjat."
         }
       }
     },
@@ -629,7 +633,7 @@
           "label": "Puheenvuorot",
           "description": "Asiakohtaan liittyvät puheenvuorot"
         },
-        "governmentProposal": {
+        "document": {
           "label": "Asiakirja",
           "description": "Asiakohtaan liitettyt eduskunnan asiakirjat."
         },

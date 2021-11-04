@@ -118,6 +118,14 @@ export const INITIAL_STATE = {
       numberedList: false
     },
     {
+      id: 'document',
+      valueType: 'object',
+      makeLink: true,
+      externalLink: false,
+      sortValues: false,
+      numberedList: false
+    },
+    {
       id: 'referencedPlace',
       valueType: 'object',
       makeLink: false,
@@ -160,7 +168,7 @@ export const INITIAL_STATE = {
       sortValues: false,
       numberedList: false,
       onlyOnInstancePage: true
-    },
+    }
   ]
 }
 
