@@ -123,7 +123,8 @@ export const INITIAL_STATE = {
       makeLink: true,
       externalLink: false,
       sortValues: false,
-      numberedList: false
+      numberedList: false,
+      onlyOnInstancePage: true
     },
     {
       id: 'referencedPlace',

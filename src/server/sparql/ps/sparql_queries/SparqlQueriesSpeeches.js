@@ -235,3 +235,58 @@ export const plenarySessionPropertiesInstancePage = `
     BIND(CONCAT("/items/page/", REPLACE(STR(?item__id), "^.*\\\\/(.+)", "$1")) AS ?item__dataProviderUrl) .
   }
 `
+
+export const documentPropertiesInstancePage = `
+  BIND(?id as ?uri__id)
+  BIND(?id as ?uri__dataProviderUrl)
+  BIND(?id as ?uri__prefLabel)
+
+  {
+    ?id skos:prefLabel ?prefLabel__id .
+    BIND(?prefLabel__id as ?prefLabel__prefLabel)
+  }
+  UNION
+  {
+    ?id skos:altLabel ?altLabel .
+  }
+  UNION
+  {
+    ?id semparls:id ?doc_id .
+  }
+  UNION
+  {
+    ?item__id semparls:relatedDocument ?id .
+    ?item__id skos:prefLabel ?item__label .
+    ?item__id semparls:plenarySession ?pl__id .
+    ?pl__id skos:prefLabel ?pl__prefLabel .
+    BIND(CONCAT(STR(?item__label), " [", STR(?pl__prefLabel), "]") AS ?item__prefLabel)
+    BIND(CONCAT("/items/page/", REPLACE(STR(?item__id), "^.*\\\\/(.+)", "$1")) AS ?item__dataProviderUrl)
+  }
+  UNION
+  {
+    ?id semparls:url ?url__id .
+    BIND(?url__id as ?url__prefLabel) .
+    BIND(?url__id as ?url__dataProviderUrl)
+  }
+  UNION
+  {
+    ?id semparls:title ?title .
+  }
+  UNION
+  {
+    ?id semparls:decision ?decision .
+  }
+  UNION
+  {
+    ?id semparls:dateDecided ?dateDecided_ .
+    BIND(CONCAT(STR(DAY(?dateDecided_)), 
+                     ".", 
+                     STR(MONTH(?dateDecided_)), 
+                     ".", 
+                    STR(YEAR(?dateDecided_))) as ?dateDecided)
+  }
+  UNION
+  {
+    ?id dct:subject ?subject .
+  }
+`

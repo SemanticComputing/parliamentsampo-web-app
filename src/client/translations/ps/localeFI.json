@@ -683,6 +683,54 @@
           "description": "Istunnossa käsitellyt asiakohdat"
         }
       }
+    },
+    "documents": {
+      "instancePage": {
+        "label": "Eduskunnan asiakirja",
+        "description": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Eduskunnan asiakirja </p>"
+      },
+      "properties": {
+        "uri": {
+          "label": "URI",
+          "description": ""
+        },
+        "prefLabel": {
+          "label": "Otsikko",
+          "description": "Otsikko"
+        },
+        "altLabel": {
+          "label": "Vaihtoehtoinen otsikko",
+          "description": "Otsikko"
+        },
+        "item": {
+          "label": "Asiakohta",
+          "description": "Asiakohta, jossa asiakirjaa on käsitelty [Täysistunto]. "
+        },
+        "doc_id": {
+          "label": "Tunniste",
+          "description": "Asiakirjan tunniste "
+        },
+        "url": {
+          "label": "URL",
+          "description": "Linkki alkuperäiseen asiakirjaan eduskunnan verkkosivuilla."
+        },
+        "title": {
+          "label": "Kuvaus",
+          "description": "Hallituksen esityksien tarkempi otsikko."
+        },
+        "subject": {
+          "label": "Aihesanat",
+          "description": "Asiakirjan YSO-aihesanoitus."
+        },
+        "decision": {
+          "label": "Päätös",
+          "description": "Hallituksen esityksestä tehty päätös."
+        },
+        "dateDecided": {
+          "label": "Päätöksen pvm",
+          "description": "Hallituksen esityksestä tehdyn päätöksen päivämäärä."
+        }
+      }
     }
   }
 }

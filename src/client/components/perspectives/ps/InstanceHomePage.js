@@ -40,7 +40,7 @@ const styles = () => ({
  * A component for generating a landing page for a single entity.
  */
 class InstanceHomePage extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
       localID: null
@@ -108,6 +108,9 @@ class InstanceHomePage extends React.Component {
         break
       case 'plenarySessions':
         uri = `${base}/times/plenary-sessions/${localID}`
+        break
+      case 'documents':
+        uri = `${base}/documents/${localID}`
         break
     }
     this.props.fetchByURI({
