@@ -178,5 +178,16 @@ export const perspectiveConfigOnlyInfoPages = [
       //   icon: <CloudDownloadIcon />
       // }
     ]
+  },
+  {
+    id: 'interruptions',
+    perspectiveDescHeight: 160,
+    instancePageTabs: [
+      {
+        id: 'table',
+        value: 0,
+        icon: <CalendarViewDayIcon />
+      }
+    ]
   }
 ]

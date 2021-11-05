@@ -735,6 +735,34 @@
           "description": "Hallituksen esityksestä tehdyn päätöksen päivämäärä."
         }
       }
+    },
+    "interruptions": {
+      "instancePage": {
+        "label": "Keskeytys",
+        "description": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Puheen yhteyteen merkitty keskeytys tai muu huomio. </p>"
+      },
+      "properties": {
+        "uri": {
+          "label": "URI",
+          "description": ""
+        },
+        "prefLabel": {
+          "label": "Otsikko",
+          "description": "Otsikko"
+        },
+        "content": {
+          "label": "Sisältö",
+          "description": "Sisältö"
+        },
+        "interrupter": {
+          "label": "Keskeyttäjä",
+          "description": "Merkitty keskeyttäjä."
+        },
+        "speaker": {
+          "label": "Keskeyttäjän tiedot",
+          "description": "Mahdollisen tunnistetun keskeyttäjän henkilösivu"
+        }
+      }
     }
   }
 }

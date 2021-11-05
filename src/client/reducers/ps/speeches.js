@@ -164,7 +164,7 @@ export const INITIAL_STATE = {
     {
       id: 'isInterruptedBy',
       valueType: 'object',
-      makeLink: false,
+      makeLink: true,
       externalLink: false,
       sortValues: false,
       numberedList: false,

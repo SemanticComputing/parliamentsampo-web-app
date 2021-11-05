@@ -11,6 +11,7 @@ import speeches from './ps/speeches'
 import items from './ps/items'
 import plenarySessions from './ps/plenarySessions'
 import documents from './ps/documents'
+import interruptions from './ps/interruptions'
 import speechesFacets from './ps/speechesFacets'
 import speechesFacetsConstrainSelf from './ps/speechesFacetsConstrainSelf'
 import people from './ps/people'
@@ -31,6 +32,7 @@ const reducer = combineReducers({
   items,
   plenarySessions,
   documents,
+  interruptions,
   people,
   peopleFacets,
   peopleFacetsConstrainSelf,

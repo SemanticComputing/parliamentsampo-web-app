@@ -9,7 +9,7 @@ import {
   ageQuery
 } from './sparql_queries/SparqlQueriesPeople'
 import { districtPropertiesInstancePage } from './sparql_queries/SparqlQueriesDistricts'
-import { itemPropertiesInstancePage , plenarySessionPropertiesInstancePage , documentPropertiesInstancePage } from './sparql_queries/SparqlQueriesSpeeches'
+import { itemPropertiesInstancePage, plenarySessionPropertiesInstancePage, documentPropertiesInstancePage, interruptionPropertiesInstancePage } from './sparql_queries/SparqlQueriesSpeeches'
 
 
 import { eventPropertiesInstancePage } from './sparql_queries/SparqlQueriesEvents'
@@ -46,6 +46,13 @@ export const backendSearchConfig = {
     perspectiveID: 'speeches',
     instance: {
       properties: documentPropertiesInstancePage,
+      relatedInstances: ''
+    }
+  },
+  interruptions: {
+    perspectiveID: 'speeches',
+    instance: {
+      properties: interruptionPropertiesInstancePage,
       relatedInstances: ''
     }
   },

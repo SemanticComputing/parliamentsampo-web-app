@@ -101,6 +101,7 @@ export const speechPropertiesInstancePage =
     ?isInterruptedBy__id semparls:content ?isInterruptedBy__label .
     OPTIONAL { ?isInterruptedBy__id semparls:interrupter ?isInterruptedBy__interrupter }
     BIND(CONCAT('"', STR(?isInterruptedBy__label), '" [', IF(bound(?isInterruptedBy__interrupter), STR(?isInterruptedBy__interrupter), ' - '), ']') AS ?isInterruptedBy__prefLabel)
+    BIND(CONCAT("/interruptions/page/", REPLACE(STR(?isInterruptedBy__id), "^.*\\\\/(.+)", "$1")) AS ?isInterruptedBy__dataProviderUrl) .
   }
 `
 
@@ -297,3 +298,28 @@ export const documentPropertiesInstancePage = `
     ?id dct:subject ?subject .
   }
 `
+
+export const interruptionPropertiesInstancePage = `
+  BIND(?id as ?uri__id)
+  BIND(?id as ?uri__dataProviderUrl)
+  BIND(?id as ?uri__prefLabel)
+
+  {
+    ?id skos:prefLabel ?prefLabel__id .
+    BIND(?prefLabel__id as ?prefLabel__prefLabel)
+  }
+  UNION
+  {
+    ?id semparls:speaker ?speaker__id .
+    ?speaker__id skos:prefLabel ?speaker__prefLabel .
+    BIND(CONCAT("/people/page/", REPLACE(STR(?speaker__id), "^.*\\\\/(.+)", "$1")) AS ?speaker__dataProviderUrl)
+  }
+  UNION
+  {
+    ?id semparls:interrupter ?interrupter .
+  }
+  UNION
+  {
+    ?id semparls:content ?content .
+  }
+  `

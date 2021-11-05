@@ -625,6 +625,7 @@ const mapStateToProps = state => {
     items: state.items,
     plenarySessions: state.plenarySessions,
     documents: state.documents,
+    interruptions: state.interruptions,
     people: state.people,
     peopleFacets: state.peopleFacets,
     peopleFacetsConstrainSelf: state.peopleFacetsConstrainSelf,
