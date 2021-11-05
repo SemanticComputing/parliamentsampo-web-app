@@ -22,14 +22,14 @@ export const speechPropertiesInstancePage =
   UNION
   {
     ?id semparls:speechType ?speechType__id .
-    ?speechType__id skos:prefLabel ?speechType__prefLabel .
-    # BIND(?speechType__id as ?speechType__prefLabel)
- 
+    ?speechType__id skos:prefLabel ?speechType__prefLabel . 
   }
   UNION
   {
-    ?id dct:language ?language_ .
-    BIND(REPLACE(STR(?language_), "http://id.loc.gov/vocabulary/iso639-2/", "") as ?language)
+    ?id dct:language ?language__id .
+    ?language__id skos:prefLabel ?language__prefLabel .
+    FILTER(LANG(?language__prefLabel) = "<LANG>")
+    # BIND(REPLACE(STR(?language_), "http://id.loc.gov/vocabulary/iso639-2/", "") as ?language)
   }
   UNION
   {
@@ -94,6 +94,13 @@ export const speechPropertiesInstancePage =
     ?id semparls:diary ?diary__id .
     BIND(?diary__id AS ?diary__dataProviderUrl)
     BIND(?diary__id AS ?diary__prefLabel)
+  }
+  UNION
+  {
+    ?id semparls:isInterruptedBy ?isInterruptedBy__id .
+    ?isInterruptedBy__id semparls:content ?isInterruptedBy__label .
+    OPTIONAL { ?isInterruptedBy__id semparls:interrupter ?isInterruptedBy__interrupter }
+    BIND(CONCAT('"', STR(?isInterruptedBy__label), '" [', IF(bound(?isInterruptedBy__interrupter), STR(?isInterruptedBy__interrupter), ' - '), ']') AS ?isInterruptedBy__prefLabel)
   }
 `
 

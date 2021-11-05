@@ -101,7 +101,7 @@ export const INITIAL_STATE = {
     },
     {
       id: 'language',
-      valueType: 'string',
+      valueType: 'object',
       makeLink: false,
       externalLink: false,
       sortValues: false,
@@ -155,6 +155,15 @@ export const INITIAL_STATE = {
     {
       id: 'content',
       valueType: 'string',
+      makeLink: false,
+      externalLink: false,
+      sortValues: false,
+      numberedList: false,
+      onlyOnInstancePage: true
+    },
+    {
+      id: 'isInterruptedBy',
+      valueType: 'object',
       makeLink: false,
       externalLink: false,
       sortValues: false,

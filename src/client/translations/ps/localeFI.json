@@ -172,6 +172,10 @@
           "label": "Puhujan rooli",
           "description": "Alkuperäisessä pöytäkirjassa mainittu puhujan rooli."
         },
+        "isInterruptedBy": {
+          "label": "Keskeytykset",
+          "description": "Alkuperäisessä pöytäkirjassa puheen yhteyteen merkityt keskeytykset ja huomiot. Mahdollinen pöytäkirjassa eritelty keskeyttäjä suluissa."
+        },
         "orderNumber": {
           "label": "Puheen järjestysnumero",
           "description": "Puhevuoron järjestysnumero kyseisen istunnon alusta laskien puhemiehen puheenvuorot mukaanlukien."
