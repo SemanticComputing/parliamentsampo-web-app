@@ -164,6 +164,17 @@ export const perspectiveConfigOnlyInfoPages = [
     ]
   },
   {
+    id: 'parliamentarySessions',
+    perspectiveDescHeight: 160,
+    instancePageTabs: [
+      {
+        id: 'table',
+        value: 0,
+        icon: <CalendarViewDayIcon />
+      }
+    ]
+  },
+  {
     id: 'documents',
     perspectiveDescHeight: 160,
     instancePageTabs: [

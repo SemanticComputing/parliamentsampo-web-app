@@ -10,6 +10,7 @@ import fullTextSearch from './ps/fullTextSearch'
 import speeches from './ps/speeches'
 import items from './ps/items'
 import plenarySessions from './ps/plenarySessions'
+import parliamentarySessions from './ps/parliamentarySessions'
 import documents from './ps/documents'
 import interruptions from './ps/interruptions'
 import speechesFacets from './ps/speechesFacets'
@@ -31,6 +32,7 @@ const reducer = combineReducers({
   speechesFacetsConstrainSelf,
   items,
   plenarySessions,
+  parliamentarySessions,
   documents,
   interruptions,
   people,

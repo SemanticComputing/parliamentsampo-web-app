@@ -728,6 +728,39 @@
         }
       }
     },
+    "parliamentarySessions": {
+      "instancePage": {
+        "label": "Valtiopäivät",
+        "description": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Eduskunnan valtiopäivät </p>"
+      },
+      "properties": {
+        "uri": {
+          "label": "URI",
+          "description": ""
+        },
+        "prefLabel": {
+          "label": "Tunniste",
+          "description": "Tunniste",
+          "textFacetInputPlaceholder": "Hae..."
+        },
+        "startDate": {
+          "label": "Alkoi",
+          "description": "Valtiopäivien alkamispäivämäärä"
+        },
+        "endDate": {
+          "label": "Päättyi",
+          "description": "Valtiopäivien päättymispäivämäärä"
+        },
+        "electoralTerm": {
+          "label": "Vaalikausi",
+          "description": "Valtiopäivät sisältävä vaalikausi"
+        },
+        "plenarySession": {
+          "label": "Täysistunnot",
+          "description": "Valtiopäivien täysistunnot."
+        }
+      }
+    },
     "documents": {
       "instancePage": {
         "label": "Eduskunnan asiakirja",

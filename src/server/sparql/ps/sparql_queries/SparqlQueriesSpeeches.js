@@ -250,17 +250,9 @@ export const plenarySessionPropertiesInstancePage = `
   }
   UNION
   {
-    ?id semparls:endDate ?endDate_ .
-    BIND(CONCAT(STR(DAY(?endDate_)), 
-                     ".", 
-                     STR(MONTH(?endDate_)), 
-                     ".", 
-                    STR(YEAR(?endDate_))) as ?endDate)
-  }
-  UNION
-  {
     ?id semparls:parliamentarySession ?parliamentarySession__id .
     ?parliamentarySession__id skos:prefLabel ?parliamentarySession__prefLabel .
+    BIND(CONCAT("/parliamentarySessions/page/", REPLACE(STR(?parliamentarySession__id), "^.*\\\\/(.+)", "$1")) AS ?parliamentarySession__dataProviderUrl)
   }
   UNION
   {
@@ -301,6 +293,46 @@ export const plenarySessionPropertiesInstancePage = `
                       ":", 
                       STR(MINUTES(?endTime_))) as ?endTime)
 
+  }
+`
+export const parliamentarySessionPropertiesInstancePage = `
+  BIND(?id as ?uri__id)
+  BIND(?id as ?uri__dataProviderUrl)
+  BIND(?id as ?uri__prefLabel)
+
+  {
+    ?id skos:prefLabel ?prefLabel__id .
+    BIND(?prefLabel__id as ?prefLabel__prefLabel)
+  }
+  UNION
+  {
+    ?id semparls:startDate ?startDate_ .
+    BIND(CONCAT(STR(DAY(?startDate_)), 
+                     ".", 
+                     STR(MONTH(?startDate_)), 
+                     ".", 
+                    STR(YEAR(?startDate_))) as ?startDate)
+  }
+  UNION
+  {
+    ?id semparls:endDate ?endDate_ .
+    BIND(CONCAT(STR(DAY(?endDate_)), 
+                     ".", 
+                     STR(MONTH(?endDate_)), 
+                     ".", 
+                    STR(YEAR(?endDate_))) as ?endDate)
+  }
+  UNION 
+  {
+    ?id semparls:electoralTerm ?electoralTerm__id .
+    ?electoralTerm__id skos:prefLabel ?electoralTerm__prefLabel .
+    BIND(CONCAT("/terms/page/", REPLACE(STR(?electoralTerm__id), "^.*\\\\/(.+)", "$1")) AS ?electoralTerm__dataProviderUrl)
+  }
+  UNION
+  {
+    ?plenarySession__id semparls:parliamentarySession ?id .
+    ?plenarySession__id skos:prefLabel ?plenarySession__prefLabel .
+    BIND(CONCAT("/plenarySessions/page/", REPLACE(STR(?plenarySession__id), "^.*\\\\/(.+)", "$1")) AS ?plenarySession__dataProviderUrl) .
   }
 `
 

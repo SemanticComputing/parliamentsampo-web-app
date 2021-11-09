@@ -38,18 +38,24 @@ export const INITIAL_STATE = {
       sortValues: true,
       numberedList: false
     },
-
-    // {
-    //   id: 'altLabel',
-    //   valueType: 'string',
-    //   makeLink: false,
-    //   externalLink: false,
-    //   sortValues: true,
-    //   numberedList: false,
-    //   minWidth: 170
-    // },
     {
-      id: 'parliamentarySession',
+      id: 'startDate',
+      valueType: 'string',
+      makeLink: false,
+      externalLink: false,
+      sortValues: true,
+      numberedList: false
+    },
+    {
+      id: 'endDate',
+      valueType: 'string',
+      makeLink: false,
+      externalLink: false,
+      sortValues: true,
+      numberedList: false
+    },
+    {
+      id: 'electoralTerm',
       valueType: 'object',
       makeLink: true,
       externalLink: false,
@@ -57,88 +63,24 @@ export const INITIAL_STATE = {
       numberedList: false
     },
     {
-      id: 'date',
-      valueType: 'string',
-      makeLink: false,
-      externalLink: false,
-      sortValues: false,
-      numberedList: false
-    },
-    {
-      id: 'startTime',
-      valueType: 'string',
-      makeLink: false,
-      externalLink: false,
-      sortValues: false,
-      numberedList: false
-    },
-    {
-      id: 'endTime',
-      valueType: 'string',
-      makeLink: false,
-      externalLink: false,
-      sortValues: false,
-      numberedList: false
-    },
-    {
-      id: 'speech',
+      id: 'plenarySession',
       valueType: 'object',
       makeLink: true,
       externalLink: false,
       sortValues: true,
-      numberedList: false
-    },
-    {
-      id: 'item',
-      valueType: 'object',
-      makeLink: true,
-      externalLink: false,
-      sortValues: true,
-      numberedList: false
-    },
-    {
-      id: 'transcript',
-      valueType: 'object',
-      makeLink: false,
-      externalLink: false,
-      sortValues: false,
-      numberedList: false
-    },
-    {
-      id: 'status',
-      valueType: 'object',
-      makeLink: false,
-      externalLink: false,
-      sortValues: false,
-      numberedList: false
-    },
-    {
-      id: 'version',
-      valueType: 'string',
-      makeLink: false,
-      externalLink: false,
-      sortValues: false,
-      numberedList: false
-    },
-    {
-      id: 'url',
-      valueType: 'object',
-      makeLink: true,
-      externalLink: true,
-      sortValues: false,
       numberedList: false
     }
   ]
 }
 
 const resultClasses = new Set([
-  'plenarySessions'
+  'parliamentarySessions'
 ])
 
-const plenarySessions = (state = INITIAL_STATE, action) => {
+const parliamentarySessions = (state = INITIAL_STATE, action) => {
   if (resultClasses.has(action.resultClass)) {
     return handleDataFetchingAction(state, action)
   } else return state
 }
 
-export default plenarySessions
+export default parliamentarySessions
