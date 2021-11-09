@@ -265,8 +265,13 @@ export const plenarySessionPropertiesInstancePage = `
   UNION
   {
     ?id semparls:transcript ?transcript__id .
-    BIND(?transcript__id as ?transcript__prefLabel) .
-    BIND(?transcript__id as ?transcript__dataProviderUrl)
+    ?transcript__id skos:prefLabel ?transcript__prefLabel .
+    ?transcript__id semparls:url ?url__id .
+    BIND(?url__id as ?url__prefLabel)
+    BIND(?url__id as ?url__dataProviderUrl)
+    OPTIONAL { ?transcript__id semparls:version ?version }
+    OPTIONAL { ?transcript__id semparls:status ?status__id .
+              ?status__id skos:prefLabel ?status__prefLabel }
   }
   UNION
   {
@@ -297,7 +302,6 @@ export const plenarySessionPropertiesInstancePage = `
                       STR(MINUTES(?endTime_))) as ?endTime)
 
   }
-  
 `
 
 export const documentPropertiesInstancePage = `

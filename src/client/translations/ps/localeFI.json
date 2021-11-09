@@ -692,6 +692,10 @@
         },
         "transcript": {
           "label": "Pöytäkirja",
+          "description": "Alkuperäisen pöytäkirjan tunniste"
+        },
+        "url": {
+          "label": "Koko pöytäkirja",
           "description": "Linkki alkuperäiseen pöytäkirjaan"
         },
         "parliamentarySession": {
@@ -713,6 +717,14 @@
         "endTime": {
           "label": "Päättymisaika",
           "description": "Istunnon päättymisaika"
+        },
+        "status": {
+          "label": "Pöytäkirjan tila",
+          "description": "Käytetyn pöytäkirjan tarkastamis- ja hyväksymistila. (Tiedossa vain istunnosta 86/1999 lähtien.)"
+        },
+        "version": {
+          "label": "Pöytäkirjan versio",
+          "description": "Käytetty pöytäkirjan versio. (Tiedossa vain istunnosta 86/1999 lähtien.)"
         }
       }
     },

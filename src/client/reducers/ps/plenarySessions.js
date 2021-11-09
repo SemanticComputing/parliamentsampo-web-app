@@ -81,14 +81,6 @@ export const INITIAL_STATE = {
       numberedList: false
     },
     {
-      id: 'transcript',
-      valueType: 'object',
-      makeLink: false,
-      externalLink: false,
-      sortValues: false,
-      numberedList: false
-    },
-    {
       id: 'speech',
       valueType: 'object',
       makeLink: true,
@@ -103,8 +95,39 @@ export const INITIAL_STATE = {
       externalLink: false,
       sortValues: true,
       numberedList: false
+    },
+    {
+      id: 'transcript',
+      valueType: 'object',
+      makeLink: false,
+      externalLink: false,
+      sortValues: false,
+      numberedList: false
+    },
+    {
+      id: 'status',
+      valueType: 'object',
+      makeLink: false,
+      externalLink: false,
+      sortValues: false,
+      numberedList: false
+    },
+    {
+      id: 'version',
+      valueType: 'string',
+      makeLink: false,
+      externalLink: false,
+      sortValues: false,
+      numberedList: false
+    },
+    {
+      id: 'url',
+      valueType: 'object',
+      makeLink: true,
+      externalLink: true,
+      sortValues: false,
+      numberedList: false
     }
-
   ]
 }
 
