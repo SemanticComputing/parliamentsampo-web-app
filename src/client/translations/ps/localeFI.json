@@ -692,7 +692,7 @@
         },
         "transcript": {
           "label": "Pöytäkirja",
-          "description": "Linkki alkuperäiseen pöytäkirjaan."
+          "description": "Linkki alkuperäiseen pöytäkirjaan"
         },
         "parliamentarySession": {
           "label": "Valtiopäivät",
@@ -705,6 +705,14 @@
         "item": {
           "label": "Asiakohdat",
           "description": "Istunnossa käsitellyt asiakohdat"
+        },
+        "startTime": {
+          "label": "Alkuaika",
+          "description": "Istunnon aloitusaika"
+        },
+        "endTime": {
+          "label": "Päättymisaika",
+          "description": "Istunnon päättymisaika"
         }
       }
     },

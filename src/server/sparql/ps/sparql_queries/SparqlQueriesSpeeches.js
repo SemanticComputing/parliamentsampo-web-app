@@ -232,11 +232,30 @@ export const plenarySessionPropertiesInstancePage = `
   UNION
   {
     ?id dct:date ?date_ .
+    OPTIONAL { ?id semparls:endDate ?endDate_ }
+    BIND(IF(bound(?endDate_) && ?date_ != ?endDate_, CONCAT(" (Päättyi ",
+                    STR(DAY(?endDate_)), 
+                    ".", 
+                    STR(MONTH(?endDate_)), 
+                    ".", 
+                    STR(YEAR(?endDate_)),
+                    ")"),
+                    " ") as ?endDate)
     BIND(CONCAT(STR(DAY(?date_)), 
+                    ".", 
+                    STR(MONTH(?date_)), 
+                    ".", 
+                    STR(YEAR(?date_)),
+                    STR(?endDate)) as ?date)
+  }
+  UNION
+  {
+    ?id semparls:endDate ?endDate_ .
+    BIND(CONCAT(STR(DAY(?endDate_)), 
                      ".", 
-                     STR(MONTH(?date_)), 
+                     STR(MONTH(?endDate_)), 
                      ".", 
-                    STR(YEAR(?date_))) as ?date)
+                    STR(YEAR(?endDate_))) as ?endDate)
   }
   UNION
   {
@@ -263,6 +282,22 @@ export const plenarySessionPropertiesInstancePage = `
     ?item__id skos:prefLabel ?item__prefLabel .
     BIND(CONCAT("/items/page/", REPLACE(STR(?item__id), "^.*\\\\/(.+)", "$1")) AS ?item__dataProviderUrl) .
   }
+  UNION
+  {
+    ?id semparls:startTime ?startTime_ .
+    BIND(CONCAT(STR(HOURS(?startTime_)), 
+                     ":", 
+                     STR(MINUTES(?startTime_))) as ?startTime)
+  }
+  UNION
+  {
+    ?id semparls:endTime ?endTime_ .
+    BIND(CONCAT(STR(HOURS(?endTime_)), 
+                      ":", 
+                      STR(MINUTES(?endTime_))) as ?endTime)
+
+  }
+  
 `
 
 export const documentPropertiesInstancePage = `
