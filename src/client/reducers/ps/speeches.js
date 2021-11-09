@@ -83,26 +83,9 @@ export const INITIAL_STATE = {
       onlyOnInstancePage: true
     },
     {
-      id: 'speechType',
+      id: 'plenarySession',
       valueType: 'object',
-      makeLink: false,
-      externalLink: false,
-      sortValues: true,
-      numberedList: false
-    },
-    {
-      id: 'orderNumber',
-      valueType: 'string',
-      makeLink: false,
-      externalLink: false,
-      sortValues: false,
-      numberedList: false,
-      onlyOnInstancePage: true
-    },
-    {
-      id: 'language',
-      valueType: 'object',
-      makeLink: false,
+      makeLink: true,
       externalLink: false,
       sortValues: false,
       numberedList: false,
@@ -127,6 +110,23 @@ export const INITIAL_STATE = {
       onlyOnInstancePage: true
     },
     {
+      id: 'speechType',
+      valueType: 'object',
+      makeLink: false,
+      externalLink: false,
+      sortValues: true,
+      numberedList: false
+    },
+    {
+      id: 'language',
+      valueType: 'object',
+      makeLink: false,
+      externalLink: false,
+      sortValues: false,
+      numberedList: false,
+      onlyOnInstancePage: true
+    },
+    {
       id: 'referencedPlace',
       valueType: 'object',
       makeLink: false,
@@ -144,9 +144,27 @@ export const INITIAL_STATE = {
       numberedList: false
     },
     {
-      id: 'plenarySession',
-      valueType: 'object',
-      makeLink: true,
+      id: 'startTime',
+      valueType: 'string',
+      makeLink: false,
+      externalLink: false,
+      sortValues: false,
+      numberedList: false,
+      onlyOnInstancePage: true
+    },
+    {
+      id: 'endTime',
+      valueType: 'string',
+      makeLink: false,
+      externalLink: false,
+      sortValues: false,
+      numberedList: false,
+      onlyOnInstancePage: true
+    },
+    {
+      id: 'orderNumber',
+      valueType: 'string',
+      makeLink: false,
       externalLink: false,
       sortValues: false,
       numberedList: false,
@@ -175,6 +193,33 @@ export const INITIAL_STATE = {
       valueType: 'object',
       makeLink: true,
       externalLink: true,
+      sortValues: false,
+      numberedList: false,
+      onlyOnInstancePage: true
+    },
+    {
+      id: 'page',
+      valueType: 'string',
+      makeLink: false,
+      externalLink: false,
+      sortValues: false,
+      numberedList: false,
+      onlyOnInstancePage: true
+    },
+    {
+      id: 'status',
+      valueType: 'object',
+      makeLink: false,
+      externalLink: false,
+      sortValues: false,
+      numberedList: false,
+      onlyOnInstancePage: true
+    },
+    {
+      id: 'version',
+      valueType: 'string',
+      makeLink: false,
+      externalLink: false,
       sortValues: false,
       numberedList: false,
       onlyOnInstancePage: true

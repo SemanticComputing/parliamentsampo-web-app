@@ -103,6 +103,27 @@ export const speechPropertiesInstancePage =
     BIND(CONCAT('"', STR(?isInterruptedBy__label), '" [', IF(bound(?isInterruptedBy__interrupter), STR(?isInterruptedBy__interrupter), ' - '), ']') AS ?isInterruptedBy__prefLabel)
     BIND(CONCAT("/interruptions/page/", REPLACE(STR(?isInterruptedBy__id), "^.*\\\\/(.+)", "$1")) AS ?isInterruptedBy__dataProviderUrl) .
   }
+  UNION
+  {
+    ?id semparls:startTime ?startTime .
+  }
+  UNION
+  {
+    ?id semparls:endTime ?endTime .
+  }
+  UNION
+  {
+    ?id semparls:page ?page .
+  }
+  UNION
+  {
+    ?id semparls:version ?version .
+  }
+  UNION
+  {
+    ?id semparls:status ?status__id .
+    ?status__id skos:prefLabel ?status__prefLabel .
+  }
 `
 
 export const speechPropertiesFacetResults =

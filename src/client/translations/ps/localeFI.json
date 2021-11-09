@@ -199,6 +199,26 @@
         "document": {
           "label": "Asiakirjat",
           "description": "Asiakohtaan liitetyt eduskunnan asiakirjat."
+        },
+        "startTime": {
+          "label": "Alkuaika",
+          "description": "Puheen aloitusaika. (Tiedossa vain valtiopäivistä 2015 lähtien.)"
+        },
+        "endTime": {
+          "label": "Päättymisaika",
+          "description": "Puheen päättymisaika. (Tiedossa vain valtiopäivistä 2015 lähtien.)"
+        },
+        "page": {
+          "label": "Sivu",
+          "description": "Puheen (alun) sivunumero alkuperäisessä pöytäkirjassa. (Käytössä vain pöytäkirjaan 85/1999 saakka.)"
+        },
+        "status": {
+          "label": "Tila",
+          "description": "Puheen tarkastamis- ja hyväksymistila. (Tiedossa vain valtiopäivistä 2015 lähtien.)"
+        },
+        "version": {
+          "label": "Versio",
+          "description": "Puheen kirjauksen version. (Tiedossa vain valtiopäivistä 2015 lähtien.)"
         }
       }
     },
