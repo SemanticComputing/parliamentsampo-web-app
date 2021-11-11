@@ -8,7 +8,8 @@ export const cytoscapeStyle = [
       'background-color': ele => ele.data('color') || '#666',
       label: ' data(prefLabel)',
       height: ele => (ele.data('size') || '12px'),
-      width: ele => (ele.data('size') || '12px')
+      width: ele => (ele.data('size') || '12px'),
+      'border-width': ele => (ele.data('distance')<1 ? 2 : 0)
     }
   },
   {
@@ -135,8 +136,8 @@ export const preprocessPeopleNetwork = elements => {
   elements.nodes.forEach((ele, i) => { ele.data.font_size = res[i] })
 
   // node color
-	res = (new ColorScaler('rgb(255, 0, 0)', 'rgb(0, 0, 255)')).fitTransform(arr)
-	elements.nodes.forEach((ele, i) => { ele.data.color = res[i] })
+	// res = (new ColorScaler('rgb(255, 0, 0)', 'rgb(0, 0, 255)')).fitTransform(arr)
+	// elements.nodes.forEach((ele, i) => { ele.data.color = res[i] })
 }
 
 const maxEdgeWidth = 8

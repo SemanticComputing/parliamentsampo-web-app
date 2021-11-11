@@ -349,13 +349,13 @@ WHERE {
 
 //  https://api.triplydb.com/s/Akju-2eeb
 export const networkNodeQuery = `
-SELECT DISTINCT ?id ?prefLabel ?href
+SELECT DISTINCT ?id ?prefLabel (SAMPLE(?_color) AS ?color) ?href
 WHERE {
-  VALUES ?id { <ID_SET> }
-  ?id xl:prefLabel/skos:prefLabel ?prefLabel .
-
-  BIND(CONCAT("../", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1"), "/network") AS ?href)
-}
+    VALUES ?id { <ID_SET> }
+    ?id xl:prefLabel/skos:prefLabel ?prefLabel .
+    OPTIONAL { ?id semparls:has_party_membership/semparls:party/semparls:hexcolor ?_color }
+    BIND(CONCAT("../", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1"),"/network") AS ?href)
+} GROUP BY ?id ?prefLabel ?href
 `
 
 export const ageQuery = `
