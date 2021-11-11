@@ -55,6 +55,7 @@
     "table": "taulukko",
     "personEvents": "tapahtumat",
     "personSpeeches": "puheenvuorot",
+    "network": "verkosto",
     "by_age": "ikäjakauma",
     "export": "SPARQL-kysely"
   },

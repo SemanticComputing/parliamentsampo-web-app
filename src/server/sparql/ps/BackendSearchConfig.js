@@ -6,7 +6,9 @@ import { sitemapInstancePageQuery } from '../SparqlQueriesGeneral'
 import {
   personEventsQuery,
   personSpeechesQuery,
-  ageQuery
+  ageQuery,
+  networkNodeQuery,
+  networkLinkQuery
 } from './sparql_queries/SparqlQueriesPeople'
 import { districtPropertiesInstancePage } from './sparql_queries/SparqlQueriesDistricts'
 import { itemPropertiesInstancePage, plenarySessionPropertiesInstancePage, parliamentarySessionPropertiesInstancePage, documentPropertiesInstancePage, interruptionPropertiesInstancePage } from './sparql_queries/SparqlQueriesSpeeches'
@@ -75,6 +77,12 @@ export const backendSearchConfig = {
     resultMapperConfig: {
       fillEmptyValues: true
     }
+  },
+  network: {
+    perspectiveID: 'people',
+    q: networkLinkQuery,
+    nodes: networkNodeQuery,
+    useNetworkAPI: true
   },
   districts: {
     perspectiveID: 'people',

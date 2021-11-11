@@ -227,7 +227,8 @@ const resultClasses = new Set([
   'people',
   'personEvents',
   'personSpeeches',
-  'personAges'
+  'personAges',
+  'network'
 ])
 
 const people = (state = INITIAL_STATE, action) => {

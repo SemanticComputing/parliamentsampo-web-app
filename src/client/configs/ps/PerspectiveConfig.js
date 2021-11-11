@@ -9,7 +9,7 @@ import Portrait from '@material-ui/icons/Portrait'
 // import RedoIcon from '@material-ui/icons/Redo'
 // import PieChartIcon from '@material-ui/icons/PieChart'
 // import CloudDownloadIcon from '@material-ui/icons/CloudDownload'
-// import BubbleChartIcon from '@material-ui/icons/BubbleChart'
+import BubbleChartIcon from '@material-ui/icons/BubbleChart'
 import LineChartIcon from '@material-ui/icons/ShowChart'
 import eventsImage from '../../img/main_page/events-452x262.jpg'
 import actorsImage from '../../img/main_page/actors-452x262_2.jpg'
@@ -67,7 +67,12 @@ export const perspectiveConfig = [
         id: 'personSpeeches',
         value: 2,
         icon: <KeyboardVoice />
-      }
+      },
+      {
+        id: 'network',
+        value: 3,
+        icon: <BubbleChartIcon />
+      }, 
     ]
   }
 ]

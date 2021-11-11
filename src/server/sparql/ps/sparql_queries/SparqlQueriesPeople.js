@@ -328,6 +328,36 @@ WHERE {
   ORDER BY COALESCE(?time__start, ?time__end, "2999-01-01"^^xsd:date) ?time__end 
 `
 
+// https://api.triplydb.com/s/EO7-OzuhM
+export const networkLinkQuery = `
+SELECT DISTINCT ?source ?target ('' AS ?prefLabel) ?weight
+WHERE {
+  VALUES ?id { <ID> }
+  ?node a semparls:Distance ;
+    semparls:relates_to ?id ;
+      semparls:relates_to ?target ;
+      semparls:value ?weight .
+  FILTER (?id!=?target)
+  OPTIONAL { 
+    ?node semparls:link_by [ skos:prefLabel ?link ; a ?link_class ]
+    FILTER(LANG(?link)='fi')
+  }
+  
+  BIND(?id as ?source)
+} 
+`
+
+//  https://api.triplydb.com/s/Akju-2eeb
+export const networkNodeQuery = `
+SELECT DISTINCT ?id ?prefLabel ?href
+WHERE {
+  VALUES ?id { <ID_SET> }
+  ?id xl:prefLabel/skos:prefLabel ?prefLabel .
+
+  BIND(CONCAT("../", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1"), "/network") AS ?href)
+}
+`
+
 export const ageQuery = `
 SELECT ?category (count(?time1) AS ?age_at_start) (count(?time2) AS ?age_at_end)
 WHERE {

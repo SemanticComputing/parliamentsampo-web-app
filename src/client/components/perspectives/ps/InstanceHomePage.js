@@ -7,11 +7,11 @@ import CircularProgress from '@material-ui/core/CircularProgress'
 import purple from '@material-ui/core/colors/purple'
 import PerspectiveTabs from '../../main_layout/PerspectiveTabs'
 import InstanceHomePageTable from '../../main_layout/InstanceHomePageTable'
-// import Network from '../../facet_results/Network'
+import Network from '../../facet_results/Network'
 // import ApexChart from '../../facet_results/ApexChart'
 // import Export from '../../facet_results/Export'
 // import Recommendations from './Recommendations'
-// import { coseLayout, cytoscapeStyle, preprocess } from '../../../configs/sampo/Cytoscape.js/NetworkConfig'
+import { coseLayout, cytoscapeStyle, preprocessPeopleNetwork } from '../../../configs/ps/Cytoscape.js/NetworkConfig'
 // import { createMultipleLineChartData } from '../../../configs/sampo/ApexCharts/LineChartConfig'
 import { Route, Redirect } from 'react-router-dom'
 import { has } from 'lodash'
@@ -237,6 +237,25 @@ class InstanceHomePage extends React.Component {
                         onlyOnInstancePage: true
                       }
                     ]}
+                  />}
+              />
+              <Route
+                path={`${rootUrl}/${resultClass}/page/${this.state.localID}/network`}
+                render={() =>
+                  <Network
+                    pageType='instancePage'
+                    results={perspectiveState.results}
+                    resultUpdateID={perspectiveState.resultUpdateID}
+                    fetchResults={this.props.fetchResults}
+                    fetching={fetching}
+                    resultClass='network'
+                    uri={instanceTableData.id}
+                    limit={50}
+                    optimize={1.0}
+                    style={cytoscapeStyle}
+                    layout={coseLayout}
+                    preprocess={preprocessPeopleNetwork}
+                    layoutConfig={layoutConfig}
                   />}
               />
               <Route
