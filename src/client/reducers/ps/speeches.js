@@ -228,7 +228,8 @@ export const INITIAL_STATE = {
 }
 
 const resultClasses = new Set([
-  'speeches'
+  'speeches',
+  'speechYears'
 ])
 
 const speeches = (state = INITIAL_STATE, action) => {

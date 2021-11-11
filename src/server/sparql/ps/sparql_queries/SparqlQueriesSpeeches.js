@@ -124,6 +124,10 @@ export const speechPropertiesInstancePage =
     ?id semparls:status ?status__id .
     ?status__id skos:prefLabel ?status__prefLabel .
   }
+  UNION
+  {
+    ?id semparls:yearOfSpeech ?yearOfSpeech .
+  }
 `
 
 export const speechPropertiesFacetResults =
@@ -414,4 +418,12 @@ export const interruptionPropertiesInstancePage = `
   {
     ?id semparls:content ?content .
   }
+  `
+
+export const speechYearQuery = `
+  SELECT ?yearOfSpeech (count(?yearOfSpeech) AS ?speechCount)
+  WHERE {
+    ?speech__id a semparls:Speech .
+    ?speech__id semparls:yearOfSpeech ?yearOfSpeech .
+  } GROUPBY ?yearOfSpeech ORDERBY ?yearOfSpeech
   `

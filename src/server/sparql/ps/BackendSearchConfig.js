@@ -11,7 +11,14 @@ import {
   networkLinkQuery
 } from './sparql_queries/SparqlQueriesPeople'
 import { districtPropertiesInstancePage } from './sparql_queries/SparqlQueriesDistricts'
-import { itemPropertiesInstancePage, plenarySessionPropertiesInstancePage, parliamentarySessionPropertiesInstancePage, documentPropertiesInstancePage, interruptionPropertiesInstancePage } from './sparql_queries/SparqlQueriesSpeeches'
+import {
+  speechYearQuery,
+  itemPropertiesInstancePage,
+  plenarySessionPropertiesInstancePage,
+  parliamentarySessionPropertiesInstancePage,
+  documentPropertiesInstancePage,
+  interruptionPropertiesInstancePage
+} from './sparql_queries/SparqlQueriesSpeeches'
 
 import { eventPropertiesInstancePage } from './sparql_queries/SparqlQueriesEvents'
 import { groupPropertiesInstancePage } from './sparql_queries/SparqlQueriesGroups'
@@ -19,7 +26,7 @@ import { occupationPropertiesInstancePage } from './sparql_queries/SparqlQueries
 import { placePropertiesInstancePage } from './sparql_queries/SparqlQueriesPlaces'
 import { publicationPropertiesInstancePage } from './sparql_queries/SparqlQueriesPublications'
 import { termPropertiesInstancePage } from './sparql_queries/SparqlQueriesTerms'
-import { mapMultipleLineChart } from '../Mappers'
+import { mapMultipleLineChart, mapLineChart } from '../Mappers'
 
 export const backendSearchConfig = {
   speeches: speechesConfig,
@@ -28,6 +35,15 @@ export const backendSearchConfig = {
     perspectiveID: 'people',
     q: personEventsQuery,
     resultMapper: makeObjectList
+  },
+  speechYears: {
+    perspectiveID: 'speeches',
+    q: speechYearQuery,
+    filterTarget: 'speech__id',
+    resultMapper: mapLineChart,
+    resultMapperConfig: {
+      fillEmptyValues: true
+    }
   },
   items: {
     perspectiveID: 'speeches',

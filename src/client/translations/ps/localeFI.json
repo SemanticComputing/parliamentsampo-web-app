@@ -57,14 +57,16 @@
     "personSpeeches": "puheenvuorot",
     "network": "verkosto",
     "by_age": "ikäjakauma",
-    "export": "SPARQL-kysely"
+    "export": "SPARQL-kysely",
+    "by_year": "Aikajana"
   },
   "table": {
     "rowsPerPage": "Riviä sivulla"
   },
   "lineChart": {
     "age_at_start": "Aloitusikä",
-    "age_at_end": "Lopetusikä"
+    "age_at_end": "Lopetusikä",
+    "speechCount": "Puheita"
   },
   "facets": {
     "dateFacet": {

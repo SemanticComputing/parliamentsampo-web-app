@@ -25,6 +25,11 @@ export const perspectiveConfig = [
         id: 'table',
         value: 0,
         icon: <CalendarViewDayIcon />
+      },
+      {
+        id: 'by_year',
+        value: 1,
+        icon: <LineChartIcon />
       }
     ],
     instancePageTabs: [
@@ -72,7 +77,7 @@ export const perspectiveConfig = [
         id: 'network',
         value: 3,
         icon: <BubbleChartIcon />
-      }, 
+      },
     ]
   }
 ]
