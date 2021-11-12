@@ -28,7 +28,9 @@ export const peopleConfig = {
     prefLabel: {
       labelPath: 'semparls:sortingLabel',
       textQueryPredicate: '', // empty for querying the facetClass
-      textQueryProperty: 'skos:prefLabel', // limit only to prefLabels
+      // see semparl text index config: https://version.aalto.fi/gitlab/seco/semparl-data#fuseki-text-query-lucene-index
+      // skos:prefLabel is the default property for text:query
+      textQueryProperty: '',
       type: 'text'
     },
     home_location: {
