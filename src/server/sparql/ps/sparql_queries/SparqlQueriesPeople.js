@@ -152,6 +152,16 @@ export const personPropertiesInstancePage =
       skos:prefLabel ?image__title .
       BIND(URI(CONCAT(REPLACE(STR(?image__id), "https*:", ""), "?width=600")) as ?image__url)
   }
+  UNION
+  { 
+    SELECT DISTINCT ?id ?representativePeriodTimespan 
+    WHERE {
+  		?id semparls:representative_period [ 
+          crm:P81a_begin_of_the_begin ?_start ; 
+          skos:prefLabel ?representativePeriodTimespan 
+      ] }
+  	ORDER BY ?_start 
+  }
 `
 
 export const personPropertiesFacetResults =

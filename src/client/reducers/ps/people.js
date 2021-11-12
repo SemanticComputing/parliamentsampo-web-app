@@ -147,7 +147,7 @@ export const INITIAL_STATE = {
       valueType: 'string',
       makeLink: false,
       externalLink: false,
-      sortValues: true,
+      sortValues: false,
       numberedList: false
     },
     {
