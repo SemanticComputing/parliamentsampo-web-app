@@ -312,6 +312,10 @@
           "label": "Syntymävuosi",
           "description": "Syntymävuosi"
         },
+        "group": {
+          "label": "Organisaatiot",
+          "description": "Yritykset ja järjestöt, joissa henkilö on työskennellyt"
+        },
         "home_location": {
           "label": "Kotipaikkakunta",
           "description": "Kotipaikkakunta"

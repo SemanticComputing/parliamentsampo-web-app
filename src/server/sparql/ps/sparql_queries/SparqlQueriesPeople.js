@@ -61,7 +61,7 @@ export const personPropertiesInstancePage =
   }
   UNION
   {
-    ?id semparls:home_location ?home_location
+    ?id crm:P74_has_current_or_former_residence ?home_location
   }
   UNION
   {
@@ -156,11 +156,22 @@ export const personPropertiesInstancePage =
   { 
     SELECT DISTINCT ?id ?representativePeriodTimespan 
     WHERE {
-  		?id semparls:representative_period [ 
-          crm:P81a_begin_of_the_begin ?_start ; 
+      ?id semparls:representative_period [ 
+          crm:P81a_begin_of_the_begin ?_start ;
           skos:prefLabel ?representativePeriodTimespan 
       ] }
-  	ORDER BY ?_start 
+    ORDER BY ?_start 
+  }
+  UNION
+  {
+    SELECT DISTINCT ?id ?group__id ?group__prefLabel ?group__dataProviderUrl WHERE {
+      VALUES ?evtclass {  semparls:Career semparls:MunicipalPositionOfTrust semparls:PositionOfTrust semparls:GovernmentalPositionOfTrust }
+      ?id bioc:bearer_of/crm:P11i_participated_in [ a ?evtclass ;
+                                                    semparls:organization ?group__id ] .
+      ?group__id skos:prefLabel ?group__prefLabel .
+      FILTER(LANG(?group__prefLabel) = "<LANG>")
+      BIND(CONCAT("/groups/page/", REPLACE(STR(?group__id), "^.*\\\\/(.+)", "$1")) AS ?group__dataProviderUrl)
+    }
   }
 `
 
@@ -171,6 +182,7 @@ export const personPropertiesFacetResults =
   BIND(?id as ?uri__id)
   BIND(?id as ?uri__dataProviderUrl)
   BIND(?id as ?uri__prefLabel)
+
   {
     ?id semparls:has_party_membership/semparls:party ?party__id .
     ?party__id skos:prefLabel ?party__prefLabel .
@@ -211,7 +223,7 @@ export const personPropertiesFacetResults =
   }
   UNION
   {
-    ?id semparls:home_location ?home_location
+    ?id crm:P74_has_current_or_former_residence ?home_location
   }
   UNION
   {

@@ -176,6 +176,14 @@ export const INITIAL_STATE = {
       numberedList: true
     },
     {
+      id: 'group',
+      valueType: 'object',
+      makeLink: true,
+      externalLink: false,
+      sortValues: true,
+      numberedList: true
+    },
+    {
       id: 'affiliation',
       valueType: 'string',
       makeLink: false,
