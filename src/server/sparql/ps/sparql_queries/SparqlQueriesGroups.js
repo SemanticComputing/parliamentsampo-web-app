@@ -19,7 +19,7 @@ export const groupPropertiesInstancePage =
   }
   UNION
   {
-    ?id a/skos:prefLabel ?type 
+    ?id (a|rdfs:subClassOf)/skos:prefLabel ?type 
     FILTER(LANG(?type)='<LANG>')
   }
   UNION
@@ -31,6 +31,14 @@ export const groupPropertiesInstancePage =
     ?id crm:P10_falls_within/skos:prefLabel ?timespan
   }
   UNION
+  {
+    ?id crm:P74_has_current_or_former_residence ?place__id .
+    ?place__id skos:prefLabel ?place__prefLabel .
+    FILTER(LANG(?place__prefLabel) = "<LANG>")
+    BIND(CONCAT("/places/page/", REPLACE(STR(?place__id), "^.*\\\\/(.+)", "$1")) 
+      AS ?place__dataProviderUrl)
+  }
+  UNION
   { SELECT DISTINCT ?id ?person__id ?person__prefLabel ?person__dataProviderUrl 
     WHERE {
       ?id ^semparls:organization ?evt .
@@ -40,7 +48,13 @@ export const groupPropertiesInstancePage =
       OPTIONAL { ?evt crm:P4_has_time-span [ skos:prefLabel ?_date ; crm:P81a_begin_of_the_begin ?_start ] }
       ?role__id skos:prefLabel ?role__label . FILTER(LANG(?role__label)='<LANG>')
       
-      BIND(CONCAT(?_label, ' (', ?role__label, ': ', COALESCE(?_date, ''), ')') AS ?person__prefLabel)
+      BIND(
+        CONCAT(
+          ?_label, ' (', ?role__label,
+          IF(BOUND(?_date), CONCAT(': ',?_date), ''),
+          ')' ) 
+        AS ?person__prefLabel
+      )
       BIND(CONCAT("/people/page/", REPLACE(STR(?person__id), "^.*\\\\/(.+)", "$1")) AS ?person__dataProviderUrl)
     } ORDER BY ?_start ?_label
   }
@@ -55,7 +69,12 @@ export const groupPropertiesInstancePage =
   }
   UNION
   {
-    ?id a/semparls:party ?related__id .
+    {
+      ?id a/semparls:party ?related__id
+    } UNION
+    {
+      ?id crm:P74_has_current_or_former_residence/^crm:P74_has_current_or_former_residence ?related__id
+    }
     ?related__id skos:prefLabel ?related__prefLabel .
     FILTER(LANG(?related__prefLabel)='<LANG>')
     BIND(CONCAT("/groups/page/", REPLACE(STR(?related__id), "^.*\\\\/(.+)", "$1")) AS ?related__dataProviderUrl)

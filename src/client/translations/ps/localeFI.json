@@ -582,9 +582,13 @@
           "label": "Henkilöt",
           "description": "Lista ryhmään liittyvistä henkilöistä"
         },
+        "place": {
+          "label": "Paikkakunta",
+          "description": "Mahdollinen ryhmään liittyvä paikkakunta"
+        },
         "related": {
           "label": "Samankaltaisia ryhmiä",
-          "description": "Muita ryhmiä, joissa on samoja henkilöjä jäseninä"
+          "description": "Lista ryhmistä jotka liittyvät samaan paikkakuntaan tai joissa on samoja henkilöjä jäseninä"
         },
         "party": {
           "label": "Puolue",
