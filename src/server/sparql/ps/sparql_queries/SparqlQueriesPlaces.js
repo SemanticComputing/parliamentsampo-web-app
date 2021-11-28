@@ -36,6 +36,13 @@ UNION
 }
 UNION
 {
+  ?group__id crm:P74_has_current_or_former_residence ?id ;
+    skos:prefLabel ?group__prefLabel .
+  FILTER(LANG(?group__prefLabel) = "<LANG>")
+  BIND(CONCAT("/groups/page/", REPLACE(STR(?group__id), "^.*\\\\/(.+)", "$1")) AS ?group__dataProviderUrl)
+}
+UNION
+{
   ?id ^crm:P7_took_place_at ?evt .
   {
     ?born__id crm:P98i_was_born ?evt ;

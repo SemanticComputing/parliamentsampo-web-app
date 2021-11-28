@@ -439,6 +439,10 @@
           "label": "Kuolleet",
           "description": "Täällä kuolleet henkilöt"
         },
+        "group": {
+          "label": "Organisaatiot",
+          "description": "Paikkakuntaan liittyvät organisaatiot"
+        },
         "broader": {
           "label": "Yläkäsitteet",
           "description": "Paikat, joiden sisällä tämä sijaitsee"

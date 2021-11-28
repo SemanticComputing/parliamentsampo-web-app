@@ -165,7 +165,7 @@ export const personPropertiesInstancePage =
   UNION
   {
     SELECT DISTINCT ?id ?group__id ?group__prefLabel ?group__dataProviderUrl WHERE {
-      VALUES ?evtclass {  semparls:Career semparls:MunicipalPositionOfTrust semparls:PositionOfTrust semparls:GovernmentalPositionOfTrust }
+      VALUES ?evtclass {  semparls:Career semparls:Affiliation semparls:MunicipalPositionOfTrust semparls:PositionOfTrust semparls:GovernmentalPositionOfTrust }
       ?id bioc:bearer_of/crm:P11i_participated_in [ a ?evtclass ;
                                                     semparls:organization ?group__id ] .
       ?group__id skos:prefLabel ?group__prefLabel .
