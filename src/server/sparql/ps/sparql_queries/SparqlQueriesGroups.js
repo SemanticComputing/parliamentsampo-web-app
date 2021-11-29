@@ -69,18 +69,6 @@ export const groupPropertiesInstancePage =
   }
   UNION
   {
-    {
-      ?id a/semparls:party ?related__id
-    } UNION
-    {
-      ?id crm:P74_has_current_or_former_residence/^crm:P74_has_current_or_former_residence ?related__id
-    }
-    ?related__id skos:prefLabel ?related__prefLabel .
-    FILTER(LANG(?related__prefLabel)='<LANG>')
-    BIND(CONCAT("/groups/page/", REPLACE(STR(?related__id), "^.*\\\\/(.+)", "$1")) AS ?related__dataProviderUrl)
-  }
-  UNION
-  {
     SELECT DISTINCT ?id ?related__id ?related__prefLabel ?related__dataProviderUrl 
     WHERE {
       {
@@ -99,6 +87,18 @@ export const groupPropertiesInstancePage =
     } 
     GROUP BY ?id ?related__id ?related__prefLabel ?related__dataProviderUrl 
     ORDER BY DESC(COUNT(?prs))
+  }
+  UNION
+  {
+    {
+      ?id a/semparls:party ?related__id
+    } UNION
+    {
+      ?id crm:P74_has_current_or_former_residence/^crm:P74_has_current_or_former_residence ?related__id
+    }
+    ?related__id skos:prefLabel ?related__prefLabel .
+    FILTER(LANG(?related__prefLabel)='<LANG>')
+    BIND(CONCAT("/groups/page/", REPLACE(STR(?related__id), "^.*\\\\/(.+)", "$1")) AS ?related__dataProviderUrl)
   }
   UNION
   {
