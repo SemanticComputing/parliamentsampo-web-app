@@ -143,6 +143,27 @@ export const INITIAL_STATE = {
       filterType: 'uriFilter',
       uriFilter: null
     },
+    org: {
+      id: 'org',
+      distinctValueCount: 0,
+      values: [],
+      flatValues: [],
+      sortBy: 'prefLabel',
+      sortDirection: 'asc',
+      sortButton: false,
+      spatialFilterButton: false,
+      spatialFilterTab: '',
+      isFetching: false,
+      searchField: true,
+      containerClass: 'ten',
+      filterType: 'uriFilter',
+      uriFilter: null,
+      patialFilter: null,
+      type: 'hierarchical',
+      selectAlsoSubconceptsButton: true,
+      selectAlsoSubconcepts: true,
+      priority: 6
+    },
     datasource: {
       id: 'datasource',
       // predicate: defined in backend

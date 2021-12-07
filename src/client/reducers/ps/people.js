@@ -181,7 +181,8 @@ export const INITIAL_STATE = {
       makeLink: true,
       externalLink: false,
       sortValues: true,
-      numberedList: true
+      numberedList: true,
+      onlyOnInstancePage: true
     },
     {
       id: 'affiliation',

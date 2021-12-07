@@ -312,6 +312,10 @@
           "label": "Syntymävuosi",
           "description": "Syntymävuosi"
         },
+        "org": {
+          "label": "Organisaatiot",
+          "description": "Yritykset ja järjestöt, joissa henkilö on työskennellyt"
+        },
         "group": {
           "label": "Organisaatiot",
           "description": "Yritykset ja järjestöt, joissa henkilö on työskennellyt"

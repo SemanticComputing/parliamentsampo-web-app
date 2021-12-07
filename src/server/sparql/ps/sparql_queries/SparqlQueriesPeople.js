@@ -258,6 +258,13 @@ export const personPropertiesFacetResults =
     FILTER(LANG(?datasource__prefLabel) = "<LANG>")
     BIND(?datasource__id as ?datasource__dataProviderUrl)
   }
+  UNION
+  { 
+    ?id bioc:bearer_of/crm:P11i_participated_in/semparls:organization ?org__id .
+    ?org__id skos:prefLabel ?org__prefLabel . 
+    FILTER(LANG(?org__prefLabel)='fi')
+    BIND(CONCAT("/groups/page/", REPLACE(STR(?org__id), "^.*\\\\/(.+)", "$1")) AS ?org__dataProviderUrl)
+  }
 `
 
 export const personSpeechesQuery =
