@@ -23,6 +23,17 @@ export const INITIAL_STATE = {
   instanceSparqlQuery: null,
   properties: [
     {
+      id: 'image',
+      valueType: 'image',
+      previewImageHeight: 160,
+      makeLink: true,
+      externalLink: true,
+      sortValues: false,
+      numberedList: false,
+      minWidth: 120,
+      hideHeader: false
+    },
+    {
       id: 'prefLabel',
       valueType: 'object',
       makeLink: true,
@@ -40,15 +51,54 @@ export const INITIAL_STATE = {
       onlyOnInstancePage: true
     },
     {
-      id: 'image',
-      valueType: 'image',
-      previewImageHeight: 160,
-      makeLink: true,
-      externalLink: true,
+      id: 'representativePeriodTimespan',
+      valueType: 'string',
+      makeLink: false,
+      externalLink: false,
       sortValues: false,
+      numberedList: false
+    },
+    {
+      id: 'electoralTerm',
+      valueType: 'object',
+      makeLink: true,
+      externalLink: false,
+      sortValues: true,
+      numberedList: true
+    },
+    {
+      id: 'parliamentaryGroup',
+      valueType: 'object',
+      makeLink: true,
+      externalLink: false,
+      sortValues: false,
+      numberedList: true,
+      onlyOnInstancePage: true
+    },
+    {
+      id: 'party',
+      valueType: 'object',
+      makeLink: true,
+      externalLink: false,
+      sortValues: true,
+      numberedList: true
+    },
+    {
+      id: 'education',
+      valueType: 'object',
+      makeLink: false,
+      externalLink: false,
+      sortValues: true,
       numberedList: false,
-      minWidth: 120,
-      hideHeader: false
+      onlyOnInstancePage: true
+    },
+    {
+      id: 'occupation',
+      valueType: 'object',
+      makeLink: true,
+      externalLink: false,
+      sortValues: true,
+      numberedList: false
     },
     {
       id: 'gender',
@@ -99,23 +149,6 @@ export const INITIAL_STATE = {
       numberedList: false
     },
     {
-      id: 'education',
-      valueType: 'object',
-      makeLink: false,
-      externalLink: false,
-      sortValues: true,
-      numberedList: false,
-      onlyOnInstancePage: true
-    },
-    {
-      id: 'occupation',
-      valueType: 'object',
-      makeLink: true,
-      externalLink: false,
-      sortValues: true,
-      numberedList: false
-    },
-    {
       id: 'extraInfo',
       valueType: 'string',
       makeLink: false,
@@ -141,39 +174,6 @@ export const INITIAL_STATE = {
       sortValues: false,
       numberedList: true,
       onlyOnInstancePage: true
-    },
-    {
-      id: 'representativePeriodTimespan',
-      valueType: 'string',
-      makeLink: false,
-      externalLink: false,
-      sortValues: false,
-      numberedList: false
-    },
-    {
-      id: 'electoralTerm',
-      valueType: 'object',
-      makeLink: true,
-      externalLink: false,
-      sortValues: true,
-      numberedList: true
-    },
-    {
-      id: 'parliamentaryGroup',
-      valueType: 'object',
-      makeLink: true,
-      externalLink: false,
-      sortValues: false,
-      numberedList: true,
-      onlyOnInstancePage: true
-    },
-    {
-      id: 'party',
-      valueType: 'object',
-      makeLink: true,
-      externalLink: false,
-      sortValues: true,
-      numberedList: true
     },
     {
       id: 'group',
