@@ -2,8 +2,8 @@ export const prefixes = `
   PREFIX bioc: <http://ldf.fi/schema/bioc/>
   PREFIX crm: <http://erlangen-crm.org/current/>
   PREFIX dct: <http://purl.org/dc/terms/>
-  PREFIX foaf: <http://xmlns.com/foaf/0.1/>
   PREFIX frbroo: <http://erlangen-crm.org/efrbroo/>
+  PREFIX foaf: <http://xmlns.com/foaf/0.1/>
   PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
   PREFIX geosparql: <http://www.opengis.net/ont/geosparql#>
   PREFIX gn: <http://www.geonames.org/ontology#>

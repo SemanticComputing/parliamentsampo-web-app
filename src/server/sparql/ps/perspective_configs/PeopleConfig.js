@@ -6,6 +6,7 @@ import { prefixes } from '../sparql_queries/SparqlQueriesPrefixes'
 
 export const peopleConfig = {
   endpoint: {
+    // url: 'http://localhost:3030/semparl/sparql',
     url: 'http://ldf.fi/semparl/sparql',
     prefixes,
     useAuth: true
@@ -98,6 +99,17 @@ export const peopleConfig = {
       predicate: 'bioc:has_occupation',
       type: 'list',
       facetLabelFilter: 'FILTER(LANG(?prefLabel_) = "<LANG>")'
+    },
+    org: {
+      id: 'org',
+      facetValueFilter: '',
+      predicate: 'bioc:bearer_of/crm:P11i_participated_in/semparls:organization',
+      labelPath: 'bioc:bearer_of/crm:P11i_participated_in/semparls:organization/skos:prefLabel',
+      parentProperty: 'rdfs:subClassOf',
+      type: 'hierarchical',
+      facetLabelFilter: `
+        FILTER(LANG(?prefLabel_) = '<LANG>')
+      `
     },
     gender: {
       facetValueFilter: '',
