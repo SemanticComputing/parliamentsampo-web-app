@@ -97,6 +97,7 @@ export const groupPropertiesInstancePage =
       ?id crm:P74_has_current_or_former_residence/^crm:P74_has_current_or_former_residence ?related__id
     }
     ?related__id skos:prefLabel ?related__prefLabel .
+    FILTER NOT EXISTS { ?related__id a bioc:Person }
     FILTER(LANG(?related__prefLabel)='<LANG>')
     BIND(CONCAT("/groups/page/", REPLACE(STR(?related__id), "^.*\\\\/(.+)", "$1")) AS ?related__dataProviderUrl)
   }
@@ -111,7 +112,7 @@ export const groupPropertiesInstancePage =
     ?id sch:image ?image__id ;
       skos:prefLabel ?image__description ;
       skos:prefLabel ?image__title .
-      BIND(URI(CONCAT(REPLACE(STR(?image__id), "https*:", ""), "?width=600")) as ?image__url)
+      BIND(URI(CONCAT(REPLACE(STR(?image__id), "https*:", ""), "?width=400")) as ?image__url)
   }
   UNION
   {

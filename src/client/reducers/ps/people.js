@@ -126,8 +126,8 @@ export const INITIAL_STATE = {
     },
     {
       id: 'home_location',
-      valueType: 'string',
-      makeLink: false,
+      valueType: 'object',
+      makeLink: true,
       externalLink: false,
       sortValues: true,
       numberedList: false

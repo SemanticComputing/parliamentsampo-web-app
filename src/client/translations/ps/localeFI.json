@@ -312,6 +312,10 @@
           "label": "Syntymävuosi",
           "description": "Syntymävuosi"
         },
+        "familyname": {
+          "label": "Sukunimi",
+          "description": "Sukunimet, haku myös alkukirjaimen perusteella"
+        },
         "org": {
           "label": "Organisaatiot",
           "description": "Yritykset ja järjestöt, joissa henkilö on työskennellyt"
@@ -438,6 +442,10 @@
         "born": {
           "label": "Syntyneet",
           "description": "Täällä syntyneet henkilöt"
+        },
+        "resident": {
+          "label": "Asuinpaikka",
+          "description": "Asuinpaikakseen ilmoittaneet henkilöt"
         },
         "deceased": {
           "label": "Kuolleet",
@@ -618,7 +626,7 @@
       "shortDescription": "Hae vaalikausia",
       "longDescription": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Use this perspective to ...  The results can be viewed using the following tabs: </p> <ul class=\"MuiTypography-root MuiTypography-body1\"> <li> <strong>TABLE</STRONG> ...</li> <li> ... </li>  </ul>",
       "instancePage": {
-        "label": "Julkaisu",
+        "label": "Vaalikausi",
         "description": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Ohjeet tähän </p>"
       },
       "properties": {

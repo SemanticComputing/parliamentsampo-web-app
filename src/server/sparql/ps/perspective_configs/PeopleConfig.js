@@ -33,11 +33,21 @@ export const peopleConfig = {
       // skos:prefLabel is the default property for text:query
       textQueryProperty: '',
       type: 'text'
+    }, /**
+    familyname: {
+      id: 'familyname',
+      facetValueFilter: '',
+      predicate: 'xl:prefLabel/semparls:familyName',
+      labelPath: 'xl:prefLabel/semparls:familyName/skos:prefLabel',
+      parentProperty: 'semparls:initial',
+      type: 'hierarchical',
+      facetLabelFilter: 'FILTER(LANG(?prefLabel_) = "<LANG>")'
     },
     home_location: {
       labelPath: 'semparls:home_location',
       type: 'text'
     },
+    */
     dateOfBirthTimespan: {
       facetValueFilter: '',
       sortByAscPredicate: 'crm:P98i_was_born/crm:P4_has_time-span/crm:P81a_begin_of_the_begin',
@@ -62,6 +72,13 @@ export const peopleConfig = {
       startProperty: 'crm:P81a_begin_of_the_begin',
       endProperty: 'crm:P82b_end_of_the_end',
       type: 'timespan'
+    },
+    home_location: {
+      facetValueFilter: '',
+      labelPath: 'crm:P74_has_current_or_former_residence/skos:prefLabel',
+      predicate: 'crm:P74_has_current_or_former_residence',
+      type: 'list',
+      facetLabelFilter: 'FILTER(LANG(?prefLabel_) = "<LANG>")'
     },
     placeOfDeath: {
       facetValueFilter: '',
@@ -106,9 +123,10 @@ export const peopleConfig = {
       predicate: 'bioc:bearer_of/crm:P11i_participated_in/semparls:organization',
       labelPath: 'bioc:bearer_of/crm:P11i_participated_in/semparls:organization/skos:prefLabel',
       parentProperty: 'rdfs:subClassOf',
+      parentPredicate: 'bioc:bearer_of/crm:P11i_participated_in/semparls:organization/rdfs:subClassOf+',
       type: 'hierarchical',
       facetLabelFilter: `
-        FILTER(LANG(?prefLabel_) = '<LANG>')
+        FILTER(LANG(?prefLabel_)='<LANG>')
       `
     },
     gender: {

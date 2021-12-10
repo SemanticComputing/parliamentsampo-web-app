@@ -61,7 +61,11 @@ export const personPropertiesInstancePage =
   }
   UNION
   {
-    ?id crm:P74_has_current_or_former_residence ?home_location
+    ?id crm:P74_has_current_or_former_residence ?home_location__id .
+    ?home_location__id skos:prefLabel ?home_location__prefLabel .
+    FILTER(LANG(?home_location__prefLabel) = "<LANG>")
+    BIND(CONCAT("/places/page/", REPLACE(STR(?home_location__id), "^.*\\\\/(.+)", "$1")) 
+      AS ?home_location__dataProviderUrl)
   }
   UNION
   {
@@ -166,7 +170,7 @@ export const personPropertiesInstancePage =
   {
     SELECT DISTINCT ?id ?group__id ?group__prefLabel ?group__dataProviderUrl WHERE {
       VALUES ?evtclass {  semparls:Career semparls:Affiliation semparls:MunicipalPositionOfTrust semparls:PositionOfTrust semparls:GovernmentalPositionOfTrust }
-      ?id bioc:bearer_of/crm:P11i_participated_in [ a ?evtclass ;
+      ?id (bioc:bearer_of/crm:P11i_participated_in|semparls:has_affiliation) [ a ?evtclass ;
                                                     semparls:organization ?group__id ] .
       ?group__id skos:prefLabel ?group__prefLabel .
       FILTER(LANG(?group__prefLabel) = "<LANG>")
@@ -180,8 +184,8 @@ export const personPropertiesFacetResults =
   BIND (?prefLabel__id as ?prefLabel__prefLabel)
   BIND(CONCAT("/${perspectiveID}/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
   BIND(?id as ?uri__id)
-  BIND(?id as ?uri__dataProviderUrl)
   BIND(?id as ?uri__prefLabel)
+  BIND(?id as ?uri__dataProviderUrl)
 
   {
     ?id semparls:has_party_membership/semparls:party ?party__id .
@@ -223,8 +227,12 @@ export const personPropertiesFacetResults =
   }
   UNION
   {
-    ?id crm:P74_has_current_or_former_residence ?home_location
-  }
+    ?id crm:P74_has_current_or_former_residence ?home_location__id .
+    ?home_location__id skos:prefLabel ?home_location__prefLabel .
+    FILTER(LANG(?home_location__prefLabel) = "<LANG>")
+    BIND(CONCAT("/places/page/", REPLACE(STR(?home_location__id), "^.*\\\\/(.+)", "$1")) 
+      AS ?home_location__dataProviderUrl)
+  }  
   UNION
   {
     ?id crm:P100i_died_in/crm:P7_took_place_at ?placeOfDeath__id .
