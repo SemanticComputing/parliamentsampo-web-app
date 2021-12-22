@@ -1,26 +1,15 @@
 {
-    "portalID": "sampo",
+    "portalID": "ps",
     "rootUrl": "",
     "perspectives": {
         "searchPerspectives": [
-            "perspective1",
-            "perspective2",
-            "perspective3",
-            "perspective4",
-            "fullTextSearch"
+            "speeches"
         ],
         "onlyInstancePages": [
-            "manuscripts",
-            "collections",
-            "works",
-            "expressions",
-            "events",
-            "actors",
-            "places"
         ]
     },
     "localeConfig": {
-        "defaultLocale": "en",
+        "defaultLocale": "fi",
         "readTranslationsFromGoogleSheets": "false",
         "availableLocales": [
             {
@@ -58,7 +47,9 @@
         "paginationToolbarHeight": 37,
         "tableFontSize": "0.8rem",
         "topBar": {
+            "logoTextTransform": "none",
             "showLanguageButton": true,
+            "showSearchField": false,
             "feedbackLink": "https://link.webropolsurveys.com/...",
             "reducedHeight": 44,
             "defaultHeight": 64,
@@ -78,7 +69,7 @@
             ]
         },
         "mainPage": {
-            "bannerImage": "main_page/mmm-banner.jpg",
+            "bannerImage": "main_page/museovirasto.5F9DFF58A0BB75BA9995BC6EE207E415_0_cropped.jpg",
             "bannerBackround": "linear-gradient( rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45) ), url(<BANNER_IMAGE_URL)",
             "bannerMobileHeight": 150,
             "bannerReducedHeight": 220,

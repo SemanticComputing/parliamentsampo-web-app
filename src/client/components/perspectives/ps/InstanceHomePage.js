@@ -130,7 +130,7 @@ class InstanceHomePage extends React.Component {
   getLocalIDFromURL = () => {
     const locationArr = this.props.routeProps.location.pathname.split('/')
     let localID = locationArr.pop()
-    this.props.perspectiveConfig.instancePageTabs.map(tab => {
+    this.props.perspectiveConfig.instancePageTabs.forEach(tab => {
       if (localID === tab.id) {
         localID = locationArr.pop() // pop again if tab id
       }
@@ -142,7 +142,7 @@ class InstanceHomePage extends React.Component {
     const { instanceTableData } = this.props.perspectiveState
     const visibleRows = []
     const instanceClass = instanceTableData.type ? instanceTableData.type.id : ''
-    rows.map(row => {
+    rows.forEach(row => {
       if ((has(row, 'onlyForClass') && row.onlyForClass === instanceClass) ||
         !has(row, 'onlyForClass')) {
         visibleRows.push(row)
