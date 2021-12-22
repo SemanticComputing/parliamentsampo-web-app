@@ -1,56 +1,118 @@
+import portalConfig from '../../configs/portalConfig.json'
 import { combineReducers } from 'redux'
+import { has } from 'lodash'
 import { reducer as toastrReducer } from 'react-redux-toastr'
-// general reducers:
+import { createResultsReducer } from './general/results'
+import { createFacetsReducer } from './general/facets'
+import { createFacetsConstrainSelfReducer } from './general/facetsConstrainSelf'
+import { createFederatedSearchReducer } from './general/federatedSearch'
+import { createFullTextSearchReducer } from './general/fullTextSearch'
 import error from './general/error'
 import options from './general/options'
 import animation from './general/animation'
+import videoPlayer from './general/videoPlayer'
 import leafletMap from './general/leafletMap'
-// portal spefic reducers:
-import fullTextSearch from './ps/fullTextSearch'
-import speeches from './ps/speeches'
-import items from './ps/items'
-import plenarySessions from './ps/plenarySessions'
-import parliamentarySessions from './ps/parliamentarySessions'
-import documents from './ps/documents'
-import interruptions from './ps/interruptions'
-import speechesFacets from './ps/speechesFacets'
-import speechesFacetsConstrainSelf from './ps/speechesFacetsConstrainSelf'
-import people from './ps/people'
-import peopleFacets from './ps/peopleFacets'
-import peopleFacetsConstrainSelf from './ps/peopleFacetsConstrainSelf'
-import districts from './ps/districts'
-import events from './ps/events'
-import groups from './ps/groups'
-import occupations from './ps/occupations'
-import publications from './ps/publications'
-import places from './ps/places'
-import terms from './ps/terms'
+import {
+  resultsInitialState,
+  facetsInitialState,
+  fullTextSearchInitialState,
+  federatedSearchInitialState
+} from './general/initialStates'
 
-const reducer = combineReducers({
-  speeches,
-  speechesFacets,
-  speechesFacetsConstrainSelf,
-  items,
-  plenarySessions,
-  parliamentarySessions,
-  documents,
-  interruptions,
-  people,
-  peopleFacets,
-  peopleFacetsConstrainSelf,
-  districts,
-  events,
-  groups,
-  places,
-  occupations,
-  publications,
-  terms,
+const reducers = {
   leafletMap,
   animation,
+  videoPlayer,
   options,
   error,
-  fullTextSearch,
   toastr: toastrReducer
-})
+}
 
-export default reducer
+// Create portal spefic reducers based on configs:
+const { portalID, perspectives } = portalConfig
+const perspectiveConfig = []
+const perspectiveConfigOnlyInfoPages = []
+for (const perspectiveID of perspectives.searchPerspectives) {
+  const { default: perspective } = await import(`../../configs/${portalID}/search_perspectives/${perspectiveID}.json`)
+  perspectiveConfig.push(perspective)
+}
+for (const perspectiveID of perspectives.onlyInstancePages) {
+  const { default: perspective } = await import(`../../configs/${portalID}/only_instance_pages/${perspectiveID}.json`)
+  perspectiveConfigOnlyInfoPages.push(perspective)
+}
+for (const perspective of perspectiveConfig) {
+  const perspectiveID = perspective.id
+  if (perspective.searchMode && perspective.searchMode === 'federated-search') {
+    const { datasets, feredatedResultsConfig, maps, facets } = perspective
+    for (const facet in facets) {
+      facets[facet].selectionsSet = new Set()
+      facets[facet].isFetching = false
+    }
+    const federatedSearchInitialStateFull = {
+      ...federatedSearchInitialState,
+      ...feredatedResultsConfig,
+      datasets,
+      maps,
+      facets
+    }
+    const federatedSearchReducer = createFederatedSearchReducer(federatedSearchInitialStateFull, new Set(Object.keys(maps)))
+    reducers[perspective.id] = federatedSearchReducer
+  } else if (perspective.searchMode && perspective.searchMode === 'full-text-search') {
+    const { properties } = perspective
+    const fullTextSearchInitialStateFull = {
+      ...fullTextSearchInitialState,
+      properties
+    }
+    const fullTextSearchReducer = createFullTextSearchReducer(fullTextSearchInitialStateFull, perspectiveID)
+    reducers[perspectiveID] = fullTextSearchReducer
+  } else if (perspective.searchMode && perspective.searchMode === 'faceted-search') {
+    const { resultClasses, properties, facets, maps } = perspective
+    const { paginatedResultsConfig, instanceConfig } = resultClasses[perspectiveID]
+    let instancePageResultClasses = {}
+    if (instanceConfig && instanceConfig.instancePageResultClasses) {
+      instancePageResultClasses = instanceConfig.instancePageResultClasses
+    }
+    const resultsInitialStateFull = {
+      ...resultsInitialState,
+      ...paginatedResultsConfig,
+      maps,
+      properties
+    }
+    Object.keys(facets).forEach(key => { facets[key].isFetching = false })
+    const facetsInitialStateFull = {
+      ...facetsInitialState,
+      facets
+    }
+    const resultsReducer = createResultsReducer(
+      resultsInitialStateFull,
+      new Set(Object.keys({ ...resultClasses, ...instancePageResultClasses })))
+    const facetsReducer = createFacetsReducer(facetsInitialStateFull, perspectiveID)
+    const facetsConstrainSelfReducer = createFacetsConstrainSelfReducer(facetsInitialStateFull, perspectiveID)
+    reducers[perspectiveID] = resultsReducer
+    reducers[`${perspectiveID}Facets`] = facetsReducer
+    reducers[`${perspectiveID}FacetsConstrainSelf`] = facetsConstrainSelfReducer
+  } else if (perspective.searchMode && perspective.searchMode === 'dummy-internal' && has(perspective, 'resultClasses')) {
+    const { resultClasses, maps = null } = perspective
+    const resultsInitialStateFull = {
+      ...resultsInitialState,
+      maps
+    }
+    const resultsReducer = createResultsReducer(resultsInitialStateFull, new Set(Object.keys(resultClasses)))
+    reducers[perspectiveID] = resultsReducer
+  }
+}
+
+for (const perspective of perspectiveConfigOnlyInfoPages) {
+  const perspectiveID = perspective.id
+  const { resultClasses, properties } = perspective
+  const resultsInitialStateFull = {
+    ...resultsInitialState,
+    properties
+  }
+  const resultsReducer = createResultsReducer(resultsInitialStateFull, new Set(Object.keys(resultClasses)))
+  reducers[perspectiveID] = resultsReducer
+}
+
+const combinedReducers = combineReducers(reducers)
+
+export default combinedReducers
