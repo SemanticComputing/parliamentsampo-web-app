@@ -17,8 +17,8 @@
     "feedback": "palaute",
     "info": {
       "info": "Info",
-      "blog": "Projektin kotisivu",
-      "blogUrl": "https://seco.cs.aalto.fi/projects/semparl/"
+      "aboutTheProject": "Projektin kotisivu",
+      "aboutTheProjectUrl": "https://seco.cs.aalto.fi/projects/semparl/"
     },
     "searchBarPlaceHolder": "Hae kaikesta sisällöstä",
     "searchBarPlaceHolderShort": "Hae...",

@@ -35,7 +35,7 @@
     "layoutConfig": {
         "colorPalette": {
             "primary": {
-                "main": "#212121"
+                "main": "#343434"
             },
             "secondary": {
                 "main": "#EB1806"
@@ -51,20 +51,16 @@
             "showLanguageButton": true,
             "showSearchField": false,
             "feedbackLink": "https://link.webropolsurveys.com/...",
+            "externalInstructions": true,
             "reducedHeight": 44,
             "defaultHeight": 64,
             "mobileMenuBreakpoint": 1360,
             "infoDropdown": [
                 {
-                    "id": "about",
-                    "translatedText": "aboutThePortal",
-                    "internalLink": "/about"
-                },
-                {
-                    "id": "blog",
+                    "id": "aboutTheProject",
                     "externalLink": true,
-                    "translatedUrl": "blogUrl",
-                    "translatedText": "blog"
+                    "translatedText": "aboutTheProject",
+                    "translatedUrl": "aboutTheProjectUrl"
                 }
             ]
         },

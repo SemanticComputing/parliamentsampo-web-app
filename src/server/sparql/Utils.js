@@ -3,14 +3,8 @@ import { has } from 'lodash'
 
 // import { backendSearchConfig as oldBackendSearchConfig } from './veterans/BackendSearchConfig'
 
-// import { videosConfig } from './veterans/perspective_configs/VideosConfig'
-// import { clipsConfig } from './veterans/perspective_configs/ClipsConfig'
-// import { entitiesConfig } from './veterans/perspective_configs/EntitiesConfig'
-// import { coinsPerspectiveConfig } from './perspective_configs/CoinsPerspectiveConfig'
-
-// import { INITIAL_STATE } from '../../client/reducers/veterans/videosFacets'
-// import { INITIAL_STATE } from '../../client/reducers/veterans/clipsFacets'
-// import { INITIAL_STATE } from '../../client/reducers/veterans/entitiesFacets'
+import { speechesConfig as oldPerspectiveConfig } from './ps/perspective_configs/SpeechesConfig'
+import { INITIAL_STATE } from '../../client/reducers/ps/speechesFacets'
 
 export const createBackendSearchConfig = async () => {
   const portalConfigJSON = await readFile('src/configs/portalConfig.json')
@@ -328,7 +322,7 @@ export const createExtraResultClassesForJSONConfig = async oldBackendSearchConfi
 
 // createExtraResultClassesForJSONConfig(oldBackendSearchConfig)
 
-// mergeFacetConfigs(INITIAL_STATE.facets, entitiesConfig.facets)
+mergeFacetConfigs(INITIAL_STATE.facets, oldPerspectiveConfig.facets)
 
 // console.log(JSON.stringify(INITIAL_STATE.properties))
 

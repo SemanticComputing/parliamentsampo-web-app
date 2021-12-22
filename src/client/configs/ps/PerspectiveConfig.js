@@ -77,7 +77,7 @@ export const perspectiveConfig = [
         id: 'network',
         value: 3,
         icon: <BubbleChartIcon />
-      },
+      }
     ]
   }
 ]
