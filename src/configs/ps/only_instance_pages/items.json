@@ -1,0 +1,77 @@
+{
+  "id": "items",
+  "endpoint": {
+    "url": "https://ldf.fi/semparl/sparql",
+    "useAuth": true,
+    "prefixesFile": "SparqlQueriesPrefixes.js"
+},
+  "sparqlQueriesFile": "SparqlQueriesSpeeches.js",
+  "baseURI": "http://ldf.fi/semparl",
+  "URITemplate": "<BASE_URI>/items/<LOCAL_ID>",
+  "langTag": "fi",
+  "resultClasses": {
+    "items": {
+      "instanceConfig": {
+        "propertiesQueryBlock": "itemPropertiesInstancePage",
+        "instancePageResultClasses": {
+          "instancePageTable": {
+            "tabID": 0,
+            "component": "InstancePageTable",
+            "tabPath": "table",
+            "tabIcon": "CalendarViewDay"
+          }
+        }
+      }
+    }
+  },
+  "properties": [
+    {
+      "id": "prefLabel",
+      "valueType": "object",
+      "makeLink": true,
+      "externalLink": false,
+      "sortValues": true,
+      "numberedList": false
+    },
+    {
+      "id": "plenarySession",
+      "valueType": "object",
+      "makeLink": true,
+      "externalLink": false,
+      "sortValues": true,
+      "numberedList": false
+    },
+    {
+      "id": "diary",
+      "valueType": "object",
+      "makeLink": true,
+      "externalLink": true,
+      "sortValues": false,
+      "numberedList": false
+    },
+    {
+      "id": "document",
+      "valueType": "object",
+      "makeLink": true,
+      "externalLink": false,
+      "sortValues": false,
+      "numberedList": false
+    },
+    {
+      "id": "speech",
+      "valueType": "object",
+      "makeLink": true,
+      "externalLink": false,
+      "sortValues": true,
+      "numberedList": true
+    },
+    {
+      "id": "uri",
+      "valueType": "object",
+      "makeLink": true,
+      "externalLink": true,
+      "sortValues": true,
+      "numberedList": false
+    }
+  ]
+}

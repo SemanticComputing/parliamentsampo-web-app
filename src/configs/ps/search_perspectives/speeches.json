@@ -267,6 +267,9 @@
         }
     ],
     "facets": {
+        "item": {
+            "sortByPredicate": "semparls:item/skos:prefLabel"
+        },
         "contentTextFacet": {
             "containerClass": "one",
             "facetType": "text",

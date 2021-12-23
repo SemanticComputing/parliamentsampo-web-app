@@ -10,7 +10,7 @@
     "URITemplate": "<BASE_URI>/people/<LOCAL_ID>",
     "facetClass": "bioc:Person",
     "langTag": "fi",
-    "frontPageImage": "main_page/events-452x262.jpg",
+    "frontPageImage": "main_page/actors-452x262_2.jpg",
     "searchMode": "faceted-search",
     "defaultActiveFacets": [],
     "defaultTab": "table",
