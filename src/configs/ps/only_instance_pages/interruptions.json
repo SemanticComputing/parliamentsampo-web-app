@@ -1,0 +1,69 @@
+{
+  "id": "interruptions",
+  "endpoint": {
+    "url": "https://ldf.fi/semparl/sparql",
+    "useAuth": true,
+    "prefixesFile": "SparqlQueriesPrefixes.js"
+},
+  "sparqlQueriesFile": "SparqlQueriesSpeeches.js",
+  "baseURI": "http://ldf.fi/semparl",
+  "URITemplate": "<BASE_URI>/speeches/<LOCAL_ID>",
+  "langTag": "fi",
+  "resultClasses": {
+    "interruptions": {
+      "instanceConfig": {
+        "propertiesQueryBlock": "interruptionPropertiesInstancePage",
+        "instancePageResultClasses": {
+          "instancePageTable": {
+            "tabID": 0,
+            "component": "InstancePageTable",
+            "tabPath": "table",
+            "tabIcon": "CalendarViewDay"
+          }
+        }
+      }
+    }
+  },
+  "properties": [
+    {
+      "id": "prefLabel",
+      "valueType": "object",
+      "makeLink": false,
+      "externalLink": false,
+      "sortValues": true,
+      "numberedList": false
+    },
+    {
+      "id": "interrupter",
+      "valueType": "string",
+      "makeLink": false,
+      "externalLink": false,
+      "sortValues": false,
+      "numberedList": false
+    },
+    {
+      "id": "speaker",
+      "valueType": "object",
+      "makeLink": true,
+      "externalLink": false,
+      "sortValues": false,
+      "numberedList": false
+    },
+    {
+      "id": "content",
+      "valueType": "string",
+      "makeLink": false,
+      "externalLink": false,
+      "sortValues": false,
+      "numberedList": false
+    },
+    {
+      "id": "uri",
+      "valueType": "object",
+      "makeLink": true,
+      "externalLink": true,
+      "sortValues": true,
+      "numberedList": false
+    }
+  ]
+}

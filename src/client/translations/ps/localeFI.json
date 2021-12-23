@@ -53,8 +53,8 @@
   },
   "tabs": {
     "table": "taulukko",
-    "personEvents": "tapahtumat",
-    "personSpeeches": "puheenvuorot",
+    "events": "tapahtumat",
+    "speeches": "puheenvuorot",
     "network": "verkosto",
     "by_age": "ikäjakauma",
     "export": "SPARQL-kysely",
@@ -249,8 +249,8 @@
           "description": "Vaihtoehtoinen nimi"
         },
         "image": {
-          "label": "Kuvatiedosto",
-          "description": "Kuvatiedosto"
+          "label": "Kuva",
+          "description": "Kuva"
         },
         "extraInfo": {
           "label": "Lisätietoja",
@@ -471,9 +471,9 @@
     },
     "publications": {
       "label": "Julkaisut",
-      "facetResultsType": "julkaisu",
-      "shortDescription": "Hae julkaisuja",
-      "longDescription": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Use this perspective to ...  The results can be viewed using the following tabs: </p> <ul class=\"MuiTypography-root MuiTypography-body1\"> <li> <strong>TABLE</STRONG> ...</li> <li> ... </li>  </ul>",
+      "facetResultsType": "",
+      "shortDescription": "",
+      "longDescription": "",
       "instancePage": {
         "label": "Julkaisu",
         "description": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Ohjeet tähän </p>"
@@ -561,11 +561,11 @@
     },
     "groups": {
       "label": "Ryhmät / Organisaatiot",
-      "facetResultsType": "ryhmää",
-      "shortDescription": "Hae ryhmiä",
-      "longDescription": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Use this perspective to ...  The results can be viewed using the following tabs: </p> <ul class=\"MuiTypography-root MuiTypography-body1\"> <li> <strong>TABLE</STRONG> ...</li> <li> ... </li>  </ul>",
+      "facetResultsType": "",
+      "shortDescription": "",
+      "longDescription": "",
       "instancePage": {
-        "label": "Ryhmä / Organisaatio",
+        "label": "Ryhmä / organisaatio",
         "description": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Ohjeet tähän </p>"
       },
       "properties": {
@@ -587,8 +587,8 @@
           "description": "Tapahtuman ajankohta"
         },
         "image": {
-          "label": "Kuvatiedosto",
-          "description": "Kuvatiedosto"
+          "label": "Kuva",
+          "description": "Kuva"
         },
         "type": {
           "label": "Tyyppi",

@@ -1,0 +1,100 @@
+{
+  "id": "terms",
+  "endpoint": {
+    "url": "https://ldf.fi/semparl/sparql",
+    "useAuth": true,
+    "prefixesFile": "SparqlQueriesPrefixes.js"
+  },
+  "sparqlQueriesFile": "SparqlQueriesTerms.js",
+  "baseURI": "http://ldf.fi/semparl",
+  "URITemplate": "<BASE_URI>/times/electoral-terms/<LOCAL_ID>",
+  "langTag": "fi",
+  "resultClasses": {
+    "terms": {
+      "instanceConfig": {
+        "propertiesQueryBlock": "termPropertiesInstancePage",
+        "instancePageResultClasses": {
+          "instancePageTable": {
+            "tabID": 0,
+            "component": "InstancePageTable",
+            "tabPath": "table",
+            "tabIcon": "CalendarViewDay"
+          }
+        }
+      }
+    }
+  },
+  "properties": [
+    {
+      "id": "prefLabel",
+      "valueType": "object",
+      "makeLink": true,
+      "externalLink": false,
+      "sortValues": true,
+      "numberedList": false,
+      "minWidth": 170
+    },
+    {
+      "id": "timespan",
+      "valueType": "string",
+      "makeLink": false,
+      "externalLink": false,
+      "sortValues": true,
+      "numberedList": false,
+      "minWidth": 170
+    },
+    {
+      "id": "group",
+      "valueType": "object",
+      "makeLink": true,
+      "externalLink": false,
+      "sortValues": true,
+      "numberedList": true,
+      "onlyOnInstancePage": true
+    },
+    {
+      "id": "member",
+      "valueType": "object",
+      "makeLink": true,
+      "externalLink": false,
+      "sortValues": true,
+      "numberedList": true,
+      "onlyOnInstancePage": true
+    },
+    {
+      "id": "session",
+      "valueType": "object",
+      "makeLink": false,
+      "externalLink": false,
+      "sortValues": true,
+      "numberedList": false,
+      "onlyOnInstancePage": true
+    },
+    {
+      "id": "related",
+      "valueType": "object",
+      "makeLink": true,
+      "externalLink": false,
+      "sortValues": false,
+      "numberedList": true,
+      "onlyOnInstancePage": true
+    },
+    {
+      "id": "exlink",
+      "valueType": "object",
+      "makeLink": true,
+      "externalLink": true,
+      "sortValues": true,
+      "numberedList": true,
+      "onlyOnInstancePage": true
+    },
+    {
+      "id": "uri",
+      "valueType": "object",
+      "makeLink": true,
+      "externalLink": true,
+      "sortValues": true,
+      "numberedList": false
+    }
+  ]
+}

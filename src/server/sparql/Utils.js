@@ -3,8 +3,8 @@ import { has } from 'lodash'
 
 // import { backendSearchConfig as oldBackendSearchConfig } from './veterans/BackendSearchConfig'
 
-import { speechesConfig as oldPerspectiveConfig } from './ps/perspective_configs/SpeechesConfig'
-import { INITIAL_STATE } from '../../client/reducers/ps/speechesFacets'
+// import { speechesConfig as oldPerspectiveConfig } from './ps/perspective_configs/SpeechesConfig'
+// import { INITIAL_STATE } from '../../client/reducers/ps/speechesFacets'
 
 export const createBackendSearchConfig = async () => {
   const portalConfigJSON = await readFile('src/configs/portalConfig.json')
@@ -322,7 +322,7 @@ export const createExtraResultClassesForJSONConfig = async oldBackendSearchConfi
 
 // createExtraResultClassesForJSONConfig(oldBackendSearchConfig)
 
-mergeFacetConfigs(INITIAL_STATE.facets, oldPerspectiveConfig.facets)
+// mergeFacetConfigs(INITIAL_STATE.facets, oldPerspectiveConfig.facets)
 
 // console.log(JSON.stringify(INITIAL_STATE.properties))
 

@@ -7,7 +7,18 @@
             "people"
         ],
         "onlyInstancePages": [
-            "items"
+            "items",
+            "terms",
+            "districts",
+            "documents",
+            "events",
+            "groups",
+            "interruptions",
+            "occupations",
+            "parliamentarySessions",
+            "plenarySessions",
+            "places",
+            "publications"
         ]
     },
     "localeConfig": {

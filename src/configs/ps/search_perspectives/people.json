@@ -23,11 +23,11 @@
                 "tabPath": "table",
                 "tabIcon": "CalendarViewDay",
                 "propertiesQueryBlock": "personPropertiesFacetResults",
-                "pagesize": 25,
+                "pagesize": 10,
                 "paginatedResultsAlwaysExpandRows": true,
                 "paginatedResultsRowContentMaxHeight": 150,
-                "sortBy": null,
-                "sortDirection": null
+                "sortBy": "prefLabel",
+                "sortDirection": "asc"
             },
             "instanceConfig": {
                 "propertiesQueryBlock": "personPropertiesInstancePage",
@@ -37,6 +37,76 @@
                         "component": "InstancePageTable",
                         "tabPath": "table",
                         "tabIcon": "CalendarViewDay"
+                    },
+                    "personInstancePageEvents": {
+                        "tabID": 1,
+                        "tabPath": "events",
+                        "tabIcon": "CalendarToday",
+                        "component": "InstancePageTable",
+                        "fetchResultsWhenMounted": true,
+                        "sparqlQuery": "personEventsQuery",
+                        "properties": [
+                            {
+                                "id": "prefLabel",
+                                "valueType": "object",
+                                "makeLink": false,
+                                "externalLink": false,
+                                "sortValues": false,
+                                "numberedList": false
+                            },
+                            {
+                                "id": "event",
+                                "valueType": "object",
+                                "makeLink": false,
+                                "externalLink": false,
+                                "sortValues": false,
+                                "numberedList": true,
+                                "expandedOnInstancePage": true
+                            }
+                        ]
+                    },
+                    "personInstancePageSpeeches": {
+                        "tabID": 2,
+                        "tabPath": "speeches",
+                        "tabIcon": "KeyboardVoice",
+                        "component": "InstancePageTable",
+                        "fetchResultsWhenMounted": true,
+                        "sparqlQuery": "personSpeechesQuery",
+                        "properties": [
+                            {
+                                "id": "prefLabel",
+                                "valueType": "object",
+                                "makeLink": false,
+                                "externalLink": false,
+                                "sortValues": false,
+                                "numberedList": false
+                            },
+                            {
+                                "id": "event",
+                                "valueType": "object",
+                                "makeLink": false,
+                                "externalLink": false,
+                                "sortValues": false,
+                                "numberedList": true,
+                                "expandedOnInstancePage": true
+                            }
+                        ]
+                    },
+                    "personInstancePageNetwork": {
+                        "tabID": 3,
+                        "tabPath": "network",
+                        "tabIcon": "BubbleChart",
+                        "component": "Network",
+                        "pageType": "instancePage",
+                        "limit": 50,
+                        "optimize": 1.0,
+                        "style": "cytoscapeStyle",
+                        "layout": "coseLayout",
+                        "preprocess": "preprocessPeopleNetwork",
+                        "sparqlQuery": "networkLinkQuery",
+                        "sparqlQueryNodes": "networkNodeQuery",
+                        "useNetworkAPI": true,
+                        "facetClass": "people"    
                     }
                 }
             }
@@ -54,7 +124,7 @@
             "xaxisType": "category",
             "xaxisTickAmount": 20,
             "yaxisTitle": "Henkilöiden lukumäärä",
-            "tabPath": "by_year",
+            "tabPath": "by_age",
             "tabIcon": "ShowChart",
             "sparqlQuery": "ageQuery",
             "facetClass": "people",
@@ -74,8 +144,7 @@
             "externalLink": true,
             "sortValues": false,
             "numberedList": false,
-            "minWidth": 120,
-            "hideHeader": true
+            "hideHeader": false
         },
         {
             "id": "prefLabel",
@@ -83,7 +152,8 @@
             "makeLink": true,
             "externalLink": false,
             "sortValues": true,
-            "numberedList": false
+            "numberedList": false,
+            "minWidth": 120
         },
         {
             "id": "altLabel",
