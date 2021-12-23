@@ -1,0 +1,392 @@
+{
+    "id": "people",
+    "endpoint": {
+        "url": "https://ldf.fi/semparl/sparql",
+        "useAuth": true,
+        "prefixesFile": "SparqlQueriesPrefixes.js"
+    },
+    "sparqlQueriesFile": "SparqlQueriesPeople.js",
+    "baseURI": "http://ldf.fi/semparl",
+    "URITemplate": "<BASE_URI>/people/<LOCAL_ID>",
+    "facetClass": "bioc:Person",
+    "langTag": "fi",
+    "frontPageImage": "main_page/events-452x262.jpg",
+    "searchMode": "faceted-search",
+    "defaultActiveFacets": [],
+    "defaultTab": "table",
+    "defaultInstancePageTab": "table",
+    "resultClasses": {
+        "people": {
+            "paginatedResultsConfig": {
+                "tabID": 0,
+                "component": "ResultTable",
+                "tabPath": "table",
+                "tabIcon": "CalendarViewDay",
+                "propertiesQueryBlock": "personPropertiesFacetResults",
+                "pagesize": 25,
+                "paginatedResultsAlwaysExpandRows": true,
+                "paginatedResultsRowContentMaxHeight": 150,
+                "sortBy": null,
+                "sortDirection": null
+            },
+            "instanceConfig": {
+                "propertiesQueryBlock": "personPropertiesInstancePage",
+                "instancePageResultClasses": {
+                    "instancePageTable": {
+                        "tabID": 0,
+                        "component": "InstancePageTable",
+                        "tabPath": "table",
+                        "tabIcon": "CalendarViewDay"
+                    }
+                }
+            }
+        },
+        "personAges": {
+            "tabID": 1,
+            "component": "ApexCharts",
+            "createChartData": "createMultipleLineChartData",
+            "stroke": {
+                "curve": "straight",
+                "width": 2
+            },
+            "title": "Edustajien iät kauden alkaessa ja loppuessa",
+            "xaxisTitle": "Ikä",
+            "xaxisType": "category",
+            "xaxisTickAmount": 20,
+            "yaxisTitle": "Henkilöiden lukumäärä",
+            "tabPath": "by_year",
+            "tabIcon": "ShowChart",
+            "sparqlQuery": "ageQuery",
+            "facetClass": "people",
+            "filterTarget": "person__id",
+            "resultMapper": "mapMultipleLineChart",
+            "resultMapperConfig": {
+                "fillEmptyValues": true
+            }
+        }
+    },
+    "properties": [
+        {
+            "id": "image",
+            "valueType": "image",
+            "previewImageHeight": 160,
+            "makeLink": true,
+            "externalLink": true,
+            "sortValues": false,
+            "numberedList": false,
+            "minWidth": 120,
+            "hideHeader": true
+        },
+        {
+            "id": "prefLabel",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false
+        },
+        {
+            "id": "altLabel",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "onlyOnInstancePage": true
+        },
+        {
+            "id": "representativePeriodTimespan",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false,
+            "minWidth": 160
+        },
+        {
+            "id": "electoralTerm",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": true
+        },
+        {
+            "id": "parliamentaryGroup",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": true,
+            "onlyOnInstancePage": true
+        },
+        {
+            "id": "party",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": true
+        },
+        {
+            "id": "education",
+            "valueType": "object",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "onlyOnInstancePage": true
+        },
+        {
+            "id": "occupation",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false
+        },
+        {
+            "id": "gender",
+            "valueType": "object",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false
+        },
+        {
+            "id": "dateOfBirthTimespan",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false
+        },
+        {
+            "id": "placeOfBirth",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false
+        },
+        {
+            "id": "home_location",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false
+        },
+        {
+            "id": "dateOfDeathTimespan",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false
+        },
+        {
+            "id": "placeOfDeath",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false
+        },
+        {
+            "id": "extraInfo",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "onlyOnInstancePage": true
+        },
+        {
+            "id": "district",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": true,
+            "onlyOnInstancePage": true
+        },
+        {
+            "id": "parliament",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": true,
+            "onlyOnInstancePage": true
+        },
+        {
+            "id": "group",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": true,
+            "onlyOnInstancePage": true
+        },
+        {
+            "id": "affiliation",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": true,
+            "onlyOnInstancePage": true
+        },
+        {
+            "id": "relative",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": true,
+            "onlyOnInstancePage": true
+        },
+        {
+            "id": "exlink",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": true,
+            "sortValues": true,
+            "numberedList": false,
+            "onlyOnInstancePage": true
+        },
+        {
+            "id": "datasource",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": true,
+            "sortValues": true,
+            "numberedList": false,
+            "onlyOnInstancePage": true
+        },
+        {
+            "id": "uri",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": true,
+            "sortValues": true,
+            "numberedList": false,
+            "onlyOnInstancePage": true
+        }
+    ],
+    "facets": {
+        "prefLabel": {
+            "containerClass": "one",
+            "facetType": "text",
+            "filterType": "textFilter",
+            "sortByPredicate": "semparls:sortingLabel"
+        },
+        "representativePeriodTimespan": {
+            "containerClass": "four",
+            "endProperty": "crm:P82b_end_of_the_end",
+            "facetType": "timespan",
+            "filterType": "timespanFilter",
+            "max": null,
+            "min": null,
+            "predicate": "semparls:representative_period",
+            "sortByAscPredicate": "semparls:representative_period/crm:P81a_begin_of_the_begin",
+            "sortByDescPredicate": "semparls:representative_period/crm:P82b_end_of_the_end",
+            "startProperty": "crm:P81a_begin_of_the_begin"
+        },
+        "electoralTerm": {
+            "containerClass": "ten",
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "pieChartButton": true,
+            "predicate": "bioc:bearer_of/crm:P11i_participated_in ?evt . ?evt a semparls:ParliamentMembership ; crm:P10_falls_within",
+            "searchField": true,
+            "sortButton": true,
+            "sortBy": "prefLabel",
+            "sortByPredicate": "bioc:bearer_of/crm:P11i_participated_in/crm:P10_falls_within/skos:prefLabel",
+            "sortDirection": "asc"
+        },
+        "party": {
+            "containerClass": "ten",
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "pieChartButton": true,
+            "predicate": "semparls:has_party_membership/semparls:party",
+            "sortButton": true,
+            "sortBy": "instanceCount",
+            "sortByPredicate": "semparls:has_party_membership/semparls:party/skos:prefLabel",
+            "sortDirection": "desc"
+        },
+        "dateOfBirthTimespan": {
+            "containerClass": "four",
+            "endProperty": "crm:P82b_end_of_the_end",
+            "facetType": "timespan",
+            "filterType": "timespanFilter",
+            "max": null,
+            "min": null,
+            "predicate": "crm:P98i_was_born/crm:P4_has_time-span",
+            "sortByAscPredicate": "crm:P98i_was_born/crm:P4_has_time-span/crm:P81a_begin_of_the_begin",
+            "sortByDescPredicate": "crm:P98i_was_born/crm:P4_has_time-span/crm:P82b_end_of_the_end",
+            "startProperty": "crm:P81a_begin_of_the_begin"
+        },
+        "placeOfBirth": {
+            "containerClass": "ten",
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "crm:P98i_was_born/crm:P7_took_place_at",
+            "searchField": true,
+            "sortButton": true,
+            "sortBy": "instanceCount",
+            "sortByPredicate": "crm:P98i_was_born/crm:P7_took_place_at/skos:prefLabel",
+            "sortDirection": "desc"
+        },
+        "gender": {
+            "containerClass": "three",
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "pieChartButton": true,
+            "predicate": "bioc:has_gender",
+            "sortButton": true,
+            "sortBy": "instanceCount",
+            "sortByPredicate": "bioc:has_gender/skos:prefLabel",
+            "sortDirection": "desc"
+        },
+        "occupation": {
+            "containerClass": "ten",
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "pieChartButton": true,
+            "predicate": "bioc:has_occupation",
+            "searchField": true,
+            "sortButton": true,
+            "sortBy": "instanceCount",
+            "sortByPredicate": "bioc:has_occupation/skos:prefLabel",
+            "sortDirection": "desc"
+        },
+        "org": {
+            "containerClass": "ten",
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_)='<LANG>')",
+            "facetType": "hierarchical",
+            "filterType": "uriFilter",
+            "parentProperty": "rdfs:subClassOf",
+            "predicate": "bioc:bearer_of/crm:P11i_participated_in/semparls:organization",
+            "searchField": true,
+            "sortByPredicate": "bioc:bearer_of/crm:P11i_participated_in/semparls:organization/skos:prefLabel"
+        },
+        "datasource": {
+            "containerClass": "three",
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "dct:source/a",
+            "sortBy": "instanceCount",
+            "sortByPredicate": "dct:source/a/skos:prefLabel",
+            "sortDirection": "desc"
+        }
+    }
+}

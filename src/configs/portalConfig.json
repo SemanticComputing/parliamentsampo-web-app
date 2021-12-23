@@ -3,7 +3,8 @@
     "rootUrl": "",
     "perspectives": {
         "searchPerspectives": [
-            "speeches"
+            "speeches",
+            "people"
         ],
         "onlyInstancePages": [
         ]
