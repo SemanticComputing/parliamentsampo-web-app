@@ -105,11 +105,14 @@ export const getAllResults = ({
   fromID = null,
   toID = null
 }) => {
-  let perspectiveConfig
-  if (perspectiveID) {
-    perspectiveConfig = backendSearchConfig[perspectiveID]
-  } else {
-    perspectiveConfig = backendSearchConfig[facetClass]
+  const finalPerspectiveID = perspectiveID || facetClass
+  const perspectiveConfig = backendSearchConfig[finalPerspectiveID]
+  if (perspectiveConfig === undefined) {
+    console.log(`Error: config not found for perspective "${finalPerspectiveID}"`)
+    return Promise.resolve({
+      data: null,
+      sparqlQuery: ''
+    })
   }
   const {
     endpoint,
@@ -118,6 +121,13 @@ export const getAllResults = ({
     langTagSecondary = null
   } = perspectiveConfig
   const resultClassConfig = perspectiveConfig.resultClasses[resultClass]
+  if (resultClassConfig === undefined) {
+    console.log(`Error: result class "${resultClass}" not defined for perspective "${finalPerspectiveID}"`)
+    return Promise.resolve({
+      data: null,
+      sparqlQuery: ''
+    })
+  }
   const {
     sparqlQuery,
     sparqlQueryNodes = null,

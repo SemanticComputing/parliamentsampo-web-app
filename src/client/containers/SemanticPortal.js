@@ -64,7 +64,8 @@ const {
   portalID,
   rootUrl,
   perspectives,
-  layoutConfig
+  layoutConfig,
+  knowledgeGraphMetadataConfig
 } = portalConfig
 const perspectiveConfig = await createPerspectiveConfig({
   portalID,
@@ -627,31 +628,36 @@ const SemanticPortal = props => {
 
           />
           {/* create routes for info buttons */}
-          <Route
-            path={`${rootUrlWithLang}/about`}
-            render={() =>
-              <div className={classNames(classes.mainContainer, classes.textPageContainer)}>
-                <TextPage>
-                  {intl.getHTML('aboutThePortalPartOne')}
-                  <KnowledgeGraphMetadataTable
-                    portalConfig={portalConfig}
-                    layoutConfig={layoutConfig}
-                    perspectiveID='perspective1'
-                    resultClass='perspective1KnowledgeGraphMetadata'
-                    fetchKnowledgeGraphMetadata={props.fetchKnowledgeGraphMetadata}
-                    knowledgeGraphMetadata={props.perspective1.knowledgeGraphMetadata}
-                  />
-                  {intl.getHTML('aboutThePortalPartTwo')}
-                </TextPage>
-              </div>}
-          />
-          <Route
-            path={`${rootUrlWithLang}/instructions`}
-            render={() =>
-              <div className={classNames(classes.mainContainer, classes.textPageContainer)}>
-                <TextPage>{intl.getHTML('instructions')}</TextPage>
-              </div>}
-          />
+          {!layoutConfig.topBar.externalAboutPage &&
+            <Route
+              path={`${rootUrlWithLang}/about`}
+              render={() =>
+                <div className={classNames(classes.mainContainer, classes.textPageContainer)}>
+                  <TextPage>
+                    {intl.getHTML('aboutThePortalPartOne')}
+                    {knowledgeGraphMetadataConfig.showTable &&
+                      <KnowledgeGraphMetadataTable
+                        portalConfig={portalConfig}
+                        layoutConfig={layoutConfig}
+                        perspectiveID={knowledgeGraphMetadataConfig.perspective}
+                        resultClass='knowledgeGraphMetadata'
+                        fetchKnowledgeGraphMetadata={props.fetchKnowledgeGraphMetadata}
+                        knowledgeGraphMetadata={props[knowledgeGraphMetadataConfig.perspective]
+                          ? props[knowledgeGraphMetadataConfig.perspective].knowledgeGraphMetadata
+                          : null}
+                      />}
+                    {intl.getHTML('aboutThePortalPartTwo')}
+                  </TextPage>
+                </div>}
+            />}
+          {!layoutConfig.topBar.externalInstructions &&
+            <Route
+              path={`${rootUrlWithLang}/instructions`}
+              render={() =>
+                <div className={classNames(classes.mainContainer, classes.textPageContainer)}>
+                  <TextPage>{intl.getHTML('instructions')}</TextPage>
+                </div>}
+            />}
         </>
       </div>
     </MuiPickersUtilsProvider>
@@ -663,8 +669,9 @@ const mapStateToProps = state => {
   perspectiveConfig.forEach(perspective => {
     const { id, searchMode } = perspective
     if (searchMode && searchMode === 'federated-search') {
-      const { clientFSResults, clientFSFacetValues } = filterResults(state[id])
-      stateToProps.clientFSState = state[id]
+      const perspectiveState = state[id]
+      const { clientFSResults, clientFSFacetValues } = filterResults(perspectiveState)
+      stateToProps.clientFSState = perspectiveState
       stateToProps.clientFSResults = clientFSResults
       stateToProps.clientFSFacetValues = clientFSFacetValues
     } else {

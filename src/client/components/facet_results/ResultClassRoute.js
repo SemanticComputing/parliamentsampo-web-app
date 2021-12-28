@@ -167,13 +167,15 @@ const ResultClassRoute = props => {
         infoHeaderExpanded: perspectiveState.facetedSearchHeaderExpanded,
         layoutConfig: props.layoutConfig
       }
-      if (facetID) {
-        leafletProps = {
-          ...leafletProps,
-          facetUpdateID: facetState.facetUpdateID,
-          facet: facetState.facets[facetID],
-          facetID,
-          updateFacetOption: props.updateFacetOption
+      if (pageType === 'facetResults') {
+        leafletProps.facetUpdateID = facetState.facetUpdateID
+        if (facetID) {
+          leafletProps = {
+            ...leafletProps,
+            facet: facetState.facets[facetID],
+            facetID,
+            updateFacetOption: props.updateFacetOption
+          }
         }
       }
       if (pageType === 'instancePage') {
@@ -266,7 +268,6 @@ const ResultClassRoute = props => {
         facetClass,
         rawData: perspectiveState.results,
         rawDataUpdateID: perspectiveState.resultUpdateID,
-        facetUpdateID: facetState.facetUpdateID,
         fetching: perspectiveState.fetching,
         fetchData: props.fetchResults,
         createChartData: props.apexChartsConfig[createChartData],
@@ -281,6 +282,12 @@ const ResultClassRoute = props => {
         layoutConfig: props.layoutConfig,
         doNotRenderOnMount,
         dropdownForResultClasses
+      }
+      if (pageType === 'facetResults') {
+        apexProps.facetUpdateID = facetState.facetUpdateID
+      }
+      if (pageType === 'instancePage') {
+        apexProps.uri = perspectiveState.instanceTableData.id
       }
       if (dropdownForResultClasses && has(resultClassConfig, 'resultClasses')) {
         apexProps.resultClass = resultClassConfig.resultClasses[0]
@@ -314,7 +321,8 @@ const ResultClassRoute = props => {
         limit,
         optimize,
         style,
-        layout,
+        fitLayout = false,
+        layout = null,
         preprocess
       } = resultClassConfig
       let networkProps = {
@@ -331,8 +339,11 @@ const ResultClassRoute = props => {
         limit,
         optimize,
         style: networkConfig[style],
-        layout: networkConfig[layout],
+        fitLayout,
         preprocess: networkConfig[preprocess]
+      }
+      if (layout) {
+        networkProps.layout = networkConfig[layout]
       }
       if (pageType === 'facetResults') {
         networkProps = {
