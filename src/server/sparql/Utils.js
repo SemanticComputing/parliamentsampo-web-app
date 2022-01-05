@@ -3,8 +3,8 @@ import { has } from 'lodash'
 
 // import { backendSearchConfig as oldBackendSearchConfig } from './veterans/BackendSearchConfig'
 
-// import { speechesConfig as oldPerspectiveConfig } from './ps/perspective_configs/SpeechesConfig'
-// import { INITIAL_STATE } from '../../client/reducers/ps/speechesFacets'
+// import { battlesPerspectiveConfig as oldPerspectiveConfig } from './sotasurmat/perspective_configs/BattlesPerspectiveConfig'
+// import { INITIAL_STATE } from '../../client/reducers/sotasurmat/battlesFacets'
 
 export const createBackendSearchConfig = async () => {
   const portalConfigJSON = await readFile('src/configs/portalConfig.json')
@@ -49,10 +49,24 @@ export const createBackendSearchConfig = async () => {
         }
       }
       // handle other resultClasses
+      let extraResultClasses = {}
       for (const resultClass in perspectiveConfig.resultClasses) {
         if (resultClass === perspectiveID) { continue }
         const resultClassConfig = perspectiveConfig.resultClasses[resultClass]
         processResultClassConfig(resultClassConfig, sparqlQueries, resultMappers)
+        if (resultClassConfig.resultClasses) {
+          for (const extraResultClass in resultClassConfig.resultClasses) {
+            processResultClassConfig(resultClassConfig.resultClasses[extraResultClass], sparqlQueries, resultMappers)
+          }
+          extraResultClasses = {
+            ...extraResultClasses,
+            ...resultClassConfig.resultClasses
+          }
+        }
+      }
+      perspectiveConfig.resultClasses = {
+        ...perspectiveConfig.resultClasses,
+        ...extraResultClasses
       }
       // merge facet results and instance page result classes
       if (hasInstancePageResultClasses) {
@@ -155,6 +169,9 @@ export const mergeFacetConfigs = (clientFacets, serverFacets) => {
     if (serverFacet.labelPath && serverFacet.labelPath !== '') {
       serverFacet.labelPath = serverFacet.labelPath.replace(/\s+/g, ' ').trim()
     }
+    if (serverFacet.orderByPattern && serverFacet.orderByPattern !== '') {
+      serverFacet.orderByPattern = serverFacet.orderByPattern.replace(/\s+/g, ' ').trim()
+    }
     if (serverFacet.textQueryPredicate && serverFacet.textQueryPredicate !== '') {
       serverFacet.textQueryPredicate = serverFacet.textQueryPredicate.replace(/\s+/g, ' ').trim()
     }
@@ -183,6 +200,9 @@ export const mergeFacetConfigs = (clientFacets, serverFacets) => {
     // labelPath --> sortByPredicate
     if (serverFacet.labelPath) {
       mergedFacet.sortByPredicate = serverFacet.labelPath
+    }
+    if (serverFacet.orderByPattern) {
+      mergedFacet.sortByPattern = serverFacet.orderByPattern
     }
 
     if (serverFacet.type === 'text') {
@@ -321,11 +341,4 @@ export const createExtraResultClassesForJSONConfig = async oldBackendSearchConfi
 }
 
 // createExtraResultClassesForJSONConfig(oldBackendSearchConfig)
-
 // mergeFacetConfigs(INITIAL_STATE.facets, oldPerspectiveConfig.facets)
-
-// console.log(JSON.stringify(INITIAL_STATE.properties))
-
-// "tabID": 0,
-// "tabPath": "",
-// "tabIcon": "",

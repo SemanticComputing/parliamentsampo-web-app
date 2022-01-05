@@ -168,9 +168,9 @@ export const arrayToObject = ({ array, keyField }) =>
     return obj
   }, {})
 
-export const generateLabelForMissingValue = ({ facetClass, facetID }) => {
+export const generateLabelForMissingValue = ({ perspective, property }) => {
   // Check if there is a translated label for missing value, or use defaults
-  return intl.get(`perspectives.${facetClass}.properties.${facetID}.missingValueLabel`) ||
+  return intl.get(`perspectives.${perspective}.properties.${property}.missingValueLabel`) ||
    intl.get('facetBar.defaultMissingValueLabel') || 'Unknown'
 }
 
@@ -199,16 +199,22 @@ export const createURIfromLocalID = ({ localID, baseURI, URITemplate }) => {
 
 export const processPortalConfig = async portalConfig => {
   const { layoutConfig, mapboxConfig } = portalConfig
-  const { bannerImage, bannerBackround } = layoutConfig.mainPage
-  const { default: bannerImageURL } = await import(/* webpackMode: "eager" */ `../img/${bannerImage}`)
+  if (layoutConfig.mainPage) {
+    const { bannerImage, bannerBackround } = layoutConfig.mainPage
+    const { default: bannerImageURL } = await import(/* webpackMode: "eager" */ `../img/${bannerImage}`)
+    layoutConfig.mainPage.bannerBackround = bannerBackround.replace('<BANNER_IMAGE_URL', bannerImageURL)
+  }
   const mapboxAccessToken = process.env.MAPBOX_ACCESS_TOKEN
   if (mapboxConfig && mapboxAccessToken) {
     mapboxConfig.mapboxAccessToken = mapboxAccessToken
   }
-  layoutConfig.mainPage.bannerBackround = bannerBackround.replace('<BANNER_IMAGE_URL', bannerImageURL)
   if (layoutConfig.topBar.logoImage) {
     const { default: image } = await import(/* webpackMode: "eager" */ `../img/${layoutConfig.topBar.logoImage}`)
     layoutConfig.topBar.logoImage = image
+  }
+  if (layoutConfig.topBar.logoImageSecondary) {
+    const { default: image } = await import(/* webpackMode: "eager" */ `../img/${layoutConfig.topBar.logoImageSecondary}`)
+    layoutConfig.topBar.logoImageSecondary = image
   }
 }
 

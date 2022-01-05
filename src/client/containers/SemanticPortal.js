@@ -99,12 +99,9 @@ const Footer = lazy(() => import(`../components/perspectives/${portalID}/Footer`
 
 const useStyles = makeStyles(theme => ({
   root: {
-    /* Background color of the app.
-       In order to use both 'auto' and '100%' heights, bg-color
-       needs to be defined also in index.html (for #app and #root elements)
-    */
     backgroundColor: '#bdbdbd',
     overflowX: 'hidden',
+    minHeight: '100%',
     [theme.breakpoints.up(layoutConfig.hundredPercentHeightBreakPoint)]: {
       overflow: 'hidden',
       height: '100%'
@@ -357,11 +354,12 @@ const SemanticPortal = props => {
                             <Grid item xs={12} md={3} className={classes.facetBarContainer}>
                               <FacetBar
                                 portalConfig={portalConfig}
+                                perspectiveConfig={perspective}
                                 layoutConfig={layoutConfig}
                                 facetedSearchMode='serverFS'
                                 facetData={props[`${perspective.id}Facets`]}
                                 facetDataConstrainSelf={props[`${perspective.id}FacetsConstrainSelf`]}
-                                facetResults={props[`${perspective.id}`]}
+                                perspectiveState={props[perspective.id]}
                                 facetClass={perspective.id}
                                 resultClass={perspective.id}
                                 fetchingResultCount={props[perspective.id].fetchingResultCount}

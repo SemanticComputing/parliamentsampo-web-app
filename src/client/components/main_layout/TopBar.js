@@ -71,9 +71,9 @@ const useStyles = makeStyles(theme => ({
     }
   }),
   mainLogo: props => ({
-    height: 23,
+    height: props.layoutConfig.topBar.logoImageReducedHeight || 23,
     [theme.breakpoints.up(props.layoutConfig.reducedHeightBreakpoint)]: {
-      height: 40
+      height: props.layoutConfig.topBar.logoImageHeight || 40
     },
     marginRight: theme.spacing(1)
   }),
@@ -101,6 +101,15 @@ const useStyles = makeStyles(theme => ({
       }
     })
   }),
+  logoSecondary: props => ({
+    height: 26,
+    [theme.breakpoints.up('sm')]: {
+      height: 32
+    },
+    [theme.breakpoints.up(props.layoutConfig.reducedHeightBreakpoint)]: {
+      height: 52
+    }
+  }),
   mobileMenuButton: {
     padding: 12
   }
@@ -118,7 +127,7 @@ const TopBar = props => {
   const classes = useStyles(props)
   const handleMobileMenuOpen = event => setMobileMoreAnchorEl(event.currentTarget)
   const handleMobileMenuClose = () => setMobileMoreAnchorEl(null)
-  const clientFSMode = props.location.pathname.indexOf('clientFS') !== -1
+  const federatedSearchMode = props.location.pathname.indexOf('federated-search') !== -1
   let showSearchField = true
   if (has(layoutConfig.topBar, 'showSearchField')) {
     showSearchField = layoutConfig.topBar.showSearchField
@@ -287,7 +296,7 @@ const TopBar = props => {
               root: classes.mainLogoButtonRoot,
               label: classes.mainLogoButtonLabel
             }}
-            onClick={() => clientFSMode ? props.clientFSClearResults() : null}
+            onClick={() => federatedSearchMode ? props.clientFSClearResults() : null}
           >
             {topBar.logoImage &&
               <img
@@ -295,10 +304,21 @@ const TopBar = props => {
                 src={topBar.logoImage}
                 alt={`${intl.get('appTitle.short')} logo`}
               />}
-            <Typography className={classes.mainLogoTypography} variant='h5'>
-              {props.xsScreen ? intl.get('appTitle.mobile') : intl.get('appTitle.short')}
-            </Typography>
+            {!topBar.hideLogoText &&
+              <Typography className={classes.mainLogoTypography} variant='h5'>
+                {props.xsScreen ? intl.get('appTitle.mobile') : intl.get('appTitle.short')}
+              </Typography>}
           </Button>
+          {topBar.logoImageSecondary &&
+            <a
+              href={topBar.logoImageSecondaryLink}
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              <Button>
+                <img className={classes.logoSecondary} src={topBar.logoImageSecondary} alt='logoSecondary' />
+              </Button>
+            </a>}
           {showSearchField &&
             <TopBarSearchField
               fetchFullTextResults={props.fetchFullTextResults}
