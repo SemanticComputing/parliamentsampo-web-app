@@ -98,15 +98,62 @@
                         "tabIcon": "BubbleChart",
                         "component": "Network",
                         "pageType": "instancePage",
-                        "limit": 50,
-                        "optimize": 1.0,
-                        "style": "cytoscapeStyle",
-                        "layout": "coseLayout",
-                        "preprocess": "preprocessPeopleNetwork",
+                        "facetClass": "people",
                         "sparqlQuery": "networkLinkQuery",
                         "sparqlQueryNodes": "networkNodeQuery",
                         "useNetworkAPI": true,
-                        "facetClass": "people"    
+                        "limit": 50,
+                        "optimize": 1.0,                  
+                        "preprocess": "preprocessParliamentSampoPeopleNetwork",                      
+                        "style": [
+                            {
+                                "selector": "node",
+                                "style": {
+                                    "shape": "ellipse",
+                                    "font-size": 10,
+                                    "background-color": "data(color)",
+                                    "label": "data(prefLabel)",
+                                    "height": "data(size)",
+                                    "width": "data(size)"
+                                }
+                            },
+                            {
+                                "selector": "edge",
+                                "style": {
+                                    "width": "data(weight)",
+                                    "line-color": "data(color)",
+                                    "curve-style": "bezier",
+                                    "content": "data(prefLabel)",
+                                    "color": "hsl(30, 64%, 35%)",
+                                    "target-arrow-shape": "triangle",
+                                    "target-arrow-color": "data(color)",
+                                    "font-size": "8",
+                                    "text-valign": "center",
+                                    "edge-text-rotation": "autorotate",
+                                    "text-background-opacity": 1,
+                                    "text-background-color": "white",
+                                    "text-background-shape": "roundrectangle"
+                                }
+                            }
+                        ],
+                        "layout": {
+                            "name": "cose",
+                            "idealEdgeLength": 100,
+                            "nodeOverlap": 20,
+                            "refresh": 20,
+                            "fit": true,
+                            "padding": 30,
+                            "randomize": false,
+                            "componentSpacing": 100,
+                            "nodeRepulsion": 400000,
+                            "edgeElasticity": 100,
+                            "nestingFactor": 5,
+                            "gravity": 80,
+                            "numIter": 1347,
+                            "initialTemp": 200,
+                            "coolingFactor": 0.95,
+                            "minTemp": 1
+                        }    
                     }
                 }
             }
