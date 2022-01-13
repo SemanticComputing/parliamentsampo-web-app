@@ -339,6 +339,7 @@
         "date": {
             "containerClass": "three",
             "filterType": "dateNoTimespanFilter",
+            "predicate": "dct:date", 
             "sortByPredicate": "dct:date",
             "min": "1907-05-23",
             "max": "2021-06-11"
