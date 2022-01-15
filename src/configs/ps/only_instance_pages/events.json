@@ -90,6 +90,14 @@
       "numberedList": true
     },
     {
+      "id": "place",
+      "valueType": "object",
+      "makeLink": true,
+      "externalLink": false,
+      "sortValues": true,
+      "numberedList": false
+    },
+    {
       "id": "uri",
       "valueType": "object",
       "makeLink": true,

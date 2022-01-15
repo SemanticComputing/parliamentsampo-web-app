@@ -556,6 +556,10 @@
         "group": {
           "label": "Ryhmät / organisaatiot",
           "description": "Lista tapahtumaan liittyvistä ryhmistä"
+        },
+        "place": {
+          "label": "Paikka",
+          "description": "Lista tapahtumaan liittyvistä paikoista"
         }
       }
     },

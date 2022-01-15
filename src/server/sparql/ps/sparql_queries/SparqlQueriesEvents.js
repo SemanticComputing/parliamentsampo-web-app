@@ -38,13 +38,20 @@ export const eventPropertiesInstancePage =
   UNION
   {
     ?id semparls:school/skos:prefLabel ?organization 
-  }
+  } 
   UNION
   {
     ?id semparls:organization ?group__id .
     ?group__id skos:prefLabel ?group__prefLabel .
     FILTER(LANG(?group__prefLabel)='<LANG>')
     BIND(CONCAT("/groups/page/", REPLACE(STR(?group__id), "^.*\\\\/(.+)", "$1")) AS ?group__dataProviderUrl)
+  }
+  UNION
+  {
+    ?id crm:P7_took_place_at ?place__id .
+    ?place__id skos:prefLabel ?place__prefLabel .
+    FILTER(LANG(?place__prefLabel)='<LANG>')
+    BIND(CONCAT("/places/page/", REPLACE(STR(?place__id), "^.*\\\\/(.+)", "$1")) AS ?place__dataProviderUrl)
   }
   UNION
   {
