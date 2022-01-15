@@ -110,11 +110,13 @@
                                 "selector": "node",
                                 "style": {
                                     "shape": "ellipse",
-                                    "font-size": 10,
+                                    "font-size": "data(font_size)",
                                     "background-color": "data(color)",
                                     "label": "data(prefLabel)",
                                     "height": "data(size)",
-                                    "width": "data(size)"
+                                    "width": "data(size)",
+                                    "border-width": "data(border_width)",
+                                    "border-color": "black"
                                 }
                             },
                             {
@@ -125,6 +127,7 @@
                                     "curve-style": "bezier",
                                     "content": "data(prefLabel)",
                                     "color": "hsl(30, 64%, 35%)",
+                                    "opacity": 0.6,
                                     "target-arrow-shape": "triangle",
                                     "target-arrow-color": "data(color)",
                                     "font-size": "8",

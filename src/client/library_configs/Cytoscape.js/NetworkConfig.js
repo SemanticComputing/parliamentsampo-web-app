@@ -1,6 +1,33 @@
 import { has } from 'lodash'
 import { constrainValue, ValueScaler, ColorScaler } from './NetworkTools'
 
+export const preprocessParliamentSampoPeopleNetwork = elements => {
+  preprocessPagerank(elements)
+
+  // nodes
+  let arr = elements.nodes.map(ele => ele.data.distance)
+
+  // node size
+  let res = (new ColorScaler('26px', '12px')).fitTransform(arr)
+  elements.nodes.forEach((ele, i) => { ele.data.size = res[i] })
+
+  //  label size
+  res = (new ValueScaler(12, 8)).fitTransform(arr)
+  elements.nodes.forEach((ele, i) => { ele.data.font_size = res[i] })
+
+  //  edges
+  arr = elements.edges.map(ele => ele.data.weight)
+
+  //  edge width
+  res = (new ValueScaler(2.0, 8.0)).fitTransform(arr)
+  elements.edges.forEach((ele, i) => { ele.data.weight = res[i] })
+
+  //  node border width
+  elements.nodes.forEach(ele => {
+    ele.data.border_width = (ele.data.distance === 0) ? '2px' : '0px'
+  })
+}
+
 //  preprocess by pagerank
 export const preprocessPagerank = elements => {
   const maxEdgeWidth = 8
@@ -16,21 +43,12 @@ export const preprocessPagerank = elements => {
   arr = elements.nodes.map(ele => ele.data.pagerank)
 
   // node size
-  res = (new ColorScaler('6px', '24px')).fitTransform(arr)
+  res = (new ColorScaler('10px', '24px')).fitTransform(arr)
   elements.nodes.forEach((ele, i) => { ele.data.size = res[i] })
 
   // node label font size
   res = (new ValueScaler(8, 12)).fitTransform(arr)
   elements.nodes.forEach((ele, i) => { ele.data.font_size = res[i] })
-
-  elements.nodes.forEach(ele => {
-    if (ele.data.distance === 0) {
-      ele.data.size = '16px'
-      ele.data.color = 'black'
-      ele.data.font_size = 12.0
-      // console.log('Found')
-    }
-  })
 }
 
 export const preprocessLetterSampo = elements => {
@@ -229,23 +247,4 @@ export const preprocessFamilytree = elements => {
   elements.edges.forEach(edge => {
     edge.data.weight = constrainValue({ value: edge.data.weight, maxValue: maxEdgeWidth })
   })
-}
-
-export const preprocessParliamentSampoPeopleNetwork = elements => {
-  preprocessPagerank(elements)
-
-  // nodes
-  const arr = elements.nodes.map(ele => ele.data.distance)
-
-  // node size
-  let res = (new ColorScaler('26px', '12px')).fitTransform(arr)
-  elements.nodes.forEach((ele, i) => { ele.data.size = res[i] })
-
-  //  label size
-  res = (new ValueScaler(12, 8)).fitTransform(arr)
-  elements.nodes.forEach((ele, i) => { ele.data.font_size = res[i] })
-
-  // node color
-  // res = (new ColorScaler('rgb(255, 0, 0)', 'rgb(0, 0, 255)')).fitTransform(arr)
-  // elements.nodes.forEach((ele, i) => { ele.data.color = res[i] })
 }
