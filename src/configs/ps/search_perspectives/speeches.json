@@ -49,6 +49,7 @@
             },
             "xaxisTickAmount": 20,
             "title": "Puheiden lukumäärä vuosittain",
+            "seriesTitle": "Puheiden lukumäärä",
             "xaxisTitle": "Vuosi",
             "yaxisTitle": "Puheiden lukumäärä",
             "tabPath": "by_year",
