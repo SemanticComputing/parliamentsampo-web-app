@@ -338,7 +338,7 @@
             "sortDirection": "desc"
         },
         "date": {
-            "containerClass": "three",
+            "containerClass": "six",
             "filterType": "dateNoTimespanFilter",
             "predicate": "dct:date", 
             "sortByPredicate": "dct:date",
