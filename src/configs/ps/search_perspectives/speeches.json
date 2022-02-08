@@ -56,7 +56,7 @@
             "tabIcon": "ShowChart",
             "sparqlQuery": "speechesByYearQuery",
             "facetClass": "speeches",
-            "filterTarget": "speech__id",
+            "filterTarget": "speech",
             "resultMapper": "mapLineChart",
             "resultMapperConfig": {
               "fillEmptyValues": true
