@@ -416,12 +416,27 @@ export const interruptionPropertiesInstancePage = `
   }
   `
 
-export const speechYearQuery = `
-  SELECT DISTINCT ?category (COUNT(DISTINCT ?speech__id) AS ?count)
+export const speechesByYearQuery = `
+  SELECT DISTINCT ?category (COUNT(DISTINCT ?speech) AS ?count)
   WHERE {
     <FILTER>
-    ?speech__id a semparls:Speech .
-    ?speech__id semparls:yearOfSpeech ?category .
-  } GROUPBY ?category
-    ORDERBY ?category
-  `
+    ?speech a semparls:Speech .
+    ?speech semparls:yearOfSpeech ?category .
+  } 
+  GROUP BY ?category
+  ORDER BY ?category
+`
+
+export const speechesByYearAndPartyQuery = `
+  SELECT ?id ?dataItem__id ?dataItem__prefLabel (count(?speech) as ?dataItem__value) WHERE {
+    ?speech semparls:party ?dataItem__id ;
+            semparls:speechType ?speechType ;
+            dct:date ?date .
+    ?dataItem__id skos:prefLabel ?dataItem__prefLabel .
+    BIND(YEAR(?date) as ?id)
+    FILTER(?speechType NOT IN (<http://ldf.fi/semparl/speechtypes/PuhemiesPuheenvuoro>))
+    FILTER(LANG(?dataItem__prefLabel) = "<LANG>")
+  }
+  GROUP BY ?id ?dataItem__id ?dataItem__prefLabel
+  ORDER BY ?id
+`

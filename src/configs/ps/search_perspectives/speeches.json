@@ -54,7 +54,7 @@
             "yaxisTitle": "Puheiden lukumäärä",
             "tabPath": "by_year",
             "tabIcon": "ShowChart",
-            "sparqlQuery": "speechYearQuery",
+            "sparqlQuery": "speechesByYearQuery",
             "facetClass": "speeches",
             "filterTarget": "speech__id",
             "resultMapper": "mapLineChart",
