@@ -61,6 +61,26 @@
             "resultMapperConfig": {
               "fillEmptyValues": true
             }
+        },
+        "speechesByYearAndParty": {
+            "hideTab": true,
+            "tabID": 2,
+            "component": "BarChartRace",
+            "stepBegin": 1907,
+            "stepEnd": 2021,
+            "stepIncrement": 1,
+            "stepDuration": 1000,
+            "tabPath": "by_year_and_party",
+            "tabIcon": "ShowChart",
+            "sparqlQuery": "speechesByYearAndPartyQuery",
+            "facetClass": "speeches",
+            "filterTarget": "speech",
+            "postprocess": {
+              "func": "toBarChartRaceFormat",
+              "config": {
+                  "step": 1
+              }
+            }
         }
     },
     "properties": [
