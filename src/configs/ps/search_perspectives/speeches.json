@@ -207,6 +207,15 @@
             "onlyOnInstancePage": true
         },
         {
+            "id": "namedEntity",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "onlyOnInstancePage": true
+        },
+        {
             "id": "date",
             "valueType": "string",
             "makeLink": false,
@@ -373,6 +382,15 @@
             "sortByPredicate": "dct:date",
             "min": "1907-05-23",
             "max": "2021-12-10"
+        },
+        "referencedPerson": {
+            "containerClass": "ten",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "sortBy": "instanceCount",
+            "sortByPredicate": "semparl_linguistics:referenceToPersonName/skos:prefLabel",
+            "predicate": "semparl_linguistics:referenceToPersonName/skos:prefLabel",
+            "sortDirection": "desc"
         },
         "referencedPlace": {
             "containerClass": "ten",
