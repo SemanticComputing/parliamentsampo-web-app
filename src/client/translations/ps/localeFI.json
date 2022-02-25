@@ -160,6 +160,10 @@
           "description": "Mainittu henkilö (autom. tunnistettu)",
           "missingValueLabel": "> Ei tunnistettuja henkilöjä"
         },
+        "namedEntity": {
+          "label": "Nimetty entiteetti (autom. tunnistettu)",
+          "description": "Nimetty entiteetti (autom. tunnistettu)"
+        },
         "date": {
           "label": "Päivämäärä",
           "description": "Puheen päivämäärä"
