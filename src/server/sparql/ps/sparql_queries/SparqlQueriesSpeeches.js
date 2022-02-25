@@ -46,7 +46,9 @@ export const speechPropertiesInstancePage =
   }
   UNION
   {
-    ?id semparl_linguistics:referenceToPersonName/skos:prefLabel ?referencedPerson .
+    ?id semparl_linguistics:referenceToPersonName/semparl_linguistics:link ?referencedPerson__id .
+    ?referencedPerson__id skos:prefLabel ?referencedPerson__prefLabel .
+    BIND(CONCAT("/people/page/", REPLACE(STR(?referencedPerson__id), "^.*\\\\/(.+)", "$1")) AS ?referencedPerson__dataProviderUrl)
   }
   UNION
   {

@@ -67,7 +67,7 @@
             "tabID": 2,
             "component": "BarChartRace",
             "stepBegin": 1907,
-            "stepEnd": 2021,
+            "stepEnd": 2022,
             "stepIncrement": 1,
             "stepDuration": 1000,
             "tabPath": "by_year_and_party",
@@ -199,8 +199,8 @@
         },
         {
             "id": "referencedPerson",
-            "valueType": "string",
-            "makeLink": false,
+            "valueType": "object",
+            "makeLink": true,
             "externalLink": false,
             "sortValues": true,
             "numberedList": false,
@@ -381,15 +381,19 @@
             "predicate": "dct:date", 
             "sortByPredicate": "dct:date",
             "min": "1907-05-23",
-            "max": "2021-12-10"
+            "max": "2022-02-28"
         },
         "referencedPerson": {
             "containerClass": "ten",
+            "facetLabelFilter": "",
             "facetType": "list",
+            "facetValueFilter": "?id a bioc:Person",
             "filterType": "uriFilter",
+            "predicate": "semparl_linguistics:referenceToPersonName/semparl_linguistics:link",
+            "searchField": true,
+            "sortButton": true,
             "sortBy": "instanceCount",
-            "sortByPredicate": "semparl_linguistics:referenceToPersonName/skos:prefLabel",
-            "predicate": "semparl_linguistics:referenceToPersonName/skos:prefLabel",
+            "sortByPredicate": "semparl_linguistics:referenceToPlaceName/semparl_linguistics:link/skos:prefLabel",
             "sortDirection": "desc"
         },
         "referencedPlace": {
