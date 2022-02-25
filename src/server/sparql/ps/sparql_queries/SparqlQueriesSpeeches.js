@@ -50,6 +50,10 @@ export const speechPropertiesInstancePage =
   }
   UNION
   {
+    ?id semparl_linguistics:referencedNamedEntity/skos:prefLabel ?namedEntity .
+  }
+  UNION
+  {
     ?id semparls:content ?content .
   }
   UNION
