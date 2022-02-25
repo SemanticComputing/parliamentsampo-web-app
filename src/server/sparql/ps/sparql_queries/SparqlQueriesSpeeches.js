@@ -42,9 +42,11 @@ export const speechPropertiesInstancePage =
   }
   UNION 
   {
-    ?id semparl_linguistics:referenceToPlaceName/semparl_linguistics:link ?referencedPlace__id .
-    ?referencedPlace__id skos:prefLabel ?referencedPlace__prefLabel .
-    FILTER(LANG(?referencedPlace__prefLabel) = "<LANG>")
+    ?id semparl_linguistics:referenceToPlaceName/skos:prefLabel ?referencedPlace .
+  }
+  UNION
+  {
+    ?id semparl_linguistics:referenceToPersonName/skos:prefLabel ?referencedPerson .
   }
   UNION
   {
@@ -166,12 +168,10 @@ export const speechPropertiesFacetResults =
                     STR(YEAR(?date_))) as ?date)
   }
   UNION 
-  {
-    ?id semparl_linguistics:referenceToPlaceName/semparl_linguistics:link ?referencedPlace__id .
-    ?referencedPlace__id skos:prefLabel ?referencedPlace__prefLabel .
-    FILTER(LANG(?referencedPlace__prefLabel) = "<LANG>")
-  }
-  UNION
+  # {
+  #  ?id semparl_linguistics:referenceToPlaceName/skos:prefLabel ?referencedPlace .
+  # }
+  # UNION
   {
     ?id semparls:item ?item__id .
     ?item__id skos:prefLabel ?item__prefLabel .

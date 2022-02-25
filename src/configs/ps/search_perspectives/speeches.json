@@ -190,7 +190,16 @@
         },
         {
             "id": "referencedPlace",
-            "valueType": "object",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "onlyOnInstancePage": true
+        },
+        {
+            "id": "referencedPerson",
+            "valueType": "string",
             "makeLink": false,
             "externalLink": false,
             "sortValues": true,
@@ -367,15 +376,11 @@
         },
         "referencedPlace": {
             "containerClass": "ten",
-            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
             "facetType": "list",
-            "facetValueFilter": "?id a crm:E53_Place",
             "filterType": "uriFilter",
-            "predicate": "semparl_linguistics:referenceToPlaceName/semparl_linguistics:link",
-            "searchField": true,
-            "sortButton": true,
             "sortBy": "instanceCount",
-            "sortByPredicate": "semparl_linguistics:referenceToPlaceName/semparl_linguistics:link/skos:prefLabel",
+            "sortByPredicate": "semparl_linguistics:referenceToPlaceName/skos:prefLabel",
+            "predicate": "semparl_linguistics:referenceToPlaceName/skos:prefLabel",
             "sortDirection": "desc"
         }
     }

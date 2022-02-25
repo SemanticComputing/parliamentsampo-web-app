@@ -155,6 +155,11 @@
           "description": "Mainittu paikka (autom. tunnistettu)",
           "missingValueLabel": "> Ei tunnistettuja paikkoja"
         },
+        "referencedPerson": {
+          "label": "Mainittu henkilö (autom. tunnistettu)",
+          "description": "Mainittu henkilö (autom. tunnistettu)",
+          "missingValueLabel": "> Ei tunnistettuja henkilöjä"
+        },
         "date": {
           "label": "Päivämäärä",
           "description": "Puheen päivämäärä"
