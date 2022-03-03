@@ -142,6 +142,10 @@
           "label": "Puolue",
           "description": "Puolue"
         },
+        "gender": {
+          "label": "Sukupuoli",
+          "description": "Sukupuoli"
+        },
         "speechType": {
           "label": "Tyyppi",
           "description": "Tyyppi"

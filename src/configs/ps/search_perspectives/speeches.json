@@ -340,6 +340,19 @@
             "sortByPredicate": "semparls:party/skos:prefLabel",
             "sortDirection": "desc"
         },
+        "gender": {
+            "containerClass": "four",
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "pieChartButton": true,
+            "predicate": "semparls:speaker/bioc:has_gender",
+            "searchField": false,
+            "sortButton": true,
+            "sortBy": "instanceCount",
+            "sortByPredicate": "semparls:speaker/bioc:has_gender/skos:prefLabel",
+            "sortDirection": "desc"
+        },
         "speechType": {
             "containerClass": "ten",
             "facetType": "list",
