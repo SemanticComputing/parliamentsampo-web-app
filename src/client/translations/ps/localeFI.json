@@ -144,7 +144,7 @@
         },
         "gender": {
           "label": "Sukupuoli",
-          "description": "Sukupuoli"
+          "description": "Puheen pitäjän sukupuoli. Luvut aaltosuluissa ovat puheiden, ei henkilöiden määriä."
         },
         "speechType": {
           "label": "Tyyppi",
