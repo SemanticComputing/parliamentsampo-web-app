@@ -190,8 +190,8 @@
         },
         {
             "id": "referencedPlace",
-            "valueType": "string",
-            "makeLink": false,
+            "valueType": "object",
+            "makeLink": true,
             "externalLink": false,
             "sortValues": true,
             "numberedList": false,
@@ -398,24 +398,27 @@
         },
         "referencedPerson": {
             "containerClass": "ten",
-            "facetLabelFilter": "",
             "facetType": "list",
             "facetValueFilter": "?id a bioc:Person",
             "filterType": "uriFilter",
-            "predicate": "semparl_linguistics:referenceToPersonName/semparl_linguistics:link",
+            "predicate": "semparl_linguistics:referenceToPerson/semparl_linguistics:link",
             "searchField": true,
             "sortButton": true,
             "sortBy": "instanceCount",
-            "sortByPredicate": "semparl_linguistics:referenceToPlaceName/semparl_linguistics:link/skos:prefLabel",
+            "sortByPredicate": "semparl_linguistics:referenceToPerson/semparl_linguistics:link/skos:prefLabel",
             "sortDirection": "desc"
         },
         "referencedPlace": {
             "containerClass": "ten",
             "facetType": "list",
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
+            "facetValueFilter": "?id a crm:E53_Place",
             "filterType": "uriFilter",
+            "predicate": "semparl_linguistics:referenceToPlace/semparl_linguistics:link",
+            "searchField": true,
+            "sortButton": true,
             "sortBy": "instanceCount",
-            "sortByPredicate": "semparl_linguistics:referenceToPlaceName/skos:prefLabel",
-            "predicate": "semparl_linguistics:referenceToPlaceName/skos:prefLabel",
+            "sortByPredicate": "semparl_linguistics:referenceToPlace/semparl_linguistics:link/skos:prefLabel",
             "sortDirection": "desc"
         }
     }
