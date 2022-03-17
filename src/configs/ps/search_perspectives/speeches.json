@@ -59,7 +59,7 @@
             "filterTarget": "speech",
             "resultMapper": "mapLineChart",
             "resultMapperConfig": {
-              "fillEmptyValues": true
+                "fillEmptyValues": true
             }
         },
         "speechesByYearAndParty": {
@@ -76,10 +76,10 @@
             "facetClass": "speeches",
             "filterTarget": "speech",
             "postprocess": {
-              "func": "toBarChartRaceFormat",
-              "config": {
-                  "step": 1
-              }
+                "func": "toBarChartRaceFormat",
+                "config": {
+                    "step": 1
+                }
             }
         }
     },
@@ -391,10 +391,10 @@
         "date": {
             "containerClass": "six",
             "filterType": "dateNoTimespanFilter",
-            "predicate": "dct:date", 
+            "predicate": "dct:date",
             "sortByPredicate": "dct:date",
             "min": "1907-05-23",
-            "max": "2022-02-28"
+            "max": "2022-03-11"
         },
         "referencedPerson": {
             "containerClass": "ten",
