@@ -99,7 +99,8 @@
             "makeLink": true,
             "externalLink": false,
             "sortValues": false,
-            "numberedList": false
+            "numberedList": false,
+            "minWidth": 110
         },
         {
             "id": "speaker",
@@ -160,7 +161,8 @@
             "externalLink": false,
             "collapsedMaxWords": 4,
             "sortValues": false,
-            "numberedList": false
+            "numberedList": false,
+            "minWidth": 100
         },
         {
             "id": "document",
@@ -221,7 +223,8 @@
             "makeLink": false,
             "externalLink": false,
             "sortValues": false,
-            "numberedList": false
+            "numberedList": false,
+            "minWidth": 105
         },
         {
             "id": "startTime",
@@ -257,7 +260,8 @@
             "externalLink": false,
             "sortValues": false,
             "numberedList": false,
-            "onlyOnInstancePage": true
+            "collapsedMaxWords": 20,
+            "expandedOnInstancePage": true
         },
         {
             "id": "isInterruptedBy",

@@ -185,6 +185,10 @@ export const speechPropertiesFacetResults =
     ?item__id skos:prefLabel ?item__prefLabel .
     BIND(CONCAT("/items/page/", REPLACE(STR(?item__id), "^.*\\\\/(.+)", "$1")) AS ?item__dataProviderUrl) .
   }
+  UNION
+  {
+    ?id semparls:content ?content .
+  }
 `
 
 export const itemPropertiesInstancePage = `
