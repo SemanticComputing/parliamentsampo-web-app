@@ -154,6 +154,10 @@
           "label": "Kieli",
           "description": "Kieli"
         },
+        "parliamentarySession": {
+          "label": "Valtiopäivät",
+          "description": "Valtiopäivät"
+        },
         "referencedPlace": {
           "label": "Mainittu paikka (autom. tunnistettu)",
           "description": "Mainittu paikka (autom. tunnistettu)",

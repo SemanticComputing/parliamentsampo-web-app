@@ -400,6 +400,16 @@
             "min": "1907-05-23",
             "max": "2022-03-11"
         },
+        "parliamentarySession": {
+            "containerClass": "ten",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "pieChartButton": false,
+            "predicate": "semparls:plenarySession/semparls:parliamentarySession",
+            "sortBy": "prefLabel",
+            "sortByPredicate": "semparls:plenarySession/semparls:parliamentarySession/skos:prefLabel",
+            "sortDirection": "asc"
+        },
         "referencedPerson": {
             "containerClass": "ten",
             "facetType": "list",
