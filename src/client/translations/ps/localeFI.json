@@ -156,7 +156,11 @@
         },
         "parliamentarySession": {
           "label": "Valtiopäivät",
-          "description": "Valtiopäivät"
+          "description": "Valtiopäivät, johon puhe sijoittuu"
+        },
+        "electoralTerm": {
+          "label": "Vaalikausi",
+          "description": "Vaalikausi, johon puhe sijoittuu"
         },
         "referencedPlace": {
           "label": "Mainittu paikka (autom. tunnistettu)",

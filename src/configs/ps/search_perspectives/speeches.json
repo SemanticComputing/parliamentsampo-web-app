@@ -410,6 +410,16 @@
             "sortByPredicate": "semparls:plenarySession/semparls:parliamentarySession/skos:prefLabel",
             "sortDirection": "asc"
         },
+        "electoralTerm": {
+            "containerClass": "ten",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "pieChartButton": true,
+            "predicate": "semparls:plenarySession/semparls:parliamentarySession/semparls:electoralTerm",
+            "sortBy": "prefLabel",
+            "sortByPredicate": "semparls:plenarySession/semparls:parliamentarySession/semparls:electoralTerm/skos:prefLabel",
+            "sortDirection": "asc"
+        },
         "referencedPerson": {
             "containerClass": "ten",
             "facetType": "list",
