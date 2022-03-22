@@ -498,6 +498,15 @@
             "searchField": true,
             "sortByPredicate": "bioc:bearer_of/crm:P11i_participated_in/semparls:organization/skos:prefLabel"
         },
+        "exlink": {
+            "containerClass": "three",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "sch:sameAs/a",
+            "sortBy": "instanceCount",
+            "sortByPredicate": "sch:sameAs/a/skos:prefLabel",
+            "sortDirection": "desc"
+        },
         "datasource": {
             "containerClass": "three",
             "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
