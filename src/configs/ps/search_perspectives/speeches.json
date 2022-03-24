@@ -12,7 +12,7 @@
     "langTag": "fi",
     "frontPageImage": "main_page/events-452x262.jpg",
     "searchMode": "faceted-search",
-    "defaultActiveFacets": [],
+    "defaultActiveFacets": [ "contentTextFacet" ],
     "defaultTab": "table",
     "defaultInstancePageTab": "table",
     "resultClasses": {
@@ -25,7 +25,10 @@
                 "propertiesQueryBlock": "speechPropertiesFacetResults",
                 "pagesize": 25,
                 "sortBy": null,
-                "sortDirection": null
+                "sortDirection": null,
+                "postprocess": {
+                    "func": "processTextIndexHighlighting"
+                }
             },
             "instanceConfig": {
                 "propertiesQueryBlock": "speechPropertiesInstancePage",
@@ -260,9 +263,10 @@
             "externalLink": false,
             "sortValues": false,
             "numberedList": false,
-            "collapsedMaxWords": 20,
+            "collapsedMaxWords": 30,
             "showExtraCollapseButton": true,
-            "expandedOnInstancePage": true
+            "expandedOnInstancePage": true,
+            "renderAsHTML": true
         },
         {
             "id": "isInterruptedBy",
@@ -318,7 +322,9 @@
             "containerClass": "one",
             "facetType": "text",
             "filterType": "textFilter",
-            "textQueryProperty": "semparls:content"
+            "textQueryProperty": "semparls:content",
+            "textQueryGetLiteral": true,
+            "textQueryHiglightingOptions": "highlight:s:<b> | e:</b> | z:150"
         },
         "speaker": {
             "containerClass": "ten",

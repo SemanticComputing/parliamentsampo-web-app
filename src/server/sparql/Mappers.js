@@ -606,3 +606,12 @@ export const createCorrespondenceChartDataLower = ({ sparqlBindings, config }) =
   })
   return series
 }
+
+export const processTextIndexHighlighting = ({ data }) => {
+  data.forEach(item => {
+    if (item.literal) {
+      item.content = item.literal
+    }
+  })
+  return data
+}
