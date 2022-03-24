@@ -104,22 +104,33 @@ const generateTextFilter = ({
   inverse
 }) => {
   const facetConfig = backendSearchConfig[facetClass].facets[facetID]
-  let filterStr = ''
-  let queryObject
-  if (facetConfig.textQueryProperty) {
-    queryObject = `(${facetConfig.textQueryProperty} '${queryString}')`
-  } else {
+  const queryTargetVariable = facetConfig.textQueryPredicate
+    ? '?textQueryTarget'
+    : `?${filterTarget}`
+  const querySubject = facetConfig.textQueryGetLiteral
+    ? `( ${queryTargetVariable} ?score ?literal )`
+    : queryTargetVariable
+  let queryObject = ''
+  if (has(facetConfig, 'textQueryProperty') && facetConfig.textQueryGetLiteral &&
+      has(facetConfig, 'textQueryHiglightingOptions')) {
+    queryObject = `( ${facetConfig.textQueryProperty} '${queryString}' "${facetConfig.textQueryHiglightingOptions}" )`
+  }
+  if (!has(facetConfig, 'textQueryProperty') && facetConfig.textQueryGetLiteral &&
+       has(facetConfig, 'textQueryHiglightingOptions')) {
+    queryObject = `( '${queryString}' "${facetConfig.textQueryHiglightingOptions}" )`
+  }
+  if (has(facetConfig, 'textQueryProperty') && !facetConfig.textQueryGetLiteral &&
+       !has(facetConfig, 'textQueryHiglightingOptions')) {
+    queryObject = `( ${facetConfig.textQueryProperty} '${queryString}' )`
+  }
+  if (!has(facetConfig, 'textQueryProperty') && !facetConfig.textQueryGetLiteral &&
+       !has(facetConfig, 'textQueryHiglightingOptions')) {
     queryObject = `'${queryString}'`
   }
-  if (!has(facetConfig, 'textQueryPredicate')) {
-    filterStr = `?${filterTarget} text:query ${queryObject} .`
-  } else {
-    filterStr = `
-      ?textQueryTarget text:query ${queryObject} .
-      ?${filterTarget} ${facetConfig.textQueryPredicate} ?textQueryTarget .
-
-    `
-  }
+  const filterStr = facetConfig.textQueryPredicate
+    ? `${queryTargetVariable} text:query ${queryObject} .
+    ?${filterTarget} ${facetConfig.textQueryPredicate} ${queryTargetVariable} .`
+    : `${querySubject} text:query ${queryObject} .`
   if (inverse) {
     return `
       FILTER NOT EXISTS {
