@@ -46,7 +46,7 @@
     "min": "Min",
     "max": "Max",
     "facetSearchFieldPlaceholder": "Hae...",
-    "applyFacetSelection": "Käytä",
+    "applyFacetSelection": "hae",
     "pieChart": {
       "tooltip": ""
     }
@@ -71,10 +71,6 @@
   "facets": {
     "dateFacet": {
       "invalidDate": "Epäkelpo päivämäärä.",
-      "toBeforeFrom": "Alkupäivämäärän täytyy olla ennen loppupäivämäärää.",
-      "minDate": "Aikaisin sallittu päivämäärä on {minDate}",
-      "maxDate": "Myöhäisin sallittu päivämäärä on {maxDate}",
-      "cancel": "Peruuta",
       "fromLabel": "Alku",
       "toLabel": "Loppu",
       "to": "–"
