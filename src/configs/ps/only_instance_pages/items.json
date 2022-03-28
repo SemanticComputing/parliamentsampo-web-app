@@ -63,7 +63,8 @@
       "makeLink": true,
       "externalLink": false,
       "sortValues": true,
-      "numberedList": true
+      "numberedList": true,
+      "expandedOnInstancePage": true
     },
     {
       "id": "uri",
