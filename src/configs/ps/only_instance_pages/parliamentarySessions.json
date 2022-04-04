@@ -71,7 +71,10 @@
       "makeLink": true,
       "externalLink": false,
       "sortValues": true,
-      "numberedList": false
+      "sortBy": "orderNumber",
+      "sortByConvertDataTypeTo": "integer",
+      "numberedList": false,
+      "expandedOnInstancePage": true
     }
   ]
 }

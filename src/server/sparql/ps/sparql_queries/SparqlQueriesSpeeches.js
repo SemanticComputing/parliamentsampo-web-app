@@ -342,8 +342,9 @@ export const parliamentarySessionPropertiesInstancePage = `
   }
   UNION
   {
-    ?plenarySession__id semparls:parliamentarySession ?id .
-    ?plenarySession__id skos:prefLabel ?plenarySession__prefLabel .
+    ?plenarySession__id semparls:parliamentarySession ?id ;
+                        skos:prefLabel ?plenarySession__prefLabel ;
+                        semparls:orderNumber ?plenarySession__orderNumber .
     BIND(CONCAT("/plenarySessions/page/", REPLACE(STR(?plenarySession__id), "^.*\\\\/(.+)", "$1")) AS ?plenarySession__dataProviderUrl) .
   }
 `
