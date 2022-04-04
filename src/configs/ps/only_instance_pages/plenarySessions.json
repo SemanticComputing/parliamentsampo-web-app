@@ -78,8 +78,9 @@
       "valueType": "object",
       "makeLink": true,
       "externalLink": false,
-      "sortValues": true,
-      "numberedList": false
+      "sortValues": false,
+      "numberedList": false,
+      "expandedOnInstancePage": true
     },
     {
       "id": "item",
