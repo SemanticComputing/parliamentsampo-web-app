@@ -4,43 +4,40 @@ import intl from 'react-intl-universal'
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
-import has from 'lodash'
+// import has from 'lodash'
 import MainCard from './MainCard'
 import { getSpacing } from '../../../helpers/helpers'
 
-/**
- * A component for generating a front page for a semantic portal.
- */
-const Main = props => {
-  const { perspectives, screenSize, layoutConfig } = props
+const MainSpeeches = props => {
+  const { screenSize, layoutConfig, speechesSubPerspectives } = props
   const { mainPage } = layoutConfig
   let headingVariant = 'h5'
-  let subheadingVariant = 'body1'
+  // let subheadingVariant = 'body1'
   let descriptionVariant = 'body1'
   switch (screenSize) {
     case 'xs':
       headingVariant = 'h5'
-      subheadingVariant = 'body1'
+      // subheadingVariant = 'body1'
       descriptionVariant = 'body1'
       break
     case 'sm':
       headingVariant = 'h4'
-      subheadingVariant = 'h6'
+      // subheadingVariant = 'h6'
       descriptionVariant = 'h6'
       break
     case 'md':
       headingVariant = 'h3'
-      subheadingVariant = 'h6'
+      // subheadingVariant = 'h6'
       descriptionVariant = 'h6'
       break
     case 'lg':
       headingVariant = 'h2'
-      subheadingVariant = 'h5'
+      // subheadingVariant = 'h5'
       descriptionVariant = 'h6'
       break
     case 'xl':
       headingVariant = 'h1'
-      subheadingVariant = 'h4'
+      // subheadingVariant = 'h4'
       descriptionVariant = 'h6'
       break
   }
@@ -95,28 +92,8 @@ const Main = props => {
             }}
           >
             <Typography component='h1' variant={headingVariant} align='center'>
-              {intl.getHTML('appTitle.long')}
+              {intl.getHTML('speechesMainPage.title')}
             </Typography>
-          </Box>
-          <Box
-            sx={theme => ({
-              marginTop: theme.spacing(1.5),
-              ...(mainPage.wrapSubheading) && {
-                [theme.breakpoints.up('md')]: {
-                  display: 'flex',
-                  '& div': {
-                    flexGrow: 1,
-                    width: 0
-                  }
-                }
-              }
-            })}
-          >
-            <Box>
-              <Typography component='p' variant={subheadingVariant} align='center'>
-                {intl.getHTML('appTitle.subheading')}
-              </Typography>
-            </Box>
           </Box>
         </Box>
       </Box>
@@ -137,18 +114,15 @@ const Main = props => {
           })}
         >
           <Typography variant={descriptionVariant} color='textPrimary' paragraph>
-            {intl.getHTML('appDescription')}
-          </Typography>
-          <Typography variant={descriptionVariant} align='center' color='textPrimary' paragraph>
-            {intl.get('selectPerspective')}
+            {intl.get('speechesMainPage.introText')}
           </Typography>
         </Box>
         <Grid
           container spacing={screenSize === 'sm' ? 2 : 1}
           justifyContent={screenSize === 'xs' || screenSize === 'sm' ? 'center' : 'flex-start'}
         >
-          {perspectives.map(perspective => {
-            const hideCard = (has(perspective.hideCardOnFrontPage) && perspective.hideCardOnFrontPage)
+          {speechesSubPerspectives.map(perspective => {
+            const hideCard = false
             if (!hideCard) {
               return (
                 <MainCard
@@ -156,7 +130,6 @@ const Main = props => {
                   perspective={perspective}
                   cardHeadingVariant='h5'
                   rootUrl={props.rootUrl}
-                  pageType='main'
                 />
               )
             }
@@ -184,13 +157,13 @@ const Main = props => {
   )
 }
 
-Main.propTypes = {
+MainSpeeches.propTypes = {
   /**
    * An array of objects used for configuration. Each object represents a single perspective.
    */
-  perspectives: PropTypes.array.isRequired,
+  speechesSubPerspectives: PropTypes.array.isRequired,
   screenSize: PropTypes.string.isRequired,
   rootUrl: PropTypes.string.isRequired
 }
 
-export default Main
+export default MainSpeeches

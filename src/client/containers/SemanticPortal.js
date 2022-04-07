@@ -89,6 +89,7 @@ const KnowledgeGraphMetadataTable = lazy(() => import('../components/main_layout
 
 // ** Import portal specific components **
 const Main = lazy(() => import(`../components/perspectives/${portalID}/Main`))
+const MainSpeeches = lazy(() => import(`../components/perspectives/${portalID}/MainSpeeches`))
 const Footer = lazy(() => import(`../components/perspectives/${portalID}/Footer`))
 // ** Portal specific components end **
 
@@ -110,6 +111,10 @@ const SemanticPortal = props => {
       noClientFSResults = props.clientFSState && props.clientFSState.results === null
     }
   })
+  const speechesSubPerspectives = portalConfig.perspectives
+    .speechesSubPerspectives.map(perspectiveID =>
+      perspectiveConfig.find(perspective =>
+        perspective.id === perspectiveID))
 
   // trigger a new "page view" event whenever a new page loads
   usePageViews()
@@ -150,6 +155,7 @@ const SemanticPortal = props => {
           screenSize={screenSize}
           location={location}
           layoutConfig={layoutConfig}
+          speechesSubPerspectives={speechesSubPerspectives}
         />
         {/* enforce a lang tag */}
         <Route exact path={`${rootUrl}/`}>
@@ -163,6 +169,22 @@ const SemanticPortal = props => {
               screenSize={screenSize}
               rootUrl={rootUrlWithLang}
               layoutConfig={layoutConfig}
+            />
+            <Footer
+              portalConfig={portalConfig}
+              layoutConfig={layoutConfig}
+            />
+          </>
+        </Route>
+        <Route exact path={`${rootUrlWithLang}/speeches`}>
+          <>
+            <MainSpeeches
+              portalConfig={portalConfig}
+              speechesSubPerspectives={speechesSubPerspectives}
+              screenSize={screenSize}
+              rootUrl={rootUrlWithLang}
+              layoutConfig={layoutConfig}
+              location={location}
             />
             <Footer
               portalConfig={portalConfig}
@@ -230,49 +252,50 @@ const SemanticPortal = props => {
                     animateMap={props.animateMap}
                   />
                 </Route>
-                <Switch>
-                  <Redirect
-                    from={`/${perspective.id}/page/:id`}
-                    to={{
-                      pathname: `${rootUrlWithLang}/${perspective.id}/page/:id`,
-                      hash: location.hash
-                    }}
-                  />
-                  <Route path={`${rootUrlWithLang}/${perspective.id}/page/:id`}>
-                    <InstancePagePerspective
-                      portalConfig={portalConfig}
-                      layoutConfig={layoutConfig}
-                      perspectiveConfig={perspective}
-                      perspectiveState={props[`${perspective.id}`]}
-                      leafletMapState={props.leafletMap}
-                      fetchPaginatedResults={props.fetchPaginatedResults}
-                      fetchResults={props.fetchResults}
-                      fetchInstanceAnalysis={props.fetchInstanceAnalysis}
-                      fetchFacetConstrainSelf={props.fetchFacetConstrainSelf}
-                      fetchGeoJSONLayers={props.fetchGeoJSONLayers}
-                      fetchGeoJSONLayersBackend={props.fetchGeoJSONLayersBackend}
-                      clearGeoJSONLayers={props.clearGeoJSONLayers}
-                      fetchByURI={props.fetchByURI}
-                      updatePage={props.updatePage}
-                      updateRowsPerPage={props.updateRowsPerPage}
-                      updateFacetOption={props.updateFacetOption}
-                      updateMapBounds={props.updateMapBounds}
-                      sortResults={props.sortResults}
-                      showError={props.showError}
-                      perspective={perspective}
-                      animationValue={props.animationValue}
-                      animateMap={props.animateMap}
-                      videoPlayerState={props.videoPlayer}
-                      updateVideoPlayerTime={props.updateVideoPlayerTime}
-                      updatePerspectiveHeaderExpanded={props.updatePerspectiveHeaderExpanded}
-                      screenSize={screenSize}
-                      rootUrl={rootUrlWithLang}
-                      apexChartsConfig={apexChartsConfig}
-                      leafletConfig={leafletConfig}
-                      networkConfig={networkConfig}
+                {perspective.resultClasses[perspective.id].instanceConfig &&
+                  <Switch>
+                    <Redirect
+                      from={`/${perspective.id}/page/:id`}
+                      to={{
+                        pathname: `${rootUrlWithLang}/${perspective.id}/page/:id`,
+                        hash: location.hash
+                      }}
                     />
-                  </Route>
-                </Switch>
+                    <Route path={`${rootUrlWithLang}/${perspective.id}/page/:id`}>
+                      <InstancePagePerspective
+                        portalConfig={portalConfig}
+                        layoutConfig={layoutConfig}
+                        perspectiveConfig={perspective}
+                        perspectiveState={props[`${perspective.id}`]}
+                        leafletMapState={props.leafletMap}
+                        fetchPaginatedResults={props.fetchPaginatedResults}
+                        fetchResults={props.fetchResults}
+                        fetchInstanceAnalysis={props.fetchInstanceAnalysis}
+                        fetchFacetConstrainSelf={props.fetchFacetConstrainSelf}
+                        fetchGeoJSONLayers={props.fetchGeoJSONLayers}
+                        fetchGeoJSONLayersBackend={props.fetchGeoJSONLayersBackend}
+                        clearGeoJSONLayers={props.clearGeoJSONLayers}
+                        fetchByURI={props.fetchByURI}
+                        updatePage={props.updatePage}
+                        updateRowsPerPage={props.updateRowsPerPage}
+                        updateFacetOption={props.updateFacetOption}
+                        updateMapBounds={props.updateMapBounds}
+                        sortResults={props.sortResults}
+                        showError={props.showError}
+                        perspective={perspective}
+                        animationValue={props.animationValue}
+                        animateMap={props.animateMap}
+                        videoPlayerState={props.videoPlayer}
+                        updateVideoPlayerTime={props.updateVideoPlayerTime}
+                        updatePerspectiveHeaderExpanded={props.updatePerspectiveHeaderExpanded}
+                        screenSize={screenSize}
+                        rootUrl={rootUrlWithLang}
+                        apexChartsConfig={apexChartsConfig}
+                        leafletConfig={leafletConfig}
+                        networkConfig={networkConfig}
+                      />
+                    </Route>
+                  </Switch>}
               </React.Fragment>
             )
           }

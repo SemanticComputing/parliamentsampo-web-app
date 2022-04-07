@@ -4,7 +4,12 @@
     "perspectives": {
         "searchPerspectives": [
             "speeches",
+            "speeches-1907-1945",
             "people"
+        ],
+        "speechesSubPerspectives": [
+            "speeches-1907-1945",
+            "speeches"
         ],
         "onlyInstancePages": [
             "items",

@@ -13,6 +13,10 @@
   "selectPerspective": "Valitse näkymä aineiston hakua ja tutkimista varten:",
   "mainPageImageLicence": "Otsikon taustakuva: Alkuperäinen <a href='https://www.finna.fi/Record/museovirasto.5F9DFF58A0BB75BA9995BC6EE207E415' target='_blank'>kuva</a> (muokattu rajaamalla) Teuvo Kanerva <a href='https://creativecommons.org/licenses/by/4.0/deed.fi' target='_blank'>CC BY 4.0</a>. ",
   "backendErrorText": "Palvelin ei ole käytettävissä juuri nyt. Kokeile myöhemmin uuudestaan.",
+  "speechesMainPage": {
+    "title": "Täysistuntojen puheenvuorot",
+    "introText": "Puheiden suuren määrän vuoksi niiden haku  on jaettu kuuteen eri näkymään, joissa voi olla käytettävissä eri hakukriteerejä. Näkymä aukeaa sitä klikkaamalla. Viimeisessä näkymässä voi tarkastella kaikkia puheita samalla."
+  },
   "topBar": {
     "feedback": "palaute",
     "info": {
@@ -23,7 +27,10 @@
     "searchBarPlaceHolder": "Hae kaikesta sisällöstä",
     "searchBarPlaceHolderShort": "Hae...",
     "instructions": "ohjeet",
-    "instructionsUrl": "https://seco.cs.aalto.fi/projects/semparl/"
+    "instructionsUrl": "https://seco.cs.aalto.fi/projects/semparl/",
+    "speechesDropdown": {
+      "speeches": "puheenvuorot"
+    }
   },
   "facetBar": {
     "results": "Tulokset",
@@ -106,9 +113,14 @@
   },
   "perspectives": {
     "speeches": {
-      "label": "Täysistuntojen puheenvuorot",
+      "label": "Puheenvuorot",
+      "shortLabel": "1907–",
       "facetResultsType": "puheenvuoroa",
       "shortDescription": "Hae täysistuntojen puheenvuoroja",
+      "subMain": {
+        "label": "Puheenvuorot 1907–",
+        "shortDescription": "Kaikki puheenvuorot eduskunnan perustamisesta alkaen"
+      },
       "longDescription": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Use this perspective to ...  The results can be viewed using the following tabs: </p> <ul class=\"MuiTypography-root MuiTypography-body1\"> <li> <strong>TABLE</STRONG> ...</li> <li> ... </li>  </ul>",
       "instancePage": {
         "label": "Puheenvuoro",
@@ -241,6 +253,16 @@
           "description": "Puheen kirjauksen version. (Tiedossa vain valtiopäivistä 2015 lähtien.)"
         }
       }
+    },
+    "speeches-1907-1945": {
+      "label": "Puheenvuorot 1907–1945",
+      "shortLabel": "1907–1945", 
+      "subMain": {
+        "label": "Puheenvuorot 1907–1945",
+        "shortDescription": "Puheenvuorot eduskunnan perustamisesta toisen maailmansodan loppuun"
+      },
+      "facetResultsType": "puheenvuoroa",
+      "longDescription": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Use this perspective to ...  The results can be viewed using the following tabs: </p> <ul class=\"MuiTypography-root MuiTypography-body1\"> <li> <strong>TABLE</STRONG> ...</li> <li> ... </li>  </ul>"
     },
     "people": {
       "label": "Henkilöt",

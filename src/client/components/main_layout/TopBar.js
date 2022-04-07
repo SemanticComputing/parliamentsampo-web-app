@@ -18,6 +18,7 @@ import TopBarLanguageButton from './TopBarLanguageButton'
 import Divider from '@mui/material/Divider'
 import { has } from 'lodash'
 import secoLogo from '../../img/logos/seco-logo-48x50.png'
+import TopBarSpeechesButton from '../perspectives/ps/TopBarSpeechesButton'
 
 /**
  * Responsive app bar with a search field, perspective links, info links and a language
@@ -123,7 +124,7 @@ const TopBar = props => {
           key={perspective.id}
           component={AdapterNavLink}
           to={getInternalLink(perspective)}
-          isActive={(match, location) => location.pathname.startsWith(`${props.rootUrl}/${perspective.id}`)}
+          isActive={(match, location) => location.pathname.includes(`/${perspective.id}/`)}
           style={isActive => createAppBarButtonStyle(isActive)}
         >
           {intl.get(`perspectives.${perspective.id}.label`).toUpperCase()}
@@ -295,6 +296,11 @@ const TopBar = props => {
               }
             })}
           >
+            <TopBarSpeechesButton
+              rootUrl={props.rootUrl}
+              layoutConfig={layoutConfig}
+              speechesSubPerspectives={props.speechesSubPerspectives}
+            />
             {perspectives.map((perspective, index) => perspective.hideTopPerspectiveButton ? null : renderDesktopTopMenuItem(perspective, index))}
             <Box
               sx={theme => ({

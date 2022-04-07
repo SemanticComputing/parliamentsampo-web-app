@@ -64,12 +64,21 @@ const useStyles = makeStyles(theme => ({
  */
 const MainCard = props => {
   const classes = useStyles(props)
-  const { perspective, cardHeadingVariant } = props
+  const { perspective, cardHeadingVariant, pageType } = props
   const xsScreen = useMediaQuery(theme => theme.breakpoints.down('sm'))
   // const smScreen = useMediaQuery(theme => theme.breakpoints.between('sm', 'md'))
   const externalPerspective = has(perspective, 'externalUrl')
   const card = has(perspective, 'frontPageElement') && perspective.frontPageElement === 'card'
   const searchMode = has(perspective, 'searchMode') ? perspective.searchMode : 'faceted-search'
+  const internalLink = perspective.id === 'speeches' && pageType && pageType === 'main'
+    ? `${props.rootUrl}/speeches`
+    : `${props.rootUrl}/${perspective.id}/${searchMode}`
+  const shortDescription = pageType && pageType === 'main'
+    ? intl.get(`perspectives.${perspective.id}.shortDescription`)
+    : intl.get(`perspectives.${perspective.id}.subMain.shortDescription`)
+  const label = pageType && pageType === 'main'
+    ? intl.get(`perspectives.${perspective.id}.label`)
+    : intl.get(`perspectives.${perspective.id}.subMain.label`)
 
   return (
     <Grid
@@ -77,7 +86,7 @@ const MainCard = props => {
       key={perspective.id}
       item xs={12} sm={6} // optimized for four perspectives
       component={externalPerspective ? 'a' : Link}
-      to={externalPerspective ? null : `${props.rootUrl}/${perspective.id}/${searchMode}`}
+      to={externalPerspective ? null : internalLink}
       container={xsScreen}
       href={externalPerspective ? perspective.externalUrl : null}
       target={externalPerspective ? '_blank' : null}
@@ -90,13 +99,13 @@ const MainCard = props => {
             component='h2'
             sx={{ color: '#fff' }}
           >
-            {intl.get(`perspectives.${perspective.id}.label`)}
+            {label}
           </Typography>
           <Typography
             component='p'
             sx={{ color: '#fff' }}
           >
-            {intl.get(`perspectives.${perspective.id}.shortDescription`)}
+            {shortDescription}
           </Typography>
         </Paper>}
       {card &&

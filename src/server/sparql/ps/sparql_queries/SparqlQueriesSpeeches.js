@@ -440,6 +440,17 @@ export const speechesByYearQuery = `
   ORDER BY ?category
 `
 
+export const speechesSubcorpus1ByYearQuery = `
+  SELECT DISTINCT ?category (COUNT(DISTINCT ?speech) AS ?count)
+  WHERE {
+    <FILTER>
+    ?speech a semparls:Subcorpus1 .
+    ?speech semparls:yearOfSpeech ?category .
+  } 
+  GROUP BY ?category
+  ORDER BY ?category
+`
+
 export const speechesByYearAndPartyQuery = `
   SELECT ?id ?dataItem__id ?dataItem__prefLabel (count(?speech) as ?dataItem__value) WHERE {
     ?speech semparls:party ?dataItem__id ;

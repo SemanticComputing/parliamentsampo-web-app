@@ -1,5 +1,5 @@
 {
-    "id": "speeches",
+    "id": "speeches-1907-1945",
     "endpoint": {
         "url": "https://ldf.fi/semparl/sparql",
         "useAuth": true,
@@ -8,16 +8,18 @@
     "sparqlQueriesFile": "SparqlQueriesSpeeches.js",
     "baseURI": "http://ldf.fi/semparl",
     "URITemplate": "<BASE_URI>/speeches/<LOCAL_ID>",
-    "facetClass": "semparls:Speech",
+    "facetClass": "semparls:Subcorpus1",
     "langTag": "fi",
-    "frontPageImage": "main_page/events-452x262.jpg",
+    "propertiesTranslationsID": "speeches",
+    "hideCardOnFrontPage": true,
     "hideTopPerspectiveButton": true,
+    "frontPageImage": "main_page/events-452x262.jpg",
     "searchMode": "faceted-search",
     "defaultActiveFacets": [ "contentTextFacet" ],
     "defaultTab": "table",
     "defaultInstancePageTab": "table",
     "resultClasses": {
-        "speeches": {
+        "speeches-1907-1945": {
             "paginatedResultsConfig": {
                 "tabID": 0,
                 "component": "ResultTable",
@@ -30,18 +32,7 @@
                 "postprocess": {
                     "func": "processTextIndexHighlighting"
                 }
-            },
-            "instanceConfig": {
-                "propertiesQueryBlock": "speechPropertiesInstancePage",
-                "instancePageResultClasses": {
-                    "instancePageTable": {
-                        "tabID": 0,
-                        "component": "InstancePageTable",
-                        "tabPath": "table",
-                        "tabIcon": "CalendarViewDay"
-                    }
-                }
-            }
+            }    
         },
         "speechesByYear": {
             "tabID": 1,
