@@ -113,7 +113,8 @@
   },
   "perspectives": {
     "speeches": {
-      "label": "Puheenvuorot",
+      "label": "Puheenvuorot 1907–",
+      "labelMainPage": "Puheenvuorot",
       "shortLabel": "1907–",
       "facetResultsType": "puheenvuoroa",
       "shortDescription": "Hae täysistuntojen puheenvuoroja",

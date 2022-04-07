@@ -76,9 +76,12 @@ const MainCard = props => {
   const shortDescription = pageType && pageType === 'main'
     ? intl.get(`perspectives.${perspective.id}.shortDescription`)
     : intl.get(`perspectives.${perspective.id}.subMain.shortDescription`)
-  const label = pageType && pageType === 'main'
+  let label = pageType && pageType === 'main'
     ? intl.get(`perspectives.${perspective.id}.label`)
     : intl.get(`perspectives.${perspective.id}.subMain.label`)
+  if (pageType === 'main' && perspective.id === 'speeches') {
+    label = intl.get(`perspectives.${perspective.id}.labelMainPage`)
+  }
 
   return (
     <Grid
