@@ -120,7 +120,7 @@
       "shortDescription": "Hae täysistuntojen puheenvuoroja",
       "subMain": {
         "label": "Puheenvuorot 1907–",
-        "shortDescription": "Kaikki puheenvuorot eduskunnan perustamisesta alkaen"
+        "shortDescription": "Kaikki puheet eduskunnan perustamisesta alkaen"
       },
       "longDescription": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Use this perspective to ...  The results can be viewed using the following tabs: </p> <ul class=\"MuiTypography-root MuiTypography-body1\"> <li> <strong>TABLE</STRONG> ...</li> <li> ... </li>  </ul>",
       "instancePage": {
@@ -260,7 +260,17 @@
       "shortLabel": "1907–1945", 
       "subMain": {
         "label": "Puheenvuorot 1907–1945",
-        "shortDescription": "Puheenvuorot eduskunnan perustamisesta toisen maailmansodan loppuun"
+        "shortDescription": "Puheet eduskunnan perustamisesta toisen maailmansodan loppuun"
+      },
+      "facetResultsType": "puheenvuoroa",
+      "longDescription": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Use this perspective to ...  The results can be viewed using the following tabs: </p> <ul class=\"MuiTypography-root MuiTypography-body1\"> <li> <strong>TABLE</STRONG> ...</li> <li> ... </li>  </ul>"
+    },
+    "speeches-2015-": {
+      "label": "Puheenvuorot 2015–",
+      "shortLabel": "2015–", 
+      "subMain": {
+        "label": "Puheenvuorot 2015–",
+        "shortDescription": "Puheet valtiopäiviltä 2015 alkaen"
       },
       "facetResultsType": "puheenvuoroa",
       "longDescription": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Use this perspective to ...  The results can be viewed using the following tabs: </p> <ul class=\"MuiTypography-root MuiTypography-body1\"> <li> <strong>TABLE</STRONG> ...</li> <li> ... </li>  </ul>"

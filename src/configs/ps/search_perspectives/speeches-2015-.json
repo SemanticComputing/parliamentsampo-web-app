@@ -1,5 +1,5 @@
 {
-    "id": "speeches-1907-1945",
+    "id": "speeches-2015-",
     "endpoint": {
         "url": "https://ldf.fi/semparl/sparql",
         "useAuth": true,
@@ -8,7 +8,7 @@
     "sparqlQueriesFile": "SparqlQueriesSpeeches.js",
     "baseURI": "http://ldf.fi/semparl",
     "URITemplate": "<BASE_URI>/speeches/<LOCAL_ID>",
-    "facetClass": "semparls:Subcorpus1",
+    "facetClass": "semparls:Subcorpus5",
     "langTag": "fi",
     "propertiesTranslationsID": "speeches",
     "hideCardOnFrontPage": true,
@@ -19,7 +19,7 @@
     "defaultTab": "table",
     "defaultInstancePageTab": "table",
     "resultClasses": {
-        "speeches-1907-1945": {
+        "speeches-2015-": {
             "paginatedResultsConfig": {
                 "tabID": 0,
                 "component": "ResultTable",
@@ -49,7 +49,7 @@
             "yaxisTitle": "Puheiden lukumäärä",
             "tabPath": "by_year",
             "tabIcon": "ShowChart",
-            "sparqlQuery": "speechesSubcorpus1ByYearQuery",
+            "sparqlQuery": "speechesSubcorpus5ByYearQuery",
             "facetClass": "speeches",
             "filterTarget": "speech",
             "resultMapper": "mapLineChart",
@@ -396,8 +396,8 @@
             "filterType": "dateNoTimespanFilter",
             "predicate": "dct:date",
             "sortByPredicate": "dct:date",
-            "min": "1907-05-23",
-            "max": "1946-01-24"
+            "min": "2015-04-28",
+            "max": "2022-03-24"
         },
         "parliamentarySession": {
             "containerClass": "ten",
