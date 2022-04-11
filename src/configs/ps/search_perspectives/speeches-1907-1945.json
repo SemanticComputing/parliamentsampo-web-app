@@ -397,7 +397,7 @@
             "predicate": "dct:date",
             "sortByPredicate": "dct:date",
             "min": "1907-05-23",
-            "max": "2022-03-11"
+            "max": "1946-01-24"
         },
         "parliamentarySession": {
             "containerClass": "ten",
