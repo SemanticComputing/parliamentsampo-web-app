@@ -113,13 +113,13 @@
   },
   "perspectives": {
     "speeches": {
-      "label": "Puheenvuorot 1907–",
+      "label": "Valtiopäivät 1907–",
       "labelMainPage": "Puheenvuorot",
-      "shortLabel": "1907–",
+      "shortLabel": "Valtiopäivät 1907–",
       "facetResultsType": "puheenvuoroa",
       "shortDescription": "Hae täysistuntojen puheenvuoroja",
       "subMain": {
-        "label": "Puheenvuorot 1907–",
+        "label": "Valtiopäivät 1907–",
         "shortDescription": "Kaikki puheet eduskunnan perustamisesta alkaen"
       },
       "longDescription": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Use this perspective to ...  The results can be viewed using the following tabs: </p> <ul class=\"MuiTypography-root MuiTypography-body1\"> <li> <strong>TABLE</STRONG> ...</li> <li> ... </li>  </ul>",
@@ -256,20 +256,20 @@
       }
     },
     "speeches-1907-1945": {
-      "label": "Puheenvuorot 1907–1945",
-      "shortLabel": "1907–1945", 
+      "label": "Valtiopäivät 1907–1945",
+      "shortLabel": "Valtiopäivät 1907–1945", 
       "subMain": {
-        "label": "Puheenvuorot 1907–1945",
+        "label": "Valtiopäivät 1907–1945",
         "shortDescription": "Puheet eduskunnan perustamisesta toisen maailmansodan loppuun"
       },
       "facetResultsType": "puheenvuoroa",
       "longDescription": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Use this perspective to ...  The results can be viewed using the following tabs: </p> <ul class=\"MuiTypography-root MuiTypography-body1\"> <li> <strong>TABLE</STRONG> ...</li> <li> ... </li>  </ul>"
     },
     "speeches-2015-": {
-      "label": "Puheenvuorot 2015–",
-      "shortLabel": "2015–", 
+      "label": "Valtiopäivät 2015–",
+      "shortLabel": "Valtiopäivät 2015–", 
       "subMain": {
-        "label": "Puheenvuorot 2015–",
+        "label": "Valtiopäivät 2015–",
         "shortDescription": "Puheet valtiopäiviltä 2015 alkaen"
       },
       "facetResultsType": "puheenvuoroa",
