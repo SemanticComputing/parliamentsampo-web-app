@@ -434,6 +434,36 @@ export const speechesByYearQuery = `
   ORDER BY ?category
 `
 
+export const subcorpusOneSpeechesByYearQuery = `
+  SELECT DISTINCT ?category ?categoryLabel (COUNT(DISTINCT ?speech) AS ?count)
+  WHERE {
+    <FILTER>
+    ?speech a <FACET_CLASS> ;
+            semparls:yearOfSpeech ?category .
+    BIND(IF(?category = 1946,
+          CONCAT(STR(?category), " (31.1. saakka)"),
+          STR(?category))
+    as ?categoryLabel)           
+  } 
+  GROUP BY ?category ?categoryLabel
+  ORDER BY ?category
+`
+
+export const subcorpusFiveSpeechesByYearQuery = `
+  SELECT DISTINCT ?category ?categoryLabel (COUNT(DISTINCT ?speech) AS ?count)
+  WHERE {
+    <FILTER>
+    ?speech a <FACET_CLASS> ;
+              semparls:yearOfSpeech ?category .
+    BIND(IF(?category = 2015,
+          CONCAT(STR(?category), " (22.4. alkaen)"),
+          STR(?category))
+    as ?categoryLabel)            
+  } 
+  GROUP BY ?category ?categoryLabel
+  ORDER BY ?category
+`
+
 export const speechesByYearAndPartyQuery = `
   SELECT ?id ?dataItem__id ?dataItem__prefLabel (count(?speech) as ?dataItem__value) WHERE {
     ?speech semparls:party ?dataItem__id ;

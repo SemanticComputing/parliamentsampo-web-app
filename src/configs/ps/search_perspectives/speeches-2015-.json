@@ -42,19 +42,19 @@
                 "curve": "straight",
                 "width": 2
             },
-            "xaxisTickAmount": 20,
             "title": "Puheiden lukumäärä vuosittain",
             "seriesTitle": "Puheiden lukumäärä",
             "xaxisTitle": "Vuosi",
             "yaxisTitle": "Puheiden lukumäärä",
             "tabPath": "by_year",
             "tabIcon": "ShowChart",
-            "sparqlQuery": "speechesByYearQuery",
+            "sparqlQuery": "subcorpusFiveSpeechesByYearQuery",
             "facetClass": "speeches-2015-",
             "filterTarget": "speech",
             "resultMapper": "mapLineChart",
             "resultMapperConfig": {
-                "fillEmptyValues": true
+                "fillEmptyValues": true,
+                "customizedCategoryLabels": true
             }
         }
     },

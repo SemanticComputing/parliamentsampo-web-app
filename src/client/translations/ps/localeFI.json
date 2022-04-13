@@ -15,7 +15,7 @@
   "backendErrorText": "Palvelin ei ole käytettävissä juuri nyt. Kokeile myöhemmin uuudestaan.",
   "speechesMainPage": {
     "title": "Täysistuntojen puheenvuorot",
-    "introText": "Puheiden suuren määrän vuoksi niiden haku  on jaettu kuuteen eri näkymään, joissa voi olla käytettävissä eri hakukriteerejä. Näkymä aukeaa sitä klikkaamalla. Viimeisessä näkymässä voi tarkastella kaikkia puheita samalla."
+    "introText": "Puheiden suuren määrän vuoksi niiden haku on jaettu valtiopäivien mukaisesti kuuteen eri näkymään, joissa voi olla käytettävissä eri hakukriteerejä. Näkymä aukeaa sitä klikkaamalla. Viimeisessä näkymässä voi tarkastella kaikkia puheita samalla."
   },
   "topBar": {
     "feedback": "palaute",
