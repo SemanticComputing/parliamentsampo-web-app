@@ -49,32 +49,12 @@
             "yaxisTitle": "Puheiden lukumäärä",
             "tabPath": "by_year",
             "tabIcon": "ShowChart",
-            "sparqlQuery": "speechesSubcorpus5ByYearQuery",
-            "facetClass": "speeches",
+            "sparqlQuery": "speechesByYearQuery",
+            "facetClass": "speeches-2015-",
             "filterTarget": "speech",
             "resultMapper": "mapLineChart",
             "resultMapperConfig": {
                 "fillEmptyValues": true
-            }
-        },
-        "speechesByYearAndParty": {
-            "hideTab": true,
-            "tabID": 2,
-            "component": "BarChartRace",
-            "stepBegin": 1907,
-            "stepEnd": 2022,
-            "stepIncrement": 1,
-            "stepDuration": 1000,
-            "tabPath": "by_year_and_party",
-            "tabIcon": "ShowChart",
-            "sparqlQuery": "speechesByYearAndPartyQuery",
-            "facetClass": "speeches",
-            "filterTarget": "speech",
-            "postprocess": {
-                "func": "toBarChartRaceFormat",
-                "config": {
-                    "step": 1
-                }
             }
         }
     },

@@ -1,7 +1,6 @@
 const perspectiveID = 'speeches'
 
-export const speechPropertiesInstancePage =
-  ` 
+export const speechPropertiesInstancePage = ` 
   ?id skos:prefLabel ?prefLabel__id . 
   BIND(?prefLabel__id as ?prefLabel__prefLabel)
   BIND(?id as ?uri__id)
@@ -136,8 +135,8 @@ export const speechPropertiesInstancePage =
   }
 `
 
-export const speechPropertiesFacetResults =
-  ` ?id skos:prefLabel ?prefLabel__id . 
+export const speechPropertiesFacetResults = ` 
+  ?id skos:prefLabel ?prefLabel__id . 
   BIND(?prefLabel__id as ?prefLabel__prefLabel)
   BIND(CONCAT("/${perspectiveID}/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
   BIND(?id as ?uri__id)
@@ -195,7 +194,6 @@ export const itemPropertiesInstancePage = `
   BIND(?id as ?uri__id)
   BIND(?id as ?uri__dataProviderUrl)
   BIND(?id as ?uri__prefLabel)
-
   {
     ?id skos:prefLabel ?prefLabel__id .
     BIND(?prefLabel__id as ?prefLabel__prefLabel)
@@ -236,7 +234,6 @@ export const plenarySessionPropertiesInstancePage = `
   BIND(?id as ?uri__id)
   BIND(?id as ?uri__dataProviderUrl)
   BIND(?id as ?uri__prefLabel)
-
   {
     ?id skos:prefLabel ?prefLabel__id .
     BIND(?prefLabel__id as ?prefLabel__prefLabel)
@@ -311,7 +308,6 @@ export const parliamentarySessionPropertiesInstancePage = `
   BIND(?id as ?uri__id)
   BIND(?id as ?uri__dataProviderUrl)
   BIND(?id as ?uri__prefLabel)
-
   {
     ?id skos:prefLabel ?prefLabel__id .
     BIND(?prefLabel__id as ?prefLabel__prefLabel)
@@ -353,7 +349,6 @@ export const documentPropertiesInstancePage = `
   BIND(?id as ?uri__id)
   BIND(?id as ?uri__dataProviderUrl)
   BIND(?id as ?uri__prefLabel)
-
   {
     ?id skos:prefLabel ?prefLabel__id .
     BIND(?prefLabel__id as ?prefLabel__prefLabel)
@@ -408,7 +403,6 @@ export const interruptionPropertiesInstancePage = `
   BIND(?id as ?uri__id)
   BIND(?id as ?uri__dataProviderUrl)
   BIND(?id as ?uri__prefLabel)
-
   {
     ?id skos:prefLabel ?prefLabel__id .
     BIND(?prefLabel__id as ?prefLabel__prefLabel)
@@ -427,36 +421,14 @@ export const interruptionPropertiesInstancePage = `
   {
     ?id semparls:content ?content .
   }
-  `
+`
 
 export const speechesByYearQuery = `
   SELECT DISTINCT ?category (COUNT(DISTINCT ?speech) AS ?count)
   WHERE {
     <FILTER>
-    ?speech a semparls:Speech .
-    ?speech semparls:yearOfSpeech ?category .
-  } 
-  GROUP BY ?category
-  ORDER BY ?category
-`
-
-export const speechesSubcorpus1ByYearQuery = `
-  SELECT DISTINCT ?category (COUNT(DISTINCT ?speech) AS ?count)
-  WHERE {
-    <FILTER>
-    ?speech a semparls:Subcorpus1 .
-    ?speech semparls:yearOfSpeech ?category .
-  } 
-  GROUP BY ?category
-  ORDER BY ?category
-`
-
-export const speechesSubcorpus5ByYearQuery = `
-  SELECT DISTINCT ?category (COUNT(DISTINCT ?speech) AS ?count)
-  WHERE {
-    <FILTER>
-    ?speech a semparls:Subcorpus5 .
-    ?speech semparls:yearOfSpeech ?category .
+    ?speech a <FACET_CLASS> ;
+              semparls:yearOfSpeech ?category .
   } 
   GROUP BY ?category
   ORDER BY ?category
