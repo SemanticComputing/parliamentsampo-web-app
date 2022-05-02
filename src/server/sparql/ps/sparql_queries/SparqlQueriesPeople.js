@@ -289,6 +289,7 @@ WHERE {
   BIND (?prefLabel__id as ?prefLabel__prefLabel)
 
   ?event__id semparls:speaker ?id ;
+             a semparls:Speech ;
              skos:prefLabel ?event__label ;
              semparls:content ?content .
   OPTIONAL { ?event__id dct:date ?_date }
@@ -298,7 +299,7 @@ WHERE {
   BIND(CONCAT("/speeches/page/", REPLACE(STR(?event__id), "^.*\\\\/(.+)", "$1")) AS ?event__dataProviderUrl)
   BIND(COALESCE(?_date, '(aika ei tiedossa)') AS ?event__date)
   
-} ORDER BY COALESCE(?_date, "2999-01-01"^^xsd:date) ?_ord
+} ORDER BY STR(?event__id)
 `
 
 /**
