@@ -323,6 +323,15 @@
             "onlyOnInstancePage": true
         },
         {
+            "id": "parliament_days",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "onlyOnInstancePage": true
+        },
+        {
             "id": "district",
             "valueType": "object",
             "makeLink": true,

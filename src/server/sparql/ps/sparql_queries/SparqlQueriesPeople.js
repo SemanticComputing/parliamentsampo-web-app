@@ -126,6 +126,10 @@ export const personPropertiesInstancePage =
         OPTIONAL { ?parliament__id (crm:P4_has_time-span|crm:P10_falls_within)/crm:P81a_begin_of_the_begin ?evt_start }
     } ORDER BY COALESCE(str(?evt_start),'9999')
   }
+  UNION 
+  {
+    ?id semparls:parliament_days ?parliament_days
+  }
   UnION
   {
     ?id sch:sameAs ?exlink__id .

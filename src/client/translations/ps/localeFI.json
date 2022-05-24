@@ -350,6 +350,10 @@
           "label": "Eduskuntaryhmä",
           "description": "Eduskuntaryhmät joihin henkilö on kuulunut"
         },
+        "parliament_days": {
+          "label": "Edustajakauden pituus",
+          "description": "Edustajakauden pituus päivinä"
+        },
         "exlink": {
           "label": "Ulkoinen linkki",
           "description": "Linkki ulkoiseen tietokantaan"
