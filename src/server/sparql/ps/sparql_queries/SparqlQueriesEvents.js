@@ -42,9 +42,14 @@ export const eventPropertiesInstancePage =
   UNION
   {
     ?id semparls:organization ?group__id .
-    ?group__id skos:prefLabel ?group__prefLabel .
+    ?group__id skos:prefLabel ?group__prefLabel ; a ?_gclass .
     FILTER(LANG(?group__prefLabel)='<LANG>')
-    BIND(CONCAT("/groups/page/", REPLACE(STR(?group__id), "^.*\\\\/(.+)", "$1")) AS ?group__dataProviderUrl)
+    BIND(CONCAT(
+        IF(?_gclass = semparls:ElectoralDistrict, "/districts/page/", "/groups/page/"), 
+        REPLACE(STR(?group__id), 
+        "^.*\\\\/(.+)", "$1")) 
+    AS 
+      ?group__dataProviderUrl)
   }
   UNION
   {
