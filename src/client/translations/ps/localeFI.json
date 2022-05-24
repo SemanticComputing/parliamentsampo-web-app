@@ -252,6 +252,14 @@
         "version": {
           "label": "Versio",
           "description": "Puheen kirjauksen version. (Tiedossa vain valtiopäivistä 2015 lähtien.)"
+        },
+        "keywordAnnif": {
+          "label": "Asiasana (Annif)",
+          "description": "Asiasana (Annif)"
+        },
+        "keywordTFIDF": {
+          "label": "Asiasana (TF-IDF)",
+          "description": "Asiasana (TF-IDF)"
         }
       }
     },

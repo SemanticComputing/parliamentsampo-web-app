@@ -399,6 +399,28 @@
             "sortByPredicate": "semparls:plenarySession/semparls:parliamentarySession/semparls:electoralTerm/skos:prefLabel",
             "sortDirection": "asc"
         },
+        "keywordAnnif": {
+            "containerClass": "ten",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "semparl_linguistics:annif_subject",
+            "searchField": true,
+            "sortButton": true,
+            "sortBy": "instanceCount",
+            "sortByPredicate": "semparl_linguistics:annif_subject",
+            "sortDirection": "desc"
+        },
+        "keywordTFIDF": {
+            "containerClass": "ten",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "semparl_linguistics:tfidf_subject",
+            "searchField": true,
+            "sortButton": true,
+            "sortBy": "instanceCount",
+            "sortByPredicate": "semparl_linguistics:tfidf_subject",
+            "sortDirection": "desc"
+        },
         "referencedPerson": {
             "containerClass": "ten",
             "facetType": "list",
