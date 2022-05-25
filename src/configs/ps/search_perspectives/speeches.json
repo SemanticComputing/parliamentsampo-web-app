@@ -316,6 +316,9 @@
         }
     ],
     "facets": {
+        "prefLabel": {
+            "sortByPattern": "BIND(?id as ?orderBy)"
+        },
         "item": {
             "sortByPredicate": "semparls:item/skos:prefLabel"
         },
