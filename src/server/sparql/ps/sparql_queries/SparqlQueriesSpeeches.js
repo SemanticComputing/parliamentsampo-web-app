@@ -42,6 +42,7 @@ export const speechPropertiesInstancePage = `
   UNION 
   {
     ?id semparl_linguistics:referenceToPlace/skos:relatedMatch ?referencedPlace__id .
+    FILTER NOT EXISTS { ?referencedPlace__id semparls:has_duplicate_child true }
     ?referencedPlace__id skos:prefLabel ?referencedPlace__prefLabel .
     BIND(CONCAT("/places/page/", REPLACE(STR(?referencedPlace__id), "^.*\\\\/(.+)", "$1")) AS ?referencedPlace__dataProviderUrl)
   }
