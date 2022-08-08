@@ -489,6 +489,18 @@
             "sortByPredicate": "semparls:has_party_membership/semparls:party/skos:prefLabel",
             "sortDirection": "desc"
         },
+        "gender": {
+            "containerClass": "three",
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "pieChartButton": true,
+            "predicate": "bioc:has_gender",
+            "sortButton": true,
+            "sortBy": "instanceCount",
+            "sortByPredicate": "bioc:has_gender/skos:prefLabel",
+            "sortDirection": "desc"
+        },
         "dateOfBirthTimespan": {
             "containerClass": "four",
             "endProperty": "crm:P82b_end_of_the_end",
@@ -513,16 +525,28 @@
             "sortByPredicate": "crm:P98i_was_born/crm:P7_took_place_at/skos:prefLabel",
             "sortDirection": "desc"
         },
-        "gender": {
-            "containerClass": "three",
+        "dateOfDeathTimespan": {
+            "containerClass": "four",
+            "endProperty": "crm:P82b_end_of_the_end",
+            "facetType": "timespan",
+            "filterType": "timespanFilter",
+            "max": null,
+            "min": null,
+            "predicate": "crm:P100i_died_in/crm:P4_has_time-span",
+            "sortByAscPredicate": "crm:P100i_died_in/crm:P4_has_time-span/crm:P81a_begin_of_the_begin",
+            "sortByDescPredicate": "crm:P100i_died_in/crm:P4_has_time-span/crm:P82b_end_of_the_end",
+            "startProperty": "crm:P81a_begin_of_the_begin"
+        },
+        "placeOfDeath": {
+            "containerClass": "ten",
             "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
             "facetType": "list",
             "filterType": "uriFilter",
-            "pieChartButton": true,
-            "predicate": "bioc:has_gender",
+            "predicate": "crm:P100i_died_in/crm:P7_took_place_at",
+            "searchField": true,
             "sortButton": true,
             "sortBy": "instanceCount",
-            "sortByPredicate": "bioc:has_gender/skos:prefLabel",
+            "sortByPredicate": "crm:P100i_died_in/crm:P7_took_place_at/skos:prefLabel",
             "sortDirection": "desc"
         },
         "occupation": {
