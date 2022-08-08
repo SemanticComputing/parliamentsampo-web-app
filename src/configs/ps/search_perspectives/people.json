@@ -15,6 +15,22 @@
     "defaultActiveFacets": [],
     "defaultTab": "table",
     "defaultInstancePageTab": "table",
+    "maps": {
+        "peoplePlaces_unused": {
+            "center": [
+                22.43,
+                10.37
+            ],
+            "zoom": 2
+        },
+        "peopleMigrations": {
+            "center": [
+                60.43,
+                20.37
+            ],
+            "zoom": 3
+        }
+    },
     "resultClasses": {
         "people": {
             "paginatedResultsConfig": {
@@ -183,6 +199,31 @@
             "resultMapperConfig": {
                 "fillEmptyValues": true
             }
+        },
+        "peopleMigrations": {
+            "tabID": 2,
+            "component": "Deck",
+            "tabPath": "migrations",
+            "tabIcon": "Redo",
+            "sparqlQuery": "peopleMigrationsQuery",
+            "facetClass": "people",
+            "filterTarget": "person",
+            "layerType": "arcLayer",
+            "arcWidthVariable": "instanceCountScaled",
+            "instanceVariable": "person",
+            "showTooltips": true,
+            "postprocess": {
+                "func": "linearScale",
+                "config": {
+                    "variable": "instanceCount",
+                    "minAllowed": 3,
+                    "maxAllowed": 30
+                }
+            }
+        },
+        "peopleMigrationsDialog": {
+            "sparqlQuery": "peopleMigrationsDialogQuery",
+            "filterTarget": "id"
         }
     },
     "properties": [

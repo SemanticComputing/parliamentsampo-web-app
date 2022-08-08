@@ -62,6 +62,7 @@
     "table": "taulukko",
     "events": "tapahtumat",
     "speeches": "puheenvuorot",
+    "migrations": "muuttoliike",
     "network": "verkosto",
     "by_age": "ikäjakauma",
     "export": "SPARQL-kysely",
@@ -110,6 +111,20 @@
       "kotus:rajat-lansi-ita": ""
     },
     "wrongZoomLevel": ""
+  },
+  "deckGlMap": {
+    "arcColouring": "Kaaren väritys:",
+    "showMoreInformation": "Klikkaa nähdäkseni lisää.",
+    "peopleMigrations": {
+      "legendTitle": "Kaaren väritys",
+      "legendFrom": "Syntymäpaikka",
+      "legendTo": "Kuolinpaikka",
+      "from": "Syntymäpaikka:",
+      "to": "Kuolinpaikka:",
+      "count": "Henkilöiden lukumäärä:",
+      "listHeadingSingleInstance": "Henkilöt:",
+      "listHeadingMultipleInstances": "Henkilöt:"
+    }
   },
   "perspectives": {
     "speeches": {
