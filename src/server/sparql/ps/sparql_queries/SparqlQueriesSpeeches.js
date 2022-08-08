@@ -41,13 +41,13 @@ export const speechPropertiesInstancePage = `
   }
   UNION 
   {
-    ?id semparl_linguistics:referenceToPlace/semparl_linguistics:link ?referencedPlace__id .
+    ?id semparl_linguistics:referenceToPlace/skos:relatedMatch ?referencedPlace__id .
     ?referencedPlace__id skos:prefLabel ?referencedPlace__prefLabel .
     BIND(CONCAT("/places/page/", REPLACE(STR(?referencedPlace__id), "^.*\\\\/(.+)", "$1")) AS ?referencedPlace__dataProviderUrl)
   }
   UNION
   {
-    ?id semparl_linguistics:referenceToPerson/semparl_linguistics:link ?referencedPerson__id .
+    ?id semparl_linguistics:referenceToPerson/skos:relatedMatch ?referencedPerson__id .
     ?referencedPerson__id skos:prefLabel ?referencedPerson__prefLabel .
     BIND(CONCAT("/people/page/", REPLACE(STR(?referencedPerson__id), "^.*\\\\/(.+)", "$1")) AS ?referencedPerson__dataProviderUrl)
   }
