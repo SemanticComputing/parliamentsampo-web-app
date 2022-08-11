@@ -63,6 +63,7 @@
     "events": "tapahtumat",
     "speeches": "puheenvuorot",
     "migrations": "muuttoliike",
+    "map": "tapahtumakartta",
     "network": "verkosto",
     "by_age": "ikäjakauma",
     "export": "SPARQL-kysely",

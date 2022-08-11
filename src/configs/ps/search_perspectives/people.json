@@ -16,12 +16,12 @@
     "defaultTab": "table",
     "defaultInstancePageTab": "table",
     "maps": {
-        "peoplePlaces_unused": {
+        "peoplePlaces": {
             "center": [
-                22.43,
-                10.37
+                60.43,
+                20.37
             ],
-            "zoom": 2
+            "zoom": 3
         },
         "peopleMigrations": {
             "center": [
@@ -224,6 +224,21 @@
         "peopleMigrationsDialog": {
             "sparqlQuery": "peopleMigrationsDialogQuery",
             "filterTarget": "id"
+        },
+        "peoplePlaces": {
+            "tabID": 3,
+            "component": "LeafletMap",
+            "tabPath": "map",
+            "tabIcon": "AddLocation",
+            "sparqlQuery": "peopleEventPlacesQuery",
+            "facetClass": "people",
+            "filterTarget": "person",
+            "resultMapper": "mapPlaces",
+            "instanceConfig": {
+                "propertiesQueryBlock": "placePropertiesInfoWindow",
+                "relatedInstances": "peopleRelatedTo",
+                "createPopUpContent": "createPopUpContentAs"
+            }
         }
     },
     "properties": [

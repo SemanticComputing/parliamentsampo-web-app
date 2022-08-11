@@ -400,17 +400,38 @@ WHERE {
 } GROUP BY ?id ?prefLabel ?href
 `
 
-//  TODO: not implemented in portal yet
+//  TODO: not in portal yet
+export const placesMentionedQuery = `
+SELECT DISTINCT ?id # ?place__prefLabel 
+  # (CONCAT("/places/page/", REPLACE(STR(?place__id), "^.*\\\\/(.+)", "$1")) AS ?place__dataProviderUrl)
+  ?lat ?long (COUNT(DISTINCT ?speech__id) AS ?instanceCount) 
+WHERE {
+  <FILTER> # VALUES ?person { <http://ldf.fi/semparl/people/p300> } 
+  ?speech__id semparls:speaker ?person ;
+             semparl_linguistics:referenceToPlace/skos:relatedMatch ?id .
+  ?id       geo:lat ?lat ;
+            geo:long ?long .
+  FILTER NOT EXISTS { ?id semparls:has_duplicate_child [] }
+} 
+GROUPBY ?id ?lat ?long
+`
+
+//  facet perspective, migrarions tab
 export const peopleMigrationsQuery = `
 SELECT DISTINCT ?id 
-?from__id ?from__prefLabel ?from__lat ?from__long ?from__dataProviderUrl
-?to__id ?to__prefLabel ?to__lat ?to__long ?to__dataProviderUrl
+?from__id ?from__prefLabel ?from__lat ?from__long
+?to__id ?to__prefLabel ?to__lat ?to__long
+(CONCAT("/places/page/", REPLACE(STR(?from__id), "^.*\\\\/(.+)", "$1")) AS ?from__dataProviderUrl)
+(CONCAT("/places/page/", REPLACE(STR(?to__id), "^.*\\\\/(.+)", "$1")) AS ?to__dataProviderUrl)
 (COUNT(DISTINCT ?person) as ?instanceCount)
 WHERE {
   <FILTER>
   ?person a bioc:Person ;
     crm:P98i_was_born/crm:P7_took_place_at ?from__id ;
     crm:P100i_died_in/crm:P7_took_place_at ?to__id .
+  
+  FILTER(?from__id != ?to__id)
+
   ?from__id skos:prefLabel ?from__prefLabel ;
             geo:lat ?from__lat ;
             geo:long ?from__long .
@@ -420,18 +441,16 @@ WHERE {
           geo:long ?to__long .
   FILTER (lang(?to__prefLabel)="fi")
 
-  BIND(CONCAT("/places/page/", REPLACE(STR(?from__id), "^.*\\\\/(.+)", "$1")) AS ?from__dataProviderUrl)
-  BIND(CONCAT("/places/page/", REPLACE(STR(?to__id), "^.*\\\\/(.+)", "$1")) AS ?to__dataProviderUrl)
   BIND(IRI(CONCAT(STR(?from__id), "-", REPLACE(STR(?to__id), "http://sws.geonames.org/", ""))) as ?id)
-  FILTER(?from__id != ?to__id)
+  
 }
 GROUP BY ?id 
-?from__id ?from__prefLabel ?from__lat ?from__long ?from__dataProviderUrl
-?to__id ?to__prefLabel ?to__lat ?to__long ?to__dataProviderUrl
+?from__id ?from__prefLabel ?from__lat ?from__long
+?to__id ?to__prefLabel ?to__lat ?to__long
 ORDER BY desc(?instanceCount)
 `
 
-//  TODO: not in portal yet
+//  facet perspective, migrarions tab
 export const peopleMigrationsDialogQuery = `
 SELECT * {
   <FILTER>
@@ -440,6 +459,74 @@ SELECT * {
       skos:prefLabel ?prefLabel .
   BIND(CONCAT("/people/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?dataProviderUrl)
 }
+`
+
+// facet perspective, map tab
+export const peopleEventPlacesQuery = `
+SELECT DISTINCT ?id ?lat ?long (COUNT(DISTINCT ?person) as ?instanceCount)
+WHERE {
+  <FILTER>
+  { ?person crm:P98i_was_born/crm:P7_took_place_at ?id }
+  UNION
+  { ?person crm:P74_has_current_or_former_residence ?id }
+  UNION
+  { ?person crm:P100i_died_in/crm:P7_took_place_at ?id }
+  UNION 
+  { 
+    VALUES ?evtclass { 
+      semparls:GovernmentalPositionOfTrust 
+      semparls:Career 
+      semparls:ElectoralDistrictCandidature 
+      semparls:PositionOfTrust 
+      semparls:MunicipalPositionOfTrust 
+      semparls:InternationalPositionOfTrust }
+    ?person bioc:bearer_of/crm:P11i_participated_in [ a ?evtclass ; crm:P7_took_place_at ?id ] 
+  }
+  FILTER NOT EXISTS { ?id semparls:has_duplicate_child [] }
+
+  ?id     geo:lat ?lat ;
+          geo:long ?long .
+  
+} GROUP BY ?id ?lat ?long
+`
+
+export const placePropertiesInfoWindow = `
+  ?id skos:prefLabel ?prefLabel__id .
+  BIND(?prefLabel__id AS ?prefLabel__prefLabel)
+  BIND(CONCAT("/places/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
+`
+
+export const peopleRelatedTo = `
+{ SELECT ?id ?related__id 
+  (CONCAT("/people/page/", REPLACE(STR(?related__id), "^.*\\\\/(.+)", "$1")) AS ?related__dataProviderUrl)
+  (CONCAT(SAMPLE(?_label), ' (', GROUP_CONCAT(DISTINCT ?_elabel; separator=", "), ')') AS ?related__prefLabel) 
+  WHERE {
+  
+  <FILTER>
+  
+  { ?related__id crm:P98i_was_born/crm:P7_took_place_at ?id . BIND("synnyinpaikka" AS ?_elabel)}
+  UNION
+  { ?related__id crm:P74_has_current_or_former_residence ?id . BIND('asuinpaikka' AS ?_elabel)}
+  UNION
+  { ?related__id crm:P100i_died_in/crm:P7_took_place_at ?id . BIND("kuolinpaikka" AS ?_elabel)}
+  UNION 
+  { 
+    VALUES ?evtclass { 
+      semparls:GovernmentalPositionOfTrust 
+      semparls:Career 
+      semparls:ElectoralDistrictCandidature 
+      semparls:PositionOfTrust 
+      semparls:MunicipalPositionOfTrust 
+      semparls:InternationalPositionOfTrust }
+    ?related__id bioc:bearer_of/crm:P11i_participated_in 
+      [ crm:P7_took_place_at ?id ;
+        a ?evtclass ;
+        skos:prefLabel ?_elabel ] .
+    FILTER(LANG(?_elabel)="fi")
+  }
+  ?related__id xl:prefLabel/skos:prefLabel ?_label .
+  
+  } GROUPBY ?id ?related__id }
 `
 
 export const ageQuery = `
