@@ -15,7 +15,10 @@ export const occupationPropertiesInstancePage =
   }
   UNION
   {
-    ?person__id bioc:has_occupation ?id ; a bioc:Person ; skos:prefLabel ?person__prefLabel .
+    { ?person__id bioc:has_occupation ?id ; a bioc:Person }
+    UNION
+    { ?person__id semparls:has_education/bioc:has_occupation ?id ; a bioc:Person }
+    ?person__id skos:prefLabel ?person__prefLabel .    
     BIND(CONCAT("/people/page/", REPLACE(STR(?person__id), "^.*\\\\/(.+)", "$1")) AS ?person__dataProviderUrl)
   }
   UNION
