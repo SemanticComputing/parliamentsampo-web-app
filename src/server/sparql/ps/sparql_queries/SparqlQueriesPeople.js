@@ -485,20 +485,18 @@ WHERE {
   <FILTER>
   { ?person crm:P98i_was_born/crm:P7_took_place_at ?id }
   UNION
-  { ?person crm:P74_has_current_or_former_residence ?id }
+  { ?person crm:P74_has_current_or_former_residence ?id ; a bioc:Person }
   UNION
   { ?person crm:P100i_died_in/crm:P7_took_place_at ?id }
-  UNION 
+  UNION
   { 
-    VALUES ?evtclass { 
-      semparls:GovernmentalPositionOfTrust 
-      semparls:Career 
-      semparls:ElectoralDistrictCandidature 
-      semparls:PositionOfTrust 
-      semparls:MunicipalPositionOfTrust 
-      semparls:InternationalPositionOfTrust }
-    ?person bioc:bearer_of/crm:P11i_participated_in [ a ?evtclass ; crm:P7_took_place_at|(semparls:organization/crm:P74_has_current_or_former_residence) ?id ] 
+    VALUES ?evtclass { semparls:GovernmentalPositionOfTrust semparls:Career semparls:ElectoralDistrictCandidature semparls:PositionOfTrust semparls:MunicipalPositionOfTrust semparls:InternationalPositionOfTrust }
+    ?person bioc:bearer_of/crm:P11i_participated_in ?evt .
+    ?evt a ?evtclass ; crm:P7_took_place_at ?id 
   }
+  UNION
+  { ?person semparls:has_education/semparls:school/crm:P74_has_current_or_former_residence ?id }
+
   FILTER NOT EXISTS { ?id semparls:has_duplicate_child [] }
 
   ?id     geo:lat ?lat ;
@@ -534,12 +532,24 @@ export const peopleRelatedTo = `
       semparls:ElectoralDistrictCandidature 
       semparls:PositionOfTrust 
       semparls:MunicipalPositionOfTrust 
-      semparls:InternationalPositionOfTrust }
-    ?related__id bioc:bearer_of/crm:P11i_participated_in 
-      [ crm:P7_took_place_at|(semparls:organization/crm:P74_has_current_or_former_residence) ?id ;
-        a ?evtclass ;
-        skos:prefLabel ?_elabel ] .
-    FILTER(LANG(?_elabel)="fi")
+      semparls:InternationalPositionOfTrust 
+    }
+    
+    { ?id ^crm:P7_took_place_at ?evt .
+      ?evt ^crm:P11i_participated_in/^bioc:bearer_of ?related__id .
+    }
+    UNION
+    { ?id (^crm:P74_has_current_or_former_residence)/(^semparls:organization) ?evt .
+       ?evt ^crm:P11i_participated_in/^bioc:bearer_of ?related__id .
+    }
+    UNION
+    { ?id (^crm:P74_has_current_or_former_residence)/(^semparls:school) ?evt .
+       ?evt ^semparls:has_education ?related__id .
+    }
+    ?evt a ?evtclass ;
+         skos:prefLabel ?_elabel .
+
+     FILTER(LANG(?_elabel)="fi")
   }
   ?related__id xl:prefLabel/skos:prefLabel ?_label .
   
