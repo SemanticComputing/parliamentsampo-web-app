@@ -35,10 +35,27 @@ export const personPropertiesInstancePage =
   }
   UNION
   {
-    ?id semparls:has_education ?education__id .
-    ?education__id skos:prefLabel ?education__prefLabel .
-    FILTER(LANG(?education__prefLabel) = "<LANG>")
-    BIND(CONCAT("/occupations/page/", REPLACE(STR(?education__id), "^.*\\\\/(.+)", "$1")) AS ?education__dataProviderUrl)
+    { 
+      SELECT DISTINCT
+        ?id
+        ?education__id
+        (CONCAT(?education__label, 
+          " ", 
+          COALESCE(?_eyear, ""),
+          IF(BOUND(?_school), CONCAT(" (", STR(?_school), ")"), "")
+        ) AS ?education__prefLabel)
+          (CONCAT("/events/page/", REPLACE(STR(?education__id), "^.*\\\\/(.+)", "$1")) AS ?education__dataProviderUrl)
+      WHERE
+      {
+        ?id semparls:has_education ?education__id .
+        ?education__id skos:prefLabel ?education__label ;
+          ^rdf:object [ rdf:subject ?id ; rdf:predicate semparls:has_education ; semparls:order ?_order ]
+        FILTER(LANG(?education__label) = "fi")
+        # eg "sosionomi 1977 (Tampereen yliopisto)"
+        OPTIONAL { ?education__id semparls:year ?_eyear }
+        OPTIONAL { ?education__id semparls:school_name ?_school }
+      } ORDER BY ?_order
+    }
   }
   UNION
   {
@@ -480,7 +497,7 @@ WHERE {
       semparls:PositionOfTrust 
       semparls:MunicipalPositionOfTrust 
       semparls:InternationalPositionOfTrust }
-    ?person bioc:bearer_of/crm:P11i_participated_in [ a ?evtclass ; crm:P7_took_place_at ?id ] 
+    ?person bioc:bearer_of/crm:P11i_participated_in [ a ?evtclass ; crm:P7_took_place_at|(semparls:organization/crm:P74_has_current_or_former_residence) ?id ] 
   }
   FILTER NOT EXISTS { ?id semparls:has_duplicate_child [] }
 
@@ -519,7 +536,7 @@ export const peopleRelatedTo = `
       semparls:MunicipalPositionOfTrust 
       semparls:InternationalPositionOfTrust }
     ?related__id bioc:bearer_of/crm:P11i_participated_in 
-      [ crm:P7_took_place_at ?id ;
+      [ crm:P7_took_place_at|(semparls:organization/crm:P74_has_current_or_former_residence) ?id ;
         a ?evtclass ;
         skos:prefLabel ?_elabel ] .
     FILTER(LANG(?_elabel)="fi")

@@ -307,9 +307,9 @@
         {
             "id": "education",
             "valueType": "object",
-            "makeLink": false,
+            "makeLink": true,
             "externalLink": false,
-            "sortValues": true,
+            "sortValues": false,
             "numberedList": false,
             "onlyOnInstancePage": true
         },
