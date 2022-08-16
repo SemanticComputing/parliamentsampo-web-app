@@ -75,8 +75,8 @@
     },
     {
       "id": "organization",
-      "valueType": "string",
-      "makeLink": false,
+      "valueType": "object",
+      "makeLink": true,
       "externalLink": false,
       "sortValues": true,
       "numberedList": true

@@ -37,7 +37,18 @@ export const eventPropertiesInstancePage =
   }
   UNION
   {
-    ?id semparls:school/skos:prefLabel ?organization 
+    ?id semparls:school ?organization__id .
+    ?organization__id skos:prefLabel ?organization__prefLabel .
+    FILTER(LANG(?organization__prefLabel)='<LANG>')
+    BIND(CONCAT(
+        "/groups/page/", 
+        REPLACE(STR(?organization__id), 
+        "^.*\\\\/(.+)", "$1")) 
+    AS 
+      ?organization__dataProviderUrl)
+  }
+  {
+    ?id semparls:/skos:prefLabel ?organization 
   } 
   UNION
   {

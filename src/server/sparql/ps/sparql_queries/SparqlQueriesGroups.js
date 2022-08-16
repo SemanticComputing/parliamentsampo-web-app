@@ -33,10 +33,31 @@ export const groupPropertiesInstancePage =
   UNION
   {
     ?id crm:P74_has_current_or_former_residence ?place__id .
+    FILTER NOT EXISTS { ?place__id semparls:has_duplicate_child true }
     ?place__id skos:prefLabel ?place__prefLabel .
     FILTER(LANG(?place__prefLabel) = "<LANG>")
     BIND(CONCAT("/places/page/", REPLACE(STR(?place__id), "^.*\\\\/(.+)", "$1")) 
       AS ?place__dataProviderUrl)
+  }
+  UNION
+  { 
+    SELECT DISTINCT ?id ?person__id ?person__prefLabel 
+    (CONCAT("/people/page/", REPLACE(STR(?person__id), "^.*\\\\/(.+)", "$1")) AS ?person__dataProviderUrl)
+    WHeRE
+    {
+    ?id ^semparls:school ?role__id .
+    ?role__id ^semparls:has_education ?person__id ; skos:prefLabel ?role__label . 
+    FILTER(LANG(?role__label)="<LANG>")
+    ?person__id  xl:prefLabel/skos:prefLabel ?_label .
+    OPTIONAL { ?role__id semparls:year ?_date }
+    BIND(
+      CONCAT(?_label, 
+          ' (', 
+          ?role__label, 
+          IF(BOUND(?_date), CONCAT(': ',?_date), ''), 
+          ')' )
+      AS ?person__prefLabel)
+    }
   }
   UNION
   { SELECT DISTINCT ?id ?person__id ?person__prefLabel ?person__dataProviderUrl 
