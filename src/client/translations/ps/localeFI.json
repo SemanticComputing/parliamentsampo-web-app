@@ -24,7 +24,7 @@
       "aboutTheProject": "Projektin kotisivu",
       "aboutTheProjectUrl": "https://seco.cs.aalto.fi/projects/semparl/"
     },
-    "searchBarPlaceHolder": "Hae kaikesta sisällöstä",
+    "searchBarPlaceHolder": "Hae sisällöstä",
     "searchBarPlaceHolderShort": "Hae...",
     "instructions": "ohjeet",
     "instructionsUrl": "https://seco.cs.aalto.fi/projects/semparl/",
@@ -425,6 +425,10 @@
         "speech": {
           "label": "Puheenvuorot",
           "description": "Puheenvuorot"
+        },
+        "listOfPeople": {
+          "label": "Lista henkilöistä",
+          "description": "Lista henkilöistä"
         }
       }
     },

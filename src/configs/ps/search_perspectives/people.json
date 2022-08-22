@@ -587,6 +587,17 @@
             "searchField": true,
             "sortByPredicate": "bioc:bearer_of/crm:P11i_participated_in/semparls:organization/skos:prefLabel"
         },
+        "listOfPeople": {
+            "containerClass": "ten",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "pieChartButton": false,
+            "predicate": "crm:P98i_was_born/^crm:P98i_was_born",
+            "sortButton": true,
+            "sortBy": "prefLabel",
+            "sortByPredicate": "skos:prefLabel",
+            "sortDirection": "asc"
+        },
         "exlink": {
             "containerClass": "three",
             "facetType": "list",
