@@ -6,7 +6,8 @@
             "speeches",
             "speeches-1907-1945",
             "speeches-2015-",
-            "people"
+            "people",
+            "fullTextSearch"
         ],
         "speechesSubPerspectives": [
             "speeches-2015-",
@@ -73,7 +74,7 @@
         "topBar": {
             "logoTextTransform": "none",
             "showLanguageButton": true,
-            "showSearchField": false,
+            "showSearchField": true,
             "feedbackLink": "https://link.webropolsurveys.com/...",
             "externalInstructions": true,
             "externalAboutPage": true,
