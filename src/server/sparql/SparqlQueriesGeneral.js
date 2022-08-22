@@ -24,7 +24,7 @@ export const jenaQuery = `
 `
 
 export const fullTextQuery = `
-  SELECT *
+  SELECT DISTINCT *
   WHERE {
     <QUERY>
     <RESULT_SET_PROPERTIES>
