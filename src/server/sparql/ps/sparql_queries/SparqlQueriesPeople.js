@@ -492,10 +492,17 @@ WHERE {
   { 
     VALUES ?evtclass { semparls:GovernmentalPositionOfTrust semparls:Career semparls:ElectoralDistrictCandidature semparls:PositionOfTrust semparls:MunicipalPositionOfTrust semparls:InternationalPositionOfTrust }
     ?person bioc:bearer_of/crm:P11i_participated_in ?evt .
-    ?evt a ?evtclass ; crm:P7_took_place_at ?id 
+    ?evt a ?evtclass
+    OPTIONAL { ?evt semparls:organization ?org }
+    OPTIONAL { ?evt crm:P7_took_place_at ?plc }
+    BIND(COALESCE(?org, ?plc) AS ?id)
+    FILTER(BOUND(?id))
   }
   UNION
-  { ?person semparls:has_education/semparls:school/crm:P74_has_current_or_former_residence ?id }
+  { ?person semparls:has_education/semparls:school ?id . FILTER EXISTS { ?id geo:lat ?lat } }
+  UNION
+  { ?person semparls:has_education/semparls:school ?school . FILTER NOT EXISTS { ?school geo:lat ?lat }
+    ?school crm:P74_has_current_or_former_residence ?id }
 
   FILTER NOT EXISTS { ?id semparls:has_duplicate_child [] }
 
@@ -506,9 +513,10 @@ WHERE {
 `
 
 export const placePropertiesInfoWindow = `
-  ?id skos:prefLabel ?prefLabel__id .
+  ?id skos:prefLabel ?prefLabel__id ; a ?id_class .
+  FILTER(LANG(?prefLabel__id)='fi')
   BIND(?prefLabel__id AS ?prefLabel__prefLabel)
-  BIND(CONCAT("/places/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
+  BIND(CONCAT("/", IF(?id_class in (crm:E53_Place, gn:Feature), 'places', 'groups'), "/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
 `
 
 export const peopleRelatedTo = `
@@ -516,41 +524,59 @@ export const peopleRelatedTo = `
   (CONCAT("/people/page/", REPLACE(STR(?related__id), "^.*\\\\/(.+)", "$1")) AS ?related__dataProviderUrl)
   (CONCAT(SAMPLE(?_label), ' (', GROUP_CONCAT(DISTINCT ?_elabel; separator=", "), ')') AS ?related__prefLabel) 
   WHERE {
-  
-  <FILTER>
-  
-  { ?related__id crm:P98i_was_born/crm:P7_took_place_at ?id . BIND("synnyinpaikka" AS ?_elabel)}
-  UNION
-  { ?related__id crm:P74_has_current_or_former_residence ?id . BIND('asuinpaikka' AS ?_elabel)}
-  UNION
-  { ?related__id crm:P100i_died_in/crm:P7_took_place_at ?id . BIND("kuolinpaikka" AS ?_elabel)}
-  UNION 
-  { 
-    VALUES ?evtclass { 
-      semparls:GovernmentalPositionOfTrust 
-      semparls:Career 
-      semparls:ElectoralDistrictCandidature 
-      semparls:PositionOfTrust 
-      semparls:MunicipalPositionOfTrust 
-      semparls:InternationalPositionOfTrust 
-    }
+    <FILTER>
+  {
+    ?id a crm:E53_Place 
+    { ?related__id crm:P98i_was_born/crm:P7_took_place_at ?id . BIND("synnyinpaikka" AS ?_elabel)}
+    UNION
+    { ?related__id crm:P74_has_current_or_former_residence ?id . BIND('asuinpaikka' AS ?_elabel)}
+    UNION
+    { ?related__id crm:P100i_died_in/crm:P7_took_place_at ?id . BIND("kuolinpaikka" AS ?_elabel)}
+    UNION 
+    { 
+      VALUES ?evtclass { 
+        semparls:GovernmentalPositionOfTrust 
+        semparls:Education 
+        semparls:Career 
+        semparls:ElectoralDistrictCandidature 
+        semparls:PositionOfTrust 
+        semparls:MunicipalPositionOfTrust 
+        semparls:InternationalPositionOfTrust 
+      }
+
+      { ?id ^crm:P7_took_place_at ?evt .
+        ?evt ^crm:P11i_participated_in/^bioc:bearer_of ?related__id .
+      }
+      UNION
+      { ?id (^crm:P74_has_current_or_former_residence)/(^semparls:organization) ?evt .
+         ?evt ^crm:P11i_participated_in/^bioc:bearer_of ?related__id .
+      }
+      UNION
+      { ?id (^crm:P74_has_current_or_former_residence)/(^semparls:school) ?evt .
+         ?evt ^semparls:has_education ?related__id .
+      }
+      
     
-    { ?id ^crm:P7_took_place_at ?evt .
-      ?evt ^crm:P11i_participated_in/^bioc:bearer_of ?related__id .
-    }
-    UNION
-    { ?id (^crm:P74_has_current_or_former_residence)/(^semparls:organization) ?evt .
-       ?evt ^crm:P11i_participated_in/^bioc:bearer_of ?related__id .
-    }
-    UNION
-    { ?id (^crm:P74_has_current_or_former_residence)/(^semparls:school) ?evt .
-       ?evt ^semparls:has_education ?related__id .
-    }
     ?evt a ?evtclass ;
          skos:prefLabel ?_elabel .
 
      FILTER(LANG(?_elabel)="fi")
+  	}
   }
+  UNION 
+  {
+        { ?id a semparls:School ; ^semparls:school ?evt .
+          ?evt ^semparls:has_education ?related__id .
+        }
+        UNION 
+        { ?id ^semparls:organization ?evt .
+          ?evt ^crm:P11i_participated_in/^bioc:bearer_of ?related__id .
+        }
+        ?evt a ?evtclass ; 
+          skos:prefLabel ?_elabel .
+        FILTER(LANG(?_elabel)="fi")
+      }
+
   ?related__id xl:prefLabel/skos:prefLabel ?_label .
   
   } GROUPBY ?id ?related__id }
