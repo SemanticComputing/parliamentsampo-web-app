@@ -276,6 +276,10 @@
         "keywordTFIDF": {
           "label": "Asiasana (TF-IDF)",
           "description": "Asiasana (TF-IDF)"
+        },
+        "eksCategory": {
+          "label": "EKS kategoria",
+          "description": "EKS kategoria"
         }
       }
     },
