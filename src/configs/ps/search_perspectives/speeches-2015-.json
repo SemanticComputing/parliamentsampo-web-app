@@ -456,7 +456,7 @@
             "facetValueFilter": "?id a skos:Collection .",
             "predicate": "semparls:item/semparl_linguistics:eks_category",
             "facetType": "hierarchical",
-            "parentProperty": "^skos:member",
+            "parentProperty": "eks-scheme:isMemberOf",
             "searchField": true,
             "sortButton": true,
             "sortBy": "instanceCount",
