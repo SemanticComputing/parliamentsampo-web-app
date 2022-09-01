@@ -453,14 +453,13 @@
             "containerClass": "ten",
             "filterType": "uriFilter",
             "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
-            "facetValueFilter": "?id a skos:Collection .",
-            "predicate": "semparls:item/semparl_linguistics:eks_category",
+            "predicate": "semparl_linguistics:eks_category",
             "facetType": "hierarchical",
-            "parentProperty": "eks-scheme:isMemberOf",
+            "parentProperty": "eks-scheme:isMemberOfCollection",
             "searchField": true,
             "sortButton": true,
             "sortBy": "instanceCount",
-            "sortByPredicate": "semparls:item/semparl_linguistics:eks_category/skos:prefLabel",
+            "sortByPredicate": "semparl_linguistics:eks_category/skos:prefLabel",
             "sortDirection": "desc"
         }
     }
