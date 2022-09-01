@@ -452,10 +452,11 @@
         "eksCategory": {
             "containerClass": "ten",
             "filterType": "uriFilter",
+            "hideUnknownValue": true,
             "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
             "predicate": "semparl_linguistics:eks_category",
             "facetType": "hierarchical",
-            "parentProperty": "eks-scheme:isMemberOfCollection",
+            "parentProperty": "eks-scheme:isCollectionMemberOf",
             "searchField": true,
             "sortButton": true,
             "sortBy": "instanceCount",
