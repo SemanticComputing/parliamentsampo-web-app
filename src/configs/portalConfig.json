@@ -14,10 +14,10 @@
         ],
         "speechesSubPerspectives": [
             "speeches-2015-",
-            "speeches-1907-1945",
-            "speeches-1946-1979",
-            "speeches-1980-1999",
             "speeches-2000-2014",
+            "speeches-1980-1999",
+            "speeches-1946-1979",
+            "speeches-1907-1945",
             "speeches"
         ],
         "onlyInstancePages": [
