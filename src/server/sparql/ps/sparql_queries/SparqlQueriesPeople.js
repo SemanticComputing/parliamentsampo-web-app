@@ -483,31 +483,26 @@ export const peopleEventPlacesQuery = `
 SELECT DISTINCT ?id ?lat ?long (COUNT(DISTINCT ?person) as ?instanceCount)
 WHERE {
   <FILTER>
-  { ?person crm:P98i_was_born/crm:P7_took_place_at ?id }
-  UNION
-  { ?person crm:P74_has_current_or_former_residence ?id ; a bioc:Person }
-  UNION
-  { ?person crm:P100i_died_in/crm:P7_took_place_at ?id }
-  UNION
-  { 
-    VALUES ?evtclass { semparls:GovernmentalPositionOfTrust semparls:Career semparls:ElectoralDistrictCandidature semparls:PositionOfTrust semparls:MunicipalPositionOfTrust semparls:InternationalPositionOfTrust }
-    ?person bioc:bearer_of/crm:P11i_participated_in ?evt .
-    ?evt a ?evtclass
-    OPTIONAL { ?evt semparls:organization ?org }
-    OPTIONAL { ?evt crm:P7_took_place_at ?plc }
-    BIND(COALESCE(?org, ?plc) AS ?id)
-    FILTER(BOUND(?id))
-  }
-  UNION
-  { ?person semparls:has_education/semparls:school ?id . FILTER EXISTS { ?id geo:lat ?lat } }
-  UNION
-  { ?person semparls:has_education/semparls:school ?school . FILTER NOT EXISTS { ?school geo:lat ?lat }
-    ?school crm:P74_has_current_or_former_residence ?id }
 
+  { ?id ^crm:P7_took_place_at/(^crm:P98i_was_born) ?person }
+  UNION
+  { ?id ^crm:P74_has_current_or_former_residence ?person }
+  UNION
+  { ?id ^crm:P7_took_place_at/(^crm:P100i_died_in) ?person }
+  UNION 
+  { ?id ^crm:P7_took_place_at [ ^crm:P11i_participated_in/(^bioc:bearer_of) ?person ] } 
+  UNION 
+  { ?id ^crm:P74_has_current_or_former_residence/(^semparls:organization) [ ^crm:P11i_participated_in/(^bioc:bearer_of) ?person ] } 
+  UNION 
+  { ?id (^crm:P74_has_current_or_former_residence)/(^semparls:school) [ ^semparls:has_education ?person ] }
+  UNION
+  { ?id a semparls:School ; ^semparls:school [ ^semparls:has_education ?person ] }
+  UNION 
+  { ?id ^semparls:organization [ ^crm:P11i_participated_in/^bioc:bearer_of ?person ] }
+
+  ?person a bioc:Person .
+  ?id geo:lat ?lat; geo:long ?long .
   FILTER NOT EXISTS { ?id semparls:has_duplicate_child [] }
-
-  ?id     geo:lat ?lat ;
-          geo:long ?long .
   
 } GROUP BY ?id ?lat ?long
 `
@@ -524,62 +519,30 @@ export const peopleRelatedTo = `
   (CONCAT("/people/page/", REPLACE(STR(?related__id), "^.*\\\\/(.+)", "$1")) AS ?related__dataProviderUrl)
   (CONCAT(SAMPLE(?_label), ' (', GROUP_CONCAT(DISTINCT ?_elabel; separator=", "), ')') AS ?related__prefLabel) 
   WHERE {
+
     <FILTER>
-  {
-    ?id a crm:E53_Place 
-    { ?related__id crm:P98i_was_born/crm:P7_took_place_at ?id . BIND("synnyinpaikka" AS ?_elabel)}
-    UNION
-    { ?related__id crm:P74_has_current_or_former_residence ?id . BIND('asuinpaikka' AS ?_elabel)}
-    UNION
-    { ?related__id crm:P100i_died_in/crm:P7_took_place_at ?id . BIND("kuolinpaikka" AS ?_elabel)}
-    UNION 
-    { 
-      VALUES ?evtclass { 
-        semparls:GovernmentalPositionOfTrust 
-        semparls:Education 
-        semparls:Career 
-        semparls:ElectoralDistrictCandidature 
-        semparls:PositionOfTrust 
-        semparls:MunicipalPositionOfTrust 
-        semparls:InternationalPositionOfTrust 
-      }
-
-      { ?id ^crm:P7_took_place_at ?evt .
-        ?evt ^crm:P11i_participated_in/^bioc:bearer_of ?related__id .
-      }
-      UNION
-      { ?id (^crm:P74_has_current_or_former_residence)/(^semparls:organization) ?evt .
-         ?evt ^crm:P11i_participated_in/^bioc:bearer_of ?related__id .
-      }
-      UNION
-      { ?id (^crm:P74_has_current_or_former_residence)/(^semparls:school) ?evt .
-         ?evt ^semparls:has_education ?related__id .
-      }
-      
     
-    ?evt a ?evtclass ;
-         skos:prefLabel ?_elabel .
+    { ?id ^crm:P7_took_place_at/(^crm:P98i_was_born) ?related__id . BIND("synnyinpaikka"@fi AS ?_elabel) }
+    UNION
+    { ?id ^crm:P74_has_current_or_former_residence ?related__id . BIND('asuinpaikka'@fi AS ?_elabel)}
+    UNION
+    { ?id ^crm:P7_took_place_at/(^crm:P100i_died_in) ?related__id . BIND("kuolinpaikka"@fi AS ?_elabel) }
+    UNION 
+    { ?id ^crm:P7_took_place_at [ ^crm:P11i_participated_in/(^bioc:bearer_of) ?related__id ; skos:prefLabel ?_elabel ] } 
+    UNION 
+    { ?id ^crm:P74_has_current_or_former_residence/(^semparls:organization) [ ^crm:P11i_participated_in/(^bioc:bearer_of) ?related__id; skos:prefLabel ?_elabel ] } 
+    UNION 
+    { ?id (^crm:P74_has_current_or_former_residence)/(^semparls:school) [ ^semparls:has_education ?related__id; skos:prefLabel ?_elabel ] }
+    UNION
+    { ?id a semparls:School ; ^semparls:school [ ^semparls:has_education ?related__id; skos:prefLabel ?_elabel ] }
+    UNION 
+    { ?id ^semparls:organization [ ^crm:P11i_participated_in/^bioc:bearer_of ?related__id; skos:prefLabel ?_elabel ] }
 
-     FILTER(LANG(?_elabel)="fi")
-  	}
-  }
-  UNION 
-  {
-        { ?id a semparls:School ; ^semparls:school ?evt .
-          ?evt ^semparls:has_education ?related__id .
-        }
-        UNION 
-        { ?id ^semparls:organization ?evt .
-          ?evt ^crm:P11i_participated_in/^bioc:bearer_of ?related__id .
-        }
-        ?evt a ?evtclass ; 
-          skos:prefLabel ?_elabel .
-        FILTER(LANG(?_elabel)="fi")
-      }
-
-  ?related__id xl:prefLabel/skos:prefLabel ?_label .
+    FILTER(LANG(?_elabel)="fi")
+    ?related__id xl:prefLabel/skos:prefLabel ?_label .
   
-  } GROUPBY ?id ?related__id }
+  } GROUPBY ?id ?related__id 
+}
 `
 
 export const ageQuery = `
