@@ -27,7 +27,7 @@
     "searchBarPlaceHolder": "Hae sisällöstä",
     "searchBarPlaceHolderShort": "Hae...",
     "instructions": "ohjeet",
-    "instructionsUrl": "https://seco.cs.aalto.fi/projects/semparl/",
+    "instructionsUrl": "https://seco.cs.aalto.fi/projects/semparl/parlamenttisammon-ohje.pdf",
     "speechesDropdown": {
       "speeches": "puheenvuorot"
     }
