@@ -293,6 +293,36 @@
       "facetResultsType": "puheenvuoroa",
       "longDescription": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Use this perspective to ...  The results can be viewed using the following tabs: </p> <ul class=\"MuiTypography-root MuiTypography-body1\"> <li> <strong>TABLE</STRONG> ...</li> <li> ... </li>  </ul>"
     },
+    "speeches-1946-1979": {
+      "label": "Valtiopäivät 1946–1979",
+      "shortLabel": "Valtiopäivät 1946–1979",
+      "subMain": {
+        "label": "Valtiopäivät 1946–1979",
+        "shortDescription": "Puheet toisen maailmansodan loppusta 70-luvun loppuun"
+      },
+      "facetResultsType": "puheenvuoroa",
+      "longDescription": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Use this perspective to ...  The results can be viewed using the following tabs: </p> <ul class=\"MuiTypography-root MuiTypography-body1\"> <li> <strong>TABLE</STRONG> ...</li> <li> ... </li>  </ul>"
+    },
+    "speeches-1980-1999": {
+      "label": "Valtiopäivät 1980–1999",
+      "shortLabel": "Valtiopäivät 1980–1999",
+      "subMain": {
+        "label": "Valtiopäivät 1980–1999",
+        "shortDescription": "Puheet 80-luvun alusta vuosituhannen vaihteeseen"
+      },
+      "facetResultsType": "puheenvuoroa",
+      "longDescription": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Use this perspective to ...  The results can be viewed using the following tabs: </p> <ul class=\"MuiTypography-root MuiTypography-body1\"> <li> <strong>TABLE</STRONG> ...</li> <li> ... </li>  </ul>"
+    },
+    "speeches-2000-2014": {
+      "label": "Valtiopäivät 2000–2014",
+      "shortLabel": "Valtiopäivät 2000–2014",
+      "subMain": {
+        "label": "Valtiopäivät 2000–2014",
+        "shortDescription": "Puheet 2000-luvun alusta vuoteen 2015 asti."
+      },
+      "facetResultsType": "puheenvuoroa",
+      "longDescription": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Use this perspective to ...  The results can be viewed using the following tabs: </p> <ul class=\"MuiTypography-root MuiTypography-body1\"> <li> <strong>TABLE</STRONG> ...</li> <li> ... </li>  </ul>"
+    },
     "speeches-2015-": {
       "label": "Valtiopäivät 2015–",
       "shortLabel": "Valtiopäivät 2015–", 
