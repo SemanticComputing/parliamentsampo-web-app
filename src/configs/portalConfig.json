@@ -5,6 +5,7 @@
         "searchPerspectives": [
             "speeches",
             "speeches-1907-1945",
+            "speeches-1946-1979",
             "speeches-2015-",
             "people",
             "fullTextSearch"
@@ -12,6 +13,7 @@
         "speechesSubPerspectives": [
             "speeches-2015-",
             "speeches-1907-1945",
+            "speeches-1946-1979",
             "speeches"
         ],
         "onlyInstancePages": [

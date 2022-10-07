@@ -293,6 +293,16 @@
       "facetResultsType": "puheenvuoroa",
       "longDescription": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Use this perspective to ...  The results can be viewed using the following tabs: </p> <ul class=\"MuiTypography-root MuiTypography-body1\"> <li> <strong>TABLE</STRONG> ...</li> <li> ... </li>  </ul>"
     },
+    "speeches-1946-1979": {
+      "label": "Valtiopäivät 1946–1979",
+      "shortLabel": "Valtiopäivät 1946–1979",
+      "subMain": {
+        "label": "Valtiopäivät 1946–1979",
+        "shortDescription": "Puheet toisen maailmansodan loppusta 70-luvun loppuun"
+      },
+      "facetResultsType": "puheenvuoroa",
+      "longDescription": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Use this perspective to ...  The results can be viewed using the following tabs: </p> <ul class=\"MuiTypography-root MuiTypography-body1\"> <li> <strong>TABLE</STRONG> ...</li> <li> ... </li>  </ul>"
+    },
     "speeches-2015-": {
       "label": "Valtiopäivät 2015–",
       "shortLabel": "Valtiopäivät 2015–", 
