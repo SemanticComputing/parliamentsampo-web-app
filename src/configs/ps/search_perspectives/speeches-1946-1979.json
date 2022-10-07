@@ -1,0 +1,406 @@
+{
+    "id": "speeches-1946-1979",
+    "endpoint": {
+        "url": "https://ldf.fi/semparl/sparql",
+        "useAuth": true,
+        "prefixesFile": "SparqlQueriesPrefixes.js"
+    },
+    "sparqlQueriesFile": "SparqlQueriesSpeeches.js",
+    "baseURI": "http://ldf.fi/semparl",
+    "URITemplate": "<BASE_URI>/speeches/<LOCAL_ID>",
+    "facetClass": "semparls:Subcorpus2",
+    "langTag": "fi",
+    "propertiesTranslationsID": "speeches",
+    "hideCardOnFrontPage": true,
+    "hideTopPerspectiveButton": true,
+    "frontPageImage": "main_page/events-452x262.jpg",
+    "searchMode": "faceted-search",
+    "defaultActiveFacets": [ "contentTextFacet" ],
+    "defaultTab": "table",
+    "defaultInstancePageTab": "table",
+    "resultClasses": {
+        "speeches-1946-1979": {
+            "paginatedResultsConfig": {
+                "tabID": 0,
+                "component": "ResultTable",
+                "tabPath": "table",
+                "tabIcon": "CalendarViewDay",
+                "propertiesQueryBlock": "speechPropertiesFacetResults",
+                "pagesize": 25,
+                "sortBy": null,
+                "sortDirection": null,
+                "postprocess": {
+                    "func": "processTextIndexHighlighting"
+                }
+            }    
+        },
+        "speechesByYear": {
+            "tabID": 1,
+            "component": "ApexCharts",
+            "createChartData": "createSingleLineChartData",
+            "stroke": {
+                "curve": "straight",
+                "width": 2
+            },
+            "title": "Puheiden lukumäärä vuosittain",
+            "seriesTitle": "Puheiden lukumäärä",
+            "xaxisTitle": "Vuosi",
+            "yaxisTitle": "Puheiden lukumäärä",
+            "tabPath": "by_year",
+            "tabIcon": "ShowChart",
+            "sparqlQuery": "subcorpusFiveSpeechesByYearQuery",
+            "facetClass": "speeches-1946-1979",
+            "filterTarget": "speech",
+            "resultMapper": "mapLineChart",
+            "resultMapperConfig": {
+                "fillEmptyValues": true,
+                "customizedCategoryLabels": true
+            }
+        }
+    },
+    "properties": [
+        {
+            "id": "uri",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": true,
+            "sortValues": false,
+            "numberedList": false,
+            "onlyOnInstancePage": true
+        },
+        {
+            "id": "prefLabel",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false,
+            "minWidth": 110
+        },
+        {
+            "id": "speaker",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false
+        },
+        {
+            "id": "roleGivenInSource",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false,
+            "onlyOnInstancePage": true
+        },
+        {
+            "id": "party",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false
+        },
+        {
+            "id": "parliamentaryRole",
+            "valueType": "object",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "onlyOnInstancePage": true
+        },
+        {
+            "id": "groupOfSpeaker",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "onlyOnInstancePage": true
+        },
+        {
+            "id": "plenarySession",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false,
+            "onlyOnInstancePage": true
+        },
+        {
+            "id": "item",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "collapsedMaxWords": 4,
+            "sortValues": false,
+            "numberedList": false,
+            "minWidth": 100
+        },
+        {
+            "id": "document",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false,
+            "onlyOnInstancePage": true
+        },
+        {
+            "id": "speechType",
+            "valueType": "object",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false
+        },
+        {
+            "id": "language",
+            "valueType": "object",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false,
+            "onlyOnInstancePage": true
+        },
+        {
+            "id": "referencedPerson",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "onlyOnInstancePage": true
+        },
+        {
+            "id": "referencedPlace",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "onlyOnInstancePage": true
+        },
+        {
+            "id": "namedEntity",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "onlyOnInstancePage": true
+        },
+        {
+            "id": "date",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false,
+            "minWidth": 105
+        },
+        {
+            "id": "startTime",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false,
+            "onlyOnInstancePage": true
+        },
+        {
+            "id": "endTime",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false,
+            "onlyOnInstancePage": true
+        },
+        {
+            "id": "orderNumber",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false,
+            "onlyOnInstancePage": true
+        },
+        {
+            "id": "content",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false,
+            "collapsedMaxWords": 30,
+            "showExtraCollapseButton": true,
+            "expandedOnInstancePage": true,
+            "renderAsHTML": true
+        },
+        {
+            "id": "isInterruptedBy",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false,
+            "onlyOnInstancePage": true
+        },
+        {
+            "id": "diary",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": true,
+            "sortValues": false,
+            "numberedList": false,
+            "onlyOnInstancePage": true
+        },
+        {
+            "id": "page",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false,
+            "onlyOnInstancePage": true
+        },
+        {
+            "id": "status",
+            "valueType": "object",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false,
+            "onlyOnInstancePage": true
+        },
+        {
+            "id": "version",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false,
+            "onlyOnInstancePage": true
+        }
+    ],
+    "facets": {
+        "prefLabel": {
+            "sortByPattern": "BIND(?id as ?orderBy)"
+        },
+        "item": {
+            "sortByPredicate": "semparls:item/skos:prefLabel"
+        },
+        "contentTextFacet": {
+            "containerClass": "one",
+            "facetType": "text",
+            "filterType": "textFilter",
+            "textQueryProperty": "semparls:content",
+            "textQueryGetLiteral": true,
+            "textQueryHiglightingOptions": "highlight:s:<b> | e:</b> | z:150"
+        },
+        "speaker": {
+            "containerClass": "ten",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "pieChartButton": true,
+            "predicate": "semparls:speaker",
+            "searchField": true,
+            "sortButton": true,
+            "sortBy": "instanceCount",
+            "sortByPredicate": "semparls:speaker/skos:prefLabel",
+            "sortDirection": "desc"
+        },
+        "party": {
+            "containerClass": "ten",
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "pieChartButton": true,
+            "predicate": "semparls:party",
+            "searchField": true,
+            "sortButton": true,
+            "sortBy": "instanceCount",
+            "sortByPredicate": "semparls:party/skos:prefLabel",
+            "sortDirection": "desc"
+        },
+        "gender": {
+            "containerClass": "four",
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "pieChartButton": true,
+            "predicate": "semparls:speaker/bioc:has_gender",
+            "searchField": false,
+            "sortButton": true,
+            "sortBy": "instanceCount",
+            "sortByPredicate": "semparls:speaker/bioc:has_gender/skos:prefLabel",
+            "sortDirection": "desc"
+        },
+        "speechType": {
+            "containerClass": "ten",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "pieChartButton": true,
+            "predicate": "semparls:speechType",
+            "searchField": true,
+            "sortButton": true,
+            "sortBy": "instanceCount",
+            "sortByPredicate": "semparls:speechType/skos:prefLabel",
+            "sortDirection": "desc"
+        },
+        "documentType": {
+            "containerClass": "ten",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "semparls:item/semparls:relatedDocument/a",
+            "searchField": true,
+            "sortButton": true,
+            "sortBy": "instanceCount",
+            "sortByPredicate": "semparls:item/semparls:relatedDocument/a",
+            "sortDirection": "desc"
+        },
+        "language": {
+            "containerClass": "three",
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "pieChartButton": true,
+            "predicate": "dct:language",
+            "sortButton": true,
+            "sortBy": "instanceCount",
+            "sortByPredicate": "dct:language/skos:prefLabel",
+            "sortDirection": "desc"
+        },
+        "date": {
+            "containerClass": "six",
+            "filterType": "dateNoTimespanFilter",
+            "predicate": "dct:date",
+            "sortByPredicate": "dct:date",
+            "min": "1946-01-25",
+            "max": "1980-01-30"
+        },
+        "parliamentarySession": {
+            "containerClass": "ten",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "pieChartButton": false,
+            "predicate": "semparls:plenarySession/semparls:parliamentarySession",
+            "sortBy": "prefLabel",
+            "sortByPredicate": "semparls:plenarySession/semparls:parliamentarySession/skos:prefLabel",
+            "sortDirection": "asc"
+        },
+        "electoralTerm": {
+            "containerClass": "ten",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "pieChartButton": true,
+            "predicate": "semparls:plenarySession/semparls:parliamentarySession/semparls:electoralTerm",
+            "sortBy": "prefLabel",
+            "sortByPredicate": "semparls:plenarySession/semparls:parliamentarySession/semparls:electoralTerm/skos:prefLabel",
+            "sortDirection": "asc"
+        }
+    }
+}
