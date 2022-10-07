@@ -1,18 +1,19 @@
 export const fullTextSearchProperties = `
 {
-  VALUES ?type__id {
-    crm:E53_Place
-    bioc:Person
-    semparls:ElectoralDistrict
-    semparls:Government
-    semparls:MunicipalCouncil
-    semparls:Party
-    semparls:Publication
-    semparls:Organization
-    semparls:School
+  VALUES (?type__id ?orderBy) {
+    (bioc:Person 1)
+    (semparls:Government 2)
+    (semparls:Party 3)
+    (semparls:ElectoralDistrict 4)
+    (semparls:MunicipalCouncil 5)
+    (semparls:Publication 6)
+    (crm:E53_Place 7)
+    (semparls:Organization 8)
+    (semparls:School 9)
   }
+  
   ?id a ?type__id .
-  ?type__id skos:prefLabel ?type__prefLabel . 
+  ?type__id skos:prefLabel ?type__prefLabel .
   FILTER(LANG(?type__prefLabel) = 'fi')
 
   {

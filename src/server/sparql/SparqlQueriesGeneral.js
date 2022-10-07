@@ -28,7 +28,7 @@ export const fullTextQuery = `
   WHERE {
     <QUERY>
     <RESULT_SET_PROPERTIES>
-  }
+  } ORDER BY ?orderBy ?score
 `
 
 export const facetResultSetQuery = `
