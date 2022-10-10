@@ -579,6 +579,10 @@
           "label": "Alakäsitteet",
           "description": "Paikat, jotka sijaitsevat tämän sisällä"
         },
+        "exlink": {
+          "label": "Ulkoinen linkki",
+          "description": "Linkki ulkoiseen tietokantaan"
+        },
         "related": {
           "label": "Läheisiä paikkoja",
           "description": "Paikkoja, jotka sijaitsevat tämän lähellä samalla hierarkiatasolla"

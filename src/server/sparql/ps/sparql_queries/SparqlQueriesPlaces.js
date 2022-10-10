@@ -42,6 +42,13 @@ UNION
   FILTER(LANG(?group__prefLabel) = "<LANG>")
   BIND(CONCAT("/groups/page/", REPLACE(STR(?group__id), "^.*\\\\/(.+)", "$1")) AS ?group__dataProviderUrl)
 }
+UnIoN
+{
+  ?id sch:sameAs ?exlink__id .
+  BIND(?exlink__id AS ?exlink__prefLabel)
+  #?exlink__id a/skos:prefLabel ?exlink__prefLabel .
+  BIND(?exlink__id AS ?exlink__dataProviderUrl)
+}
 UNION
 {
   ?id ^crm:P7_took_place_at ?evt .
@@ -53,7 +60,7 @@ UNION
   UNION
   {
     ?deceased__id crm:P100i_died_in ?evt ;
-    skos:prefLabel ?deceased__prefLabel . 
+    skos:prefLabel ?deceased__prefLabel .
     BIND(CONCAT("/people/page/", REPLACE(STR(?deceased__id), "^.*\\\\/(.+)", "$1")) AS ?deceased__dataProviderUrl)
   }
   UNION
