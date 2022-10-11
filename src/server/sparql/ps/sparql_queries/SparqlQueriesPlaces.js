@@ -45,8 +45,7 @@ UNION
 UnIoN
 {
   ?id sch:sameAs ?exlink__id .
-  BIND(?exlink__id AS ?exlink__prefLabel)
-  #?exlink__id a/skos:prefLabel ?exlink__prefLabel .
+  ?exlink__id a/skos:prefLabel ?exlink__prefLabel .
   BIND(?exlink__id AS ?exlink__dataProviderUrl)
 }
 UNION
