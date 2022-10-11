@@ -478,3 +478,29 @@ export const speechesByYearAndPartyQuery = `
   GROUP BY ?id ?dataItem__id ?dataItem__prefLabel
   ORDER BY ?id
 `
+
+
+export const speechesByPartyQuery = `
+ SELECT ?category ?prefLabel
+ (COUNT(DISTINCT ?speech) as ?instanceCount)
+  WHERE {
+    <FILTER>
+    {
+      ?speech a semparls:Subcorpus5 .
+      ?speech semparls:party ?category .
+      ?category skos:prefLabel ?prefLabel .
+      FILTER (LANG(?prefLabel) = 'fi')
+    }
+    UNION
+    {
+      ?speech a semparls:Subcorpus5 .
+      FILTER NOT EXISTS {
+        ?speech semparls:party [] .
+      }
+      BIND("unknown" as ?category)
+      BIND("unknown" as ?prefLabel)
+    }
+  }
+  GROUP BY ?category ?prefLabel
+  ORDER BY DESC(?instanceCount)
+`

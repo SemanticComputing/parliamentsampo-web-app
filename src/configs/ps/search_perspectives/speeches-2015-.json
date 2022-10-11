@@ -56,6 +56,52 @@
                 "fillEmptyValues": true,
                 "customizedCategoryLabels": true
             }
+        },
+        "speechesByProperty": {
+            "tabID": 2,
+            "component": "ApexCharts",
+            "doNotRenderOnMount": true,
+            "tabPath": "pie_chart",
+            "tabIcon": "PieChart",
+            "facetClass": "speeches-2015-",
+            "dropdownForResultClasses": true,
+            "defaultResultClass": "speechesByParty",
+            "resultClasses": {
+                "speechesByParty": {
+                    "sparqlQuery": "speechesByPartyQuery",
+                    "filterTarget": "speech",
+                    "resultMapper": "mapPieChart",
+                    "sliceVisibilityThreshold": 0.01,
+                    "dropdownForChartTypes": "true",
+                    "chartTypes": [
+                        {
+                            "id": "pie",
+                            "createChartData": "createApexPieChartData"
+                        },
+                        {
+                            "id": "bar",
+                            "createChartData": "createApexBarChartData"
+                        }
+                    ]
+                },
+                "speechesBySpeaker": {
+                    "sparqlQuery": "speechesBySpeakerQuery",
+                    "filterTarget": "speech",
+                    "resultMapper": "mapPieChart",
+                    "sliceVisibilityThreshold": 0.01,
+                    "dropdownForChartTypes": "true",
+                    "chartTypes": [
+                        {
+                            "id": "pie",
+                            "createChartData": "createApexPieChartData"
+                        },
+                        {
+                            "id": "bar",
+                            "createChartData": "createApexBarChartData"
+                        }
+                    ]
+                }
+            }
         }
     },
     "properties": [
