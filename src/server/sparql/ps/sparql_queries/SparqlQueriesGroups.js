@@ -90,6 +90,15 @@ export const groupPropertiesInstancePage =
   }
   UNION
   {
+    SELECT DISTINCT ?id ?person__id ?person__prefLabel ?person__dataProviderUrl 
+    WHERE {
+      ?id ^(semparls:has_affiliation/semparls:organization) ?person__id .
+      ?person__id skos:prefLabel ?person__prefLabel .
+      BIND(CONCAT("/people/page/", REPLACE(STR(?person__id), "^.*\\\\/(.+)", "$1")) AS ?person__dataProviderUrl)
+    } ORDER BY ?person__prefLabel 
+  }
+  UNION
+  {
     SELECT DISTINCT ?id ?related__id ?related__prefLabel ?related__dataProviderUrl 
     WHERE {
       {
