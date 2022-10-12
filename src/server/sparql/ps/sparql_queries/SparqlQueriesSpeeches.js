@@ -504,3 +504,27 @@ export const speechesByPartyQuery = `
   GROUP BY ?category ?prefLabel
   ORDER BY DESC(?instanceCount)
 `
+
+export const mentionedPlacesQuery = `
+SELECT DISTINCT ?id # ?place__prefLabel
+  # (CONCAT("/places/page/", REPLACE(STR(?place__id), "^.*\\\\/(.+)", "$1")) AS ?place__dataProviderUrl)
+  ?lat ?long (COUNT(DISTINCT ?speech) AS ?instanceCount)
+WHERE {
+  <FILTER>
+  ?speech semparl_linguistics:referenceToPlace/skos:relatedMatch ?id .
+  ?id       geo:lat ?lat ;
+            geo:long ?long .
+  ?id skos:prefLabel ?label .
+  FILTER (?label != "Suomi"@fi)
+  FILTER NOT EXISTS { ?id semparls:has_duplicate_child [] }
+}
+GROUPBY ?id ?lat ?long
+`
+
+export const placePropertiesInfoWindow = `
+  ?id skos:prefLabel ?prefLabel__id ; a ?id_class .
+  FILTER(LANG(?prefLabel__id)='fi')
+  BIND(?prefLabel__id AS ?prefLabel__prefLabel)
+  BIND(CONCAT("/places/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?dataProviderUrl)
+  #BIND(CONCAT("/", IF(?id_class in (crm:E53_Place, gn:Feature), 'places', 'groups'), "/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
+`

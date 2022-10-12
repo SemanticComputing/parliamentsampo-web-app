@@ -53,6 +53,54 @@ export const createPopUpContentAs = ({ data, resultClass }) => {
   return container
 }
 
+export const createPopUpContentSpeeches = ({ data }) => {
+  const container = document.createElement('div')
+
+  const heading = document.createElement('h3')
+  const headingLink = document.createElement('a')
+  headingLink.style.cssText = 'cursor: pointer; text-decoration: underline'
+  headingLink.textContent = data.prefLabel.prefLabel
+  headingLink.addEventListener('click', () => history.push(data.dataProviderUrl))
+  heading.appendChild(headingLink)
+  container.appendChild(heading)
+  if (has(data, 'objectType')) {
+    container.appendChild(createPopUpElement({
+      label: intl.get('perspectives.finds.properties.objectType.label'),
+      value: data.objectType.prefLabel
+    }))
+  }
+  if (has(data, 'material')) {
+    container.appendChild(createPopUpElement({
+      label: intl.get('perspectives.finds.properties.material.label'),
+      value: data.material.prefLabel
+    }))
+  }
+  if (has(data, 'period')) {
+    let periodLabel = ''
+    if (Array.isArray(data.period)) {
+      data.period.forEach((p, index) => {
+        periodLabel += `${p.prefLabel}`
+        if (index !== data.period.length - 1) {
+          periodLabel += ', '
+        }
+      })
+    } else {
+      periodLabel = data.period.prefLabel
+    }
+    container.appendChild(createPopUpElement({
+      label: intl.get('perspectives.finds.properties.period.label'),
+      value: periodLabel
+    }))
+  }
+  if (has(data, 'municipality')) {
+    container.appendChild(createPopUpElement({
+      label: intl.get('perspectives.finds.properties.municipality.label'),
+      value: data.municipality.prefLabel
+    }))
+  }
+  return container
+}
+
 export const createPopUpContentLetterSampo = ({ data, resultClass }) => {
   if (Array.isArray(data.prefLabel)) {
     data.prefLabel = data.prefLabel[0]

@@ -18,6 +18,22 @@
     "defaultActiveFacets": [ "contentTextFacet" ],
     "defaultTab": "table",
     "defaultInstancePageTab": "table",
+    "maps": {
+        "mentionedPlaces": {
+            "center": [
+                60.43,
+                20.37
+            ],
+            "zoom": 2
+        },
+        "mentionedPlacesHeatmap": {
+            "center": [
+                60.43,
+                20.37
+            ],
+            "zoom": 2
+        }
+    },
     "resultClasses": {
         "speeches-2015-": {
             "paginatedResultsConfig": {
@@ -102,6 +118,34 @@
                     ]
                 }
             }
+        },
+        "mentionedPlaces": {
+            "tabID": 3,
+            "tabPath": "map",
+            "tabIcon": "AddLocation",
+            "component": "LeafletMap",
+            "showInstanceCountInClusters": false,
+            "showExternalLayers": true,
+            "customMapControl": true,
+            "sparqlQuery": "mentionedPlacesQuery",
+            "facetClass": "speeches-2015-",
+            "filterTarget": "speech",
+            "resultMapper": "mapPlaces",
+            "instanceConfig": {
+                "propertiesQueryBlock": "placePropertiesInfoWindow",
+                "createPopUpContent": "createPopUpContentSpeeches"
+            }
+        },
+        "mentionedPlacesHeatmap": {
+            "tabID": 4,
+            "tabPath": "heatmap",
+            "tabIcon": "AddLocation",
+            "component": "Deck",
+            "layerType": "heatmapLayer",
+            "sparqlQuery": "mentionedPlacesQuery",
+            "facetClass": "speeches-2015-",
+            "filterTarget": "speech",
+            "resultMapper": "mapPlaces"
         }
     },
     "properties": [
