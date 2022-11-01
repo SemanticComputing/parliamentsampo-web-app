@@ -169,7 +169,7 @@ export const getFacet = async ({
     q = q.replace(/<LANG>/g, langTag)
   }
 
-  //console.log(endpoint.prefixes + q)
+  // console.log(endpoint.prefixes + q)
 
   const response = await runSelectQuery({
     query: endpoint.prefixes + q,

@@ -551,7 +551,8 @@
             "sortButton": true,
             "sortBy": "instanceCount",
             "sortByPredicate": "semparl_linguistics:eks_category/skos:prefLabel",
-            "sortDirection": "desc"
+            "sortDirection": "desc",
+            "maxHierarchyLevel": 2
         }
     }
 }
