@@ -10,7 +10,7 @@
     "URITemplate": "<BASE_URI>/speeches/<LOCAL_ID>",
     "facetClass": "semparls:Speech",
     "langTag": "fi",
-    "frontPageImage": "main_page/istuntosali.jpg",
+    "frontPageImage": "main_page/rinne.jpg",
     "hideTopPerspectiveButton": true,
     "searchMode": "faceted-search",
     "defaultActiveFacets": [ "contentTextFacet" ],
