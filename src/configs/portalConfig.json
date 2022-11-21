@@ -23,6 +23,7 @@
         "onlyInstancePages": [
             "items",
             "terms",
+            "committees",
             "districts",
             "documents",
             "events",
