@@ -759,12 +759,12 @@
       }
     },
     "committees": {
-      "label": "Valiokunnat / Valtuuskunnat",
+      "label": "Valiokunnat ja Toimielimet",
       "facetResultsType": "",
       "shortDescription": "",
       "longDescription": "",
       "instancePage": {
-        "label": "Valiokunta",
+        "label": "Valiokunta tai toimielin",
         "description": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Ohjeet tähän </p>"
       },
       "properties": {
