@@ -4,12 +4,14 @@ export const fullTextSearchProperties = `
     (bioc:Person 1)
     (semparls:Government 2)
     (semparls:Party 3)
-    (semparls:ElectoralDistrict 4)
-    (semparls:MunicipalCouncil 5)
-    (semparls:Publication 6)
-    (crm:E53_Place 7)
-    (semparls:Organization 8)
-    (semparls:School 9)
+    (semparls:Committee 4)
+    (semparls:ParliamentaryBody 5)
+    (semparls:ElectoralDistrict 6)
+    (semparls:MunicipalCouncil 7)
+    (semparls:Publication 8)
+    (crm:E53_Place 9)
+    (semparls:Organization 10)
+    (semparls:School 11)
   }
   
   ?id a ?type__id .
@@ -63,6 +65,20 @@ export const fullTextSearchProperties = `
     FILTER (lang(?prefLabel__id)="fi")
     BIND(?prefLabel__id as ?prefLabel__prefLabel)
     BIND(CONCAT("/groups/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
+  }
+  UNION
+  {
+    ?id a semparls:Committee ; skos:prefLabel ?prefLabel__id .
+    FILTER (lang(?prefLabel__id)="fi")
+    BIND(?prefLabel__id as ?prefLabel__prefLabel)
+    BIND(CONCAT("/committees/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
+  }
+  UNION 
+  {
+    ?id a semparls:ParliamentaryBody ; skos:prefLabel ?prefLabel__id .
+    FILTER (lang(?prefLabel__id)="fi")
+    BIND(?prefLabel__id as ?prefLabel__prefLabel)
+    BIND(CONCAT("/committees/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
   }
   UNION 
   {
