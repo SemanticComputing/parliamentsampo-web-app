@@ -514,6 +514,45 @@ export const placePropertiesInfoWindow = `
   BIND(CONCAT("/", IF(?id_class in (crm:E53_Place, gn:Feature), 'places', 'groups'), "/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
 `
 
+export const placeMapQuery = `
+SELECT DISTINCT ?id ?lat ?long ?prefLabel__id ?prefLabel__prefLabel ?prefLabel__dataProviderUrl ?markerColor ?markerSize WHERE {
+  BIND(<ID> as ?prs)
+
+  {
+    [] semparls:speaker ?prs ;
+       semparl_linguistics:referenceToPlace/skos:relatedMatch ?id .
+    BIND("yellow" AS ?markerColor)
+  }
+  UNION
+  {
+    ?prs bioc:bearer_of/crm:P11i_participated_in/crm:P7_took_place_at ?id .
+    BIND("green" AS ?markerColor)
+  } 
+  UNION
+  {
+    ?prs crm:P98i_was_born/crm:P7_took_place_at ?id .
+    BIND("blue" AS ?markerColor)
+    BIND("large" AS ?markerSize)
+  }
+  UNION
+  {
+    ?prs crm:P100i_died_in/crm:P7_took_place_at ?id .
+    BIND("red" AS ?markerColor)
+    BIND("large" AS ?markerSize)
+  }
+
+  ?id a crm:E53_Place ;
+    skos:prefLabel ?prefLabel__id ;
+    geo:lat ?lat ;
+    geo:long ?long .
+  FILTER NOT EXISTS { ?id semparls:has_duplicate_child [] }
+  FILTER(LANG(?prefLabel__id) = "<LANG>")
+  BIND(?prefLabel__id as ?prefLabel__prefLabel)
+  BIND(CONCAT("/places/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
+  BIND(CONCAT("/places/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?dataProviderUrl)
+} 
+`
+
 export const peopleRelatedTo = `
 { SELECT ?id ?related__id 
   (CONCAT("/people/page/", REPLACE(STR(?related__id), "^.*\\\\/(.+)", "$1")) AS ?related__dataProviderUrl)
