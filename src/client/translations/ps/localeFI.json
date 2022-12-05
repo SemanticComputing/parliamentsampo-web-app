@@ -67,6 +67,7 @@
     "heatmap": "lämpökartta",
     "network": "verkosto",
     "by_age": "ikäjakauma",
+    "timeseries": "aikajana",
     "export": "SPARQL-kysely",
     "by_year": "Aikajana",
     "pie_chart": "piirakka/pylväskaavio",
@@ -78,7 +79,10 @@
   "lineChart": {
     "age_at_start": "Aloitusikä",
     "age_at_end": "Lopetusikä",
-    "speechCount": "Puheita"
+    "speechCount": "Puheita",
+    "Births": "Syntyneet",
+    "Representatives": "Edustajat",
+    "Deaths": "Kuolleet"
   },
   "facets": {
     "dateFacet": {

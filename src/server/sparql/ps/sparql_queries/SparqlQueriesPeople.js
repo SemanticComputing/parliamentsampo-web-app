@@ -388,7 +388,7 @@ WHERE {
 `
 
 // https://api.triplydb.com/s/EO7-OzuhM
-export const networkLinkQuery = `
+export const networkSimilarityQuery = `
 SELECT DISTINCT ?source ?target ('' AS ?prefLabel) ?weight
 WHERE {
   VALUES ?id { <ID> }
@@ -397,13 +397,53 @@ WHERE {
       semparls:relates_to ?target ;
       semparls:value ?weight .
   FILTER (?id!=?target)
-  OPTIONAL { 
-    ?node semparls:link_by [ skos:prefLabel ?link ; a ?link_class ]
-    FILTER(LANG(?link)='fi')
-  }
-  
+  # OPTIONAL { 
+  #   ?node semparls:link_by [ skos:prefLabel ?link ; a ?link_class ]
+  #   FILTER(LANG(?link)='fi')
+  # } 
   BIND(?id as ?source)
 } 
+`
+
+export const networkLinkQuery = `
+SELECT DISTINCT ?source ?target (COUNT(DISTINCT ?sp) AS ?weight) (STR(COUNT(DISTINCT ?sp)) AS ?label) WHERE {
+  
+   VALUES ?id { <ID> }
+   # Filter that referenced person (?target) is a current MP or minister
+   VALUES ?eclass { 
+     semparls:ParliamentaryGroupMembership 
+   semparls:ParliamentMembership 
+     semparls:GovernmentMembership 
+   }
+   
+   {
+   ?id ^semparls:speaker ?sp .
+   ?sp semparl_linguistics:referenceToPerson/skos:relatedMatch ?target ;
+     dct:date ?date ;
+     semparls:speechType ?type .
+     FILTER (?type != <http://ldf.fi/semparl/speechtypes/PuhemiesPuheenvuoro> && ?source != ?target) .
+     ?target bioc:bearer_of/crm:P11i_participated_in [ a ?eclass ;
+       crm:P4_has_time-span ?tspan ]
+     BIND(?id AS ?source)
+  } 
+  UNION 
+  {
+     ?id ^(semparl_linguistics:referenceToPerson/skos:relatedMatch) ?sp .
+     ?sp semparls:speaker ?source ;
+      dct:date ?date ;
+      semparls:speechType ?type .
+     FILTER (?type != <http://ldf.fi/semparl/speechtypes/PuhemiesPuheenvuoro> && ?source != ?target) .
+     ?source bioc:bearer_of/crm:P11i_participated_in [ a ?eclass ;
+       crm:P4_has_time-span ?tspan ]
+     BIND(?id AS ?target)
+   }
+     
+   ?tspan crm:P81a_begin_of_the_begin ?t_start .
+   OPTIONAL { ?tspan crm:P82b_end_of_the_end ?t_end }
+   
+   FILTER (?t_start <= ?date && (!BOUND(?t_end) || ?date <= ?t_end))
+ } 
+ GROUPBY ?source ?target ORDERBY DESC(?weight) 
 `
 
 //  https://api.triplydb.com/s/Akju-2eeb
@@ -582,6 +622,39 @@ export const peopleRelatedTo = `
   
   } GROUPBY ?id ?related__id 
 }
+`
+
+export const timeSeriesQuery = `
+SELECT ?category 
+(count(DISTINCT ?birth) AS ?Births)
+  (count(DISTINCT ?member__id) AS ?Representatives)
+  (count(DISTINCT ?death) AS ?Deaths)
+  WHERE {
+  ?person__id a bioc:Person .
+  
+  <FILTER>
+  
+  {
+   ?person__id crm:P98i_was_born ?birth .
+  ?birth crm:P4_has_time-span/crm:P81a_begin_of_the_begin ?_birth .
+    BIND(year(?_birth) AS ?category)
+  }
+  UNION
+  {
+   ?person__id crm:P100i_died_in ?death .
+  ?death crm:P4_has_time-span/crm:P81a_begin_of_the_begin ?_death .
+    BIND(year(?_death) AS ?category) 
+  }
+  UNION
+  {
+    ?person__id bioc:bearer_of [ a <http://ldf.fi/semparl/roles/r1> ; 
+        crm:P11i_participated_in ?membership ] .
+    ?membership a semparls:ParliamentMembership ; crm:P10_falls_within/crm:P81a_begin_of_the_begin ?_date .
+    BIND(?person__id AS ?member__id)
+    BIND(year(?_date) AS ?category)
+  }
+  
+} GROUPBY ?category ORDER BY ?category
 `
 
 export const ageQuery = `

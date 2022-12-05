@@ -199,8 +199,31 @@
                 }
             }
         },
-        "personAges": {
+        "personTimeSeries": {
             "tabID": 1,
+            "component": "ApexCharts",
+            "createChartData": "createMultipleLineChartData",
+            "stroke": {
+                "curve": "straight",
+                "width": 2
+            },
+            "title": "Syntyneet, kuolleet ja kautensa aloittaneet edustajat",
+            "xaxisTitle": "Vuosi",
+            "xaxisType": "category",
+            "xaxisTickAmount": 20,
+            "yaxisTitle": "Henkilöiden lukumäärä",
+            "tabPath": "timeseries",
+            "tabIcon": "ShowChart",
+            "sparqlQuery": "timeSeriesQuery",
+            "facetClass": "people",
+            "filterTarget": "person__id",
+            "resultMapper": "mapMultipleLineChart",
+            "resultMapperConfig": {
+                "fillEmptyValues": true
+            }
+        },
+        "personAges": {
+            "tabID": 2,
             "component": "ApexCharts",
             "createChartData": "createMultipleLineChartData",
             "stroke": {
@@ -223,7 +246,7 @@
             }
         },
         "peopleMigrations": {
-            "tabID": 2,
+            "tabID": 3,
             "component": "Deck",
             "tabPath": "migrations",
             "tabIcon": "Redo",
@@ -248,7 +271,7 @@
             "filterTarget": "id"
         },
         "peoplePlaces": {
-            "tabID": 3,
+            "tabID": 4,
             "component": "LeafletMap",
             "tabPath": "map",
             "tabIcon": "AddLocation",
