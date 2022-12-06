@@ -13,8 +13,8 @@ export const prefixes = `
   PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
   PREFIX sch: <http://schema.org/>
   PREFIX sd: <http://www.w3.org/ns/sparql-service-description#>
-  PREFIX semparls: <http://ldf.fi/schema/semparl/>
   PREFIX semparl_linguistics: <http://ldf.fi/schema/semparl/linguistics/>
+  PREFIX semparls: <http://ldf.fi/schema/semparl/>
   PREFIX eks-scheme: <http://ldf.fi/schema/eks/>
   PREFIX spatial: <http://jena.apache.org/spatial#>
   PREFIX skos: <http://www.w3.org/2004/02/skos/core#>

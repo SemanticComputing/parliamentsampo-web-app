@@ -29,6 +29,13 @@
                 20.37
             ],
             "zoom": 3
+        },
+        "personInstanceMap": {
+            "center": [
+                60.43,
+                20.37
+            ],
+            "zoom": 3
         }
     },
     "resultClasses": {
@@ -108,8 +115,23 @@
                             }
                         ]
                     },
-                    "personInstancePageNetwork": {
+                    "personInstanceMap": {
                         "tabID": 3,
+                        "tabPath": "map",
+                        "tabIcon": "LocationOn",
+                        "component": "LeafletMap",
+                        "pageType": "instancePage",
+                        "mapMode": "marker",
+                        "showInstanceCountInClusters": false,
+                        "showExternalLayers": true,
+                        "customMapControl": true,
+                        "sparqlQuery": "placeMapQuery",
+                        "instanceConfig": {
+                            "createPopUpContent": "createPopUpContentAs"
+                        }
+                    },
+                    "personInstancePageNetwork": {
+                        "tabID": 4,
                         "tabPath": "network",
                         "tabIcon": "BubbleChart",
                         "component": "Network",

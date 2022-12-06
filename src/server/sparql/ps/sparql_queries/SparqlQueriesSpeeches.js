@@ -479,7 +479,6 @@ export const speechesByYearAndPartyQuery = `
   ORDER BY ?id
 `
 
-
 export const speechesByPartyQuery = `
  SELECT ?category ?prefLabel
  (COUNT(DISTINCT ?speech) as ?instanceCount)

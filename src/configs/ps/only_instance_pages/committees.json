@@ -1,0 +1,73 @@
+{
+  "id": "committees",
+  "endpoint": {
+    "url": "https://ldf.fi/semparl/sparql",
+    "useAuth": true,
+    "prefixesFile": "SparqlQueriesPrefixes.js"
+},
+  "sparqlQueriesFile": "SparqlQueriesCommittees.js",
+  "baseURI": "http://ldf.fi/semparl",
+  "URITemplate": "<BASE_URI>/groups/committees/<LOCAL_ID>",
+  "langTag": "fi",
+  "resultClasses": {
+    "committees": {
+      "instanceConfig": {
+        "propertiesQueryBlock": "committeePropertiesInstancePage",
+        "instancePageResultClasses": {
+          "instancePageTable": {
+            "tabID": 0,
+            "component": "InstancePageTable",
+            "tabPath": "table",
+            "tabIcon": "CalendarViewDay"
+          }
+        }
+      }
+    }
+  },
+  "properties": [
+    {
+      "id": "prefLabel",
+      "valueType": "object",
+      "makeLink": true,
+      "externalLink": false,
+      "sortValues": true,
+      "numberedList": false,
+      "minWidth": 170
+    },
+    {
+      "id": "altLabel",
+      "valueType": "string",
+      "makeLink": false,
+      "externalLink": false,
+      "sortValues": true,
+      "numberedList": false,
+      "minWidth": 170
+    },
+    {
+      "id": "type",
+      "valueType": "string",
+      "makeLink": false,
+      "externalLink": false,
+      "sortValues": true,
+      "numberedList": false,
+      "minWidth": 170
+    },
+    {
+      "id": "group",
+      "valueType": "object",
+      "makeLink": true,
+      "externalLink": false,
+      "sortValues": true,
+      "numberedList": true,
+      "minWidth": 170
+    },
+    {
+      "id": "uri",
+      "valueType": "object",
+      "makeLink": true,
+      "externalLink": true,
+      "sortValues": true,
+      "numberedList": false
+    }
+  ]
+}

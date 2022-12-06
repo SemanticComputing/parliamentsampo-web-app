@@ -759,6 +759,39 @@
         }
       }
     },
+    "committees": {
+      "label": "Valiokunnat ja Toimielimet",
+      "facetResultsType": "",
+      "shortDescription": "",
+      "longDescription": "",
+      "instancePage": {
+        "label": "Valiokunta tai toimielin",
+        "description": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Ohjeet tähän </p>"
+      },
+      "properties": {
+        "uri": {
+          "label": "URI",
+          "description": ""
+        },
+        "prefLabel": {
+          "label": "Nimi",
+          "description": "Nimi",
+          "textFacetInputPlaceholder": "Hae..."
+        },
+        "altLabel": {
+          "label": "Vaihtoehtoinen nimi",
+          "description": "Vaihtoehtoinen nimi tai lyhenne"
+        },
+        "group": {
+          "label": "Ryhmät eri aikoina",
+          "description": "Ryhmät eri aikoina"
+        },
+        "type": {
+          "label": "Tyyppi",
+          "description": "Ryhmän tyyppi"
+        }
+      }
+    },
     "terms": {
       "label": "Vaalikaudet",
       "facetResultsType": "vaalikausi",
