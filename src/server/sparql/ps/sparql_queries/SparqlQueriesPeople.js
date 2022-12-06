@@ -302,9 +302,6 @@ export const personSpeechesQuery =
 ?event__id ?event__prefLabel ?event__dataProviderUrl ?event__date 
 WHERE {
   BIND(<ID> as ?id)
-  BIND(?id as ?uri__id)
-  BIND(?id as ?uri__prefLabel)
-  BIND(?id as ?uri__dataProviderUrl)
 
   ?id skos:prefLabel ?prefLabel__id .
   BIND (?prefLabel__id as ?prefLabel__prefLabel)
@@ -323,6 +320,66 @@ WHERE {
 } ORDER BY STR(?event__id)
 `
 
+export const personSpeechReferencesQuery =
+` SELECT DISTINCT * 
+WHERE {
+  BIND(<ID> as ?id)
+
+  ?id skos:prefLabel ?prefLabel__id .
+  BIND (?prefLabel__id as ?prefLabel__prefLabel)
+
+  { SELECT DISTINCT ?id ?interrupted__id 
+    (CONCAT(?_label, ' (', STR(COUNT(DISTINCT ?interruption)), ')') AS ?interrupted__prefLabel)
+    (CONCAT("/people/page/", REPLACE(STR(?interrupted__id), "^.*\\\\/(.+)", "$1")) AS ?interrupted__dataProviderUrl)
+    WHERE {
+      ?interruption semparls:speaker ?id ;
+        a semparls:Interruption .
+      ?interruption semparls:chairmanInterruption false ;
+        ^semparls:isInterruptedBy ?speech .
+      ?speech semparls:speaker ?interrupted__id .
+      ?interrupted__id xl:prefLabel/skos:prefLabel ?_label
+    } GROUPBY ?id ?interrupted__id ?_label ORDER BY DeSC(COUNT(DISTINCT ?interruption)) ?_label
+  }
+  UNION
+  { SELECT DISTINCT ?id ?interruptor__id 
+    (CONCAT(?_label, ' (', STR(COUNT(DISTINCT ?interruption)), ')') AS ?interruptor__prefLabel)
+    (CONCAT("/people/page/", REPLACE(STR(?interruptor__id), "^.*\\\\/(.+)", "$1")) AS ?interruptor__dataProviderUrl)
+    WHERE {
+      ?speech semparls:speaker ?id ;
+        a semparls:Speech ;
+        semparls:isInterruptedBy ?interruption .
+      ?interruption semparls:chairmanInterruption false ;
+        semparls:speaker ?interruptor__id .
+      ?interruptor__id xl:prefLabel/skos:prefLabel ?_label
+    } GROUPBY ?id ?interruptor__id ?_label ORDER BY DeSC(COUNT(DISTINCT ?interruption)) ?_label
+  }
+  UNION
+  { SELECT DISTINCT ?id ?referenced__id 
+    (CONCAT(?_label, ' (', STR(COUNT(DISTINCT ?speech)), ')') AS ?referenced__prefLabel)
+    (CONCAT("/people/page/", REPLACE(STR(?referenced__id), "^.*\\\\/(.+)", "$1")) AS ?referenced__dataProviderUrl)
+    WHERE {
+      ?speech semparls:speaker ?id ; 
+        a semparls:Speech ;
+        semparl_linguistics:referenceToPerson/skos:relatedMatch ?referenced__id .
+      ?referenced__id xl:prefLabel/skos:prefLabel ?_label
+    } GROUPBY ?id ?referenced__id ?_label ORDER BY DeSC(COUNT(DISTINCT ?speech)) ?_label
+  }
+  UNION
+  { SELECT DISTINCT ?id ?referencedPlace__id 
+    (CONCAT(?_label, ' (', STR(COUNT(DISTINCT ?speech)), ')') AS ?referencedPlace__prefLabel)
+    (CONCAT("/places/page/", REPLACE(STR(?referencedPlace__id), "^.*\\\\/(.+)", "$1")) AS ?referencedPlace__dataProviderUrl)
+    WHERE {
+      ?speech semparls:speaker ?id ; 
+        a semparls:Speech ;
+        semparl_linguistics:referenceToPlace/skos:relatedMatch ?referencedPlace__id .
+      FILTER NOT EXISTS { ?referencedPlace__id semparls:has_duplicate_child [] }
+      ?referencedPlace__id skos:prefLabel ?_label . 
+      FILTER(LANG(?_label)='fi')
+    } GROUPBY ?id ?referencedPlace__id ?_label ORDER BY DeSC(COUNT(DISTINCT ?speech)) ?_label
+  }
+} 
+`
+
 /**
  * TODO:
  * statistics, e.g.:
@@ -335,9 +392,6 @@ export const personEventsQuery =
 ` SELECT DISTINCT ?id ?prefLabel__id ?prefLabel__prefLabel ?uri__id ?uri__prefLabel ?uri__dataProviderUrl ?event__id ?event__prefLabel ?event__dataProviderUrl ?event__date 
 WHERE {
   BIND(<ID> as ?id)
-  BIND(?id as ?uri__id)
-  BIND(?id as ?uri__prefLabel)
-  BIND(?id as ?uri__dataProviderUrl)
 
   ?id skos:prefLabel ?prefLabel__id .
   BIND (?prefLabel__id as ?prefLabel__prefLabel)
@@ -631,7 +685,7 @@ SELECT ?category
   (count(DISTINCT ?death) AS ?Deaths)
   WHERE {
   ?person__id a bioc:Person .
-  
+
   <FILTER>
   
   {

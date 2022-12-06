@@ -62,6 +62,7 @@
     "table": "taulukko",
     "events": "tapahtumat",
     "speeches": "puheenvuorot",
+    "speechReferences": "viittaukset puheissa",
     "migrations": "muuttoliike",
     "map": "kartta",
     "heatmap": "lämpökartta",
@@ -481,6 +482,22 @@
         "listOfPeople": {
           "label": "Lista henkilöistä",
           "description": "Lista henkilöistä"
+        },
+        "referenced": {
+          "label": "Puheissa mainitut henkilöt",
+          "description": "Lista henkilöistä, jotka mainitaan puheissa. Suluissa nimen perässä on mainintojen lukumäärä."
+        },
+        "referencedPlace": {
+          "label": "Puheissa mainitut paikat",
+          "description": "Lista paikoista, jotka mainitaan puheissa. Suluissa on mainintojen lukumäärä."
+        },
+        "interrupted": {
+          "label": "Keskeytetyt henkilöt",
+          "description": "Lista muista henkilöistä, joiden puheisiin henkilö on tehnyt välihuutoja. Puhemiehen välihuudot eivät näy listassa. Suluissa nimen perässä on välihuutojen lukumäärä."
+        },
+        "interruptor": {
+          "label": "Puheiden keskeyttäjät",
+          "description": "Lista niistä henkilöistä, jotka ovat tehneet välihuutoja henkilön puheenvuoroihin. Puhemiehen välihuudot eivät näy listassa. Suluissa nimen perässä on välihuutojen lukumäärä."
         }
       }
     },

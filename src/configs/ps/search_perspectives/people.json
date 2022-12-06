@@ -115,8 +115,62 @@
                             }
                         ]
                     },
-                    "personInstanceMap": {
+                    "personInstancePageReferences": {
                         "tabID": 3,
+                        "tabPath": "speechReferences",
+                        "tabIcon": "RecordVoiceOver",
+                        "component": "InstancePageTable",
+                        "fetchResultsWhenMounted": true,
+                        "sparqlQuery": "personSpeechReferencesQuery",
+                        "properties": [
+                            {
+                                "id": "prefLabel",
+                                "valueType": "object",
+                                "makeLink": false,
+                                "externalLink": false,
+                                "sortValues": false,
+                                "numberedList": false
+                            },
+                            {
+                                "id": "referenced",
+                                "valueType": "object",
+                                "makeLink": true,
+                                "externalLink": false,
+                                "sortValues": false,
+                                "numberedList": false,
+                                "expandedOnInstancePage": true
+                            },
+                            {
+                                "id": "interrupted",
+                                "valueType": "object",
+                                "makeLink": true,
+                                "externalLink": false,
+                                "sortValues": false,
+                                "numberedList": false,
+                                "expandedOnInstancePage": true
+                            },
+                            {
+                                "id": "interruptor",
+                                "valueType": "object",
+                                "makeLink": true,
+                                "externalLink": false,
+                                "sortValues": false,
+                                "numberedList": false,
+                                "expandedOnInstancePage": true
+                            },
+                            {
+                                "id": "referencedPlace",
+                                "valueType": "object",
+                                "makeLink": true,
+                                "externalLink": false,
+                                "sortValues": false,
+                                "numberedList": false,
+                                "expandedOnInstancePage": true
+                            }
+                        ]
+                    },
+                    "personInstanceMap": {
+                        "tabID": 4,
                         "tabPath": "map",
                         "tabIcon": "LocationOn",
                         "component": "LeafletMap",
@@ -131,7 +185,7 @@
                         }
                     },
                     "personInstancePageNetwork": {
-                        "tabID": 4,
+                        "tabID": 5,
                         "tabPath": "network",
                         "tabIcon": "BubbleChart",
                         "component": "Network",
