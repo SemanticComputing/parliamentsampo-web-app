@@ -54,7 +54,9 @@ class ExportCSV extends React.Component {
       facetClass: this.props.facetClass,
       facets: this.props.facets
     })
-    const constraints = params.constraints ? `&constraints=${encodeURIComponent(JSON.stringify(params.constraints))}` : ''
+    // console.log(params.constraints)
+    const constraintsTemp = params.constraints ? `&constraints=${encodeURIComponent(JSON.stringify(params.constraints))}` : ''
+    const constraints = constraintsTemp.replace('*', '%2A') // temporary solution for a bug - may still be unable to download some text searches with special characters
     return `${apiUrl}/faceted-search/${this.props.resultClass}/all?facetClass=${this.props.facetClass}&resultFormat=csv${constraints}`
   }
 

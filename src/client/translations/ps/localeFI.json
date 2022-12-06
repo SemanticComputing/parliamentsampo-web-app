@@ -70,7 +70,8 @@
     "export": "SPARQL-kysely",
     "by_year": "Aikajana",
     "pie_chart": "piirakka/pylväskaavio",
-    "line_chart": "viivakaavio"
+    "line_chart": "viivakaavio",
+    "csv": "csv"
   },
   "table": {
     "rowsPerPage": "Riviä sivulla"
