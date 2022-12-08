@@ -464,10 +464,10 @@ SELECT DISTINCT ?source ?target (COUNT(DISTINCT ?sp) AS ?weight) (STR(COUNT(DIST
   
    VALUES ?id { <ID> }
    # Filter that referenced person (?target) is a current MP or minister
-   VALUES ?eclass { 
-     semparls:ParliamentaryGroupMembership 
-   semparls:ParliamentMembership 
-     semparls:GovernmentMembership 
+   VALUES ?eclass {
+      semparls:ParliamentaryGroupMembership 
+      semparls:ParliamentMembership 
+      semparls:GovernmentMembership 
    }
    
    {

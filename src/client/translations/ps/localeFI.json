@@ -67,6 +67,7 @@
     "map": "kartta",
     "heatmap": "lämpökartta",
     "network": "verkosto",
+    "referencenetwork": "viittausverkosto",
     "by_age": "ikäjakauma",
     "timeseries": "aikajana",
     "export": "SPARQL-kysely",
