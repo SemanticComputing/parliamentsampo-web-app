@@ -85,6 +85,15 @@
                     "step": 1
                 }
             }
+        },
+        "csvSpeeches": {
+            "tabID": 3,
+            "tabPath": "csv",
+            "tabIcon": "CloudDownload",
+            "component": "ExportCSV",
+            "facetClass": "speeches",
+            "sparqlQuery": "csvSpeechesQuery",
+            "filterTarget": "id"
         }
     },
     "properties": [

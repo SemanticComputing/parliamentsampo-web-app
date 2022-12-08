@@ -527,3 +527,48 @@ export const placePropertiesInfoWindow = `
   BIND(CONCAT("/places/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?dataProviderUrl)
   #BIND(CONCAT("/", IF(?id_class in (crm:E53_Place, gn:Feature), 'places', 'groups'), "/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
 `
+
+export const csvSpeechesQuery = `
+  SELECT DISTINCT ?id ?speech ?speaker ?party ?date ?content
+  WHERE {
+    <FILTER>
+    ?id a semparls:Speech .
+    ?id skos:prefLabel ?speech .
+      {
+      ?id semparls:speaker ?speaker__id .
+      ?speaker__id skos:prefLabel ?speaker .
+    }
+    OPTIONAL
+    {
+      ?id semparls:party ?party__id .
+      ?party__id skos:prefLabel ?party .
+      FILTER(LANG(?party) = "fi")
+    }
+    OPTIONAL
+    {
+      ?id semparls:speechType ?speechType__id .
+      ?speechType__id skos:prefLabel ?speechType .
+    }
+    OPTIONAL
+    {
+      ?id dct:language ?language__id .
+      ?language__id skos:prefLabel ?language .
+      FILTER(LANG(?language) = "fi")
+      # BIND(REPLACE(STR(?language_), "http://id.loc.gov/vocabulary/iso639-2/", "") as ?language)
+    }
+    OPTIONAL
+    {
+      ?id dct:date ?date_ .
+      BIND(CONCAT(STR(DAY(?date_)),
+                      ".",
+                      STR(MONTH(?date_)),
+                      ".",
+                      STR(YEAR(?date_))) as ?date)
+    }
+    OPTIONAL
+    {
+      ?id semparls:content ?content .
+    }
+
+  }
+`
