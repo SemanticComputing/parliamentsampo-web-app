@@ -301,6 +301,10 @@
         "eksCategory": {
           "label": "EKS kategoria",
           "description": "EKS kategoria"
+        },
+        "videoLink": {
+          "label": "Video",
+          "description": "Linkki videoon istunnosta"
         }
       }
     },

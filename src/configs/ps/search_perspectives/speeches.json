@@ -322,6 +322,15 @@
             "sortValues": false,
             "numberedList": false,
             "onlyOnInstancePage": true
+        },
+        {
+            "id": "videoLink",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": true,
+            "sortValues": false,
+            "numberedList": false,
+            "onlyOnInstancePage": true
         }
     ],
     "facets": {

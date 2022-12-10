@@ -134,6 +134,17 @@ export const speechPropertiesInstancePage = `
     ?id semparls:status ?status__id .
     ?status__id skos:prefLabel ?status__prefLabel .
   }
+  UNION
+  {
+    ?id semparls:plenarySession/semparls:orderNumber ?plenaryNumber .
+    ?id semparls:plenarySession/semparls:parliamentarySession/semparls:startDate ?sessionStart .
+    BIND(REPLACE("https://verkkolahetys.eduskunta.fi/fi/taysistunnot/taysistunto-NUMBER-YEAR", "NUMBER", STR(?plenaryNumber)) AS ?tempLink)
+    BIND(REPLACE(?tempLink, "YEAR", STR(YEAR(?sessionStart))) AS ?videoLinkTemp)
+    BIND(IF (YEAR(?sessionStart) > 2008, ?videoLinkTemp, '') AS ?videoLink__id )
+    BIND(?videoLink__id AS ?videoLink__prefLabel )
+    BIND(?videoLink__id AS ?videoLink__dataProviderUrl )
+
+  }
 `
 
 export const speechPropertiesFacetResults = ` 
