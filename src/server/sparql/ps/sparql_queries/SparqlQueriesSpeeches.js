@@ -569,6 +569,6 @@ export const csvSpeechesQuery = `
     {
       ?id semparls:content ?content .
     }
-
   }
+  LIMIT 100
 `
