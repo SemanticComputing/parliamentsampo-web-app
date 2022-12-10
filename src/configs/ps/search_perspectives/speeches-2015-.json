@@ -168,6 +168,18 @@
             "minWidth": 110
         },
         {
+            "id": "content",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false,
+            "collapsedMaxWords": 30,
+            "showExtraCollapseButton": true,
+            "expandedOnInstancePage": true,
+            "renderAsHTML": true
+        },
+        {
             "id": "speaker",
             "valueType": "object",
             "makeLink": true,
@@ -317,18 +329,6 @@
             "sortValues": false,
             "numberedList": false,
             "onlyOnInstancePage": true
-        },
-        {
-            "id": "content",
-            "valueType": "string",
-            "makeLink": false,
-            "externalLink": false,
-            "sortValues": false,
-            "numberedList": false,
-            "collapsedMaxWords": 30,
-            "showExtraCollapseButton": true,
-            "expandedOnInstancePage": true,
-            "renderAsHTML": true
         },
         {
             "id": "isInterruptedBy",
