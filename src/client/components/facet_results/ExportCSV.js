@@ -14,7 +14,8 @@ const styles = theme => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    borderTop: '1px solid rgba(224, 224, 224, 1);'
+    borderTop: '1px solid rgba(224, 224, 224, 1);',
+    flexDirection: "column"
   },
   link: {
     textDecoration: 'none'
@@ -65,6 +66,7 @@ class ExportCSV extends React.Component {
 
     return (
       <Paper square className={classes.root}>
+        <div>
         <a
           className={classes.link}
           href={this.state.downloadLink}
@@ -74,6 +76,10 @@ class ExportCSV extends React.Component {
             Export CSV
           </Button>
         </a>
+        </div>
+      <div>
+        <p>Voit ladata tästä maksimissaan 100 puhetta CSV muodossa.</p>
+      </div>
       </Paper>
     )
   }
