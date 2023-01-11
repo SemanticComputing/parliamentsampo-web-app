@@ -79,6 +79,7 @@
   "table": {
     "rowsPerPage": "Riviä sivulla"
   },
+  "exportToYasgui": "Avaa tuloskysely yasgui-editorissa",
   "lineChart": {
     "age_at_start": "Aloitusikä",
     "age_at_end": "Lopetusikä",

@@ -94,6 +94,14 @@
             "facetClass": "speeches",
             "sparqlQuery": "csvSpeechesQuery",
             "filterTarget": "id"
+        },
+        "export": {
+            "tabID": 4,
+            "component": "Export",
+            "tabPath": "export",
+            "tabIcon": "ArrowForward",
+            "resultClass": "speeches",
+            "facetClass": "speeches"
         }
     },
     "properties": [
