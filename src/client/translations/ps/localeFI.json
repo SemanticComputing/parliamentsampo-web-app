@@ -350,7 +350,8 @@
     },
     "speeches-2015-": {
       "label": "Valtiopäivät 2015–",
-      "shortLabel": "Valtiopäivät 2015–",
+      "shortLabel": "Uusimmat puheet",
+      "shortDescription": "Puheet viimeisimpien vaalikausien ajalta",
       "subMain": {
         "label": "Valtiopäivät 2015–",
         "shortDescription": "Puheet valtiopäiviltä 2015 alkaen"
