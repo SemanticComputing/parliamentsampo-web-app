@@ -235,7 +235,7 @@
           "description": "Istunnon asiakohta, johon puheenvuoro liittyy."
         },
         "documentType": {
-          "label": "Asiakirjatyyppi",
+          "label": "Käsiteltävä asiakirja",
           "description": "Puheen asiakohtaan liittyvän eduskunnan asiakirjan tyyppi."
         },
         "roleGivenInSource": {
@@ -299,8 +299,8 @@
           "description": "Asiasana (TF-IDF)"
         },
         "eksCategory": {
-          "label": "EKS kategoria",
-          "description": "EKS kategoria"
+          "label": "Asiakohdan EKS-kategoria (beta)",
+          "description": "Asiakohdan EKS-kategoria (beta)"
         },
         "videoLink": {
           "label": "Video",
