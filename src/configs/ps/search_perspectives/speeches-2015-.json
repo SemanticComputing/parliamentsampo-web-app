@@ -11,7 +11,7 @@
     "facetClass": "semparls:Subcorpus5",
     "langTag": "fi",
     "propertiesTranslationsID": "speeches",
-    "hideCardOnFrontPage": true,
+    "hideCardOnFrontPage": false,
     "hideTopPerspectiveButton": true,
     "frontPageImage": "main_page/tiedonanto-laura-kotila-cc-by-nc-nd.jpg",
     "searchMode": "faceted-search",
