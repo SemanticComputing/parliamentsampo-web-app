@@ -10,7 +10,7 @@
     "URITemplate": "<BASE_URI>/speeches/<LOCAL_ID>",
     "facetClass": "semparls:Speech",
     "langTag": "fi",
-    "frontPageImage": "main_page/rinne.jpg",
+    "frontPageImage": "main_page/kotila-ilmoitus.jpg",
     "hideTopPerspectiveButton": true,
     "searchMode": "faceted-search",
     "defaultActiveFacets": [ "contentTextFacet" ],
@@ -358,7 +358,8 @@
             "sortButton": true,
             "sortBy": "instanceCount",
             "sortByPredicate": "semparls:speaker/skos:prefLabel",
-            "sortDirection": "desc"
+            "sortDirection": "desc",
+            "hideUnknownValue": true
         },
         "party": {
             "containerClass": "ten",
