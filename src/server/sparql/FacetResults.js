@@ -46,7 +46,8 @@ export const getPaginatedResults = ({
       constraints,
       defaultConstraint,
       filterTarget,
-      facetID: null
+      facetID: null,
+      paginated: true
     }))
   }
   if (sortBy == null) {
