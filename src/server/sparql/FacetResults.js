@@ -2,7 +2,7 @@ import { has } from 'lodash'
 import { runSelectQuery } from './SparqlApi'
 import { runNetworkQuery } from './NetworkApi'
 import { makeObjectList, mapCount } from './Mappers'
-import { generateConstraintsBlock } from './Filters'
+import { generateConstraintsBlock, generateTextFilter } from './Filters'
 import {
   countQuery,
   facetResultSetQuery,
@@ -37,6 +37,7 @@ export const getPaginatedResults = ({
     resultMapperConfig = null,
     postprocess = null
   } = resultClassConfig.paginatedResultsConfig
+
   if (constraints == null && defaultConstraint == null) {
     q = q.replace('<FILTER>', '# no filters')
   } else {
@@ -50,6 +51,23 @@ export const getPaginatedResults = ({
       paginated: true
     }))
   }
+  let textFilter = ''
+  if (constraints) {
+    constraints.forEach(c => {
+      if (c.filterType === 'textFilter') {
+        textFilter = generateTextFilter({
+          backendSearchConfig,
+          facetClass: resultClass,
+          facetID: c.facetID,
+          filterTarget: 'id',
+          queryString: c.values,
+          literal: true
+        })
+      }
+    })
+  }
+  q = q.replace('<TEXTFILTER>', textFilter)
+
   if (sortBy == null) {
     q = q.replace('<ORDER_BY_TRIPLE>', '')
     q = q.replace('<ORDER_BY>', '# no sorting')

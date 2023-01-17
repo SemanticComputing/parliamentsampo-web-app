@@ -298,7 +298,8 @@
             "facetType": "text",
             "filterType": "textFilter",
             "textQueryProperty": "semparls:content",
-            "textQueryGetLiteral": false,
+            "textQueryGetLiteral": true,
+            "textQueryHiglightingOptions": "highlight:s:<b> | e:</b> | z:150",
             "textQueryMaxInstances": 10000000
         },
         "speaker": {

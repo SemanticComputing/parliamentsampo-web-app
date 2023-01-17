@@ -10,7 +10,6 @@ export const generateConstraintsBlock = ({
   constrainSelf = false,
   filterTripleFirst = false,
   defaultConstraint = null,
-  paginated
 }) => {
   let filterStr = ''
   if (constraints !== null) {
@@ -26,8 +25,7 @@ export const generateConstraintsBlock = ({
             facetID: c.facetID,
             filterTarget: filterTarget,
             queryString: c.values,
-            inverse: inverse,
-            paginated: paginated
+            inverse: inverse
           })
           break
         case 'uriFilter':
@@ -97,29 +95,36 @@ export const generateConstraintsBlock = ({
   return filterStr
 }
 
-const generateTextFilter = ({
+export const generateTextFilter = ({
   backendSearchConfig,
   facetClass,
   facetID,
   filterTarget,
   queryString,
   inverse,
-  paginated
+  literal
 }) => {
   const facetConfig = backendSearchConfig[facetClass].facets[facetID]
   const queryTargetVariable = facetConfig.textQueryPredicate
     ? '?textQueryTarget'
     : `?${filterTarget}`
-  const querySubject = facetConfig.textQueryGetLiteral
-    ? `( ${queryTargetVariable} ?score ?literal )`
-    : queryTargetVariable
+  // const querySubject = facetConfig.textQueryGetLiteral
+  //  ? `( ${queryTargetVariable} ?score ?literal )`
+  //  : queryTargetVariable
+  let querySubject = ''
+  if (literal) {
+    querySubject = `( ${queryTargetVariable} ?score ?literal )`
+  } else {
+    querySubject = queryTargetVariable
+  }
+  // const querySubject = queryTargetVariable
   let queryObject = ''
   let textQueryMaxInstances = ''
   let textQueryHiglightingOptions = ''
   if (facetConfig.textQueryMaxInstances) {
     textQueryMaxInstances = facetConfig.textQueryMaxInstances
   }
-  if (facetConfig.textQueryHiglightingOptions && paginated) {
+  if (facetConfig.textQueryHiglightingOptions && literal) {
     textQueryHiglightingOptions = `"${facetConfig.textQueryHiglightingOptions}"`
   }
   if (has(facetConfig, 'textQueryProperty') && facetConfig.textQueryGetLiteral &&
