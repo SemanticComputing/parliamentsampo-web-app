@@ -412,6 +412,7 @@
             "containerClass": "ten",
             "facetType": "list",
             "filterType": "uriFilter",
+            "pieChartButton": true,
             "predicate": "semparls:item/semparls:relatedDocument/a",
             "searchField": true,
             "sortButton": true,
@@ -443,7 +444,7 @@
             "containerClass": "ten",
             "facetType": "list",
             "filterType": "uriFilter",
-            "pieChartButton": false,
+            "pieChartButton": true,
             "predicate": "semparls:plenarySession/semparls:parliamentarySession",
             "sortBy": "prefLabel",
             "sortByPredicate": "semparls:plenarySession/semparls:parliamentarySession/skos:prefLabel",
@@ -458,31 +459,6 @@
             "sortBy": "prefLabel",
             "sortByPredicate": "semparls:plenarySession/semparls:parliamentarySession/semparls:electoralTerm/skos:prefLabel",
             "sortDirection": "asc"
-        },
-        "referencedPerson": {
-            "containerClass": "ten",
-            "facetType": "list",
-            "facetValueFilter": "?id a bioc:Person",
-            "filterType": "uriFilter",
-            "predicate": "semparl_linguistics:referenceToPerson/skos:relatedMatch",
-            "searchField": true,
-            "sortButton": true,
-            "sortBy": "instanceCount",
-            "sortByPredicate": "semparl_linguistics:referenceToPerson/skos:relatedMatch/skos:prefLabel",
-            "sortDirection": "desc"
-        },
-        "referencedPlace": {
-            "containerClass": "ten",
-            "facetType": "list",
-            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
-            "facetValueFilter": "?id a crm:E53_Place . FILTER NOT EXISTS { ?id semparls:has_duplicate_child true }",
-            "filterType": "uriFilter",
-            "predicate": "semparl_linguistics:referenceToPlace/skos:relatedMatch",
-            "searchField": true,
-            "sortButton": true,
-            "sortBy": "instanceCount",
-            "sortByPredicate": "semparl_linguistics:referenceToPlace/skos:relatedMatch/skos:prefLabel",
-            "sortDirection": "desc"
         }
     }
 }
