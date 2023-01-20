@@ -85,6 +85,61 @@
             "resultClasses": {
                 "speechesByParty": {
                     "sparqlQuery": "speechesByPartyQuery",
+                    "targetClass": "semparls:Subcorpus5",
+                    "filterTarget": "speech",
+                    "resultMapper": "mapPieChart",
+                    "sliceVisibilityThreshold": 0.01,
+                    "dropdownForChartTypes": "true",
+                    "chartTypes": [
+                        {
+                            "id": "pie",
+                            "createChartData": "createApexPieChartData"
+                        },
+                        {
+                            "id": "bar",
+                            "createChartData": "createApexBarChartData"
+                        }
+                    ]
+                },
+                "speechesByGender": {
+                    "sparqlQuery": "speechesByGenderQuery",
+                    "targetClass": "semparls:Subcorpus5",
+                    "filterTarget": "speech",
+                    "resultMapper": "mapPieChart",
+                    "sliceVisibilityThreshold": 0.01,
+                    "dropdownForChartTypes": "true",
+                    "chartTypes": [
+                        {
+                            "id": "pie",
+                            "createChartData": "createApexPieChartData"
+                        },
+                        {
+                            "id": "bar",
+                            "createChartData": "createApexBarChartData"
+                        }
+                    ]
+                },
+                "speechesByLanguage": {
+                    "sparqlQuery": "speechesByLanguageQuery",
+                    "targetClass": "semparls:Subcorpus5",
+                    "filterTarget": "speech",
+                    "resultMapper": "mapPieChart",
+                    "sliceVisibilityThreshold": 0.01,
+                    "dropdownForChartTypes": "true",
+                    "chartTypes": [
+                        {
+                            "id": "pie",
+                            "createChartData": "createApexPieChartData"
+                        },
+                        {
+                            "id": "bar",
+                            "createChartData": "createApexBarChartData"
+                        }
+                    ]
+                },
+                "speechesByType": {
+                    "sparqlQuery": "speechesByTypeQuery",
+                    "targetClass": "semparls:Subcorpus5",
                     "filterTarget": "speech",
                     "resultMapper": "mapPieChart",
                     "sliceVisibilityThreshold": 0.01,
@@ -102,6 +157,7 @@
                 },
                 "speechesBySpeaker": {
                     "sparqlQuery": "speechesBySpeakerQuery",
+                    "targetClass": "semparls:Subcorpus5",
                     "filterTarget": "speech",
                     "resultMapper": "mapPieChart",
                     "sliceVisibilityThreshold": 0.01,

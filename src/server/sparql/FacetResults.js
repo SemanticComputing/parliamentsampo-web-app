@@ -172,6 +172,9 @@ export const getAllResults = ({
       facetID: null
     }))
   }
+  if (resultClassConfig.targetClass) {
+    q = q.replace(/<TARGET_CLASS>/g, resultClassConfig.targetClass)
+  }
   q = q.replace(/<FACET_CLASS>/g, perspectiveConfig.facetClass)
   if (langTag) {
     q = q.replace(/<LANG>/g, langTag)

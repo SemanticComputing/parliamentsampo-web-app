@@ -145,7 +145,10 @@
     "pie": "piirakkakaavio",
     "bar": "pylväskaavio",
     "resultClasses": {
-      "speechesByParty": "puolue",
+      "speechesByParty": "puhujan puolue",
+      "speechesByGender": "puhujan sukupuoli",
+      "speechesByLanguage": "puheen kieli",
+      "speechesByType": "puheen tyyppi",
       "speechesBySpeaker": "puhuja"
     }
   },

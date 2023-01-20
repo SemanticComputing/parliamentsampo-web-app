@@ -497,16 +497,116 @@ export const speechesByPartyQuery = `
   WHERE {
     <FILTER>
     {
-      ?speech a semparls:Subcorpus5 .
+      ?speech a <TARGET_CLASS> .
       ?speech semparls:party ?category .
       ?category skos:prefLabel ?prefLabel .
       FILTER (LANG(?prefLabel) = 'fi')
     }
     UNION
     {
-      ?speech a semparls:Subcorpus5 .
+      ?speech a <TARGET_CLASS> .
       FILTER NOT EXISTS {
         ?speech semparls:party [] .
+      }
+      BIND("unknown" as ?category)
+      BIND("unknown" as ?prefLabel)
+    }
+  }
+  GROUP BY ?category ?prefLabel
+  ORDER BY DESC(?instanceCount)
+`
+
+export const speechesBySpeakerQuery = `
+ SELECT ?category ?prefLabel
+ (COUNT(DISTINCT ?speech) as ?instanceCount)
+  WHERE {
+    <FILTER>
+    {
+      ?speech a <TARGET_CLASS> .
+      ?speech semparls:speaker ?category .
+      ?category skos:prefLabel ?prefLabel .
+      FILTER (LANG(?prefLabel) = 'fi')
+    }
+    UNION
+    {
+      ?speech a <TARGET_CLASS> .
+      FILTER NOT EXISTS {
+        ?speech semparls:speaker [] .
+      }
+      BIND("unknown" as ?category)
+      BIND("unknown" as ?prefLabel)
+    }
+  }
+  GROUP BY ?category ?prefLabel
+  ORDER BY DESC(?instanceCount)
+`
+
+export const speechesByGenderQuery = `
+ SELECT ?category ?prefLabel
+ (COUNT(DISTINCT ?speech) as ?instanceCount)
+  WHERE {
+    <FILTER>
+    {
+      ?speech a <TARGET_CLASS> .
+      ?speech semparls:speaker/bioc:has_gender ?category .
+      ?category skos:prefLabel ?prefLabel .
+      FILTER (LANG(?prefLabel) = 'fi')
+    }
+    UNION
+    {
+      ?speech a <TARGET_CLASS> .
+      FILTER NOT EXISTS {
+        ?speech semparls:speaker/bioc:has_gender [] .
+      }
+      BIND("unknown" as ?category)
+      BIND("unknown" as ?prefLabel)
+    }
+  }
+  GROUP BY ?category ?prefLabel
+  ORDER BY DESC(?instanceCount)
+`
+
+export const speechesByLanguageQuery = `
+ SELECT ?category ?prefLabel
+ (COUNT(DISTINCT ?speech) as ?instanceCount)
+  WHERE {
+    <FILTER>
+    {
+      ?speech a <TARGET_CLASS> .
+      ?speech dct:language ?category .
+      ?category skos:prefLabel ?prefLabel .
+      FILTER (LANG(?prefLabel) = 'fi')
+    }
+    UNION
+    {
+      ?speech a <TARGET_CLASS> .
+      FILTER NOT EXISTS {
+        ?speech dct:language [] .
+      }
+      BIND("unknown" as ?category)
+      BIND("unknown" as ?prefLabel)
+    }
+  }
+  GROUP BY ?category ?prefLabel
+  ORDER BY DESC(?instanceCount)
+`
+
+export const speechesByTypeQuery = `
+ SELECT ?category ?prefLabel
+ (COUNT(DISTINCT ?speech) as ?instanceCount)
+  WHERE {
+    <FILTER>
+    {
+      ?speech a <TARGET_CLASS> .
+      ?speech semparls:speechType ?category .
+      ?category skos:prefLabel ?prefLabel .
+      FILTER (LANG(?prefLabel) = 'fi')
+    }
+    UNION
+    {
+      ?speech a <TARGET_CLASS> .
+      FILTER NOT EXISTS {
+        ?speech semparls:speechType [] .
       }
       BIND("unknown" as ?category)
       BIND("unknown" as ?prefLabel)
