@@ -362,7 +362,7 @@
       "label": "Henkilöt",
       "facetResultsType": "henkilöä",
       "shortDescription": "Hae henkilöitä",
-      "longDescription": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Use this perspective to ...  The results can be viewed using the following tabs: </p> <ul class=\"MuiTypography-root MuiTypography-body1\"> <li> <strong>TABLE</STRONG> ...</li> <li> ... </li>  </ul>",
+      "longDescription": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\">Tämän näkymän kautta voit tutkia henkilöihin liittyvää dataa. \nData on luotu kahden pääasiallisen lähteen perusteella: <ul class=\"MuiTypography-root MuiTypography-body1\"><li>Eduskunnan <a href=\"https://www.eduskunta.fi/FI/kansanedustajat/Sivut/default.aspx\" target=\"_blank\" rel=\"noopener noreferrer\">kansanedustajatietokanta</a>, joka sisältää kaikkien nykyisten kuin edellistenkin kansanedustajien tiedot.</li><li>Valtioneuvoston <a href=\"https://valtioneuvosto.fi/hallitukset-ja-ministerit\" target=\"_blank\" rel=\"noopener noreferrer\">tietokanta hallituksista ja ministereistä</a>, josta on tuotu tiedot esim. ministereistä, jotka eivät ole toimineet kansanedustajina.</li><li><a href=\"https://www.wikidata.org/wiki/Wikidata:Main_Page\" target=\"_blank\" rel=\"noopener noreferrer\">Wikidata</a>, josta on tuotu tiedot esim. oikeusasiamiehistä.</li></ul></p></ul>",
       "instancePage": {
         "label": "Henkilö",
         "description": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Ohjeet tähän </p>"
