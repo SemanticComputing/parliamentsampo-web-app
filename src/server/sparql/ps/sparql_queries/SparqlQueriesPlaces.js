@@ -71,3 +71,34 @@ UNION
   }
 }
 `
+
+export const placeMentionsTabInstancePage =
+` 
+SELECT * {
+  BIND(<ID> as ?id)
+    
+  BIND(?id as ?uri__id)
+  BIND(?id as ?uri__dataProviderUrl)
+  BIND(?id as ?uri__prefLabel)
+
+  ?id skos:prefLabel ?prefLabel__id .
+  BIND(?prefLabel__id as ?prefLabel__prefLabel)
+  FILTER(LANG(?prefLabel__prefLabel)="fi")
+
+  { SELECT DISTINCT ?id ?speech__id ?speech__prefLabel 
+    (CONCAT("/speeches/page/", REPLACE(STR(?speech__id), "^.*\\\\/(.+)", "$1")) AS ?speech__dataProviderUrl)  
+      WHERE {
+  ?id ^(semparl_linguistics:referenceToPlace/skos:relatedMatch) ?speech__id .
+  ?speech__id skos:prefLabel ?speech__prefLabel .
+    } 
+  }
+  UNION
+  { SELECT DISTINCT ?id ?speaker__id ?speaker__prefLabel 
+      (CONCAT("/people/page/", REPLACE(STR(?speaker__id), "^.*\\\\/(.+)", "$1")) AS ?speaker__dataProviderUrl)
+    WHERE {
+    ?id ^(semparl_linguistics:referenceToPlace/skos:relatedMatch)/semparls:speaker ?speaker__id .
+      ?speaker__id skos:prefLabel ?speaker__prefLabel .
+    } ORDERBY ?speaker__prefLabel 
+  }
+} 
+`

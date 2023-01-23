@@ -19,6 +19,42 @@
             "component": "InstancePageTable",
             "tabPath": "table",
             "tabIcon": "CalendarViewDay"
+          },
+          "placeInstancePageReferences": {
+              "tabID": 1,
+              "tabPath": "speeches",
+              "tabIcon": "KeyboardVoice",
+              "component": "InstancePageTable",
+              "fetchResultsWhenMounted": true,
+              "sparqlQuery": "placeMentionsTabInstancePage",
+              "properties": [
+                  {
+                      "id": "prefLabel",
+                      "valueType": "object",
+                      "makeLink": false,
+                      "externalLink": false,
+                      "sortValues": false,
+                      "numberedList": false
+                  },
+                  {
+                      "id": "speech",
+                      "valueType": "object",
+                      "makeLink": true,
+                      "externalLink": false,
+                      "sortValues": true,
+                      "numberedList": true,
+                      "expandedOnInstancePage": true
+                  },
+                  {
+                      "id": "speaker",
+                      "valueType": "object",
+                      "makeLink": true,
+                      "externalLink": false,
+                      "sortValues": false,
+                      "numberedList": true,
+                      "expandedOnInstancePage": true
+                  }
+              ]
           }
         }
       }

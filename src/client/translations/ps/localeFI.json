@@ -632,6 +632,14 @@
         "related": {
           "label": "Läheisiä paikkoja",
           "description": "Paikkoja, jotka sijaitsevat tämän lähellä samalla hierarkiatasolla"
+        },
+        "speech": {
+          "label": "Puheet, joissa paikka on mainittu",
+          "description": "Puheet, joissa paikka on mainittu"
+        },
+        "speaker": {
+          "label": "Puhujat",
+          "description": "Henkilöt, jotka ovat puheissaan maininneet tämän paikan"
         }
       }
     },
