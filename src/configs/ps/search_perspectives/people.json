@@ -570,6 +570,15 @@
             "onlyOnInstancePage": true
         },
         {
+            "id": "committee",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": true,
+            "onlyOnInstancePage": true
+        },
+        {
             "id": "group",
             "valueType": "object",
             "makeLink": true,

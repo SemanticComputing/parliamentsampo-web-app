@@ -143,6 +143,15 @@ export const personPropertiesInstancePage =
         OPTIONAL { ?parliament__id (crm:P4_has_time-span|crm:P10_falls_within)/crm:P81a_begin_of_the_begin ?evt_start }
     } ORDER BY COALESCE(str(?evt_start),'9999')
   }
+  UNION
+  {
+    ?id bioc:bearer_of/crm:P11i_participated_in [
+        a semparls:CommitteeMembership  ;
+        semparls:organization ?committee__id ] .
+    ?committee__id skos:prefLabel ?committee__prefLabel .
+    FILTER(LANG(?committee__prefLabel) = "fi")
+    BIND(CONCAT("/groups/page/", REPLACE(STR(?committee__id), "^.*\\\\/(.+)", "$1")) AS ?committee__dataProviderUrl)
+  }
   UNION 
   {
     ?id semparls:parliament_days ?parliament_days

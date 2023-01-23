@@ -430,6 +430,10 @@
           "label": "Eduskuntaryhmä",
           "description": "Eduskuntaryhmät joihin henkilö on kuulunut"
         },
+        "committee": {
+          "label": "Valiokunnat ja toimielimet",
+          "description": "Valiokunnat ja toimielimet joihin henkilö on kuulunut"
+        },
         "parliament_days": {
           "label": "Edustajakauden pituus",
           "description": "Edustajakauden pituus päivinä"
