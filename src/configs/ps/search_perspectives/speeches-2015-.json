@@ -11,7 +11,7 @@
     "facetClass": "semparls:Subcorpus5",
     "langTag": "fi",
     "propertiesTranslationsID": "speeches",
-    "hideCardOnFrontPage": true,
+    "hideCardOnFrontPage": false,
     "hideTopPerspectiveButton": true,
     "frontPageImage": "main_page/tiedonanto-laura-kotila-cc-by-nc-nd.jpg",
     "searchMode": "faceted-search",
@@ -85,6 +85,61 @@
             "resultClasses": {
                 "speechesByParty": {
                     "sparqlQuery": "speechesByPartyQuery",
+                    "targetClass": "semparls:Subcorpus5",
+                    "filterTarget": "speech",
+                    "resultMapper": "mapPieChart",
+                    "sliceVisibilityThreshold": 0.01,
+                    "dropdownForChartTypes": "true",
+                    "chartTypes": [
+                        {
+                            "id": "pie",
+                            "createChartData": "createApexPieChartData"
+                        },
+                        {
+                            "id": "bar",
+                            "createChartData": "createApexBarChartData"
+                        }
+                    ]
+                },
+                "speechesByGender": {
+                    "sparqlQuery": "speechesByGenderQuery",
+                    "targetClass": "semparls:Subcorpus5",
+                    "filterTarget": "speech",
+                    "resultMapper": "mapPieChart",
+                    "sliceVisibilityThreshold": 0.01,
+                    "dropdownForChartTypes": "true",
+                    "chartTypes": [
+                        {
+                            "id": "pie",
+                            "createChartData": "createApexPieChartData"
+                        },
+                        {
+                            "id": "bar",
+                            "createChartData": "createApexBarChartData"
+                        }
+                    ]
+                },
+                "speechesByLanguage": {
+                    "sparqlQuery": "speechesByLanguageQuery",
+                    "targetClass": "semparls:Subcorpus5",
+                    "filterTarget": "speech",
+                    "resultMapper": "mapPieChart",
+                    "sliceVisibilityThreshold": 0.01,
+                    "dropdownForChartTypes": "true",
+                    "chartTypes": [
+                        {
+                            "id": "pie",
+                            "createChartData": "createApexPieChartData"
+                        },
+                        {
+                            "id": "bar",
+                            "createChartData": "createApexBarChartData"
+                        }
+                    ]
+                },
+                "speechesByType": {
+                    "sparqlQuery": "speechesByTypeQuery",
+                    "targetClass": "semparls:Subcorpus5",
                     "filterTarget": "speech",
                     "resultMapper": "mapPieChart",
                     "sliceVisibilityThreshold": 0.01,
@@ -102,6 +157,7 @@
                 },
                 "speechesBySpeaker": {
                     "sparqlQuery": "speechesBySpeakerQuery",
+                    "targetClass": "semparls:Subcorpus5",
                     "filterTarget": "speech",
                     "resultMapper": "mapPieChart",
                     "sliceVisibilityThreshold": 0.01,
@@ -388,7 +444,8 @@
             "facetType": "text",
             "filterType": "textFilter",
             "textQueryProperty": "semparls:content",
-            "textQueryGetLiteral": false,
+            "textQueryGetLiteral": true,
+            "textQueryHiglightingOptions": "highlight:s:<b> | e:</b> | z:150",
             "textQueryMaxInstances": 10000000
         },
         "speaker": {
@@ -445,6 +502,7 @@
             "containerClass": "ten",
             "facetType": "list",
             "filterType": "uriFilter",
+            "pieChartButton": true,
             "predicate": "semparls:item/semparls:relatedDocument/a",
             "searchField": true,
             "sortButton": true,
@@ -476,7 +534,7 @@
             "containerClass": "ten",
             "facetType": "list",
             "filterType": "uriFilter",
-            "pieChartButton": false,
+            "pieChartButton": true,
             "predicate": "semparls:plenarySession/semparls:parliamentarySession",
             "sortBy": "prefLabel",
             "sortByPredicate": "semparls:plenarySession/semparls:parliamentarySession/skos:prefLabel",
@@ -496,6 +554,7 @@
             "containerClass": "ten",
             "facetType": "list",
             "filterType": "uriFilter",
+            "pieChartButton": true,
             "predicate": "semparl_linguistics:annif_subject",
             "searchField": true,
             "sortButton": true,
@@ -507,6 +566,7 @@
             "containerClass": "ten",
             "facetType": "list",
             "filterType": "uriFilter",
+            "pieChartButton": true,
             "predicate": "semparl_linguistics:tfidf_subject",
             "searchField": true,
             "sortButton": true,
@@ -519,6 +579,7 @@
             "facetType": "list",
             "facetValueFilter": "?id a bioc:Person",
             "filterType": "uriFilter",
+            "pieChartButton": true,
             "predicate": "semparl_linguistics:referenceToPerson/skos:relatedMatch",
             "searchField": true,
             "sortButton": true,
@@ -532,6 +593,7 @@
             "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
             "facetValueFilter": "?id a crm:E53_Place . FILTER NOT EXISTS { ?id semparls:has_duplicate_child true }",
             "filterType": "uriFilter",
+            "pieChartButton": true,
             "predicate": "semparl_linguistics:referenceToPlace/skos:relatedMatch",
             "searchField": true,
             "sortButton": true,

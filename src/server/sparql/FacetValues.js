@@ -329,7 +329,7 @@ export const generateHierarchyBlock = ({
             ?instance <PREDICATE>${parentPath} ?id .
           }
       `
-      if ( i < (depth - 1) ) {
+      if (i < (depth - 1)) {
         block = block + `
           UNION
         `

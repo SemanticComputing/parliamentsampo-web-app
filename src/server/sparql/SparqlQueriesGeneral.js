@@ -35,7 +35,6 @@ export const facetResultSetQuery = `
   SELECT *
   WHERE {
     {
-      # score and literal are used only for Jena full text index
       SELECT DISTINCT ?id ?score ?literal {
         <FILTER>
         VALUES ?facetClass { <FACET_CLASS> }
@@ -46,6 +45,9 @@ export const facetResultSetQuery = `
       <PAGE>
     }
     FILTER(BOUND(?id))
+    # score and literal are used only for Jena full text index, but may slow down the query performance
+    <TEXTFILTER>
+
     <RESULT_SET_PROPERTIES>
   }
 `

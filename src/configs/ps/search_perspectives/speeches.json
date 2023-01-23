@@ -10,7 +10,7 @@
     "URITemplate": "<BASE_URI>/speeches/<LOCAL_ID>",
     "facetClass": "semparls:Speech",
     "langTag": "fi",
-    "frontPageImage": "main_page/rinne.jpg",
+    "frontPageImage": "main_page/kotila-ilmoitus.jpg",
     "hideTopPerspectiveButton": true,
     "searchMode": "faceted-search",
     "defaultActiveFacets": [ "contentTextFacet" ],
@@ -86,14 +86,124 @@
                 }
             }
         },
-        "csvSpeeches": {
+        "speechesByProperty": {
             "tabID": 3,
+            "component": "ApexCharts",
+            "doNotRenderOnMount": true,
+            "tabPath": "pie_chart",
+            "tabIcon": "PieChart",
+            "facetClass": "speeches",
+            "dropdownForResultClasses": true,
+            "defaultResultClass": "speechesByParty",
+            "resultClasses": {
+                "speechesByParty": {
+                    "sparqlQuery": "speechesByPartyQuery",
+                    "targetClass": "semparls:Speech",
+                    "filterTarget": "speech",
+                    "resultMapper": "mapPieChart",
+                    "sliceVisibilityThreshold": 0.01,
+                    "dropdownForChartTypes": "true",
+                    "chartTypes": [
+                        {
+                            "id": "pie",
+                            "createChartData": "createApexPieChartData"
+                        },
+                        {
+                            "id": "bar",
+                            "createChartData": "createApexBarChartData"
+                        }
+                    ]
+                },
+                "speechesByGender": {
+                    "sparqlQuery": "speechesByGenderQuery",
+                    "targetClass": "semparls:Speech",
+                    "filterTarget": "speech",
+                    "resultMapper": "mapPieChart",
+                    "sliceVisibilityThreshold": 0.01,
+                    "dropdownForChartTypes": "true",
+                    "chartTypes": [
+                        {
+                            "id": "pie",
+                            "createChartData": "createApexPieChartData"
+                        },
+                        {
+                            "id": "bar",
+                            "createChartData": "createApexBarChartData"
+                        }
+                    ]
+                },
+                "speechesByLanguage": {
+                    "sparqlQuery": "speechesByLanguageQuery",
+                    "targetClass": "semparls:Subcorpus5",
+                    "filterTarget": "speech",
+                    "resultMapper": "mapPieChart",
+                    "sliceVisibilityThreshold": 0.01,
+                    "dropdownForChartTypes": "true",
+                    "chartTypes": [
+                        {
+                            "id": "pie",
+                            "createChartData": "createApexPieChartData"
+                        },
+                        {
+                            "id": "bar",
+                            "createChartData": "createApexBarChartData"
+                        }
+                    ]
+                },
+                "speechesByType": {
+                    "sparqlQuery": "speechesByTypeQuery",
+                    "targetClass": "semparls:Speech",
+                    "filterTarget": "speech",
+                    "resultMapper": "mapPieChart",
+                    "sliceVisibilityThreshold": 0.01,
+                    "dropdownForChartTypes": "true",
+                    "chartTypes": [
+                        {
+                            "id": "pie",
+                            "createChartData": "createApexPieChartData"
+                        },
+                        {
+                            "id": "bar",
+                            "createChartData": "createApexBarChartData"
+                        }
+                    ]
+                },
+                "speechesBySpeaker": {
+                    "sparqlQuery": "speechesBySpeakerQuery",
+                    "targetClass": "semparls:Speech",
+                    "filterTarget": "speech",
+                    "resultMapper": "mapPieChart",
+                    "sliceVisibilityThreshold": 0.01,
+                    "dropdownForChartTypes": "true",
+                    "chartTypes": [
+                        {
+                            "id": "pie",
+                            "createChartData": "createApexPieChartData"
+                        },
+                        {
+                            "id": "bar",
+                            "createChartData": "createApexBarChartData"
+                        }
+                    ]
+                }
+            }
+        },
+        "csvSpeeches": {
+            "tabID": 4,
             "tabPath": "csv",
             "tabIcon": "CloudDownload",
             "component": "ExportCSV",
             "facetClass": "speeches",
             "sparqlQuery": "csvSpeechesQuery",
             "filterTarget": "id"
+        },
+        "export": {
+            "tabID": 4,
+            "component": "Export",
+            "tabPath": "export",
+            "tabIcon": "ArrowForward",
+            "resultClass": "speeches",
+            "facetClass": "speeches"
         }
     },
     "properties": [
@@ -345,7 +455,8 @@
             "facetType": "text",
             "filterType": "textFilter",
             "textQueryProperty": "semparls:content",
-            "textQueryGetLiteral": false,
+            "textQueryGetLiteral": true,
+            "textQueryHiglightingOptions": "highlight:s:<b> | e:</b> | z:150",
             "textQueryMaxInstances": 10000000
         },
         "speaker": {
@@ -358,7 +469,8 @@
             "sortButton": true,
             "sortBy": "instanceCount",
             "sortByPredicate": "semparls:speaker/skos:prefLabel",
-            "sortDirection": "desc"
+            "sortDirection": "desc",
+            "hideUnknownValue": true
         },
         "party": {
             "containerClass": "ten",
@@ -402,6 +514,7 @@
             "containerClass": "ten",
             "facetType": "list",
             "filterType": "uriFilter",
+            "pieChartButton": true,
             "predicate": "semparls:item/semparls:relatedDocument/a",
             "searchField": true,
             "sortButton": true,
@@ -433,7 +546,7 @@
             "containerClass": "ten",
             "facetType": "list",
             "filterType": "uriFilter",
-            "pieChartButton": false,
+            "pieChartButton": true,
             "predicate": "semparls:plenarySession/semparls:parliamentarySession",
             "sortBy": "prefLabel",
             "sortByPredicate": "semparls:plenarySession/semparls:parliamentarySession/skos:prefLabel",
@@ -448,31 +561,6 @@
             "sortBy": "prefLabel",
             "sortByPredicate": "semparls:plenarySession/semparls:parliamentarySession/semparls:electoralTerm/skos:prefLabel",
             "sortDirection": "asc"
-        },
-        "referencedPerson": {
-            "containerClass": "ten",
-            "facetType": "list",
-            "facetValueFilter": "?id a bioc:Person",
-            "filterType": "uriFilter",
-            "predicate": "semparl_linguistics:referenceToPerson/skos:relatedMatch",
-            "searchField": true,
-            "sortButton": true,
-            "sortBy": "instanceCount",
-            "sortByPredicate": "semparl_linguistics:referenceToPerson/skos:relatedMatch/skos:prefLabel",
-            "sortDirection": "desc"
-        },
-        "referencedPlace": {
-            "containerClass": "ten",
-            "facetType": "list",
-            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
-            "facetValueFilter": "?id a crm:E53_Place . FILTER NOT EXISTS { ?id semparls:has_duplicate_child true }",
-            "filterType": "uriFilter",
-            "predicate": "semparl_linguistics:referenceToPlace/skos:relatedMatch",
-            "searchField": true,
-            "sortButton": true,
-            "sortBy": "instanceCount",
-            "sortByPredicate": "semparl_linguistics:referenceToPlace/skos:relatedMatch/skos:prefLabel",
-            "sortDirection": "desc"
         }
     }
 }

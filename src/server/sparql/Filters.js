@@ -9,7 +9,7 @@ export const generateConstraintsBlock = ({
   inverse,
   constrainSelf = false,
   filterTripleFirst = false,
-  defaultConstraint = null
+  defaultConstraint = null,
 }) => {
   let filterStr = ''
   if (constraints !== null) {
@@ -95,33 +95,45 @@ export const generateConstraintsBlock = ({
   return filterStr
 }
 
-const generateTextFilter = ({
+export const generateTextFilter = ({
   backendSearchConfig,
   facetClass,
   facetID,
   filterTarget,
   queryString,
-  inverse
+  inverse,
+  literal
 }) => {
   const facetConfig = backendSearchConfig[facetClass].facets[facetID]
   const queryTargetVariable = facetConfig.textQueryPredicate
     ? '?textQueryTarget'
     : `?${filterTarget}`
-  const querySubject = facetConfig.textQueryGetLiteral
-    ? `( ${queryTargetVariable} ?score ?literal )`
-    : queryTargetVariable
+  // const querySubject = facetConfig.textQueryGetLiteral
+  //  ? `( ${queryTargetVariable} ?score ?literal )`
+  //  : queryTargetVariable
+  let querySubject = ''
+  if (literal) {
+    querySubject = `( ${queryTargetVariable} ?score ?literal )`
+  } else {
+    querySubject = queryTargetVariable
+  }
+  // const querySubject = queryTargetVariable
   let queryObject = ''
   let textQueryMaxInstances = ''
+  let textQueryHiglightingOptions = ''
   if (facetConfig.textQueryMaxInstances) {
     textQueryMaxInstances = facetConfig.textQueryMaxInstances
   }
+  if (facetConfig.textQueryHiglightingOptions && literal) {
+    textQueryHiglightingOptions = `"${facetConfig.textQueryHiglightingOptions}"`
+  }
   if (has(facetConfig, 'textQueryProperty') && facetConfig.textQueryGetLiteral &&
       has(facetConfig, 'textQueryHiglightingOptions')) {
-    queryObject = `( ${facetConfig.textQueryProperty} '${queryString}' ${textQueryMaxInstances} "${facetConfig.textQueryHiglightingOptions}" )`
+    queryObject = `( ${facetConfig.textQueryProperty} '${queryString}' ${textQueryMaxInstances} ${textQueryHiglightingOptions} )`
   }
   if (!has(facetConfig, 'textQueryProperty') && facetConfig.textQueryGetLiteral &&
        has(facetConfig, 'textQueryHiglightingOptions')) {
-    queryObject = `( '${queryString}' ${textQueryMaxInstances} "${facetConfig.textQueryHiglightingOptions}" )`
+    queryObject = `( '${queryString}' ${textQueryMaxInstances} ${textQueryHiglightingOptions} )`
   }
   if (has(facetConfig, 'textQueryProperty') && !facetConfig.textQueryGetLiteral &&
        !has(facetConfig, 'textQueryHiglightingOptions')) {

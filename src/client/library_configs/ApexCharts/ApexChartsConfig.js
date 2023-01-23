@@ -267,7 +267,7 @@ export const createApexPieChartData = ({
     }
   })
   if (otherCount !== 0) {
-    labels.push(intl.get('apexCharts.other') || 'Other')
+    labels.push(intl.get('apexCharts.other') || 'Muu arvo')
     series.push(otherCount)
   }
   let chartColors = []

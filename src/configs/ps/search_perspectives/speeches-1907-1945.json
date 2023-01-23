@@ -59,6 +59,108 @@
                 "fillEmptyValues": true,
                 "customizedCategoryLabels": true
             }
+        },
+        "speechesByProperty": {
+            "tabID": 2,
+            "component": "ApexCharts",
+            "doNotRenderOnMount": true,
+            "tabPath": "pie_chart",
+            "tabIcon": "PieChart",
+            "facetClass": "speeches-1907-1945",
+            "dropdownForResultClasses": true,
+            "defaultResultClass": "speechesByParty",
+            "resultClasses": {
+                "speechesByParty": {
+                    "sparqlQuery": "speechesByPartyQuery",
+                    "targetClass": "semparls:Subcorpus1",
+                    "filterTarget": "speech",
+                    "resultMapper": "mapPieChart",
+                    "sliceVisibilityThreshold": 0.01,
+                    "dropdownForChartTypes": "true",
+                    "chartTypes": [
+                        {
+                            "id": "pie",
+                            "createChartData": "createApexPieChartData"
+                        },
+                        {
+                            "id": "bar",
+                            "createChartData": "createApexBarChartData"
+                        }
+                    ]
+                },
+                "speechesByGender": {
+                    "sparqlQuery": "speechesByGenderQuery",
+                    "targetClass": "semparls:Subcorpus1",
+                    "filterTarget": "speech",
+                    "resultMapper": "mapPieChart",
+                    "sliceVisibilityThreshold": 0.01,
+                    "dropdownForChartTypes": "true",
+                    "chartTypes": [
+                        {
+                            "id": "pie",
+                            "createChartData": "createApexPieChartData"
+                        },
+                        {
+                            "id": "bar",
+                            "createChartData": "createApexBarChartData"
+                        }
+                    ]
+                },
+                "speechesByLanguage": {
+                    "sparqlQuery": "speechesByLanguageQuery",
+                    "targetClass": "semparls:Subcorpus1",
+                    "filterTarget": "speech",
+                    "resultMapper": "mapPieChart",
+                    "sliceVisibilityThreshold": 0.01,
+                    "dropdownForChartTypes": "true",
+                    "chartTypes": [
+                        {
+                            "id": "pie",
+                            "createChartData": "createApexPieChartData"
+                        },
+                        {
+                            "id": "bar",
+                            "createChartData": "createApexBarChartData"
+                        }
+                    ]
+                },
+                "speechesByType": {
+                    "sparqlQuery": "speechesByTypeQuery",
+                    "targetClass": "semparls:Subcorpus1",
+                    "filterTarget": "speech",
+                    "resultMapper": "mapPieChart",
+                    "sliceVisibilityThreshold": 0.01,
+                    "dropdownForChartTypes": "true",
+                    "chartTypes": [
+                        {
+                            "id": "pie",
+                            "createChartData": "createApexPieChartData"
+                        },
+                        {
+                            "id": "bar",
+                            "createChartData": "createApexBarChartData"
+                        }
+                    ]
+                },
+                "speechesBySpeaker": {
+                    "sparqlQuery": "speechesBySpeakerQuery",
+                    "targetClass": "semparls:Subcorpus1",
+                    "filterTarget": "speech",
+                    "resultMapper": "mapPieChart",
+                    "sliceVisibilityThreshold": 0.01,
+                    "dropdownForChartTypes": "true",
+                    "chartTypes": [
+                        {
+                            "id": "pie",
+                            "createChartData": "createApexPieChartData"
+                        },
+                        {
+                            "id": "bar",
+                            "createChartData": "createApexBarChartData"
+                        }
+                    ]
+                }
+            }
         }
     },
     "properties": [
@@ -301,7 +403,8 @@
             "facetType": "text",
             "filterType": "textFilter",
             "textQueryProperty": "semparls:content",
-            "textQueryGetLiteral": false,
+            "textQueryGetLiteral": true,
+            "textQueryHiglightingOptions": "highlight:s:<b> | e:</b> | z:150",
             "textQueryMaxInstances": 10000000
         },
         "speaker": {
@@ -358,6 +461,7 @@
             "containerClass": "ten",
             "facetType": "list",
             "filterType": "uriFilter",
+            "pieChartButton": true,
             "predicate": "semparls:item/semparls:relatedDocument/a",
             "searchField": true,
             "sortButton": true,
@@ -389,7 +493,7 @@
             "containerClass": "ten",
             "facetType": "list",
             "filterType": "uriFilter",
-            "pieChartButton": false,
+            "pieChartButton": true,
             "predicate": "semparls:plenarySession/semparls:parliamentarySession",
             "sortBy": "prefLabel",
             "sortByPredicate": "semparls:plenarySession/semparls:parliamentarySession/skos:prefLabel",
@@ -404,31 +508,6 @@
             "sortBy": "prefLabel",
             "sortByPredicate": "semparls:plenarySession/semparls:parliamentarySession/semparls:electoralTerm/skos:prefLabel",
             "sortDirection": "asc"
-        },
-        "referencedPerson": {
-            "containerClass": "ten",
-            "facetType": "list",
-            "facetValueFilter": "?id a bioc:Person",
-            "filterType": "uriFilter",
-            "predicate": "semparl_linguistics:referenceToPerson/skos:relatedMatch",
-            "searchField": true,
-            "sortButton": true,
-            "sortBy": "instanceCount",
-            "sortByPredicate": "semparl_linguistics:referenceToPerson/skos:relatedMatch/skos:prefLabel",
-            "sortDirection": "desc"
-        },
-        "referencedPlace": {
-            "containerClass": "ten",
-            "facetType": "list",
-            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
-            "facetValueFilter": "?id a crm:E53_Place . FILTER NOT EXISTS { ?id semparls:has_duplicate_child true }",
-            "filterType": "uriFilter",
-            "predicate": "semparl_linguistics:referenceToPlace/skos:relatedMatch",
-            "searchField": true,
-            "sortButton": true,
-            "sortBy": "instanceCount",
-            "sortByPredicate": "semparl_linguistics:referenceToPlace/skos:relatedMatch/skos:prefLabel",
-            "sortDirection": "desc"
         }
     }
 }

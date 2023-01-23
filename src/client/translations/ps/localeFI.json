@@ -11,7 +11,7 @@
     "subheading": "Eduskunta semanttisessa webissä"
   },
   "selectPerspective": "Valitse näkymä aineiston hakua ja tutkimista varten:",
-  "mainPageImageLicence": "Otsikon taustakuva: Alkuperäinen <a href='https://www.finna.fi/Record/museovirasto.5F9DFF58A0BB75BA9995BC6EE207E415' target='_blank'>kuva</a> (muokattu rajaamalla) Teuvo Kanerva <a href='https://creativecommons.org/licenses/by/4.0/deed.fi' target='_blank'>CC BY 4.0</a>. Perspektiivien kuvat: 1907, Public Domain (lähde Wikipedia); 1946, <a href='https://museovirasto.finna.fi/Record/museovirasto.9CF9B47ADBF1D6F71DA661A4009CFF22' target='_blank'>Pekka Kyytinen, Museovirasto (Kansatieteen kuvakokoelma, Pekka Kyytisen kokoelma) </a> <a href='https://creativecommons.org/licenses/by/4.0/deed.fi' target='_blank'>CC BY 4.0</a>; 1980, <a href='https://museovirasto.finna.fi/Record/museovirasto.B7525DDBD7075370ECD26BF6FB049093' target='_blank'>Hannu Lindroos, Museovirasto (JOKA Journalistinen kuva-arkisto, Hannu Lindroosin kokoelma) </a> <a href='https://creativecommons.org/licenses/by-nc-nd/4.0/deed.en' target='_blank'>CC BY-NC-ND</a>; 2000, Markku Ulander <a href='https://museovirasto.finna.fi/Record/museovirasto.8D8D9787F7C3B03AF815E2CD2BEEA755' target='_blank'>Museovirasto (Historian kuvakokoelma) </a>) <a href='https://creativecommons.org/licenses/by/4.0/deed.fi' target='_blank'>CC BY 4.0</a>; <a href='https://www.flickr.com/photos/finnishgovernment/48131658333/in/album-72157709260061802/'>1907-</a> ja <a href='https://www.flickr.com/photos/finnishgovernment/48131748591/in/album-72157709260061802/'>2015</a> Laura Kotila, Valtioneuvoston kanslia <a href='https://creativecommons.org/licenses/by-nc-nd/2.0/deed.en' target='_blank'>CC BY-NC-ND</a>; Henkilöt, <a href='https://kuvapankki.valtioneuvosto.fi/f/wMp5'>Laura Kotila, Valtioneuvoston kanslia</a> (rajattu) <a href='https://creativecommons.org/licenses/by/4.0/deed.fi' target='_blank'>CC BY 4.0</a>",
+  "mainPageImageLicence": "Otsikon taustakuva: Alkuperäinen <a href='https://www.finna.fi/Record/museovirasto.5F9DFF58A0BB75BA9995BC6EE207E415' target='_blank'>kuva</a> (muokattu rajaamalla) Teuvo Kanerva <a href='https://creativecommons.org/licenses/by/4.0/deed.fi' target='_blank'>CC BY 4.0</a>. Perspektiivien kuvat: 1907, Public Domain (lähde Wikipedia); 1946, <a href='https://museovirasto.finna.fi/Record/museovirasto.9CF9B47ADBF1D6F71DA661A4009CFF22' target='_blank'>Pekka Kyytinen, Museovirasto (Kansatieteen kuvakokoelma, Pekka Kyytisen kokoelma) </a> <a href='https://creativecommons.org/licenses/by/4.0/deed.fi' target='_blank'>CC BY 4.0</a>; 1980, <a href='https://museovirasto.finna.fi/Record/museovirasto.B7525DDBD7075370ECD26BF6FB049093' target='_blank'>Hannu Lindroos, Museovirasto (JOKA Journalistinen kuva-arkisto, Hannu Lindroosin kokoelma) </a> <a href='https://creativecommons.org/licenses/by-nc-nd/4.0/deed.en' target='_blank'>CC BY-NC-ND</a>; 2000, Markku Ulander <a href='https://museovirasto.finna.fi/Record/museovirasto.8D8D9787F7C3B03AF815E2CD2BEEA755' target='_blank'>Museovirasto (Historian kuvakokoelma) </a>) <a href='https://creativecommons.org/licenses/by/4.0/deed.fi' target='_blank'>CC BY 4.0</a>; <a href='https://www.flickr.com/photos/finnishgovernment/48131658678/in/album-72157709260061802/'>1907-</a> ja <a href='https://www.flickr.com/photos/finnishgovernment/48131748591/in/album-72157709260061802/'>2015</a> Laura Kotila, Valtioneuvoston kanslia <a href='https://creativecommons.org/licenses/by-nc-nd/2.0/deed.en' target='_blank'>CC BY-NC-ND</a>; Henkilöt, <a href='https://www.finna.fi/Record/museovirasto.078D0FAE2E9236EFD0A8CA3F3C8F736D'>Kuvasiskot, Museovirasto (Historian kuvakokoelma, Studio Kuvasiskojen kuvakokoelma) <a href='https://creativecommons.org/licenses/by/4.0/deed.fi' target='_blank'>CC BY 4.0</a>",
   "backendErrorText": "Palvelin ei ole käytettävissä juuri nyt. Kokeile myöhemmin uuudestaan.",
   "speechesMainPage": {
     "title": "Täysistuntojen puheenvuorot",
@@ -79,6 +79,7 @@
   "table": {
     "rowsPerPage": "Riviä sivulla"
   },
+  "exportToYasgui": "Avaa tuloskysely yasgui-editorissa",
   "lineChart": {
     "age_at_start": "Aloitusikä",
     "age_at_end": "Lopetusikä",
@@ -144,7 +145,10 @@
     "pie": "piirakkakaavio",
     "bar": "pylväskaavio",
     "resultClasses": {
-      "speechesByParty": "puolue",
+      "speechesByParty": "puhujan puolue",
+      "speechesByGender": "puhujan sukupuoli",
+      "speechesByLanguage": "puheen kieli",
+      "speechesByType": "puheen tyyppi",
       "speechesBySpeaker": "puhuja"
     }
   },
@@ -193,7 +197,7 @@
           "description": "Puheen pitäjän sukupuoli. Luvut aaltosuluissa ovat puheiden, ei henkilöiden määriä."
         },
         "speechType": {
-          "label": "Tyyppi",
+          "label": "Puheen tyyppi",
           "description": "Tyyppi"
         },
         "language": {
@@ -235,7 +239,7 @@
           "description": "Istunnon asiakohta, johon puheenvuoro liittyy."
         },
         "documentType": {
-          "label": "Asiakirjatyyppi",
+          "label": "Käsiteltävä asiakirja",
           "description": "Puheen asiakohtaan liittyvän eduskunnan asiakirjan tyyppi."
         },
         "roleGivenInSource": {
@@ -299,8 +303,8 @@
           "description": "Asiasana (TF-IDF)"
         },
         "eksCategory": {
-          "label": "EKS kategoria",
-          "description": "EKS kategoria"
+          "label": "Asiakohdan EKS-kategoria (beta)",
+          "description": "Asiakohdan EKS-kategoria (beta)"
         },
         "videoLink": {
           "label": "Video",
@@ -350,7 +354,8 @@
     },
     "speeches-2015-": {
       "label": "Valtiopäivät 2015–",
-      "shortLabel": "Valtiopäivät 2015–", 
+      "shortLabel": "Uusimmat puheet",
+      "shortDescription": "Puheet viimeisimpien vaalikausien ajalta",
       "subMain": {
         "label": "Valtiopäivät 2015–",
         "shortDescription": "Puheet valtiopäiviltä 2015 alkaen"
