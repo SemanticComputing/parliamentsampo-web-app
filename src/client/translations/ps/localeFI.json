@@ -676,7 +676,7 @@
         },
         "extraInfo": {
           "label": "Lisätiedot kirjoittajasta",
-          "description": "Lisätiedot kirjoittajasta"
+          "description": "Lisätiedot kirjoittajasta. Huom. kaikki julkaisujen kirjoittajat eivät ole kansanedustajadatassa, tällöin ylläolevassa 'Kirjoittaja'-kentässä ei näy linkkiä henkilösivulle."
         },
         "subject": {
           "label": "Henkilö, jota julkaisu koskee",
