@@ -311,7 +311,6 @@ WHERE {
              skos:prefLabel ?event__label ;
              semparls:content ?content .
   OPTIONAL { ?event__id dct:date ?_date }
-  OPTIONAL { ?event__id semparls:speechOrder ?_ord }
 
   BIND (CONCAT(REPLACE(?event__label, ' [(][^)]+[)]$', ''), ": (", SUBSTR(?content,1,50), "...)") AS ?event__prefLabel)
   BIND(CONCAT("/speeches/page/", REPLACE(STR(?event__id), "^.*\\\\/(.+)", "$1")) AS ?event__dataProviderUrl)
