@@ -326,6 +326,7 @@
             "tabIcon": "PieChart",
             "facetClass": "people",
             "dropdownForResultClasses": true,
+            "sortBy": null,
             "defaultResultClass": "peopleByElectoralterm",
             "resultClasses": {
                 "peopleByElectoralterm": {
@@ -346,8 +347,44 @@
                         }
                     ]
                 },
+                "peopleByCommittee": {
+                    "sparqlQuery": "peopleByCommitteeQuery",
+                    "targetClass": "bioc:Person",
+                    "filterTarget": "person__id",
+                    "resultMapper": "mapPieChart",
+                    "sliceVisibilityThreshold": 0.01,
+                    "dropdownForChartTypes": "true",
+                    "chartTypes": [
+                        {
+                            "id": "bar",
+                            "createChartData": "createApexBarChartData"
+                        },
+                        {
+                            "id": "pie",
+                            "createChartData": "createApexPieChartData"
+                        }
+                    ]
+                },
                 "ministersByElectoralterm": {
                     "sparqlQuery": "ministersByElectoraltermQuery",
+                    "targetClass": "bioc:Person",
+                    "filterTarget": "person__id",
+                    "resultMapper": "mapPieChart",
+                    "sliceVisibilityThreshold": 0.0,
+                    "dropdownForChartTypes": "true",
+                    "chartTypes": [
+                        {
+                            "id": "bar",
+                            "createChartData": "createApexBarChartData"
+                        },
+                        {
+                            "id": "pie",
+                            "createChartData": "createApexPieChartData"
+                        }
+                    ]
+                }, 
+                "ministersByGovernment": {
+                    "sparqlQuery": "ministersByGovernmentQuery",
                     "targetClass": "bioc:Person",
                     "filterTarget": "person__id",
                     "resultMapper": "mapPieChart",
@@ -702,6 +739,19 @@
             "sortBy": "instanceCount",
             "sortByPredicate": "semparls:has_party_membership/semparls:party/skos:prefLabel",
             "sortDirection": "desc"
+        },
+        "government": {
+            "containerClass": "ten",
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "pieChartButton": true,
+            "predicate": "bioc:bearer_of/crm:P11i_participated_in ?evt . ?evt a semparls:GovernmentMembership ; semparls:organization",
+            "searchField": true,
+            "sortButton": true,
+            "sortBy": "prefLabel",
+            "sortByPredicate": "bioc:bearer_of/crm:P11i_participated_in/semparls:organization/skos:prefLabel",
+            "sortDirection": "asc"
         },
         "gender": {
             "containerClass": "three",

@@ -721,6 +721,28 @@ WHERE {
 } GROUPBY ?category ?prefLabel ORDERBY STR(?category)
 `
 
+export const ministersByGovernmentQuery = `
+SELECT DISTINCT ?category ?prefLabel (COUNT(DISTINCT ?person__id) AS ?instanceCount) ?orderBy
+WHERE {
+  ?person__id a bioc:Person .
+  <FILTER>
+  ?person__id bioc:bearer_of/crm:P11i_participated_in [ a semparls:GovernmentMembership ; semparls:organization ?category ] . 
+  ?category skos:prefLabel ?prefLabel ; semparls:governmentOrder ?orderBy . 
+  FILTER(LANG(?prefLabel)="<LANG>")
+} GROUPBY ?category ?prefLabel ?orderBy ORDER BY ?orderBy
+`
+
+export const peopleByCommitteeQuery = `
+SELECT DISTINCT ?category ?prefLabel (COUNT(DISTINCT ?person__id) AS ?instanceCount)
+WHERE {
+  ?person__id a bioc:Person .
+  <FILTER>
+  ?person__id bioc:bearer_of/crm:P11i_participated_in [ a semparls:CommitteeMembership ; semparls:organization/a ?category ] . 
+  ?category skos:prefLabel ?prefLabel . 
+  FILTER(LANG(?prefLabel)="fi")
+} GROUPBY ?category ?prefLabel ORDER BY ?instanceCount
+`
+
 export const ageQuery = `
 SELECT ?category (count(?time1) AS ?age_at_start) (count(?time2) AS ?age_at_end)
 WHERE {

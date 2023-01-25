@@ -151,7 +151,9 @@
       "speechesByType": "puheen tyyppi",
       "speechesBySpeaker": "puhuja",
       "peopleByElectoralterm": "edustajat vaalikausittain",
-      "ministersByElectoralterm": "ministerit vaalikausittain"
+      "ministersByElectoralterm": "ministerit vaalikausittain",
+      "ministersByGovernment": "ministerit hallituksittain",
+      "peopleByCommittee": "edustajat valiokunnittain"
     }
   },
   "perspectives": {
@@ -435,6 +437,10 @@
         "committee": {
           "label": "Valiokunnat ja toimielimet",
           "description": "Valiokunnat ja toimielimet joihin henkilö on kuulunut"
+        },
+        "government": {
+          "label": "Hallitus",
+          "description": "Henkilöt jotka ovat olleet ministereinä eri hallituksissa"
         },
         "parliament_days": {
           "label": "Edustajakauden pituus",
