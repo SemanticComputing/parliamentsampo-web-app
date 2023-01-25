@@ -64,7 +64,7 @@
     "speeches": "puheenvuorot",
     "speechReferences": "viittaukset puheissa",
     "migrations": "elinkaari",
-    "map": "kartta",
+    "map": "tapahtumat kartalla",
     "heatmap": "lämpökartta",
     "network": "verkosto",
     "referencenetwork": "viittausverkosto",
@@ -149,7 +149,9 @@
       "speechesByGender": "puhujan sukupuoli",
       "speechesByLanguage": "puheen kieli",
       "speechesByType": "puheen tyyppi",
-      "speechesBySpeaker": "puhuja"
+      "speechesBySpeaker": "puhuja",
+      "peopleByElectoralterm": "edustajat vaalikausittain",
+      "ministersByElectoralterm": "ministerit vaalikausittain"
     }
   },
   "perspectives": {

@@ -318,29 +318,55 @@
                 }
             }
         },
-        "personTimeSeries": {
+        "peopleByProperty": {
             "tabID": 1,
             "component": "ApexCharts",
-            "createChartData": "createMultipleLineChartData",
-            "stroke": {
-                "curve": "straight",
-                "width": 2
-            },
-            "title": "Syntyneet, kuolleet ja kautensa aloittaneet edustajat",
-            "xaxisTitle": "Vuosi",
-            "xaxisType": "category",
-            "xaxisTickAmount": 20,
-            "yaxisTitle": "Henkilöiden lukumäärä",
-            "tabPath": "timeseries",
-            "tabIcon": "ShowChart",
-            "sparqlQuery": "timeSeriesQuery",
+            "doNotRenderOnMount": true,
+            "tabPath": "pie_chart",
+            "tabIcon": "PieChart",
             "facetClass": "people",
-            "filterTarget": "person__id",
-            "resultMapper": "mapMultipleLineChart",
-            "resultMapperConfig": {
-                "fillEmptyValues": true
+            "dropdownForResultClasses": true,
+            "defaultResultClass": "peopleByElectoralterm",
+            "resultClasses": {
+                "peopleByElectoralterm": {
+                    "sparqlQuery": "peopleByElectoraltermQuery",
+                    "targetClass": "bioc:Person",
+                    "filterTarget": "person__id",
+                    "resultMapper": "mapPieChart",
+                    "sliceVisibilityThreshold": 0.0,
+                    "dropdownForChartTypes": "true",
+                    "chartTypes": [
+                        {
+                            "id": "bar",
+                            "createChartData": "createApexBarChartData"
+                        },
+                        {
+                            "id": "pie",
+                            "createChartData": "createApexPieChartData"
+                        }
+                    ]
+                },
+                "ministersByElectoralterm": {
+                    "sparqlQuery": "ministersByElectoraltermQuery",
+                    "targetClass": "bioc:Person",
+                    "filterTarget": "person__id",
+                    "resultMapper": "mapPieChart",
+                    "sliceVisibilityThreshold": 0.0,
+                    "dropdownForChartTypes": "true",
+                    "chartTypes": [
+                        {
+                            "id": "bar",
+                            "createChartData": "createApexBarChartData"
+                        },
+                        {
+                            "id": "pie",
+                            "createChartData": "createApexPieChartData"
+                        }
+                    ]
+                }
             }
         },
+        
         "personAges": {
             "tabID": 2,
             "component": "ApexCharts",
@@ -662,7 +688,7 @@
             "searchField": true,
             "sortButton": true,
             "sortBy": "prefLabel",
-            "sortByPredicate": "bioc:bearer_of/crm:P11i_participated_in/crm:P10_falls_within/skos:prefLabel",
+            "sortByPredicate": "bioc:bearer_of/crm:P11i_participated_in/crm:P10_falls_within/crm:P81a_begin_of_the_begin",
             "sortDirection": "asc"
         },
         "party": {

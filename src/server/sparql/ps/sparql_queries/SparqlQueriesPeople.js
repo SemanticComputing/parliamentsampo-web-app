@@ -686,37 +686,39 @@ export const peopleRelatedTo = `
 }
 `
 
-export const timeSeriesQuery = `
-SELECT ?category 
-(count(DISTINCT ?birth) AS ?Births)
-  (count(DISTINCT ?member__id) AS ?Representatives)
-  (count(DISTINCT ?death) AS ?Deaths)
-  WHERE {
+/**
+ * TODO: edustajat vaalikausittain: https://api.triplydb.com/s/gVBtxUh5S
+ */
+export const peopleByElectoraltermQuery = `
+SELECT DISTINCT ?category ?prefLabel (COUNT(DISTINCT ?person__id) AS ?instanceCount)
+WHERE {
   ?person__id a bioc:Person .
-
+  
   <FILTER>
   
-  {
-   ?person__id crm:P98i_was_born ?birth .
-  ?birth crm:P4_has_time-span/crm:P81a_begin_of_the_begin ?_birth .
-    BIND(year(?_birth) AS ?category)
-  }
-  UNION
-  {
-   ?person__id crm:P100i_died_in ?death .
-  ?death crm:P4_has_time-span/crm:P81a_begin_of_the_begin ?_death .
-    BIND(year(?_death) AS ?category) 
-  }
-  UNION
-  {
-    ?person__id bioc:bearer_of [ a <http://ldf.fi/semparl/roles/r1> ; 
-        crm:P11i_participated_in ?membership ] .
-    ?membership a semparls:ParliamentMembership ; crm:P10_falls_within/crm:P81a_begin_of_the_begin ?_date .
-    BIND(?person__id AS ?member__id)
-    BIND(year(?_date) AS ?category)
-  }
+  ?person__id bioc:bearer_of/crm:P11i_participated_in [ a semparls:ParliamentMembership ; crm:P10_falls_within ?category ] .
+  ?category a semparls:ElectoralTerm ; skos:prefLabel ?prefLabel .
+} GROUPBY ?category ?prefLabel ORDERBY STR(?category)
+`
+
+export const ministersByElectoraltermQuery = `
+SELECT DISTINCT ?category ?prefLabel (COUNT(DISTINCT ?person__id) AS ?instanceCount) 
+WHERE {
+  ?person__id a bioc:Person .
   
-} GROUPBY ?category ORDER BY ?category
+  <FILTER>
+
+  ?category a semparls:ElectoralTerm ;
+    crm:P81a_begin_of_the_begin ?term_start ;
+    crm:P82b_end_of_the_end ?term_end ;
+    skos:prefLabel ?prefLabel .
+
+  ?person__id bioc:bearer_of/crm:P11i_participated_in [ a semparls:GovernmentMembership ; crm:P4_has_time-span ?period ] .
+  ?period crm:P81a_begin_of_the_begin ?p_start  .
+  OPTIONAL { ?period crm:P82b_end_of_the_end ?p_end }
+  FILTER(?term_start <= ?p_start && ?p_start < ?term_end && LANG(?prefLabel)="fi")
+  
+} GROUPBY ?category ?prefLabel ORDERBY STR(?category)
 `
 
 export const ageQuery = `
