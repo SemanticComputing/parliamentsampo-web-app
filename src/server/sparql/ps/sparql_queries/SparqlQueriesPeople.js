@@ -743,6 +743,18 @@ WHERE {
 } GROUPBY ?category ?prefLabel ORDER BY ?instanceCount
 `
 
+export const peopleByPartyQuery = `
+SELECT DISTINCT ?category ?prefLabel (COUNT(DISTINCT ?person__id) AS ?instanceCount)
+WHERE {
+  ?person__id a bioc:Person .
+  <FILTER>
+  
+  ?person__id semparls:has_party_membership [ a semparls:PartyMembership ; semparls:party ?category ] . 
+  ?category skos:prefLabel ?prefLabel .
+  FILTER(LANG(?prefLabel)="fi")
+} GROUPBY ?category ?prefLabel ORDERBY ASC(?instanceCount)
+`
+
 export const ageQuery = `
 SELECT ?category (count(?time1) AS ?age_at_start) (count(?time2) AS ?age_at_end)
 WHERE {

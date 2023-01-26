@@ -365,6 +365,24 @@
                         }
                     ]
                 },
+                "peopleByParty": {
+                    "sparqlQuery": "peopleByPartyQuery",
+                    "targetClass": "bioc:Person",
+                    "filterTarget": "person__id",
+                    "resultMapper": "mapPieChart",
+                    "sliceVisibilityThreshold": 0.01,
+                    "dropdownForChartTypes": "true",
+                    "chartTypes": [
+                        {
+                            "id": "bar",
+                            "createChartData": "createApexBarChartData"
+                        },
+                        {
+                            "id": "pie",
+                            "createChartData": "createApexPieChartData"
+                        }
+                    ]
+                },
                 "ministersByElectoralterm": {
                     "sparqlQuery": "ministersByElectoraltermQuery",
                     "targetClass": "bioc:Person",

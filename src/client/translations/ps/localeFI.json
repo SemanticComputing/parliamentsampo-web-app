@@ -151,9 +151,10 @@
       "speechesByType": "puheen tyyppi",
       "speechesBySpeaker": "puhuja",
       "peopleByElectoralterm": "edustajat vaalikausittain",
+      "peopleByCommittee": "edustajat valiokunnittain",
+      "peopleByParty": "edustajat puolueittain",
       "ministersByElectoralterm": "ministerit vaalikausittain",
-      "ministersByGovernment": "ministerit hallituksittain",
-      "peopleByCommittee": "edustajat valiokunnittain"
+      "ministersByGovernment": "ministerit hallituksittain"
     }
   },
   "perspectives": {
