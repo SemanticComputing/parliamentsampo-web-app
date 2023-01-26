@@ -431,6 +431,10 @@
           "label": "Vaalikausi",
           "description": "Vaalikaudet jolloin henkilö on ollut edustajana"
         },
+        "electoralDistrict": {
+          "label": "Vaalipiiri",
+          "description": "Vaalipiirit joissa henkilö on ollut edustajana"
+        },
         "parliamentaryGroup": {
           "label": "Eduskuntaryhmä",
           "description": "Eduskuntaryhmät joihin henkilö on kuulunut"

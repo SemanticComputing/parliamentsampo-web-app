@@ -771,6 +771,19 @@
             "sortByPredicate": "bioc:bearer_of/crm:P11i_participated_in/semparls:organization/skos:prefLabel",
             "sortDirection": "asc"
         },
+        "electoralDistrict": {
+            "containerClass": "ten",
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "pieChartButton": true,
+            "predicate": "bioc:bearer_of/crm:P11i_participated_in ?evt . ?evt a semparls:ElectoralDistrictCandidature ; semparls:organization",
+            "searchField": true,
+            "sortButton": true,
+            "sortBy": "instanceCount",
+            "sortByPredicate": "bioc:bearer_of/crm:P11i_participated_in/semparls:organization/skos:prefLabel",
+            "sortDirection": "asc"
+        },
         "gender": {
             "containerClass": "three",
             "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
