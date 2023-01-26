@@ -64,7 +64,7 @@
     "speeches": "puheenvuorot",
     "speechReferences": "viittaukset puheissa",
     "migrations": "elinkaari",
-    "map": "tapahtumat kartalla",
+    "map": "kartta",
     "heatmap": "lämpökartta",
     "network": "verkosto",
     "referencenetwork": "viittausverkosto",

@@ -786,6 +786,34 @@ WHERE {
     ?membspan crm:P82b_end_of_the_end ?time2 .
     BIND (STR(year(?time2)-year(?byear)) AS ?category)
   }
-  
 } GROUPBY ?category ORDER BY ?category
+`
+
+export const csvPeopleQuery = `
+SELECT DISTINCT ?id ?label ?family_name ?given_name ?other_family_names ?other_given_names ?gender ?birth ?death ?group ?role ?start ?end
+WHERE {
+  <FILTER>
+  ?id a bioc:Person ;
+    skos:prefLabel ?label ;
+    bioc:has_gender/skos:prefLabel ?gender .
+  
+  { SELECT DISTINCT ?id ?family_name ?given_name (GROUP_CONCAT(DISTINCT ?family2; separator="; ") AS ?other_family_names) 
+    (GROUP_CONCAT(DISTINCT ?given2; separator="; ") AS ?other_given_names) 
+    WHERE {
+      ?id xl:prefLabel [ sch:familyName ?family_name ; sch:givenName ?given_name ] 
+      OPTIONAL { ?id xl:altLabel [ sch:familyName ?family2 ; sch:givenName ?given2 ] }
+    } GROUP BY ?id ?family_name ?given_name
+  }
+  
+  OPTIONAL { ?id crm:P98i_was_born/crm:P4_has_time-span/crm:P81a_begin_of_the_begin ?_birth . BIND(YEAR(?_birth) as ?birth) }
+  OPTIONAL { ?id crm:P100i_died_in/crm:P4_has_time-span/crm:P81a_begin_of_the_begin ?_death . BIND(YEAR(?_death) as ?death) }
+  
+  VALUES ?eclass { semparls:GovernmentMembership semparls:ParliamentaryGroupMembership }
+  ?id bioc:bearer_of [ a/skos:prefLabel ?role ; crm:P11i_participated_in [ a ?eclass ; semparls:organization/skos:prefLabel ?group ; crm:P4_has_time-span ?tspan ]] 
+  
+  OPTIONAL { ?tspan crm:P81a_begin_of_the_begin ?start }
+  OPTIONAL { ?tspan crm:P82b_end_of_the_end ?end }
+  
+  FILTER(LANG(?gender)='fi' && LANG(?role)='fi' && LANG(?group)='fi')
+} ORDER BY ?family_name ?given_name ?start ?end ?group
 `
