@@ -510,6 +510,14 @@
             "facetClass": "people",
             "sparqlQuery": "csvPeopleQuery",
             "filterTarget": "id"
+        },
+        "export": {
+            "tabID": 6,
+            "component": "Export",
+            "tabPath": "export",
+            "tabIcon": "ArrowForward",
+            "resultClass": "people",
+            "facetClass": "people"
         }
     },
     "properties": [
