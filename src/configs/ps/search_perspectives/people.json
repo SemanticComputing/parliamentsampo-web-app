@@ -347,6 +347,24 @@
                         }
                     ]
                 },
+                "peopleByElectoralDistrict": {
+                    "sparqlQuery": "peopleByElectoralDistrictQuery",
+                    "targetClass": "bioc:Person",
+                    "filterTarget": "person__id",
+                    "resultMapper": "mapPieChart",
+                    "sliceVisibilityThreshold": 0.01,
+                    "dropdownForChartTypes": "true",
+                    "chartTypes": [
+                        {
+                            "id": "bar",
+                            "createChartData": "createApexBarChartData"
+                        },
+                        {
+                            "id": "pie",
+                            "createChartData": "createApexPieChartData"
+                        }
+                    ]
+                },
                 "peopleByCommittee": {
                     "sparqlQuery": "peopleByCommitteeQuery",
                     "targetClass": "bioc:Person",
@@ -382,9 +400,9 @@
                             "createChartData": "createApexPieChartData"
                         }
                     ]
-                },
-                "ministersByElectoralterm": {
-                    "sparqlQuery": "ministersByElectoraltermQuery",
+                }, 
+                "ministersByGovernment": {
+                    "sparqlQuery": "ministersByGovernmentQuery",
                     "targetClass": "bioc:Person",
                     "filterTarget": "person__id",
                     "resultMapper": "mapPieChart",
@@ -400,9 +418,9 @@
                             "createChartData": "createApexPieChartData"
                         }
                     ]
-                }, 
-                "ministersByGovernment": {
-                    "sparqlQuery": "ministersByGovernmentQuery",
+                },
+                "ministersByElectoralterm": {
+                    "sparqlQuery": "ministersByElectoraltermQuery",
                     "targetClass": "bioc:Person",
                     "filterTarget": "person__id",
                     "resultMapper": "mapPieChart",
@@ -721,67 +739,15 @@
             "filterType": "textFilter",
             "sortByPredicate": "semparls:sortingLabel"
         },
-        "representativePeriodTimespan": {
-            "containerClass": "four",
-            "endProperty": "crm:P82b_end_of_the_end",
-            "facetType": "timespan",
-            "filterType": "timespanFilter",
-            "max": null,
-            "min": null,
-            "predicate": "semparls:representative_period",
-            "sortByAscPredicate": "semparls:representative_period/crm:P81a_begin_of_the_begin",
-            "sortByDescPredicate": "semparls:representative_period/crm:P82b_end_of_the_end",
-            "startProperty": "crm:P81a_begin_of_the_begin"
-        },
-        "electoralTerm": {
+        "listOfPeople": {
             "containerClass": "ten",
-            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
             "facetType": "list",
             "filterType": "uriFilter",
-            "pieChartButton": true,
-            "predicate": "bioc:bearer_of/crm:P11i_participated_in ?evt . ?evt a semparls:ParliamentMembership ; crm:P10_falls_within",
-            "searchField": true,
+            "pieChartButton": false,
+            "predicate": "crm:P98i_was_born/^crm:P98i_was_born",
             "sortButton": true,
             "sortBy": "prefLabel",
-            "sortByPredicate": "bioc:bearer_of/crm:P11i_participated_in/crm:P10_falls_within/crm:P81a_begin_of_the_begin",
-            "sortDirection": "asc"
-        },
-        "party": {
-            "containerClass": "ten",
-            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
-            "facetType": "list",
-            "filterType": "uriFilter",
-            "pieChartButton": true,
-            "predicate": "semparls:has_party_membership/semparls:party",
-            "sortButton": true,
-            "sortBy": "instanceCount",
-            "sortByPredicate": "semparls:has_party_membership/semparls:party/skos:prefLabel",
-            "sortDirection": "desc"
-        },
-        "government": {
-            "containerClass": "ten",
-            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
-            "facetType": "list",
-            "filterType": "uriFilter",
-            "pieChartButton": true,
-            "predicate": "bioc:bearer_of/crm:P11i_participated_in ?evt . ?evt a semparls:GovernmentMembership ; semparls:organization",
-            "searchField": true,
-            "sortButton": true,
-            "sortBy": "prefLabel",
-            "sortByPredicate": "bioc:bearer_of/crm:P11i_participated_in/semparls:organization/skos:prefLabel",
-            "sortDirection": "asc"
-        },
-        "electoralDistrict": {
-            "containerClass": "ten",
-            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
-            "facetType": "list",
-            "filterType": "uriFilter",
-            "pieChartButton": true,
-            "predicate": "bioc:bearer_of/crm:P11i_participated_in ?evt . ?evt a semparls:ElectoralDistrictCandidature ; semparls:organization",
-            "searchField": true,
-            "sortButton": true,
-            "sortBy": "instanceCount",
-            "sortByPredicate": "bioc:bearer_of/crm:P11i_participated_in/semparls:organization/skos:prefLabel",
+            "sortByPredicate": "skos:prefLabel",
             "sortDirection": "asc"
         },
         "gender": {
@@ -794,6 +760,19 @@
             "sortButton": true,
             "sortBy": "instanceCount",
             "sortByPredicate": "bioc:has_gender/skos:prefLabel",
+            "sortDirection": "desc"
+        },
+        "occupation": {
+            "containerClass": "ten",
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "pieChartButton": true,
+            "predicate": "bioc:has_occupation",
+            "searchField": true,
+            "sortButton": true,
+            "sortBy": "instanceCount",
+            "sortByPredicate": "bioc:has_occupation/skos:prefLabel",
             "sortDirection": "desc"
         },
         "dateOfBirthTimespan": {
@@ -846,18 +825,68 @@
             "sortByPredicate": "crm:P100i_died_in/crm:P7_took_place_at/skos:prefLabel",
             "sortDirection": "desc"
         },
-        "occupation": {
+        "party": {
             "containerClass": "ten",
             "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
             "facetType": "list",
             "filterType": "uriFilter",
             "pieChartButton": true,
-            "predicate": "bioc:has_occupation",
+            "predicate": "semparls:has_party_membership/semparls:party",
+            "sortButton": true,
+            "sortBy": "instanceCount",
+            "sortByPredicate": "semparls:has_party_membership/semparls:party/skos:prefLabel",
+            "sortDirection": "desc"
+        },
+        "representativePeriodTimespan": {
+            "containerClass": "four",
+            "endProperty": "crm:P82b_end_of_the_end",
+            "facetType": "timespan",
+            "filterType": "timespanFilter",
+            "max": null,
+            "min": null,
+            "predicate": "semparls:representative_period",
+            "sortByAscPredicate": "semparls:representative_period/crm:P81a_begin_of_the_begin",
+            "sortByDescPredicate": "semparls:representative_period/crm:P82b_end_of_the_end",
+            "startProperty": "crm:P81a_begin_of_the_begin"
+        },
+        "electoralTerm": {
+            "containerClass": "ten",
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "pieChartButton": true,
+            "predicate": "bioc:bearer_of/crm:P11i_participated_in ?evt . ?evt a semparls:ParliamentMembership ; crm:P10_falls_within",
+            "searchField": true,
+            "sortButton": true,
+            "sortBy": "prefLabel",
+            "sortByPredicate": "bioc:bearer_of/crm:P11i_participated_in/crm:P10_falls_within/crm:P81a_begin_of_the_begin",
+            "sortDirection": "asc"
+        },
+        "electoralDistrict": {
+            "containerClass": "ten",
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "pieChartButton": true,
+            "predicate": "bioc:bearer_of/crm:P11i_participated_in ?evt . ?evt a semparls:ElectoralDistrictCandidature ; semparls:organization",
             "searchField": true,
             "sortButton": true,
             "sortBy": "instanceCount",
-            "sortByPredicate": "bioc:has_occupation/skos:prefLabel",
+            "sortByPredicate": "bioc:bearer_of/crm:P11i_participated_in/semparls:organization/skos:prefLabel",
             "sortDirection": "desc"
+        },
+        "government": {
+            "containerClass": "ten",
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "pieChartButton": true,
+            "predicate": "bioc:bearer_of/crm:P11i_participated_in ?evt . ?evt a semparls:GovernmentMembership ; semparls:organization",
+            "searchField": true,
+            "sortButton": true,
+            "sortBy": "prefLabel",
+            "sortByPredicate": "bioc:bearer_of/crm:P11i_participated_in/semparls:organization/skos:prefLabel",
+            "sortDirection": "asc"
         },
         "org": {
             "containerClass": "ten",
@@ -870,27 +899,6 @@
             "searchField": true,
             "sortByPredicate": "bioc:bearer_of/crm:P11i_participated_in/semparls:organization/skos:prefLabel"
         },
-        "listOfPeople": {
-            "containerClass": "ten",
-            "facetType": "list",
-            "filterType": "uriFilter",
-            "pieChartButton": false,
-            "predicate": "crm:P98i_was_born/^crm:P98i_was_born",
-            "sortButton": true,
-            "sortBy": "prefLabel",
-            "sortByPredicate": "skos:prefLabel",
-            "sortDirection": "asc"
-        },
-        "exlink": {
-            "containerClass": "three",
-            "facetType": "list",
-            "filterType": "uriFilter",
-            "predicate": "sch:sameAs/a",
-            "pieChartButton": true,
-            "sortBy": "instanceCount",
-            "sortByPredicate": "sch:sameAs/a/skos:prefLabel",
-            "sortDirection": "desc"
-        },
         "datasource": {
             "containerClass": "three",
             "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
@@ -900,6 +908,16 @@
             "predicate": "dct:source/a",
             "sortBy": "instanceCount",
             "sortByPredicate": "dct:source/a/skos:prefLabel",
+            "sortDirection": "desc"
+        },
+        "exlink": {
+            "containerClass": "three",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "sch:sameAs/a",
+            "pieChartButton": true,
+            "sortBy": "instanceCount",
+            "sortByPredicate": "sch:sameAs/a/skos:prefLabel",
             "sortDirection": "desc"
         }
     }
