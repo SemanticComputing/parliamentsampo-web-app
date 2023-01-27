@@ -383,6 +383,24 @@
                         }
                     ]
                 },
+                "peopleByParliamentarygroup": {
+                    "sparqlQuery": "peopleByParliamentarygroupQuery",
+                    "targetClass": "bioc:Person",
+                    "filterTarget": "person__id",
+                    "resultMapper": "mapPieChart",
+                    "sliceVisibilityThreshold": 0.005,
+                    "dropdownForChartTypes": "true",
+                    "chartTypes": [
+                        {
+                            "id": "bar",
+                            "createChartData": "createApexBarChartData"
+                        },
+                        {
+                            "id": "pie",
+                            "createChartData": "createApexPieChartData"
+                        }
+                    ]
+                }, 
                 "peopleByParty": {
                     "sparqlQuery": "peopleByPartyQuery",
                     "targetClass": "bioc:Person",
@@ -761,6 +779,7 @@
             "filterType": "uriFilter",
             "pieChartButton": false,
             "predicate": "crm:P98i_was_born/^crm:P98i_was_born",
+            "searchField": true,
             "sortButton": true,
             "sortBy": "prefLabel",
             "sortByPredicate": "skos:prefLabel",
