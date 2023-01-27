@@ -33,6 +33,12 @@ export const publicationPropertiesInstancePage =
   UNION
   {
     ?id semparls:author_text ?extraInfo .
+    OPTIONAL {
+      ?related__id semparls:author_text ?extraInfo .
+      FILTER (?related__id!=?id)
+      ?related__id skos:prefLabel ?related__prefLabel .
+      BIND(CONCAT("/publications/page/", REPLACE(STR(?related__id), "^.*\\\\/(.+)", "$1")) AS ?related__dataProviderUrl)
+    }
   }
   UNION
   {

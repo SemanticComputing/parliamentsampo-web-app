@@ -63,7 +63,7 @@
     "events": "tapahtumat",
     "speeches": "puheenvuorot",
     "speechReferences": "viittaukset puheissa",
-    "migrations": "muuttoliike",
+    "migrations": "elinkaari",
     "map": "kartta",
     "heatmap": "lämpökartta",
     "network": "verkosto",
@@ -149,7 +149,13 @@
       "speechesByGender": "puhujan sukupuoli",
       "speechesByLanguage": "puheen kieli",
       "speechesByType": "puheen tyyppi",
-      "speechesBySpeaker": "puhuja"
+      "speechesBySpeaker": "puhuja",
+      "peopleByElectoralterm": "edustajat vaalikausittain",
+      "peopleByElectoralDistrict": "edustajat vaalipiireittäin",
+      "peopleByCommittee": "edustajat valiokunnittain",
+      "peopleByParty": "edustajat puolueittain",
+      "ministersByElectoralterm": "ministerit vaalikausittain",
+      "ministersByGovernment": "ministerit hallituksittain"
     }
   },
   "perspectives": {
@@ -367,7 +373,7 @@
       "label": "Henkilöt",
       "facetResultsType": "henkilöä",
       "shortDescription": "Hae henkilöitä",
-      "longDescription": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Use this perspective to ...  The results can be viewed using the following tabs: </p> <ul class=\"MuiTypography-root MuiTypography-body1\"> <li> <strong>TABLE</STRONG> ...</li> <li> ... </li>  </ul>",
+      "longDescription": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\">Tämän näkymän kautta voit tutkia henkilöihin liittyvää dataa. \nData on luotu kahden pääasiallisen lähteen perusteella: <ul class=\"MuiTypography-root MuiTypography-body1\"><li>Eduskunnan <a href=\"https://www.eduskunta.fi/FI/kansanedustajat/Sivut/default.aspx\" target=\"_blank\" rel=\"noopener noreferrer\">kansanedustajatietokanta</a>, joka sisältää kaikkien nykyisten kuin edellistenkin kansanedustajien tiedot.</li><li>Valtioneuvoston <a href=\"https://valtioneuvosto.fi/hallitukset-ja-ministerit\" target=\"_blank\" rel=\"noopener noreferrer\">tietokanta hallituksista ja ministereistä</a>, josta on tuotu tiedot esim. ministereistä, jotka eivät ole toimineet kansanedustajina.</li><li><a href=\"https://www.wikidata.org/wiki/Wikidata:Main_Page\" target=\"_blank\" rel=\"noopener noreferrer\">Wikidata</a>, josta on tuotu tiedot esim. oikeusasiamiehistä.</li></ul></p></ul>",
       "instancePage": {
         "label": "Henkilö",
         "description": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Ohjeet tähän </p>"
@@ -415,27 +421,39 @@
           "description": "Ammatti / arvo"
         },
         "datasource": {
-          "label": "Tietolähde",
-          "description": "Tietolähde josta henkilön tiedot ovat peräisin"
+          "label": "Liittyvä tietolähde",
+          "description": "Tietolähde, josta henkilön tiedot ovat peräisin"
         },
         "parliament": {
           "label": "Edustajuus",
-          "description": "Eduskunnat ja hallitukset joihin henkilö on kuulunut"
+          "description": "Eduskunnat ja hallitukset, joihin henkilö on kuulunut"
         },
         "electoralTerm": {
           "label": "Vaalikausi",
-          "description": "Vaalikaudet jolloin henkilö on ollut edustajana"
+          "description": "Vaalikaudet, jolloin henkilö on ollut edustajana"
+        },
+        "electoralDistrict": {
+          "label": "Vaalipiiri",
+          "description": "Vaalipiirit, joissa henkilö on ollut edustajana"
         },
         "parliamentaryGroup": {
           "label": "Eduskuntaryhmä",
-          "description": "Eduskuntaryhmät joihin henkilö on kuulunut"
+          "description": "Eduskuntaryhmät, joihin henkilö on kuulunut"
+        },
+        "committee": {
+          "label": "Valiokunnat ja toimielimet",
+          "description": "Valiokunnat ja toimielimet, joihin henkilö on kuulunut"
+        },
+        "government": {
+          "label": "Hallitus",
+          "description": "Hallitukset"
         },
         "parliament_days": {
           "label": "Edustajakauden pituus",
           "description": "Edustajakauden pituus päivinä"
         },
         "exlink": {
-          "label": "Ulkoinen linkki",
+          "label": "Liittyvä ulkoinen linkki",
           "description": "Linkki ulkoiseen tietokantaan"
         },
         "district": {
@@ -459,11 +477,11 @@
           "description": "Sukunimet, haku myös alkukirjaimen perusteella"
         },
         "org": {
-          "label": "Organisaatio",
+          "label": "Liittyvä organisaatio tai ryhmä",
           "description": "Yritykset ja järjestöt, joissa henkilö on työskennellyt"
         },
         "group": {
-          "label": "Organisaatio",
+          "label": "Liittyvä organisaatio tai ryhmä",
           "description": "Yritykset ja järjestöt, joissa henkilö on työskennellyt"
         },
         "home_location": {
@@ -471,7 +489,7 @@
           "description": "Kotipaikkakunta"
         },
         "representativePeriodTimespan": {
-          "label": "Kansanedustajakausi",
+          "label": "Aika eduskunnassa",
           "description": "Kaudet kansanedustajana"
         },
         "placeOfDeath": {
@@ -491,7 +509,7 @@
           "description": "Puheenvuorot"
         },
         "listOfPeople": {
-          "label": "Lista henkilöistä",
+          "label": "Henkilö",
           "description": "Lista henkilöistä"
         },
         "referenced": {
@@ -614,8 +632,8 @@
           "description": "Täällä kuolleet henkilöt"
         },
         "group": {
-          "label": "Organisaatiot",
-          "description": "Paikkakuntaan liittyvät organisaatiot"
+          "label": "Liittyvät organisaatiot tai ryhmät",
+          "description": "Paikkakuntaan liittyvät organisaatiot tai ryhmät"
         },
         "broader": {
           "label": "Yläkäsitteet",
@@ -626,12 +644,20 @@
           "description": "Paikat, jotka sijaitsevat tämän sisällä"
         },
         "exlink": {
-          "label": "Ulkoinen linkki",
+          "label": "Liittyvä ulkoinen linkki",
           "description": "Linkki ulkoiseen tietokantaan"
         },
         "related": {
           "label": "Läheisiä paikkoja",
           "description": "Paikkoja, jotka sijaitsevat tämän lähellä samalla hierarkiatasolla"
+        },
+        "speech": {
+          "label": "Puheet, joissa paikka on mainittu",
+          "description": "Puheet, joissa paikka on mainittu"
+        },
+        "speaker": {
+          "label": "Puhujat",
+          "description": "Henkilöt, jotka ovat puheissaan maininneet tämän paikan"
         }
       }
     },
@@ -664,7 +690,7 @@
         },
         "extraInfo": {
           "label": "Lisätiedot kirjoittajasta",
-          "description": "Lisätiedot kirjoittajasta"
+          "description": "Lisätiedot kirjoittajasta. Huom. kaikki julkaisujen kirjoittajat eivät ole kansanedustajadatassa, tällöin ylläolevassa 'Kirjoittaja'-kentässä ei näy linkkiä henkilösivulle."
         },
         "subject": {
           "label": "Henkilö, jota julkaisu koskee",
@@ -720,7 +746,7 @@
           "description": "Lista tapahtumaan liittyvistä järjestöistä"
         },
         "group": {
-          "label": "Ryhmät / organisaatiot",
+          "label": "Liittyvät organisaatiot tai ryhmät",
           "description": "Lista tapahtumaan liittyvistä ryhmistä"
         },
         "place": {
@@ -774,18 +800,18 @@
         },
         "related": {
           "label": "Samankaltaisia ryhmiä",
-          "description": "Lista ryhmistä jotka liittyvät samaan paikkakuntaan tai joissa on samoja henkilöjä jäseninä"
+          "description": "Lista ryhmistä, jotka liittyvät samaan paikkakuntaan tai joissa on samoja henkilöjä jäseninä"
         },
         "party": {
           "label": "Puolue",
           "description": "Puolue"
         },
         "datasource": {
-          "label": "Tietolähde",
+          "label": "Liittyvä tietolähde",
           "description": "Tietolähde, josta ryhmän tiedot ovat peräisin"
         },
         "exlink": {
-          "label": "Ulkoinen linkki",
+          "label": "Liittyvä ulkoinen linkki",
           "description": "Linkki ulkoiseen tietokantaan"
         }
       }
@@ -863,7 +889,7 @@
           "description": "Edustajat"
         },
         "exlink": {
-          "label": "Ulkoinen linkki",
+          "label": "Liittyvä ulkoinen linkki",
           "description": "Linkki ulkoiseen tietokantaan"
         }
       }

@@ -61,35 +61,8 @@
                         "tabPath": "table",
                         "tabIcon": "CalendarViewDay"
                     },
-                    "personInstancePageEvents": {
-                        "tabID": 1,
-                        "tabPath": "events",
-                        "tabIcon": "CalendarToday",
-                        "component": "InstancePageTable",
-                        "fetchResultsWhenMounted": true,
-                        "sparqlQuery": "personEventsQuery",
-                        "properties": [
-                            {
-                                "id": "prefLabel",
-                                "valueType": "object",
-                                "makeLink": false,
-                                "externalLink": false,
-                                "sortValues": false,
-                                "numberedList": false
-                            },
-                            {
-                                "id": "event",
-                                "valueType": "object",
-                                "makeLink": false,
-                                "externalLink": false,
-                                "sortValues": false,
-                                "numberedList": true,
-                                "expandedOnInstancePage": true
-                            }
-                        ]
-                    },
                     "personInstancePageSpeeches": {
-                        "tabID": 2,
+                        "tabID": 1,
                         "tabPath": "speeches",
                         "tabIcon": "KeyboardVoice",
                         "component": "InstancePageTable",
@@ -115,13 +88,13 @@
                             }
                         ]
                     },
-                    "personInstancePageReferences": {
-                        "tabID": 3,
-                        "tabPath": "speechReferences",
-                        "tabIcon": "RecordVoiceOver",
+                    "personInstancePageEvents": {
+                        "tabID": 2,
+                        "tabPath": "events",
+                        "tabIcon": "CalendarToday",
                         "component": "InstancePageTable",
                         "fetchResultsWhenMounted": true,
-                        "sparqlQuery": "personSpeechReferencesQuery",
+                        "sparqlQuery": "personEventsQuery",
                         "properties": [
                             {
                                 "id": "prefLabel",
@@ -132,60 +105,18 @@
                                 "numberedList": false
                             },
                             {
-                                "id": "referenced",
+                                "id": "event",
                                 "valueType": "object",
-                                "makeLink": true,
+                                "makeLink": false,
                                 "externalLink": false,
                                 "sortValues": false,
-                                "numberedList": false,
-                                "expandedOnInstancePage": true
-                            },
-                            {
-                                "id": "interrupted",
-                                "valueType": "object",
-                                "makeLink": true,
-                                "externalLink": false,
-                                "sortValues": false,
-                                "numberedList": false,
-                                "expandedOnInstancePage": true
-                            },
-                            {
-                                "id": "interruptor",
-                                "valueType": "object",
-                                "makeLink": true,
-                                "externalLink": false,
-                                "sortValues": false,
-                                "numberedList": false,
-                                "expandedOnInstancePage": true
-                            },
-                            {
-                                "id": "referencedPlace",
-                                "valueType": "object",
-                                "makeLink": true,
-                                "externalLink": false,
-                                "sortValues": false,
-                                "numberedList": false,
+                                "numberedList": true,
                                 "expandedOnInstancePage": true
                             }
                         ]
                     },
-                    "personInstanceMap": {
-                        "tabID": 4,
-                        "tabPath": "map",
-                        "tabIcon": "LocationOn",
-                        "component": "LeafletMap",
-                        "pageType": "instancePage",
-                        "mapMode": "marker",
-                        "showInstanceCountInClusters": false,
-                        "showExternalLayers": true,
-                        "customMapControl": true,
-                        "sparqlQuery": "placeMapQuery",
-                        "instanceConfig": {
-                            "createPopUpContent": "createPopUpContentAs"
-                        }
-                    },
                     "personInstancePageNetwork": {
-                        "tabID": 5,
+                        "tabID": 3,
                         "tabPath": "network",
                         "tabIcon": "BubbleChart",
                         "component": "Network",
@@ -248,6 +179,75 @@
                             "coolingFactor": 0.95,
                             "minTemp": 1
                         }    
+                    },
+                    "personInstanceMap": {
+                        "tabID": 4,
+                        "tabPath": "map",
+                        "tabIcon": "LocationOn",
+                        "component": "LeafletMap",
+                        "pageType": "instancePage",
+                        "mapMode": "marker",
+                        "showInstanceCountInClusters": false,
+                        "showExternalLayers": true,
+                        "customMapControl": true,
+                        "sparqlQuery": "placeMapQuery",
+                        "instanceConfig": {
+                            "createPopUpContent": "createPopUpContentAs"
+                        }
+                    },
+                    "personInstancePageReferences": {
+                        "tabID": 5,
+                        "tabPath": "speechReferences",
+                        "tabIcon": "RecordVoiceOver",
+                        "component": "InstancePageTable",
+                        "fetchResultsWhenMounted": true,
+                        "sparqlQuery": "personSpeechReferencesQuery",
+                        "properties": [
+                            {
+                                "id": "prefLabel",
+                                "valueType": "object",
+                                "makeLink": false,
+                                "externalLink": false,
+                                "sortValues": false,
+                                "numberedList": false
+                            },
+                            {
+                                "id": "referenced",
+                                "valueType": "object",
+                                "makeLink": true,
+                                "externalLink": false,
+                                "sortValues": false,
+                                "numberedList": false,
+                                "expandedOnInstancePage": true
+                            },
+                            {
+                                "id": "interrupted",
+                                "valueType": "object",
+                                "makeLink": true,
+                                "externalLink": false,
+                                "sortValues": false,
+                                "numberedList": false,
+                                "expandedOnInstancePage": true
+                            },
+                            {
+                                "id": "interruptor",
+                                "valueType": "object",
+                                "makeLink": true,
+                                "externalLink": false,
+                                "sortValues": false,
+                                "numberedList": false,
+                                "expandedOnInstancePage": true
+                            },
+                            {
+                                "id": "referencedPlace",
+                                "valueType": "object",
+                                "makeLink": true,
+                                "externalLink": false,
+                                "sortValues": false,
+                                "numberedList": false,
+                                "expandedOnInstancePage": true
+                            }
+                        ]
                     },
                     "personInstancePageReferenceNetwork": {
                         "tabID": 6,
@@ -318,27 +318,125 @@
                 }
             }
         },
-        "personTimeSeries": {
+        "peopleByProperty": {
             "tabID": 1,
             "component": "ApexCharts",
-            "createChartData": "createMultipleLineChartData",
-            "stroke": {
-                "curve": "straight",
-                "width": 2
-            },
-            "title": "Syntyneet, kuolleet ja kautensa aloittaneet edustajat",
-            "xaxisTitle": "Vuosi",
-            "xaxisType": "category",
-            "xaxisTickAmount": 20,
-            "yaxisTitle": "Henkilöiden lukumäärä",
-            "tabPath": "timeseries",
-            "tabIcon": "ShowChart",
-            "sparqlQuery": "timeSeriesQuery",
+            "doNotRenderOnMount": true,
+            "tabPath": "pie_chart",
+            "tabIcon": "PieChart",
             "facetClass": "people",
-            "filterTarget": "person__id",
-            "resultMapper": "mapMultipleLineChart",
-            "resultMapperConfig": {
-                "fillEmptyValues": true
+            "dropdownForResultClasses": true,
+            "sortBy": null,
+            "defaultResultClass": "peopleByElectoralterm",
+            "resultClasses": {
+                "peopleByElectoralterm": {
+                    "sparqlQuery": "peopleByElectoraltermQuery",
+                    "targetClass": "bioc:Person",
+                    "filterTarget": "person__id",
+                    "resultMapper": "mapPieChart",
+                    "sliceVisibilityThreshold": 0.0,
+                    "dropdownForChartTypes": "true",
+                    "chartTypes": [
+                        {
+                            "id": "bar",
+                            "createChartData": "createApexBarChartData"
+                        },
+                        {
+                            "id": "pie",
+                            "createChartData": "createApexPieChartData"
+                        }
+                    ]
+                },
+                "peopleByElectoralDistrict": {
+                    "sparqlQuery": "peopleByElectoralDistrictQuery",
+                    "targetClass": "bioc:Person",
+                    "filterTarget": "person__id",
+                    "resultMapper": "mapPieChart",
+                    "sliceVisibilityThreshold": 0.01,
+                    "dropdownForChartTypes": "true",
+                    "chartTypes": [
+                        {
+                            "id": "bar",
+                            "createChartData": "createApexBarChartData"
+                        },
+                        {
+                            "id": "pie",
+                            "createChartData": "createApexPieChartData"
+                        }
+                    ]
+                },
+                "peopleByCommittee": {
+                    "sparqlQuery": "peopleByCommitteeQuery",
+                    "targetClass": "bioc:Person",
+                    "filterTarget": "person__id",
+                    "resultMapper": "mapPieChart",
+                    "sliceVisibilityThreshold": 0.01,
+                    "dropdownForChartTypes": "true",
+                    "chartTypes": [
+                        {
+                            "id": "bar",
+                            "createChartData": "createApexBarChartData"
+                        },
+                        {
+                            "id": "pie",
+                            "createChartData": "createApexPieChartData"
+                        }
+                    ]
+                },
+                "peopleByParty": {
+                    "sparqlQuery": "peopleByPartyQuery",
+                    "targetClass": "bioc:Person",
+                    "filterTarget": "person__id",
+                    "resultMapper": "mapPieChart",
+                    "sliceVisibilityThreshold": 0.01,
+                    "dropdownForChartTypes": "true",
+                    "chartTypes": [
+                        {
+                            "id": "bar",
+                            "createChartData": "createApexBarChartData"
+                        },
+                        {
+                            "id": "pie",
+                            "createChartData": "createApexPieChartData"
+                        }
+                    ]
+                }, 
+                "ministersByGovernment": {
+                    "sparqlQuery": "ministersByGovernmentQuery",
+                    "targetClass": "bioc:Person",
+                    "filterTarget": "person__id",
+                    "resultMapper": "mapPieChart",
+                    "sliceVisibilityThreshold": 0.0,
+                    "dropdownForChartTypes": "true",
+                    "chartTypes": [
+                        {
+                            "id": "bar",
+                            "createChartData": "createApexBarChartData"
+                        },
+                        {
+                            "id": "pie",
+                            "createChartData": "createApexPieChartData"
+                        }
+                    ]
+                },
+                "ministersByElectoralterm": {
+                    "sparqlQuery": "ministersByElectoraltermQuery",
+                    "targetClass": "bioc:Person",
+                    "filterTarget": "person__id",
+                    "resultMapper": "mapPieChart",
+                    "sliceVisibilityThreshold": 0.0,
+                    "dropdownForChartTypes": "true",
+                    "chartTypes": [
+                        {
+                            "id": "bar",
+                            "createChartData": "createApexBarChartData"
+                        },
+                        {
+                            "id": "pie",
+                            "createChartData": "createApexPieChartData"
+                        }
+                    ]
+                }
             }
         },
         "personAges": {
@@ -403,6 +501,23 @@
                 "relatedInstances": "peopleRelatedTo",
                 "createPopUpContent": "createPopUpContentAs"
             }
+        },
+        "csvPeople": {
+            "tabID": 5,
+            "tabPath": "csv",
+            "tabIcon": "CloudDownload",
+            "component": "ExportCSV",
+            "facetClass": "people",
+            "sparqlQuery": "csvPeopleQuery",
+            "filterTarget": "id"
+        },
+        "export": {
+            "tabID": 6,
+            "component": "Export",
+            "tabPath": "export",
+            "tabIcon": "ArrowForward",
+            "resultClass": "people",
+            "facetClass": "people"
         }
     },
     "properties": [
@@ -570,6 +685,15 @@
             "onlyOnInstancePage": true
         },
         {
+            "id": "committee",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": true,
+            "onlyOnInstancePage": true
+        },
+        {
             "id": "group",
             "valueType": "object",
             "makeLink": true,
@@ -631,42 +755,16 @@
             "filterType": "textFilter",
             "sortByPredicate": "semparls:sortingLabel"
         },
-        "representativePeriodTimespan": {
-            "containerClass": "four",
-            "endProperty": "crm:P82b_end_of_the_end",
-            "facetType": "timespan",
-            "filterType": "timespanFilter",
-            "max": null,
-            "min": null,
-            "predicate": "semparls:representative_period",
-            "sortByAscPredicate": "semparls:representative_period/crm:P81a_begin_of_the_begin",
-            "sortByDescPredicate": "semparls:representative_period/crm:P82b_end_of_the_end",
-            "startProperty": "crm:P81a_begin_of_the_begin"
-        },
-        "electoralTerm": {
+        "listOfPeople": {
             "containerClass": "ten",
-            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
             "facetType": "list",
             "filterType": "uriFilter",
-            "pieChartButton": true,
-            "predicate": "bioc:bearer_of/crm:P11i_participated_in ?evt . ?evt a semparls:ParliamentMembership ; crm:P10_falls_within",
-            "searchField": true,
+            "pieChartButton": false,
+            "predicate": "crm:P98i_was_born/^crm:P98i_was_born",
             "sortButton": true,
             "sortBy": "prefLabel",
-            "sortByPredicate": "bioc:bearer_of/crm:P11i_participated_in/crm:P10_falls_within/skos:prefLabel",
+            "sortByPredicate": "skos:prefLabel",
             "sortDirection": "asc"
-        },
-        "party": {
-            "containerClass": "ten",
-            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
-            "facetType": "list",
-            "filterType": "uriFilter",
-            "pieChartButton": true,
-            "predicate": "semparls:has_party_membership/semparls:party",
-            "sortButton": true,
-            "sortBy": "instanceCount",
-            "sortByPredicate": "semparls:has_party_membership/semparls:party/skos:prefLabel",
-            "sortDirection": "desc"
         },
         "gender": {
             "containerClass": "three",
@@ -678,6 +776,19 @@
             "sortButton": true,
             "sortBy": "instanceCount",
             "sortByPredicate": "bioc:has_gender/skos:prefLabel",
+            "sortDirection": "desc"
+        },
+        "occupation": {
+            "containerClass": "ten",
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "pieChartButton": true,
+            "predicate": "bioc:has_occupation",
+            "searchField": true,
+            "sortButton": true,
+            "sortBy": "instanceCount",
+            "sortByPredicate": "bioc:has_occupation/skos:prefLabel",
             "sortDirection": "desc"
         },
         "dateOfBirthTimespan": {
@@ -699,6 +810,7 @@
             "filterType": "uriFilter",
             "predicate": "crm:P98i_was_born/crm:P7_took_place_at",
             "searchField": true,
+            "pieChartButton": true,
             "sortButton": true,
             "sortBy": "instanceCount",
             "sortByPredicate": "crm:P98i_was_born/crm:P7_took_place_at/skos:prefLabel",
@@ -721,6 +833,7 @@
             "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
             "facetType": "list",
             "filterType": "uriFilter",
+            "pieChartButton": true,
             "predicate": "crm:P100i_died_in/crm:P7_took_place_at",
             "searchField": true,
             "sortButton": true,
@@ -728,57 +841,99 @@
             "sortByPredicate": "crm:P100i_died_in/crm:P7_took_place_at/skos:prefLabel",
             "sortDirection": "desc"
         },
-        "occupation": {
+        "party": {
             "containerClass": "ten",
             "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
             "facetType": "list",
             "filterType": "uriFilter",
             "pieChartButton": true,
-            "predicate": "bioc:has_occupation",
+            "predicate": "semparls:has_party_membership/semparls:party",
+            "sortButton": true,
+            "sortBy": "instanceCount",
+            "sortByPredicate": "semparls:has_party_membership/semparls:party/skos:prefLabel",
+            "sortDirection": "desc"
+        },
+        "representativePeriodTimespan": {
+            "containerClass": "four",
+            "endProperty": "crm:P82b_end_of_the_end",
+            "facetType": "timespan",
+            "filterType": "timespanFilter",
+            "max": null,
+            "min": null,
+            "predicate": "semparls:representative_period",
+            "sortByAscPredicate": "semparls:representative_period/crm:P81a_begin_of_the_begin",
+            "sortByDescPredicate": "semparls:representative_period/crm:P82b_end_of_the_end",
+            "startProperty": "crm:P81a_begin_of_the_begin"
+        },
+        "electoralTerm": {
+            "containerClass": "ten",
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "pieChartButton": true,
+            "predicate": "bioc:bearer_of/crm:P11i_participated_in ?evt . ?evt a semparls:ParliamentMembership ; crm:P10_falls_within",
+            "searchField": true,
+            "sortButton": true,
+            "sortBy": "prefLabel",
+            "sortByPredicate": "bioc:bearer_of/crm:P11i_participated_in/crm:P10_falls_within/crm:P81a_begin_of_the_begin",
+            "sortDirection": "asc"
+        },
+        "electoralDistrict": {
+            "containerClass": "ten",
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "pieChartButton": true,
+            "predicate": "bioc:bearer_of/crm:P11i_participated_in ?evt . ?evt a semparls:ElectoralDistrictCandidature ; semparls:organization",
             "searchField": true,
             "sortButton": true,
             "sortBy": "instanceCount",
-            "sortByPredicate": "bioc:has_occupation/skos:prefLabel",
+            "sortByPredicate": "bioc:bearer_of/crm:P11i_participated_in/semparls:organization/skos:prefLabel",
             "sortDirection": "desc"
+        },
+        "government": {
+            "containerClass": "ten",
+            "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "pieChartButton": true,
+            "predicate": "bioc:bearer_of/crm:P11i_participated_in ?evt . ?evt a semparls:GovernmentMembership ; semparls:organization",
+            "searchField": true,
+            "sortButton": true,
+            "sortBy": "prefLabel",
+            "sortByPredicate": "bioc:bearer_of/crm:P11i_participated_in/semparls:organization/skos:prefLabel",
+            "sortDirection": "asc"
         },
         "org": {
             "containerClass": "ten",
             "facetLabelFilter": "FILTER(LANG(?prefLabel_)='<LANG>')",
             "facetType": "hierarchical",
             "filterType": "uriFilter",
+            "pieChartButton": true,
             "parentProperty": "rdfs:subClassOf",
             "predicate": "bioc:bearer_of/crm:P11i_participated_in/semparls:organization",
             "searchField": true,
             "sortByPredicate": "bioc:bearer_of/crm:P11i_participated_in/semparls:organization/skos:prefLabel"
-        },
-        "listOfPeople": {
-            "containerClass": "ten",
-            "facetType": "list",
-            "filterType": "uriFilter",
-            "pieChartButton": false,
-            "predicate": "crm:P98i_was_born/^crm:P98i_was_born",
-            "sortButton": true,
-            "sortBy": "prefLabel",
-            "sortByPredicate": "skos:prefLabel",
-            "sortDirection": "asc"
-        },
-        "exlink": {
-            "containerClass": "three",
-            "facetType": "list",
-            "filterType": "uriFilter",
-            "predicate": "sch:sameAs/a",
-            "sortBy": "instanceCount",
-            "sortByPredicate": "sch:sameAs/a/skos:prefLabel",
-            "sortDirection": "desc"
         },
         "datasource": {
             "containerClass": "three",
             "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
             "facetType": "list",
             "filterType": "uriFilter",
+            "pieChartButton": true,
             "predicate": "dct:source/a",
             "sortBy": "instanceCount",
             "sortByPredicate": "dct:source/a/skos:prefLabel",
+            "sortDirection": "desc"
+        },
+        "exlink": {
+            "containerClass": "three",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "sch:sameAs/a",
+            "pieChartButton": true,
+            "sortBy": "instanceCount",
+            "sortByPredicate": "sch:sameAs/a/skos:prefLabel",
             "sortDirection": "desc"
         }
     }

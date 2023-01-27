@@ -143,6 +143,15 @@ export const personPropertiesInstancePage =
         OPTIONAL { ?parliament__id (crm:P4_has_time-span|crm:P10_falls_within)/crm:P81a_begin_of_the_begin ?evt_start }
     } ORDER BY COALESCE(str(?evt_start),'9999')
   }
+  UNION
+  {
+    ?id bioc:bearer_of/crm:P11i_participated_in [
+        a semparls:CommitteeMembership  ;
+        semparls:organization ?committee__id ] .
+    ?committee__id skos:prefLabel ?committee__prefLabel .
+    FILTER(LANG(?committee__prefLabel) = "fi")
+    BIND(CONCAT("/groups/page/", REPLACE(STR(?committee__id), "^.*\\\\/(.+)", "$1")) AS ?committee__dataProviderUrl)
+  }
   UNION 
   {
     ?id semparls:parliament_days ?parliament_days
@@ -311,7 +320,6 @@ WHERE {
              skos:prefLabel ?event__label ;
              semparls:content ?content .
   OPTIONAL { ?event__id dct:date ?_date }
-  OPTIONAL { ?event__id semparls:speechOrder ?_ord }
 
   BIND (CONCAT(REPLACE(?event__label, ' [(][^)]+[)]$', ''), ": (", SUBSTR(?content,1,50), "...)") AS ?event__prefLabel)
   BIND(CONCAT("/speeches/page/", REPLACE(STR(?event__id), "^.*\\\\/(.+)", "$1")) AS ?event__dataProviderUrl)
@@ -678,37 +686,84 @@ export const peopleRelatedTo = `
 }
 `
 
-export const timeSeriesQuery = `
-SELECT ?category 
-(count(DISTINCT ?birth) AS ?Births)
-  (count(DISTINCT ?member__id) AS ?Representatives)
-  (count(DISTINCT ?death) AS ?Deaths)
-  WHERE {
+/**
+ * TODO: edustajat vaalikausittain: https://api.triplydb.com/s/gVBtxUh5S
+ */
+export const peopleByElectoraltermQuery = `
+SELECT DISTINCT ?category ?prefLabel (COUNT(DISTINCT ?person__id) AS ?instanceCount)
+WHERE {
   ?person__id a bioc:Person .
-
+  
   <FILTER>
   
-  {
-   ?person__id crm:P98i_was_born ?birth .
-  ?birth crm:P4_has_time-span/crm:P81a_begin_of_the_begin ?_birth .
-    BIND(year(?_birth) AS ?category)
-  }
-  UNION
-  {
-   ?person__id crm:P100i_died_in ?death .
-  ?death crm:P4_has_time-span/crm:P81a_begin_of_the_begin ?_death .
-    BIND(year(?_death) AS ?category) 
-  }
-  UNION
-  {
-    ?person__id bioc:bearer_of [ a <http://ldf.fi/semparl/roles/r1> ; 
-        crm:P11i_participated_in ?membership ] .
-    ?membership a semparls:ParliamentMembership ; crm:P10_falls_within/crm:P81a_begin_of_the_begin ?_date .
-    BIND(?person__id AS ?member__id)
-    BIND(year(?_date) AS ?category)
-  }
+  ?person__id bioc:bearer_of/crm:P11i_participated_in [ a semparls:ParliamentMembership ; crm:P10_falls_within ?category ] .
+  ?category a semparls:ElectoralTerm ; skos:prefLabel ?prefLabel .
+} GROUPBY ?category ?prefLabel ORDERBY STR(?category)
+`
+
+export const ministersByElectoraltermQuery = `
+SELECT DISTINCT ?category ?prefLabel (COUNT(DISTINCT ?person__id) AS ?instanceCount) 
+WHERE {
+  ?person__id a bioc:Person .
   
-} GROUPBY ?category ORDER BY ?category
+  <FILTER>
+
+  ?category a semparls:ElectoralTerm ;
+    crm:P81a_begin_of_the_begin ?term_start ;
+    crm:P82b_end_of_the_end ?term_end ;
+    skos:prefLabel ?prefLabel .
+
+  ?person__id bioc:bearer_of/crm:P11i_participated_in [ a semparls:GovernmentMembership ; crm:P4_has_time-span ?period ] .
+  ?period crm:P81a_begin_of_the_begin ?p_start  .
+  OPTIONAL { ?period crm:P82b_end_of_the_end ?p_end }
+  FILTER(?term_start <= ?p_start && ?p_start < ?term_end && LANG(?prefLabel)="fi")
+  
+} GROUPBY ?category ?prefLabel ORDERBY STR(?category)
+`
+
+export const ministersByGovernmentQuery = `
+SELECT DISTINCT ?category ?prefLabel (COUNT(DISTINCT ?person__id) AS ?instanceCount) ?orderBy
+WHERE {
+  ?person__id a bioc:Person .
+  <FILTER>
+  ?person__id bioc:bearer_of/crm:P11i_participated_in [ a semparls:GovernmentMembership ; semparls:organization ?category ] . 
+  ?category skos:prefLabel ?prefLabel ; semparls:governmentOrder ?orderBy . 
+  FILTER(LANG(?prefLabel)="<LANG>")
+} GROUPBY ?category ?prefLabel ?orderBy ORDER BY ?orderBy
+`
+
+export const peopleByCommitteeQuery = `
+SELECT DISTINCT ?category ?prefLabel (COUNT(DISTINCT ?person__id) AS ?instanceCount)
+WHERE {
+  ?person__id a bioc:Person .
+  <FILTER>
+  ?person__id bioc:bearer_of/crm:P11i_participated_in [ a semparls:CommitteeMembership ; semparls:organization/a ?category ] . 
+  ?category skos:prefLabel ?prefLabel . 
+  FILTER(LANG(?prefLabel)="fi")
+} GROUPBY ?category ?prefLabel ORDER BY ?instanceCount
+`
+
+export const peopleByElectoralDistrictQuery = `
+SELECT DISTINCT ?category ?prefLabel (COUNT(DISTINCT ?person__id) AS ?instanceCount)
+WHERE {
+  ?person__id a bioc:Person .
+  <FILTER>
+  ?person__id bioc:bearer_of/crm:P11i_participated_in [ a semparls:ElectoralDistrictCandidature ; semparls:organization ?category ] . 
+  ?category skos:prefLabel ?prefLabel . 
+  FILTER(LANG(?prefLabel)="fi")
+} GROUPBY ?category ?prefLabel ORDER BY ?instanceCount
+`
+
+export const peopleByPartyQuery = `
+SELECT DISTINCT ?category ?prefLabel (COUNT(DISTINCT ?person__id) AS ?instanceCount)
+WHERE {
+  ?person__id a bioc:Person .
+  <FILTER>
+  
+  ?person__id semparls:has_party_membership [ a semparls:PartyMembership ; semparls:party ?category ] . 
+  ?category skos:prefLabel ?prefLabel .
+  FILTER(LANG(?prefLabel)="fi")
+} GROUPBY ?category ?prefLabel ORDERBY ASC(?instanceCount)
 `
 
 export const ageQuery = `
@@ -731,6 +786,34 @@ WHERE {
     ?membspan crm:P82b_end_of_the_end ?time2 .
     BIND (STR(year(?time2)-year(?byear)) AS ?category)
   }
-  
 } GROUPBY ?category ORDER BY ?category
+`
+
+export const csvPeopleQuery = `
+SELECT DISTINCT ?id ?label ?family_name ?given_name ?other_family_names ?other_given_names ?gender ?birth ?death ?group ?role ?start ?end
+WHERE {
+  <FILTER>
+  ?id a bioc:Person ;
+    skos:prefLabel ?label ;
+    bioc:has_gender/skos:prefLabel ?gender .
+  
+  { SELECT DISTINCT ?id ?family_name ?given_name (GROUP_CONCAT(DISTINCT ?family2; separator="; ") AS ?other_family_names) 
+    (GROUP_CONCAT(DISTINCT ?given2; separator="; ") AS ?other_given_names) 
+    WHERE {
+      ?id xl:prefLabel [ sch:familyName ?family_name ; sch:givenName ?given_name ] 
+      OPTIONAL { ?id xl:altLabel [ sch:familyName ?family2 ; sch:givenName ?given2 ] }
+    } GROUP BY ?id ?family_name ?given_name
+  }
+  
+  OPTIONAL { ?id crm:P98i_was_born/crm:P4_has_time-span/crm:P81a_begin_of_the_begin ?_birth . BIND(YEAR(?_birth) as ?birth) }
+  OPTIONAL { ?id crm:P100i_died_in/crm:P4_has_time-span/crm:P81a_begin_of_the_begin ?_death . BIND(YEAR(?_death) as ?death) }
+  
+  VALUES ?eclass { semparls:GovernmentMembership semparls:ParliamentaryGroupMembership }
+  ?id bioc:bearer_of [ a/skos:prefLabel ?role ; crm:P11i_participated_in [ a ?eclass ; semparls:organization/skos:prefLabel ?group ; crm:P4_has_time-span ?tspan ]] 
+  
+  OPTIONAL { ?tspan crm:P81a_begin_of_the_begin ?start }
+  OPTIONAL { ?tspan crm:P82b_end_of_the_end ?end }
+  
+  FILTER(LANG(?gender)='fi' && LANG(?role)='fi' && LANG(?group)='fi')
+} ORDER BY ?family_name ?given_name ?start ?end ?group
 `
