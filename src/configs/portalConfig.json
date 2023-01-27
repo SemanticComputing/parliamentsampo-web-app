@@ -80,7 +80,7 @@
         "tableFontSize": "0.8rem",
         "topBar": {
             "logoTextTransform": "none",
-            "showLanguageButton": true,
+            "showLanguageButton": false,
             "showSearchField": true,
             "feedbackLink": "https://link.webropolsurveys.com/S/D7CFC6FD8AF00ED2",
             "externalInstructions": true,
