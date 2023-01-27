@@ -410,6 +410,11 @@ const SemanticPortal = props => {
               {intl.getHTML('instructions')}
             </TextPage>
           </Route>}
+        <Route path={`${rootUrlWithLang}/imagelicence`}>
+          <TextPage layoutConfig={layoutConfig}>
+            {intl.getHTML('imageLicence')}
+          </TextPage>
+        </Route>
       </>
     </Box>
   )
