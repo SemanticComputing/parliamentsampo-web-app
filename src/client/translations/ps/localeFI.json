@@ -153,6 +153,7 @@
       "peopleByElectoralterm": "edustajat vaalikausittain",
       "peopleByElectoralDistrict": "edustajat vaalipiireittäin",
       "peopleByCommittee": "edustajat valiokunnittain",
+      "peopleByParliamentarygroup": "edustajat eduskuntaryhmittäin",
       "peopleByParty": "edustajat puolueittain",
       "ministersByElectoralterm": "ministerit vaalikausittain",
       "ministersByGovernment": "ministerit hallituksittain"

@@ -743,6 +743,17 @@ WHERE {
 } GROUPBY ?category ?prefLabel ORDER BY ?instanceCount
 `
 
+export const peopleByParliamentarygroupQuery = `
+SELECT DISTINCT ?category ?prefLabel (COUNT(DISTINCT ?person__id) AS ?instanceCount)
+WHERE {
+  ?person__id a bioc:Person .
+  <FILTER>
+  ?person__id bioc:bearer_of/crm:P11i_participated_in [ a semparls:ParliamentaryGroupMembership ; semparls:organization/a ?category ] . 
+  ?category skos:prefLabel ?prefLabel . 
+  FILTER(LANG(?prefLabel)="fi")
+} GROUPBY ?category ?prefLabel ORDER BY ?instanceCount
+`
+
 export const peopleByElectoralDistrictQuery = `
 SELECT DISTINCT ?category ?prefLabel (COUNT(DISTINCT ?person__id) AS ?instanceCount)
 WHERE {
