@@ -18,6 +18,8 @@ export const occupationPropertiesInstancePage =
     { ?person__id bioc:has_occupation ?id ; a bioc:Person }
     UNION
     { ?person__id semparls:has_education/bioc:has_occupation ?id ; a bioc:Person }
+    UNION
+    { ?person__id bioc:bearer_of/a ?id ; a bioc:Person }
     ?person__id skos:prefLabel ?person__prefLabel .    
     BIND(CONCAT("/people/page/", REPLACE(STR(?person__id), "^.*\\\\/(.+)", "$1")) AS ?person__dataProviderUrl)
   }
@@ -25,9 +27,16 @@ export const occupationPropertiesInstancePage =
   { 
     SELECT ?id ?related__id ?related__prefLabel ?related__dataProviderUrl 
       WHERE {
-        ?id ^bioc:has_occupation ?person__id .
-        ?person__id bioc:has_occupation ?related__id ; a bioc:Person .
-        FILTER(?related__id != ?id)
+        {
+          ?id ^bioc:has_occupation ?person__id .
+          ?person__id bioc:has_occupation ?related__id ; a bioc:Person 
+        }
+        UNION
+        {
+            ?id ^(bioc:bearer_of/a) ?person__id .
+            ?person__id bioc:bearer_of/a ?related__id ; a bioc:Person .
+        }
+        FILTER(?related__id != ?id && (!(?related__id in (bioc:Actor_Role, <http://ldf.fi/semparl/roles/r2>, <http://ldf.fi/semparl/roles/r165>))))
         ?related__id skos:prefLabel ?related__prefLabel .
         FILTER(LANG(?related__prefLabel)='<LANG>')
         BIND(CONCAT("/occupations/page/", REPLACE(STR(?related__id), "^.*\\\\/(.+)", "$1")) AS ?related__dataProviderUrl)
