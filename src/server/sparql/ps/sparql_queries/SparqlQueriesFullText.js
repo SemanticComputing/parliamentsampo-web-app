@@ -56,6 +56,8 @@ export const fullTextSearchProperties = `
   {
     ?id a semparls:Organization ; skos:prefLabel ?prefLabel__id .
     FILTER (lang(?prefLabel__id)="fi")
+    # NB. problem with instance of multiple classes
+    FILTER NOT EXISTS { ?id a semparls:Committee }
     BIND(?prefLabel__id as ?prefLabel__prefLabel)
     BIND(CONCAT("/groups/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
   }
