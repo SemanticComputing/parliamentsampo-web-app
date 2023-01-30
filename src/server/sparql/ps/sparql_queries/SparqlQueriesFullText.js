@@ -98,13 +98,14 @@ export const fullTextSearchProperties = `
 }
 UNION
 {
-  VALUES ?sclass { bioc:Occupation }
-  ?id a rdfs:Class ; rdfs:subClassOf ?sclass ; skos:prefLabel ?prefLabel__id .
+  VALUES ?type__id { bioc:Occupation }
+  ?id a rdfs:Class ; rdfs:subClassOf+ ?type__id ; skos:prefLabel ?prefLabel__id .
   FILTER (lang(?prefLabel__id)="fi")
   BIND(?prefLabel__id as ?prefLabel__prefLabel)
+  BIND(7 as ?orderBy)
   BIND(CONCAT("/occupations/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
 
-  ?sclass skos:prefLabel ?type__prefLabel .
+  ?type__id skos:prefLabel ?type__prefLabel .
   FILTER(LANG(?type__prefLabel) = 'fi')
 }
   `
