@@ -946,7 +946,7 @@
             "sortDirection": "desc"
         },
         "exlink": {
-            "containerClass": "three",
+            "containerClass": "ten",
             "facetType": "list",
             "filterType": "uriFilter",
             "predicate": "sch:sameAs/a",
