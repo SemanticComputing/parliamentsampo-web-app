@@ -235,6 +235,7 @@ export const personPropertiesFacetResults =
     ?id bioc:has_occupation ?occupation__id .
     ?occupation__id skos:prefLabel ?occupation__prefLabel .
     FILTER(LANG(?occupation__prefLabel) = "<LANG>")
+    BIND(CONCAT("/occupations/page/", REPLACE(STR(?occupation__id), "^.*\\\\/(.+)", "$1")) AS ?occupation__dataProviderUrl)
   }
   UNION
   {
