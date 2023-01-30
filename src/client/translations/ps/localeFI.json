@@ -419,11 +419,11 @@
           "description": "Parlamenttidatassa mainitut henkilön mahdolliset sukulaiset"
         },
         "education": {
-          "label": "Koulutus / oppiarvo",
+          "label": "Koulutus, oppiarvo",
           "description": "Hae eduskunnan puhujia koulutukset tai oppiarvon perusteella"
         },
         "occupation": {
-          "label": "Ammatti / arvo",
+          "label": "Ammatti, arvo",
           "description": "Hae eduskunnan puhujia ammatin tai arvon perusteella"
         },
         "parliament": {
