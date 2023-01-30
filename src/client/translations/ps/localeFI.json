@@ -165,10 +165,10 @@
       "labelMainPage": "Puheenvuorot",
       "shortLabel": "Valtiopäivät 1907–",
       "facetResultsType": "puheenvuoroa",
-      "shortDescription": "Hae täysistuntojen puheenvuoroja",
+      "shortDescription": "Hae täysistuntojen puheenvuoroja eri aikakausilta",
       "subMain": {
-        "label": "Valtiopäivät 1907–",
-        "shortDescription": "Kaikki puheet eduskunnan perustamisesta alkaen"
+        "label": "Kaikki valtiopäivät 1907-",
+        "shortDescription": "Puheenvuorot kaikkien vaalikausien ajalta"
       },
       "longDescription": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Use this perspective to ...  The results can be viewed using the following tabs: </p> <ul class=\"MuiTypography-root MuiTypography-body1\"> <li> <strong>TABLE</STRONG> ...</li> <li> ... </li>  </ul>",
       "instancePage": {
@@ -200,11 +200,11 @@
           "description": "Puolue"
         },
         "gender": {
-          "label": "Sukupuoli",
+          "label": "Puhujan sukupuoli",
           "description": "Puheen pitäjän sukupuoli. Luvut aaltosuluissa ovat puheiden, ei henkilöiden määriä."
         },
         "speechType": {
-          "label": "Puheen tyyppi",
+          "label": "Puheenvuoron tyyppi",
           "description": "Tyyppi"
         },
         "language": {
@@ -302,7 +302,7 @@
           "description": "Puheen kirjauksen version. (Tiedossa vain valtiopäivistä 2015 lähtien.)"
         },
         "keywordAnnif": {
-          "label": "Asiasana (Annif)",
+          "label": "Asiasana (autom. tunnistettu)",
           "description": "Asiasana (Annif)"
         },
         "keywordTFIDF": {
@@ -361,7 +361,7 @@
     },
     "speeches-2015-": {
       "label": "Valtiopäivät 2015–",
-      "shortLabel": "Uusimmat puheet",
+      "shortLabel": "Valtiopäivät 2015–",
       "shortDescription": "Puheet viimeisimpien vaalikausien ajalta",
       "subMain": {
         "label": "Valtiopäivät 2015–",

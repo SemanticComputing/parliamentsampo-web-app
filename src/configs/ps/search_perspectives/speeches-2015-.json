@@ -562,18 +562,6 @@
             "sortByPredicate": "semparl_linguistics:annif_subject",
             "sortDirection": "desc"
         },
-        "keywordTFIDF": {
-            "containerClass": "ten",
-            "facetType": "list",
-            "filterType": "uriFilter",
-            "pieChartButton": true,
-            "predicate": "semparl_linguistics:tfidf_subject",
-            "searchField": true,
-            "sortButton": true,
-            "sortBy": "instanceCount",
-            "sortByPredicate": "semparl_linguistics:tfidf_subject",
-            "sortDirection": "desc"
-        },
         "referencedPerson": {
             "containerClass": "ten",
             "facetType": "list",

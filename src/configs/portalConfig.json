@@ -3,13 +3,13 @@
     "rootUrl": "",
     "perspectives": {
         "searchPerspectives": [
+            "speeches-2015-",
+            "people",
             "speeches",
             "speeches-1907-1945",
             "speeches-1946-1979",
             "speeches-1980-1999",
             "speeches-2000-2014",
-            "speeches-2015-",
-            "people",
             "fullTextSearch"
         ],
         "speechesSubPerspectives": [
