@@ -434,6 +434,12 @@ export const interruptionPropertiesInstancePage = `
   {
     ?id semparls:content ?content .
   }
+  UNION
+  {
+    ?id ^(semparls:isInterruptedBy) ?speech__id .
+    ?speech__id skos:prefLabel ?speech__prefLabel .
+    BIND(CONCAT("/speeches/page/", REPLACE(STR(?speech__id), "^.*\\\\/(.+)", "$1")) AS ?speech__dataProviderUrl) .
+  }
 `
 
 export const speechesByYearQuery = `

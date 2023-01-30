@@ -50,6 +50,14 @@
       "numberedList": false
     },
     {
+      "id": "speech",
+      "valueType": "object",
+      "makeLink": true,
+      "externalLink": false,
+      "sortValues": false,
+      "numberedList": false
+    },
+    {
       "id": "content",
       "valueType": "string",
       "makeLink": false,

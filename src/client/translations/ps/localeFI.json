@@ -1086,7 +1086,11 @@
         },
         "interrupter": {
           "label": "Keskeyttäjä",
-          "description": "Merkitty keskeyttäjä."
+          "description": "Merkitty keskeyttäjä"
+        },
+        "speech": {
+          "label": "Keskeytetty puhe",
+          "description": "Puheenvuoro, johon keskeytys liittyy"
         },
         "speaker": {
           "label": "Keskeyttäjän tiedot",
