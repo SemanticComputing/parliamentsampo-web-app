@@ -28,4 +28,9 @@ export const committeePropertiesInstancePage =
      BIND(CONCAT("/groups/page/", REPLACE(STR(?group__id), "^.*\\\\/(.+)", "$1")) AS ?group__dataProviderUrl)
     FILTER(LANG(?group__prefLabel)='<LANG>')
   }
+  UNION
+  {  ?id ^(bioc:bearer_of/crm:P11i_participated_in/semparls:organization/a) ?person__id .
+     ?person__id skos:prefLabel ?person__prefLabel .
+    BIND(CONCAT("/people/page/", REPLACE(STR(?person__id), "^.*\\\\/(.+)", "$1")) AS ?person__dataProviderUrl)
+  }
 `

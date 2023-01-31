@@ -845,6 +845,10 @@
           "label": "Ryhmät eri aikoina",
           "description": "Ryhmät eri aikoina"
         },
+        "person": {
+          "label": "Henkilöt",
+          "description": "Ryhmään kuuluneet henkilöt eri aikoina"
+        },
         "type": {
           "label": "Tyyppi",
           "description": "Ryhmän tyyppi"
