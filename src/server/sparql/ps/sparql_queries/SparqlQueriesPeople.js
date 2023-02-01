@@ -778,6 +778,50 @@ WHERE {
 } GROUPBY ?category ?prefLabel ORDERBY ASC(?instanceCount)
 `
 
+export const topCorrespondenceInstancePageQuery = `
+SELECT DISTINCT ?id ?speech__label ?interruption__label (xsd:date(?_date) AS ?date) (year(xsd:date(?_date)) AS ?year) ?type 
+WHERE {
+  VALUES ?id { <ID> }
+  {
+    ?evt semparls:speaker ?id ;
+        a semparls:Interruption ;
+        dct:date ?_date .
+    OPTIONAL { ?evt semparls:chairmanInterruption ?chair }
+    BIND(IF(?chair, "Keskeytys puhemiehenä", "Keskeytys") AS ?interruption__label)
+    BIND("interruption" AS ?type)
+  }
+  UNION
+  {
+    [] semparls:speaker ?id ;
+        semparls:speechType/skos:prefLabel ?speech__label ;
+        dct:date ?_date ;
+        a semparls:Speech 
+    BIND("speech" AS ?type)
+  }
+}
+`
+
+export const sentReceivedInstancePageQuery = `
+SELECT DISTINCT (str(?year) AS ?category)
+  (count(distinct ?speech) AS ?speechCount)
+  (count(distinct ?interrupt) AS ?interruptCount)
+WHERE {
+  VALUES ?id { <ID> }
+  {
+  ?speech semparls:speaker ?id ;
+            dct:date ?_date ;
+            a semparls:Speech 
+  }
+  UNION
+  {
+  ?interrupt semparls:speaker ?id ;
+            dct:date ?_date ;
+            a semparls:Interruption 
+  }
+  BIND(year(?_date) AS ?year)
+}  GROUP BY ?year ORDER BY ?year
+`
+
 export const ageQuery = `
 SELECT ?category (count(?time1) AS ?age_at_start) (count(?time2) AS ?age_at_end)
 WHERE {

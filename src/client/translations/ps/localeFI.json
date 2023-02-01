@@ -68,6 +68,7 @@
     "heatmap": "lämpökartta",
     "network": "verkosto",
     "referencenetwork": "viittausverkosto",
+    "activity-timeseries": "puheiden aikajana",
     "by_age": "ikäjakauma",
     "timeseries": "aikajana",
     "export": "SPARQL-kysely",
@@ -83,7 +84,10 @@
   "lineChart": {
     "age_at_start": "Aloitusikä",
     "age_at_end": "Lopetusikä",
+    "speech": "Puhe",
     "speechCount": "Puheita",
+    "interruption": "Keskeytys",
+    "interruptCount": "Keskeytyksiä",
     "Births": "Syntyneet",
     "Representatives": "Edustajat",
     "Deaths": "Kuolleet"
