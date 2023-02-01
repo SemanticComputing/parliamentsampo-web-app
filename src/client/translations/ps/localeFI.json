@@ -386,7 +386,8 @@
         },
         "prefLabel": {
           "label": "Nimi",
-          "description": "Hae eduskunnan puhujia nimellä",
+          "description": "Henkilön nimi",
+          "facetDescription": "Hae eduskunnan puhujia nimellä",
           "textFacetInputPlaceholder": "Hae nimen perusteella ..."
         },
         "listOfPeople": {
@@ -400,7 +401,7 @@
         },
         "image": {
           "label": "Kuva",
-          "description": "Kuva"
+          "description": "Kuva henkilöstä"
         },
         "extraInfo": {
           "label": "Lisätietoja",
@@ -408,7 +409,8 @@
         },
         "party": {
           "label": "Puolue",
-          "description": "Hae eduskunnan puhujia heidän puolueensa perusteella"
+          "facetDescription": "Hae eduskunnan puhujia heidän puolueensa perusteella",
+          "description": "Puolueet, joihin henkilön on kuulunut"
         },
         "affiliation": {
           "label": "Sidonnaisuudet",
@@ -420,23 +422,28 @@
         },
         "education": {
           "label": "Koulutus, oppiarvo",
-          "description": "Hae eduskunnan puhujia koulutukset tai oppiarvon perusteella"
+          "description": "Henkilön koulutus tai oppiarvo",
+          "facetDescription": "Hae eduskunnan puhujia koulutukset tai oppiarvon perusteella"
         },
         "occupation": {
           "label": "Ammatti, arvo",
-          "description": "Hae eduskunnan puhujia ammatin tai arvon perusteella"
+          "description": "Henkilön ammatti tai arvo",
+          "facetDescription": "Hae eduskunnan puhujia ammatin tai arvon perusteella"
         },
         "parliament": {
           "label": "Edustajuus",
-          "description": "Eduskunnat ja hallitukset, joihin henkilö on kuulunut"
+          "description": "Eduskunnat ja hallitukset, joihin henkilö on kuulunut",
+          "facetDescription": "Eduskunnat ja hallitukset, joihin henkilö on kuulunut"
         },
         "electoralTerm": {
           "label": "Vaalikausi",
-          "description": "Hae eduskunnan puhujia vaalikausittain"
+          "description": "Vaalikaudet, joilla henkilö on ollut edustajana",
+          "facetDescription": "Hae eduskunnan puhujia vaalikausittain"
         },
         "electoralDistrict": {
           "label": "Vaalipiiri",
-          "description": "Hae eduskunnan puhujia vaalipiireittäin"
+          "description": "Vaalipiirit, joissa henkilö on ollut ehdokkaana",
+          "facetDescription": "Hae eduskunnan puhujia vaalipiireittäin"
         },
         "parliamentaryGroup": {
           "label": "Eduskuntaryhmä",
@@ -456,11 +463,13 @@
         },
         "datasource": {
           "label": "Liittyvä tietolähde",
-          "description": "Hae eduskunnan puhujia sen perusteella, mistä tietolähteistä heistä on kerätty tietoa Parlamenttisampoon"
+          "description": "Tietolähteet, joista henkilön data on kerätty",
+          "facetDescription": "Hae eduskunnan puhujia sen perusteella, mistä tietolähteistä heistä on kerätty tietoa Parlamenttisampoon"
         },
         "exlink": {
           "label": "Liittyvä ulkoinen linkki",
-          "description": "Hae eduskunnan puhujia sen perusteella, mistä tietolähteistä heistä löytyy lisätietoa verkossa"
+          "description": "Tietolähteet, joissa henkilöstö on lisätietoja",
+          "facetDescription": "Hae eduskunnan puhujia sen perusteella, mistä tietolähteistä heistä löytyy lisätietoa verkossa"
         },
         "district": {
           "label": "Vaalipiiri",
@@ -468,15 +477,18 @@
         },
         "gender": {
           "label": "Sukupuoli",
-          "description": "Hae eduskunnan puhujia sukupuolen perusteella"
+          "description": "Henkilön sukupuoli",
+          "facetDescription": "Hae eduskunnan puhujia sukupuolen perusteella"
         },
         "placeOfBirth": {
           "label": "Syntymäpaikka",
-          "description": "Hae eduskunnan puhujia syntymäpaikan perusteella"
+          "description": "Henkilön syntymäpaikka",
+          "facetDescription": "Hae eduskunnan puhujia syntymäpaikan perusteella"
         },
         "dateOfBirthTimespan": {
           "label": "Syntymävuosi",
-          "description": "Hae eduskunnan puhujia syntymävuoden perusteella"
+          "description": "Henkilön syntymävuosi",
+          "facetDescription": "Hae eduskunnan puhujia syntymävuoden perusteella"
         },
         "familyname": {
           "label": "Sukunimi",
@@ -484,27 +496,32 @@
         },
         "org": {
           "label": "Liittyvä organisaatio tai ryhmä",
-          "description": "Hae eduskunnan puhujia heihin liittyvän ryhmän tai organisaation perusteella"
+          "description": "Henkilöön liittyvä ryhmä tai organisaatio",
+          "facetDescription": "Hae eduskunnan puhujia heihin liittyvän ryhmän tai organisaation perusteella"
         },
         "group": {
           "label": "Liittyvä organisaatio tai ryhmä",
-          "description": "Hae eduskunnan puhujia heihin liittyvän ryhmän tai organisaation perusteella"
+          "description": "Henkilöön liittyvä ryhmä tai organisaatio",
+          "facetDescription": "Hae eduskunnan puhujia heihin liittyvän ryhmän tai organisaation perusteella"
         },
         "home_location": {
           "label": "Kotipaikkakunta",
-          "description": "Kotipaikkakunta"
+          "description": "Henkilön kotipaikkakunta"
         },
         "representativePeriodTimespan": {
           "label": "Aika eduskunnassa",
-          "description": "Hae eduskunnan puhujia sen ajan perusteella, jonka he ovat olleet kansanedustajina"
+          "description": "Aika, jolloin henkilö on ollut kansanedustajana",
+          "facetDescription": "Hae eduskunnan puhujia sen ajan perusteella, jonka he ovat olleet kansanedustajina"
         },
         "placeOfDeath": {
           "label": "Kuolinpaikka",
-          "description": "Hae eduskunnan puhujia kuolinpaikan perusteella"
+          "description": "Henkilön  kuolinpaikka",
+          "facetDescription": "Hae eduskunnan puhujia kuolinpaikan perusteella"
         },
         "dateOfDeathTimespan": {
           "label": "Kuolinvuosi",
-          "description": "Hae eduskunnan puhujia kuolinvuoden perusteella"
+          "description": "Henkilön  kuolinaika",
+          "facetDescription": "Hae eduskunnan puhujia kuolinvuoden perusteella"
         },
         "event": {
           "label": "Tapahtumat",
