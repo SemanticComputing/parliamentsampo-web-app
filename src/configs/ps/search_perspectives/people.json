@@ -582,7 +582,8 @@
             "makeLink": true,
             "externalLink": false,
             "sortValues": true,
-            "numberedList": true
+            "numberedList": true,
+            "minWidth": 200
         },
         {
             "id": "parliamentaryGroup",
