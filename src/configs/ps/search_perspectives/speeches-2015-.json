@@ -448,6 +448,18 @@
             "textQueryHiglightingOptions": "highlight:s:<b> | e:</b> | z:150",
             "textQueryMaxInstances": 10000000
         },
+        "speechType": {
+            "containerClass": "ten",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "pieChartButton": true,
+            "predicate": "semparls:speechType",
+            "searchField": true,
+            "sortButton": true,
+            "sortBy": "instanceCount",
+            "sortByPredicate": "semparls:speechType/skos:prefLabel",
+            "sortDirection": "desc"
+        },
         "speaker": {
             "containerClass": "ten",
             "facetType": "list",
@@ -484,30 +496,6 @@
             "sortButton": true,
             "sortBy": "instanceCount",
             "sortByPredicate": "semparls:speaker/bioc:has_gender/skos:prefLabel",
-            "sortDirection": "desc"
-        },
-        "speechType": {
-            "containerClass": "ten",
-            "facetType": "list",
-            "filterType": "uriFilter",
-            "pieChartButton": true,
-            "predicate": "semparls:speechType",
-            "searchField": true,
-            "sortButton": true,
-            "sortBy": "instanceCount",
-            "sortByPredicate": "semparls:speechType/skos:prefLabel",
-            "sortDirection": "desc"
-        },
-        "documentType": {
-            "containerClass": "ten",
-            "facetType": "list",
-            "filterType": "uriFilter",
-            "pieChartButton": true,
-            "predicate": "semparls:item/semparls:relatedDocument/a",
-            "searchField": true,
-            "sortButton": true,
-            "sortBy": "instanceCount",
-            "sortByPredicate": "semparls:item/semparls:relatedDocument/a",
             "sortDirection": "desc"
         },
         "language": {
@@ -549,6 +537,18 @@
             "sortBy": "prefLabel",
             "sortByPredicate": "semparls:plenarySession/semparls:parliamentarySession/semparls:electoralTerm/skos:prefLabel",
             "sortDirection": "asc"
+        },
+        "documentType": {
+            "containerClass": "ten",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "pieChartButton": true,
+            "predicate": "semparls:item/semparls:relatedDocument/a",
+            "searchField": true,
+            "sortButton": true,
+            "sortBy": "instanceCount",
+            "sortByPredicate": "semparls:item/semparls:relatedDocument/a",
+            "sortDirection": "desc"
         },
         "keywordAnnif": {
             "containerClass": "ten",
