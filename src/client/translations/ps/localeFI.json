@@ -192,12 +192,12 @@
         },
         "speaker": {
           "label": "Puhuja",
-          "description": "Puhuja",
+          "description": "Valitse puheenvuoron käyttäjä",
           "missingValueLabel": "Puhujatieto puuttuu"
         },
         "party": {
-          "label": "Puolue",
-          "description": "Puolue"
+          "label": "Puhujan puolue",
+          "description": "Valitse puhujan puolue"
         },
         "gender": {
           "label": "Puhujan sukupuoli",
@@ -209,24 +209,24 @@
         },
         "language": {
           "label": "Kieli",
-          "description": "Kieli"
+          "description": "Valitse puheenvuoron kielie (suomi tai ruotsi); joissakin puheenvuoroissa käytetään molempia kieliä"
         },
         "parliamentarySession": {
           "label": "Valtiopäivät",
-          "description": "Valtiopäivät, johon puhe sijoittuu"
+          "description": "Valitse valtiopäivät, joihin puheenvuorot sijoittuvat"
         },
         "electoralTerm": {
           "label": "Vaalikausi",
-          "description": "Vaalikausi, johon puhe sijoittuu"
+          "description": "Valitse vaalikaudet, joihin puheenvuorot sijoittuvat"
         },
         "referencedPlace": {
           "label": "Mainittu paikka (autom. tunnistettu)",
-          "description": "Mainittu paikka (autom. tunnistettu)",
+          "description": "Hae puheenvuoroja niissä mainittujen (automaattisesti tunnistettujen) paikkojen perusteella.",
           "missingValueLabel": "> Ei tunnistettuja paikkoja"
         },
         "referencedPerson": {
           "label": "Mainittu henkilö (autom. tunnistettu)",
-          "description": "Mainittu henkilö (autom. tunnistettu)",
+          "description": "Hae puheenvuoroja niissä mainittujen (automaattisesti tunnistetujen) henkilöiden perusteella.",
           "missingValueLabel": "> Ei tunnistettuja henkilöjä"
         },
         "namedEntity": {
@@ -235,7 +235,7 @@
         },
         "date": {
           "label": "Päivämäärä",
-          "description": "Puheen päivämäärä"
+          "description": "Valitse täysistunnon päivämäärä"
         },
         "content": {
           "label": "Sisältö",
@@ -247,7 +247,7 @@
         },
         "documentType": {
           "label": "Käsiteltävä asiakirja",
-          "description": "Puheen asiakohtaan liittyvän eduskunnan asiakirjan tyyppi."
+          "description": "Valitse puheenvuoron asiakohtaan liittyvän asiakirjan tyyppi."
         },
         "roleGivenInSource": {
           "label": "Puhujan rooli",
@@ -303,7 +303,7 @@
         },
         "keywordAnnif": {
           "label": "Asiasana (autom. tunnistettu)",
-          "description": "Asiasana (Annif)"
+          "description": "Hae puheenvuoroja niiden automaattisesti tunnistettujen YSO-ontologian asiasanojen perusteella."
         },
         "keywordTFIDF": {
           "label": "Asiasana (TF-IDF)",
@@ -311,7 +311,7 @@
         },
         "eksCategory": {
           "label": "Asiakohdan EKS-kategoria (beta)",
-          "description": "Asiakohdan EKS-kategoria (beta)"
+          "description": "Hae puheenvuoroja niiden asiakohdan automaattisesti tunnistetun  luokituksen perusteella, joka perustuu Eduskunnan kirjaston asiasanaston (EKS) kategrioihin."
         },
         "videoLink": {
           "label": "Video",
@@ -408,7 +408,7 @@
           "description": "Lisätietoja henkilöstä"
         },
         "party": {
-          "label": "Puolue",
+          "label": "Puhujan puolue",
           "facetDescription": "Hae eduskunnan puhujia heidän puolueensa perusteella",
           "description": "Puolueet, joihin henkilön on kuulunut"
         },
