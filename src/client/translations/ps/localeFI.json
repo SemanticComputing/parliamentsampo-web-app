@@ -208,7 +208,7 @@
           "description": "Tyyppi"
         },
         "language": {
-          "label": "Kieli",
+          "label": "Puheenvuoron kieli",
           "description": "Valitse puheenvuoron kielie (suomi tai ruotsi); joissakin puheenvuoroissa käytetään molempia kieliä"
         },
         "parliamentarySession": {

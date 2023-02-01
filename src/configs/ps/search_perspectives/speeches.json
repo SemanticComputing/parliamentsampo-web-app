@@ -198,7 +198,7 @@
             "filterTarget": "id"
         },
         "export": {
-            "tabID": 4,
+            "tabID": 5,
             "component": "Export",
             "tabPath": "export",
             "tabIcon": "ArrowForward",
