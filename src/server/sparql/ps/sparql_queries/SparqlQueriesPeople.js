@@ -792,10 +792,14 @@ WHERE {
   }
   UNION
   {
-    [] semparls:speaker ?id ;
-        semparls:speechType/skos:prefLabel ?speech__label ;
+    ?evt semparls:speaker ?id ;
+        semparls:speechType/skos:prefLabel ?_label ;
         dct:date ?_date ;
-        a semparls:Speech 
+        a semparls:Speech .
+    { ?evt semparls:roleGivenInSource ?_role .
+      BIND(REPLACE(?_role, "^(.+inisteri) .+$", "$1") AS ?role)
+    }
+    BIND(IF(BOUND(?role), concat(?_label, ", ", LCASE(?role)), STR(?_label)) AS ?speech__label)
     BIND("speech" AS ?type)
   }
 }

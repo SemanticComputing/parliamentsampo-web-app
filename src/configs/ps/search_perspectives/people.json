@@ -333,7 +333,7 @@
                                 "resultMapper": "createCorrespondenceChartData",
                                 "resultMapperConfig": {
                                     "types": ["speech", "interruption"],
-                                    "numberTopResults": 10
+                                    "numberTopResults": 20
                                 },
                                 "createChartData": "createTopTimelineChartData",
                                 "tooltip": { "x": { "format": "d MMM yyyy" } },
@@ -341,7 +341,8 @@
                                 "legend": { "position": "bottom" },
                                 "grid": {
                                     "row": {
-                                      "colors": ["#d5d5d5", "transparent"], "opacity": 0.25
+                                      "colors": ["#d5d5d5", "transparent"], 
+                                      "opacity": 0.25
                                     },
                                     "column": { "colors": ["#a8a8a8", "transparent"] },
                                     "xaxis": { "lines": { "show": true } },
