@@ -474,8 +474,8 @@
             "filterType": "dateNoTimespanFilter",
             "predicate": "dct:date",
             "sortByPredicate": "dct:date",
-            "min": "1999-01-01",
-            "max": "2015-12-31"
+            "min": "1907-05-23",
+            "max": "1946-01-24"
         },
         "parliamentarySession": {
             "containerClass": "ten",
