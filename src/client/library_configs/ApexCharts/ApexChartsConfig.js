@@ -181,7 +181,7 @@ export const createTopTimelineChartData = ({
         formatter: function (value) {
           return (value >= 0) ? results.topTies[value] || '' : ''
         },
-        minWidth: 150,
+        minWidth: 250,
         maxWidth: 300,
         align: 'right'
       }
