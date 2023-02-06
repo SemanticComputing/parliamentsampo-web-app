@@ -22,7 +22,9 @@
     "info": {
       "info": "Info",
       "aboutTheProject": "Projektin kotisivu",
-      "aboutTheProjectUrl": "https://seco.cs.aalto.fi/projects/semparl/"
+      "aboutTheProjectUrl": "https://seco.cs.aalto.fi/projects/semparl/",
+      "aboutTheRegister": "Rekisteriseloste",
+      "aboutTheRegisterUrl": "https://seco.cs.aalto.fi/projects/semparl/parlamenttisampo-rekisteriseloste.pdf"
     },
     "searchBarPlaceHolder": "Hae sisällöstä",
     "searchBarPlaceHolderShort": "Hae...",

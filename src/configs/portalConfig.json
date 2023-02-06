@@ -94,6 +94,12 @@
                     "externalLink": true,
                     "translatedText": "aboutTheProject",
                     "translatedUrl": "aboutTheProjectUrl"
+                },
+                {
+                    "id": "aboutTheRegister",
+                    "externalLink": true,
+                    "translatedText": "aboutTheRegister",
+                    "translatedUrl": "aboutTheRegisterUrl"
                 }
             ]
         },
