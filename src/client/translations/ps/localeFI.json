@@ -69,7 +69,7 @@
     "network": "verkosto",
     "referencenetwork": "viittausverkosto",
     "activity-timeseries": "puheiden aikajana",
-    "by_age": "ikäjakauma",
+    "by_age": "elinvuodet",
     "timeseries": "aikajana",
     "export": "SPARQL-kysely",
     "by_year": "Aikajana",
@@ -82,8 +82,6 @@
   },
   "exportToYasgui": "Avaa tuloskysely yasgui-editorissa",
   "lineChart": {
-    "age_at_start": "Aloitusikä",
-    "age_at_end": "Lopetusikä",
     "speech": "Puhe",
     "speechCount": "Puheita",
     "interruption": "Keskeytys",

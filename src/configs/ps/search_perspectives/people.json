@@ -535,7 +535,7 @@
                 "curve": "straight",
                 "width": 2
             },
-            "title": "Edustajien iät kauden alkaessa ja loppuessa",
+            "title": "Synnyin- ja kuolinvuodet",
             "xaxisTitle": "Ikä",
             "xaxisType": "category",
             "xaxisTickAmount": 20,

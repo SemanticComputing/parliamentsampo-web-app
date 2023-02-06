@@ -827,25 +827,25 @@ WHERE {
 `
 
 export const ageQuery = `
-SELECT ?category (count(?time1) AS ?age_at_start) (count(?time2) AS ?age_at_end)
+SELECT ?category (count(?born) AS ?Births) (count(?deceased) AS ?Deaths)
 WHERE {
+
   <FILTER>
-  ?person__id a bioc:Person ;
-    crm:P98i_was_born/crm:P4_has_time-span ?bspan ;
-    bioc:bearer_of/crm:P11i_participated_in [
-      a semparls:ParliamentMembership ;
-      crm:P4_has_time-span ?membspan ] .
+
+  ?person__id a bioc:Person .
   
   {
-    ?bspan crm:P81a_begin_of_the_begin ?byear .
-    ?membspan crm:P81a_begin_of_the_begin ?time1 .
-    BIND (STR(year(?time1)-year(?byear)) AS ?category)
-  } 
-  UNION {
-    ?bspan crm:P81a_begin_of_the_begin ?byear .
-    ?membspan crm:P82b_end_of_the_end ?time2 .
-    BIND (STR(year(?time2)-year(?byear)) AS ?category)
+    ?person__id crm:P98i_was_born/crm:P4_has_time-span/crm:P81a_begin_of_the_begin ?time .
+    BIND (?person__id AS ?born)
   }
+  UNION
+  {
+    ?person__id crm:P100i_died_in/crm:P4_has_time-span/crm:P81a_begin_of_the_begin ?time .
+    BIND (?person__id AS ?deceased)
+  }
+  
+  BIND (STR(year(?time)) AS ?category)
+  
 } GROUPBY ?category ORDER BY ?category
 `
 
