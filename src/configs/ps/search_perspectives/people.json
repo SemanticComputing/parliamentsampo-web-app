@@ -88,235 +88,8 @@
                             }
                         ]
                     },
-                    "personInstancePageEvents": {
-                        "tabID": 2,
-                        "tabPath": "events",
-                        "tabIcon": "CalendarToday",
-                        "component": "InstancePageTable",
-                        "fetchResultsWhenMounted": true,
-                        "sparqlQuery": "personEventsQuery",
-                        "properties": [
-                            {
-                                "id": "prefLabel",
-                                "valueType": "object",
-                                "makeLink": false,
-                                "externalLink": false,
-                                "sortValues": false,
-                                "numberedList": false
-                            },
-                            {
-                                "id": "event",
-                                "valueType": "object",
-                                "makeLink": false,
-                                "externalLink": false,
-                                "sortValues": false,
-                                "numberedList": true,
-                                "expandedOnInstancePage": true
-                            }
-                        ]
-                    },
-                    "personInstancePageNetwork": {
-                        "tabID": 3,
-                        "tabPath": "network",
-                        "tabIcon": "BubbleChart",
-                        "component": "Network",
-                        "pageType": "instancePage",
-                        "facetClass": "people",
-                        "sparqlQuery": "networkSimilarityQuery",
-                        "sparqlQueryNodes": "networkNodeQuery",
-                        "useNetworkAPI": true,
-                        "limit": 50,
-                        "optimize": 1.0,                  
-                        "preprocess": "preprocessParliamentSampoPeopleNetwork",                      
-                        "style": [
-                            {
-                                "selector": "node",
-                                "style": {
-                                    "shape": "ellipse",
-                                    "font-size": "data(font_size)",
-                                    "background-color": "data(color)",
-                                    "label": "data(prefLabel)",
-                                    "height": "data(size)",
-                                    "width": "data(size)",
-                                    "border-width": "data(border_width)",
-                                    "border-color": "black"
-                                }
-                            },
-                            {
-                                "selector": "edge",
-                                "style": {
-                                    "width": "data(weight)",
-                                    "line-color": "data(color)",
-                                    "curve-style": "bezier",
-                                    "content": "data(prefLabel)",
-                                    "color": "hsl(30, 64%, 35%)",
-                                    "opacity": 0.6,
-                                    "target-arrow-shape": "none",
-                                    "font-size": "8",
-                                    "text-valign": "center",
-                                    "edge-text-rotation": "autorotate",
-                                    "text-background-opacity": 1,
-                                    "text-background-color": "white",
-                                    "text-background-shape": "roundrectangle"
-                                }
-                            }
-                        ],
-                        "layout": {
-                            "name": "cose",
-                            "idealEdgeLength": 100,
-                            "nodeOverlap": 20,
-                            "refresh": 20,
-                            "fit": true,
-                            "padding": 30,
-                            "randomize": false,
-                            "componentSpacing": 100,
-                            "nodeRepulsion": 400000,
-                            "edgeElasticity": 100,
-                            "nestingFactor": 5,
-                            "gravity": 80,
-                            "numIter": 1347,
-                            "initialTemp": 200,
-                            "coolingFactor": 0.95,
-                            "minTemp": 1
-                        }    
-                    },
-                    "personInstanceMap": {
-                        "tabID": 4,
-                        "tabPath": "map",
-                        "tabIcon": "LocationOn",
-                        "component": "LeafletMap",
-                        "pageType": "instancePage",
-                        "mapMode": "marker",
-                        "showInstanceCountInClusters": false,
-                        "showExternalLayers": true,
-                        "customMapControl": true,
-                        "sparqlQuery": "placeMapQuery",
-                        "instanceConfig": {
-                            "createPopUpContent": "createPopUpContentAs"
-                        }
-                    },
-                    "personInstancePageReferences": {
-                        "tabID": 5,
-                        "tabPath": "speechReferences",
-                        "tabIcon": "RecordVoiceOver",
-                        "component": "InstancePageTable",
-                        "fetchResultsWhenMounted": true,
-                        "sparqlQuery": "personSpeechReferencesQuery",
-                        "properties": [
-                            {
-                                "id": "prefLabel",
-                                "valueType": "object",
-                                "makeLink": false,
-                                "externalLink": false,
-                                "sortValues": false,
-                                "numberedList": false
-                            },
-                            {
-                                "id": "referenced",
-                                "valueType": "object",
-                                "makeLink": true,
-                                "externalLink": false,
-                                "sortValues": false,
-                                "numberedList": false,
-                                "expandedOnInstancePage": true
-                            },
-                            {
-                                "id": "interrupted",
-                                "valueType": "object",
-                                "makeLink": true,
-                                "externalLink": false,
-                                "sortValues": false,
-                                "numberedList": false,
-                                "expandedOnInstancePage": true
-                            },
-                            {
-                                "id": "interruptor",
-                                "valueType": "object",
-                                "makeLink": true,
-                                "externalLink": false,
-                                "sortValues": false,
-                                "numberedList": false,
-                                "expandedOnInstancePage": true
-                            },
-                            {
-                                "id": "referencedPlace",
-                                "valueType": "object",
-                                "makeLink": true,
-                                "externalLink": false,
-                                "sortValues": false,
-                                "numberedList": false,
-                                "expandedOnInstancePage": true
-                            }
-                        ]
-                    },
-                    "personInstancePageReferenceNetwork": {
-                        "tabID": 6,
-                        "tabPath": "referencenetwork",
-                        "tabIcon": "BubbleChart",
-                        "component": "Network",
-                        "pageType": "instancePage",
-                        "facetClass": "people",
-                        "sparqlQuery": "networkLinkQuery",
-                        "sparqlQueryNodes": "networkNodeQuery",
-                        "useNetworkAPI": true,
-                        "limit": 50,
-                        "optimize": 1.0,                  
-                        "preprocess": "preprocessParliamentSampoPeopleNetwork",                      
-                        "style": [
-                            {
-                                "selector": "node",
-                                "style": {
-                                    "shape": "ellipse",
-                                    "font-size": "data(font_size)",
-                                    "background-color": "data(color)",
-                                    "label": "data(prefLabel)",
-                                    "height": "data(size)",
-                                    "width": "data(size)",
-                                    "border-width": "data(border_width)",
-                                    "border-color": "black"
-                                }
-                            },
-                            {
-                                "selector": "edge",
-                                "style": {
-                                    "width": "data(weight)",
-                                    "line-color": "data(color)",
-                                    "curve-style": "bezier",
-                                    "content": "data(prefLabel)",
-                                    "color": "hsl(30, 64%, 35%)",
-                                    "opacity": 0.6,
-                                    "target-arrow-shape": "triangle",
-                                    "target-arrow-color": "data(color)",
-                                    "font-size": "8",
-                                    "text-valign": "center",
-                                    "edge-text-rotation": "autorotate",
-                                    "text-background-opacity": 1,
-                                    "text-background-color": "white",
-                                    "text-background-shape": "roundrectangle"
-                                }
-                            }
-                        ],
-                        "layout": {
-                            "name": "cose",
-                            "idealEdgeLength": 100,
-                            "nodeOverlap": 20,
-                            "refresh": 20,
-                            "fit": true,
-                            "padding": 30,
-                            "randomize": false,
-                            "componentSpacing": 100,
-                            "nodeRepulsion": 400000,
-                            "edgeElasticity": 100,
-                            "nestingFactor": 5,
-                            "gravity": 80,
-                            "numIter": 1347,
-                            "initialTemp": 200,
-                            "coolingFactor": 0.95,
-                            "minTemp": 1
-                        }    
-                    },
                     "personInstancePageSpeechTimeline": {
-                        "tabID": 7,
+                        "tabID": 2,
                         "component": "ApexChartsDouble",
                         "pageType": "instancePage",
                         "tabPath": "activity-timeseries",
@@ -383,6 +156,233 @@
                                     }
                                 }
                             }
+                        }
+                    },
+                    "personInstancePageReferences": {
+                        "tabID": 3,
+                        "tabPath": "speechReferences",
+                        "tabIcon": "RecordVoiceOver",
+                        "component": "InstancePageTable",
+                        "fetchResultsWhenMounted": true,
+                        "sparqlQuery": "personSpeechReferencesQuery",
+                        "properties": [
+                            {
+                                "id": "prefLabel",
+                                "valueType": "object",
+                                "makeLink": false,
+                                "externalLink": false,
+                                "sortValues": false,
+                                "numberedList": false
+                            },
+                            {
+                                "id": "referenced",
+                                "valueType": "object",
+                                "makeLink": true,
+                                "externalLink": false,
+                                "sortValues": false,
+                                "numberedList": false,
+                                "expandedOnInstancePage": true
+                            },
+                            {
+                                "id": "interrupted",
+                                "valueType": "object",
+                                "makeLink": true,
+                                "externalLink": false,
+                                "sortValues": false,
+                                "numberedList": false,
+                                "expandedOnInstancePage": true
+                            },
+                            {
+                                "id": "interruptor",
+                                "valueType": "object",
+                                "makeLink": true,
+                                "externalLink": false,
+                                "sortValues": false,
+                                "numberedList": false,
+                                "expandedOnInstancePage": true
+                            },
+                            {
+                                "id": "referencedPlace",
+                                "valueType": "object",
+                                "makeLink": true,
+                                "externalLink": false,
+                                "sortValues": false,
+                                "numberedList": false,
+                                "expandedOnInstancePage": true
+                            }
+                        ]
+                    },
+                    "personInstancePageReferenceNetwork": {
+                        "tabID": 4,
+                        "tabPath": "referencenetwork",
+                        "tabIcon": "BubbleChart",
+                        "component": "Network",
+                        "pageType": "instancePage",
+                        "facetClass": "people",
+                        "sparqlQuery": "networkLinkQuery",
+                        "sparqlQueryNodes": "networkNodeQuery",
+                        "useNetworkAPI": true,
+                        "limit": 50,
+                        "optimize": 1.0,                  
+                        "preprocess": "preprocessParliamentSampoPeopleNetwork",                      
+                        "style": [
+                            {
+                                "selector": "node",
+                                "style": {
+                                    "shape": "ellipse",
+                                    "font-size": "data(font_size)",
+                                    "background-color": "data(color)",
+                                    "label": "data(prefLabel)",
+                                    "height": "data(size)",
+                                    "width": "data(size)",
+                                    "border-width": "data(border_width)",
+                                    "border-color": "black"
+                                }
+                            },
+                            {
+                                "selector": "edge",
+                                "style": {
+                                    "width": "data(weight)",
+                                    "line-color": "data(color)",
+                                    "curve-style": "bezier",
+                                    "content": "data(prefLabel)",
+                                    "color": "hsl(30, 64%, 35%)",
+                                    "opacity": 0.6,
+                                    "target-arrow-shape": "triangle",
+                                    "target-arrow-color": "data(color)",
+                                    "font-size": "8",
+                                    "text-valign": "center",
+                                    "edge-text-rotation": "autorotate",
+                                    "text-background-opacity": 1,
+                                    "text-background-color": "white",
+                                    "text-background-shape": "roundrectangle"
+                                }
+                            }
+                        ],
+                        "layout": {
+                            "name": "cose",
+                            "idealEdgeLength": 100,
+                            "nodeOverlap": 20,
+                            "refresh": 20,
+                            "fit": true,
+                            "padding": 30,
+                            "randomize": false,
+                            "componentSpacing": 100,
+                            "nodeRepulsion": 400000,
+                            "edgeElasticity": 100,
+                            "nestingFactor": 5,
+                            "gravity": 80,
+                            "numIter": 1347,
+                            "initialTemp": 200,
+                            "coolingFactor": 0.95,
+                            "minTemp": 1
+                        }    
+                    },
+                    "personInstancePageEvents": {
+                        "tabID": 5,
+                        "tabPath": "events",
+                        "tabIcon": "CalendarToday",
+                        "component": "InstancePageTable",
+                        "fetchResultsWhenMounted": true,
+                        "sparqlQuery": "personEventsQuery",
+                        "properties": [
+                            {
+                                "id": "prefLabel",
+                                "valueType": "object",
+                                "makeLink": false,
+                                "externalLink": false,
+                                "sortValues": false,
+                                "numberedList": false
+                            },
+                            {
+                                "id": "event",
+                                "valueType": "object",
+                                "makeLink": false,
+                                "externalLink": false,
+                                "sortValues": false,
+                                "numberedList": true,
+                                "expandedOnInstancePage": true
+                            }
+                        ]
+                    },
+                    "personInstancePageNetwork": {
+                        "tabID": 6,
+                        "tabPath": "network",
+                        "tabIcon": "BubbleChart",
+                        "component": "Network",
+                        "pageType": "instancePage",
+                        "facetClass": "people",
+                        "sparqlQuery": "networkSimilarityQuery",
+                        "sparqlQueryNodes": "networkNodeQuery",
+                        "useNetworkAPI": true,
+                        "limit": 50,
+                        "optimize": 1.0,                  
+                        "preprocess": "preprocessParliamentSampoPeopleNetwork",                      
+                        "style": [
+                            {
+                                "selector": "node",
+                                "style": {
+                                    "shape": "ellipse",
+                                    "font-size": "data(font_size)",
+                                    "background-color": "data(color)",
+                                    "label": "data(prefLabel)",
+                                    "height": "data(size)",
+                                    "width": "data(size)",
+                                    "border-width": "data(border_width)",
+                                    "border-color": "black"
+                                }
+                            },
+                            {
+                                "selector": "edge",
+                                "style": {
+                                    "width": "data(weight)",
+                                    "line-color": "data(color)",
+                                    "curve-style": "bezier",
+                                    "content": "data(prefLabel)",
+                                    "color": "hsl(30, 64%, 35%)",
+                                    "opacity": 0.6,
+                                    "target-arrow-shape": "none",
+                                    "font-size": "8",
+                                    "text-valign": "center",
+                                    "edge-text-rotation": "autorotate",
+                                    "text-background-opacity": 1,
+                                    "text-background-color": "white",
+                                    "text-background-shape": "roundrectangle"
+                                }
+                            }
+                        ],
+                        "layout": {
+                            "name": "cose",
+                            "idealEdgeLength": 100,
+                            "nodeOverlap": 20,
+                            "refresh": 20,
+                            "fit": true,
+                            "padding": 30,
+                            "randomize": false,
+                            "componentSpacing": 100,
+                            "nodeRepulsion": 400000,
+                            "edgeElasticity": 100,
+                            "nestingFactor": 5,
+                            "gravity": 80,
+                            "numIter": 1347,
+                            "initialTemp": 200,
+                            "coolingFactor": 0.95,
+                            "minTemp": 1
+                        }    
+                    },
+                    "personInstanceMap": {
+                        "tabID": 7,
+                        "tabPath": "map",
+                        "tabIcon": "LocationOn",
+                        "component": "LeafletMap",
+                        "pageType": "instancePage",
+                        "mapMode": "marker",
+                        "showInstanceCountInClusters": false,
+                        "showExternalLayers": true,
+                        "customMapControl": true,
+                        "sparqlQuery": "placeMapQuery",
+                        "instanceConfig": {
+                            "createPopUpContent": "createPopUpContentAs"
                         }
                     }
                 }
@@ -535,7 +535,7 @@
                 "curve": "straight",
                 "width": 2
             },
-            "title": "Edustajien iät kauden alkaessa ja loppuessa",
+            "title": "Synnyin- ja kuolinvuodet",
             "xaxisTitle": "Ikä",
             "xaxisType": "category",
             "xaxisTickAmount": 20,
