@@ -149,10 +149,10 @@ export const groupPropertiesInstancePage =
       OPTIONAL { ?image__id semparls:license_link ?license_href }
     }
     
-    BIND(CONCAT('<a href="', STR(?image_page), '">Wikimedia Commons</a>',
-      IF (BOUND(?license), 
-        CONCAT(', käyttöoikeus: <a href="', STR(?license_href), '">', STR(?license),"</a>"),
-        "."
+    BIND(CONCAT('<a href="', STR(?image_page), '" target="_blank">Wikimedia Commons</a>',
+      IF (BOUND(?license_href), 
+        CONCAT(', käyttöoikeus: <a href="', STR(?license_href), '" target="_blank">', STR(?license),"</a>"),
+        CONCAT(", käyttöoikeus: ", STR(?license))
       )
     ) AS ?imagecredit)
     
