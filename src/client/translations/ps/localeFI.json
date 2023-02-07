@@ -405,6 +405,10 @@
           "label": "Kuva",
           "description": "Kuva henkilöstä"
         },
+        "imagesource": {
+          "label": "Kuvalähde",
+          "description": "Tietolähde, josta kuva on peräisin"
+        },
         "extraInfo": {
           "label": "Lisätietoja",
           "description": "Lisätietoja henkilöstä"

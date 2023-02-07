@@ -182,9 +182,21 @@ export const personPropertiesInstancePage =
   UNION 
   {
     ?id sch:image ?image__id ;
-      skos:prefLabel ?image__description ;
-      skos:prefLabel ?image__title .
-      BIND(URI(CONCAT(REPLACE(STR(?image__id), "https*:", ""), "?width=600")) as ?image__url)
+      skos:prefLabel ?image__title ;
+      skos:prefLabel ?image__description .
+
+      BIND(URI(REPLACE(STR(?image__id), '/Special:FilePath/' ,'/File:')) AS ?image_page)
+    ?image__id dct:license ?license
+    OPTIONAL { ?image__id semparls:license_link ?license_href }
+    
+    BIND(CONCAT('<a href="', STR(?image_page), '">Wikimedia Commons</a>',
+      IF (BOUND(?license_href), 
+        CONCAT(', käyttöoikeus: <a href="', STR(?license_href), '">', STR(?license),"</a>"),
+        CONCAT(", käyttöoikeus: ", STR(?license))
+      )
+    ) AS ?imagesource)
+    
+    BIND(URI(CONCAT(REPLACE(STR(?image__id), "https*:", ""), "?width=600")) as ?image__url)
   }
   UNION
   { 
@@ -225,9 +237,10 @@ export const personPropertiesFacetResults =
   }
   UNION
   {
-    ?id sch:image ?image__id ;
-      skos:prefLabel ?image__description ;
-      skos:prefLabel ?image__title .
+    ?id sch:image ?image__id .
+    BIND(URI(REPLACE(STR(?image), '/Special:FilePath/' ,'/File:')) AS ?image_page)
+    BIND("" AS ?image__description)
+    BIND("?image__title" AS ?image__title)
       BIND(URI(CONCAT(REPLACE(STR(?image__id), "https*:", ""), "?width=600")) as ?image__url)
   }
   UNION
