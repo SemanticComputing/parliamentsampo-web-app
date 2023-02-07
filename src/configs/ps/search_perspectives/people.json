@@ -620,7 +620,7 @@
             "hideHeader": false
         },
         {
-            "id": "imagesource",
+            "id": "imagecredit",
             "valueType": "string",
             "renderAsHTML": true,
             "HTMLParserTask": "createReactRouterLinks",

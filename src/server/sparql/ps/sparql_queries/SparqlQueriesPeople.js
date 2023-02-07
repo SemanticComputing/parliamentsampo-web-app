@@ -194,7 +194,7 @@ export const personPropertiesInstancePage =
         CONCAT(', käyttöoikeus: <a href="', STR(?license_href), '">', STR(?license),"</a>"),
         CONCAT(", käyttöoikeus: ", STR(?license))
       )
-    ) AS ?imagesource)
+    ) AS ?imagecredit)
     
     BIND(URI(CONCAT(REPLACE(STR(?image__id), "https*:", ""), "?width=600")) as ?image__url)
   }
@@ -237,11 +237,11 @@ export const personPropertiesFacetResults =
   }
   UNION
   {
-    ?id sch:image ?image__id .
+    ?id sch:image ?image__id ; 
+      skos:prefLabel ?image__description; 
+      skos:prefLabel ?image__title .
     BIND(URI(REPLACE(STR(?image), '/Special:FilePath/' ,'/File:')) AS ?image_page)
-    BIND("" AS ?image__description)
-    BIND("?image__title" AS ?image__title)
-      BIND(URI(CONCAT(REPLACE(STR(?image__id), "https*:", ""), "?width=600")) as ?image__url)
+    BIND(URI(CONCAT(REPLACE(STR(?image__id), "https*:", ""), "?width=600")) as ?image__url)
   }
   UNION
   {
