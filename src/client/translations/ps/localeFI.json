@@ -407,6 +407,10 @@
           "label": "Kuva",
           "description": "Kuva henkilöstä"
         },
+        "imagecredit": {
+          "label": "Kuvalähde",
+          "description": "Tietolähde, josta kuva on peräisin"
+        },
         "extraInfo": {
           "label": "Lisätietoja",
           "description": "Lisätietoja henkilöstä"
@@ -642,6 +646,14 @@
           "label": "Vaihtoehtoinen nimi",
           "description": "Vaalipiirin nimi"
         },
+        "image": {
+          "label": "Kuva",
+          "description": "Kuva henkilöstä"
+        },
+        "imagecredit": {
+          "label": "Kuvalähde",
+          "description": "Tietolähde, josta kuva on peräisin"
+        },
         "born": {
           "label": "Syntyneet",
           "description": "Täällä syntyneet henkilöt"
@@ -808,6 +820,10 @@
         "image": {
           "label": "Kuva",
           "description": "Kuva"
+        },
+        "imagecredit": {
+          "label": "Kuvalähde",
+          "description": "Tietolähde, josta kuva on peräisin"
         },
         "type": {
           "label": "Tyyppi",

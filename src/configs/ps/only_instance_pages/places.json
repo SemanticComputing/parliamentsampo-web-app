@@ -80,6 +80,26 @@
       "minWidth": 170
     },
     {
+      "id": "image",
+      "valueType": "image",
+      "previewImageHeight": 160,
+      "makeLink": true,
+      "externalLink": true,
+      "sortValues": false,
+      "numberedList": false,
+      "hideHeader": false
+    },
+    {
+      "id": "imagecredit",
+      "valueType": "string",
+      "renderAsHTML": true,
+      "HTMLParserTask": "createReactRouterLinks",
+      "makeLink": false,
+      "externalLink": true,
+      "sortValues": true,
+      "numberedList": false
+    },
+    {
       "id": "born",
       "valueType": "object",
       "makeLink": true,

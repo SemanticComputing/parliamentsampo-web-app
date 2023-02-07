@@ -64,6 +64,17 @@
       "hideHeader": false
     },
     {
+      "id": "imagecredit",
+      "valueType": "string",
+      "renderAsHTML": true,
+      "HTMLParserTask": "createReactRouterLinks",
+      "makeLink": false,
+      "externalLink": true,
+      "sortValues": true,
+      "numberedList": false,
+      "onlyOnInstancePage": true
+    },
+    {
       "id": "timespan",
       "valueType": "string",
       "makeLink": false,
