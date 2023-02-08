@@ -630,7 +630,7 @@
       "longDescription": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Use this perspective to ...  The results can be viewed using the following tabs: </p> <ul class=\"MuiTypography-root MuiTypography-body1\"> <li> <strong>TABLE</STRONG> ...</li> <li> ... </li>  </ul>",
       "instancePage": {
         "label": "Paikka",
-        "description": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Ohjeet tähän </p>"
+        "description": "<h6 class=\"MuiTypography-root MuiTypography-h6\">Käytössä olevat välilehdet:</h6><ul class=\"MuiTypography-root MuiTypography-body1\"><li><strong>TAULUKKO</STRONG>-välilehti näyttää riveittäin tietoa tästä paikasta, kuten listauksia paikkaan liittyvistä henkilöistä ja organisaatioista sekä paikan osana laajempaa hierarkiaa.</li><li><strong>PUHEET</STRONG> näyttää listauksia puheista, joissa paikka on mainittu sekä sen maininneista puhujista.</li></ul>"
       },
       "properties": {
         "uri": {
