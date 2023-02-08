@@ -811,11 +811,15 @@
         },
         "altLabel": {
           "label": "Vaihtoehtoinen nimi",
-          "description": "Vaihtoehtoinen nimi tai lyhenne"
+          "description": "Vaihtoehtoinen nimi tai lyhenne tai nimi toisella kielellä"
         },
         "timespan": {
           "label": "Ajankohta",
           "description": "Tapahtuman ajankohta"
+        },
+        "electoralTerm": {
+          "label": "Vaalikausi",
+          "description": "Vaalikausi, jolle toiminta sijoittuu"
         },
         "image": {
           "label": "Kuva",
@@ -839,11 +843,11 @@
         },
         "related": {
           "label": "Samankaltaisia ryhmiä",
-          "description": "Lista ryhmistä, jotka liittyvät samaan paikkakuntaan tai joissa on samoja henkilöjä jäseninä"
+          "description": "Lista ryhmistä, jotka liittyvät samaan paikkakuntaan tai joissa on samoja henkilöjä jäseninä. Numero nimen jäljessä suluissa tarkoittaa yhteisten henkilöiden määrää."
         },
         "party": {
           "label": "Puolue",
-          "description": "Puolue"
+          "description": "Mahdollinen liittyvä puolue"
         },
         "datasource": {
           "label": "Liittyvä tietolähde",
@@ -862,7 +866,7 @@
       "longDescription": "",
       "instancePage": {
         "label": "Valiokunta tai toimielin",
-        "description": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Ohjeet tähän </p>"
+        "description": "<h6 class=\"MuiTypography-root MuiTypography-h6\">Käytössä olevat välilehdet:</h6><ul class=\"MuiTypography-root MuiTypography-body1\"><li><strong>TAULUKKO</STRONG>-välilehti näyttää tietoa tästä valiokunnasta tai toimielimestä, kuten linkkejä sen kokoonpanoihin eri aikoina sekä listan siihen kuuluneista henkilöistä.</li></ul>"
       },
       "properties": {
         "uri": {
@@ -871,8 +875,7 @@
         },
         "prefLabel": {
           "label": "Nimi",
-          "description": "Nimi",
-          "textFacetInputPlaceholder": "Hae..."
+          "description": "Nimi"
         },
         "altLabel": {
           "label": "Vaihtoehtoinen nimi",
@@ -884,7 +887,7 @@
         },
         "person": {
           "label": "Henkilöt",
-          "description": "Ryhmään kuuluneet henkilöt eri aikoina"
+          "description": "Lista ryhmään kuuluneista henkilöistä"
         },
         "type": {
           "label": "Tyyppi",

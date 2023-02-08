@@ -28,7 +28,10 @@ export const groupPropertiesInstancePage =
   }
   UNION
   {
-    ?id crm:P10_falls_within/skos:prefLabel ?timespan
+    ?id crm:P10_falls_within ?electoralTerm__id .
+    ?electoralTerm__id skos:prefLabel ?electoralTerm__prefLabel .
+    FILTER(LANG(?electoralTerm__prefLabel)='<LANG>')
+    BIND(CONCAT("/terms/page/", REPLACE(STR(?electoralTerm__id), "^.*\\\\/(.+)", "$1")) AS ?electoralTerm__dataProviderUrl)
   }
   UNION
   {
@@ -99,7 +102,9 @@ export const groupPropertiesInstancePage =
   }
   UNION
   {
-    SELECT DISTINCT ?id ?related__id ?related__prefLabel ?related__dataProviderUrl 
+    SELECT DISTINCT ?id ?related__id 
+    (CONCAT(STR(?_label), " (", STR(COUNT(DISTINCT ?prs)), ")") AS ?related__prefLabel)
+    (CONCAT("/groups/page/", REPLACE(STR(?related__id), "^.*\\\\/(.+)", "$1")) AS ?related__dataProviderUrl)
     WHERE {
       {
         ?id ^(bioc:bearer_of/crm:P11i_participated_in/semparls:organization) ?prs ; a ?idtype .
@@ -110,14 +115,13 @@ export const groupPropertiesInstancePage =
         ?id ^(semparls:has_party_membership/semparls:party) ?prs ; a ?idtype .
         ?prs semparls:has_party_membership/semparls:party ?related__id .
       }
-      ?related__id skos:prefLabel ?related__prefLabel ; a ?reltype .
-      FILTER(?related__id!=?id && ?reltype=?idtype)
-      FILTER(LANG(?related__prefLabel)='<LANG>')
-      BIND(CONCAT("/groups/page/", REPLACE(STR(?related__id), "^.*\\\\/(.+)", "$1")) AS ?related__dataProviderUrl)
+      ?related__id skos:prefLabel ?_label ; a ?reltype .
+      FILTER(?related__id!=?id && ?reltype=?idtype && LANG(?_label)='<LANG>')
+      # BIND(CONCAT("/groups/page/", REPLACE(STR(?related__id), "^.*\\\\/(.+)", "$1")) AS ?related__dataProviderUrl)
     } 
-    GROUP BY ?id ?related__id ?related__prefLabel ?related__dataProviderUrl 
-    ORDER BY DESC(COUNT(?prs))
-  }
+    GROUP BY ?id ?related__id ?_label 
+    ORDER BY DESC(COUNT(DISTINCT ?prs))
+}
   UNION
   {
     {
@@ -157,10 +161,5 @@ export const groupPropertiesInstancePage =
     ) AS ?imagecredit)
     
     BIND(URI(CONCAT(REPLACE(STR(?image__id), "https*:", ""), "?width=600")) as ?image__url)
-  }
-  UNION
-  {
-    ?id crm:P10_falls_within/skos:prefLabel ?period .
-    FILTER(LANG(?period)='<LANG>')
   }
 `

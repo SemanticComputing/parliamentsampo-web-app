@@ -75,6 +75,15 @@
       "onlyOnInstancePage": true
     },
     {
+      "id": "electoralTerm",
+      "valueType": "object",
+      "makeLink": true,
+      "externalLink": false,
+      "sortValues": true,
+      "numberedList": false,
+      "minWidth": 170
+    },
+    {
       "id": "timespan",
       "valueType": "string",
       "makeLink": false,
