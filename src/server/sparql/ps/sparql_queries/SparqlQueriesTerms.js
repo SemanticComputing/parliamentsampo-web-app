@@ -48,7 +48,7 @@ UNION
       ?prs bioc:bearer_of/crm:P11i_participated_in/semparls:organization/crm:P10_falls_within ?id ;
           bioc:bearer_of/crm:P11i_participated_in/semparls:organization/crm:P10_falls_within ?related__id .
    FILTER (?related__id!=?id)
-   ?related__id skos:prefLabel ?label .
+   ?related__id a semparls:ElectoralTerm ; skos:prefLabel ?label .
    } 
  GROUP BY ?id ?related__id ?label ORDER BY DESC(?count)
 }
