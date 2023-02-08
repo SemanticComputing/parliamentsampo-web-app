@@ -166,10 +166,10 @@
   "perspectives": {
     "speeches": {
       "label": "Valtiopäivät 1907–",
-      "labelMainPage": "Puheenvuorot",
+      "labelMainPage": "Kaikki valtiopäivät",
       "shortLabel": "Valtiopäivät 1907–",
       "facetResultsType": "puheenvuoroa",
-      "shortDescription": "Hae täysistuntojen puheenvuoroja eri aikakausilta",
+      "shortDescription": "Puheenvuorot kaikkien vaalikausien ajalta",
       "subMain": {
         "label": "Kaikki valtiopäivät 1907-",
         "shortDescription": "Puheenvuorot kaikkien vaalikausien ajalta"
