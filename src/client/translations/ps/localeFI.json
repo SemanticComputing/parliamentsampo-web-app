@@ -843,11 +843,11 @@
         },
         "related": {
           "label": "Samankaltaisia ryhmiä",
-          "description": "Lista ryhmistä, jotka liittyvät samaan paikkakuntaan tai joissa on samoja henkilöjä jäseninä"
+          "description": "Lista ryhmistä, jotka liittyvät samaan paikkakuntaan tai joissa on samoja henkilöjä jäseninä. Numero nimen jäljessä suluissa tarkoittaa yhteisten henkilöiden määrää."
         },
         "party": {
           "label": "Puolue",
-          "description": "Puolue"
+          "description": "Mahdollinen liittyvä puolue"
         },
         "datasource": {
           "label": "Liittyvä tietolähde",
