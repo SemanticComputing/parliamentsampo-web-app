@@ -28,7 +28,10 @@ export const groupPropertiesInstancePage =
   }
   UNION
   {
-    ?id crm:P10_falls_within/skos:prefLabel ?timespan
+    ?id crm:P10_falls_within ?electoralTerm__id .
+    ?electoralTerm__id skos:prefLabel ?electoralTerm__prefLabel .
+    FILTER(LANG(?electoralTerm__prefLabel)='<LANG>')
+    BIND(CONCAT("/terms/page/", REPLACE(STR(?electoralTerm__id), "^.*\\\\/(.+)", "$1")) AS ?electoralTerm__dataProviderUrl)
   }
   UNION
   {
@@ -157,10 +160,5 @@ export const groupPropertiesInstancePage =
     ) AS ?imagecredit)
     
     BIND(URI(CONCAT(REPLACE(STR(?image__id), "https*:", ""), "?width=600")) as ?image__url)
-  }
-  UNION
-  {
-    ?id crm:P10_falls_within/skos:prefLabel ?period .
-    FILTER(LANG(?period)='<LANG>')
   }
 `

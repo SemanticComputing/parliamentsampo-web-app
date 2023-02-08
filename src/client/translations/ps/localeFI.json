@@ -811,11 +811,15 @@
         },
         "altLabel": {
           "label": "Vaihtoehtoinen nimi",
-          "description": "Vaihtoehtoinen nimi tai lyhenne"
+          "description": "Vaihtoehtoinen nimi tai lyhenne tai nimi toisella kielellä"
         },
         "timespan": {
           "label": "Ajankohta",
           "description": "Tapahtuman ajankohta"
+        },
+        "electoralTerm": {
+          "label": "Vaalikausi",
+          "description": "Vaalikausi, jolle toiminta sijoittuu"
         },
         "image": {
           "label": "Kuva",
