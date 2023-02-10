@@ -59,8 +59,9 @@ export const speechPropertiesInstancePage = `
   UNION
   {
     ?id semparls:content ?contentTemp .
-    BIND (REPLACE(?contentTemp, '\\n', '<br>') AS ?content)
-  }
+    BIND (REPLACE(?contentTemp, '<', ' ') AS ?contentTemp1)
+    BIND (REPLACE(?contentTemp1, '>', ' ') AS ?contentTemp2)
+    BIND (REPLACE(?contentTemp2, '\\n', '<br>') AS ?content)  }
   UNION
   {
     ?id semparls:item ?item__id .
