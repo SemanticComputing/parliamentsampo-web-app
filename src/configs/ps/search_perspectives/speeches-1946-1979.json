@@ -409,11 +409,11 @@
             "facetType": "list",
             "filterType": "uriFilter",
             "pieChartButton": true,
-            "predicate": "semparls:facet_speech_type",
+            "predicate": "facets:facet_speech_type",
             "searchField": true,
             "sortButton": true,
             "sortBy": "instanceCount",
-            "sortByPredicate": "semparls:facet_speech_type/skos:prefLabel",
+            "sortByPredicate": "facets:facet_speech_type/skos:prefLabel",
             "sortDirection": "desc"
         },
         "speaker": {
@@ -421,11 +421,11 @@
             "facetType": "list",
             "filterType": "uriFilter",
             "pieChartButton": true,
-            "predicate": "semparls:facet_speaker",
+            "predicate": "facets:facet_speaker",
             "searchField": true,
             "sortButton": true,
             "sortBy": "instanceCount",
-            "sortByPredicate": "semparls:facet_speaker/skos:prefLabel",
+            "sortByPredicate": "facets:facet_speaker/skos:prefLabel",
             "sortDirection": "desc"
         },
         "party": {
@@ -434,11 +434,11 @@
             "facetType": "list",
             "filterType": "uriFilter",
             "pieChartButton": true,
-            "predicate": "semparls:facet_party",
+            "predicate": "facets:facet_party",
             "searchField": true,
             "sortButton": true,
             "sortBy": "instanceCount",
-            "sortByPredicate": "semparls:facet_party/skos:prefLabel",
+            "sortByPredicate": "facets:facet_party/skos:prefLabel",
             "sortDirection": "desc"
         },
         "gender": {
@@ -447,11 +447,11 @@
             "facetType": "list",
             "filterType": "uriFilter",
             "pieChartButton": true,
-            "predicate": "semparls:facet_gender",
+            "predicate": "facets:facet_gender",
             "searchField": false,
             "sortButton": true,
             "sortBy": "instanceCount",
-            "sortByPredicate": "semparls:facet_gender/skos:prefLabel",
+            "sortByPredicate": "facets:facet_gender/skos:prefLabel",
             "sortDirection": "desc"
         },
         "language": {
@@ -460,10 +460,10 @@
             "facetType": "list",
             "filterType": "uriFilter",
             "pieChartButton": true,
-            "predicate": "semparls:facet_language",
+            "predicate": "facets:facet_language",
             "sortButton": true,
             "sortBy": "instanceCount",
-            "sortByPredicate": "semparls:facet_language/skos:prefLabel",
+            "sortByPredicate": "facets:facet_language/skos:prefLabel",
             "sortDirection": "desc"
         },
         "date": {
@@ -479,9 +479,9 @@
             "facetType": "list",
             "filterType": "uriFilter",
             "pieChartButton": true,
-            "predicate": "semparls:facet_parliamentary_session",
+            "predicate": "facets:facet_parliamentary_session",
             "sortBy": "prefLabel",
-            "sortByPredicate": "semparls:facet_parliamentary_session/skos:prefLabel",
+            "sortByPredicate": "facets:facet_parliamentary_session/skos:prefLabel",
             "sortDirection": "asc"
         },
         "electoralTerm": {
@@ -489,9 +489,9 @@
             "facetType": "list",
             "filterType": "uriFilter",
             "pieChartButton": true,
-            "predicate": "semparls:facet_electoral_term",
+            "predicate": "facets:facet_electoral_term",
             "sortBy": "prefLabel",
-            "sortByPredicate": "semparls:facet_electoral_term/skos:prefLabel",
+            "sortByPredicate": "facets:facet_electoral_term/skos:prefLabel",
             "sortDirection": "asc"
         },
         "documentType": {
@@ -499,11 +499,11 @@
             "facetType": "list",
             "filterType": "uriFilter",
             "pieChartButton": true,
-            "predicate": "semparls:facet_document_type",
+            "predicate": "facets:facet_document_type",
             "searchField": true,
             "sortButton": true,
             "sortBy": "instanceCount",
-            "sortByPredicate": "semparls:facet_document_type",
+            "sortByPredicate": "facets:facet_document_type",
             "sortDirection": "desc"
         }
     }
