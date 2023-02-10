@@ -8,9 +8,10 @@ export const fullTextSearchProperties = `
     (semparls:ParliamentaryBody 5)
     (semparls:ElectoralDistrict 6)
     (semparls:MunicipalCouncil 7)
-    (semparls:Publication 8)
-    (crm:E53_Place 9)
-    (semparls:Organization 10)
+    (semparls:ElectoralTerm 8)
+    (semparls:Publication 9)
+    (crm:E53_Place 10)
+    (semparls:Organization 11)
     (semparls:School 11)
   }
   
@@ -74,6 +75,13 @@ export const fullTextSearchProperties = `
     FILTER (lang(?prefLabel__id)="fi")
     BIND(?prefLabel__id as ?prefLabel__prefLabel)
     BIND(CONCAT("/committees/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
+  }
+  UNION
+  {
+    ?id a semparls:ElectoralTerm ;
+      skos:prefLabel ?prefLabel__id .
+    BIND(?prefLabel__id as ?prefLabel__prefLabel)
+    BIND(CONCAT("/terms/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
   }
   UNION 
   {
