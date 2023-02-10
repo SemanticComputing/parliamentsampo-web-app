@@ -167,7 +167,7 @@
     "speeches": {
       "label": "Puheenvuorot 1907–",
       "labelMainPage": "Puheenvuorot eri ajanjaksoilta",
-      "shortLabel": "Puheenvuorot 1907–",
+      "shortLabel": "Puheenvuorot 1907–2022",
       "facetResultsType": "puheenvuoroa",
       "shortDescription": "Puheenvuorot kaikilta valtiopäiviltä ajalta 1907-2022",
       "subMain": {
@@ -314,8 +314,8 @@
           "description": "Asiasana (TF-IDF)"
         },
         "eksCategory": {
-          "label": "Asiakohdan EKS-kategoria (beta)",
-          "description": "Hae puheenvuoroja niiden asiakohdan automaattisesti tunnistetun  luokituksen perusteella, joka perustuu Eduskunnan kirjaston asiasanaston (EKS) kategrioihin."
+          "label": "Asiakohdan kirjastoluokitus (autom. tunnistettu) ",
+          "description": "Hae puheenvuoroja niiden asiakohdan automaattisesti tunnistetun luokituksen mukaan, joka perustuu Eduskunnan kirjaston asiasanaston (EKS) kategrioihin."
         },
         "videoLink": {
           "label": "Video",
@@ -325,7 +325,7 @@
     },
     "speeches-1907-1945": {
       "label": "Puheenvuorot 1907–1945",
-      "shortLabel": "Valtiopäivät 1907–1945", 
+      "shortLabel": "Puheenvuorot 1907–1945",
       "subMain": {
         "label": "Puheenvuorot 1907–1945",
         "shortDescription": "Puheenvuorot eduskunnan perustamisesta toisen maailmansodan loppuun"
@@ -335,7 +335,7 @@
     },
     "speeches-1946-1979": {
       "label": "Puheenvuorot 1946–1979",
-      "shortLabel": "Valtiopäivät 1946–1979",
+      "shortLabel": "Puheenvuorot 1946–1979",
       "subMain": {
         "label": "Puheenvuorot 1946–1979",
         "shortDescription": "Puheenvuorot toisen maailmansodan loppusta 70-luvun loppuun"
@@ -345,7 +345,7 @@
     },
     "speeches-1980-1999": {
       "label": "Puheenvuorot 1980–1999",
-      "shortLabel": "Valtiopäivät 1980–1999",
+      "shortLabel": "Puheenvuorot 1980–1999",
       "subMain": {
         "label": "Puheenvuorot 1980–1999",
         "shortDescription": "Puheenvuorot valtiopäiviltä 80-luvun alusta vuosituhannen vaihteeseen"
@@ -355,7 +355,7 @@
     },
     "speeches-2000-2014": {
       "label": "Puheenvuorot 2000–2014",
-      "shortLabel": "Valtiopäivät 2000–2014",
+      "shortLabel": "Puheenvuorot 2000–2014",
       "subMain": {
         "label": "Puheenvuorot 2000–2014",
         "shortDescription": "Puheenvuorot valtiopäiviltä 2000-luvun alusta vuoteen 2015 asti."

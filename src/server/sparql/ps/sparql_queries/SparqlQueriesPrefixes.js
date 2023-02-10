@@ -22,4 +22,5 @@ export const prefixes = `
   PREFIX wgs84: <http://www.w3.org/2003/01/geo/wgs84_pos#>
   PREFIX xl: <http://www.w3.org/2008/05/skos-xl#>
   PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+  PREFIX facets: <http://ldf.fi/schema/parliamentsampo-portal/>
 `
