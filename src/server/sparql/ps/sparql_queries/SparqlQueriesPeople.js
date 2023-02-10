@@ -631,30 +631,34 @@ export const placePropertiesInfoWindow = `
 `
 
 export const placeMapQuery = `
-SELECT DISTINCT ?id ?lat ?long ?prefLabel__id ?prefLabel__prefLabel ?prefLabel__dataProviderUrl ?markerColor ?markerSize WHERE {
+SELECT DISTINCT ?id ?lat ?long ?prefLabel__id 
+(CONCAT(?prefLabel__id, " (", GROUP_CONCAT(DISTINCT ?place_type; separator=", "), ")") as ?prefLabel__prefLabel)
+(CONCAT("/places/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
+(CONCAT("/places/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?dataProviderUrl)
+(IF(max(?score)>1, "blue",
+  IF(max(?score)=1, "green", "yellow")) AS ?markerColor)
+WHERE {
   BIND(<ID> as ?prs)
 
   {
     [] semparls:speaker ?prs ;
        semparl_linguistics:referenceToPlace/skos:relatedMatch ?id .
-    BIND("yellow" AS ?markerColor)
+    BIND(0 AS ?score)
   }
   UNION
   {
     ?prs bioc:bearer_of/crm:P11i_participated_in/crm:P7_took_place_at ?id .
-    BIND("green" AS ?markerColor)
+    BIND(1 AS ?score)
   } 
   UNION
   {
     ?prs crm:P98i_was_born/crm:P7_took_place_at ?id .
-    BIND("blue" AS ?markerColor)
-    BIND("large" AS ?markerSize)
+    BIND(2 AS ?score)
   }
   UNION
   {
     ?prs crm:P100i_died_in/crm:P7_took_place_at ?id .
-    BIND("red" AS ?markerColor)
-    BIND("large" AS ?markerSize)
+    BIND(3 AS ?score)
   }
 
   ?id a crm:E53_Place ;
@@ -662,11 +666,15 @@ SELECT DISTINCT ?id ?lat ?long ?prefLabel__id ?prefLabel__prefLabel ?prefLabel__
     geo:lat ?lat ;
     geo:long ?long .
   FILTER NOT EXISTS { ?id semparls:has_duplicate_child [] }
-  FILTER(LANG(?prefLabel__id) = "<LANG>")
-  BIND(?prefLabel__id as ?prefLabel__prefLabel)
-  BIND(CONCAT("/places/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
-  BIND(CONCAT("/places/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?dataProviderUrl)
-} 
+  FILTER(LANG(?prefLabel__id) = "fi")
+  
+  VALUES (?score ?place_type) {
+    (0 "puheessa mainittu")
+    (1 "elämäntapahtuma")
+    (2 "synnyinpaikka")
+    (3 "kuolinpaikka")
+  }
+} GROUP BY ?id ?lat ?long ?prefLabel__id ORDER BY max(?score)
 `
 
 export const peopleRelatedTo = `
