@@ -1,9 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import withStyles from '@mui/styles/withStyles';
+import withStyles from '@mui/styles/withStyles'
 import Button from '@mui/material/Button'
 import Paper from '@mui/material/Paper'
 import { stateToUrl } from '../../helpers/helpers'
+import intl from 'react-intl-universal'
 
 const apiUrl = process.env.API_URL
 
@@ -56,8 +57,11 @@ class ExportCSV extends React.Component {
       facets: this.props.facets
     })
     // console.log(params.constraints)
-    const constraintsTemp = params.constraints ? `&constraints=${encodeURIComponent(JSON.stringify(params.constraints))}` : ''
-    const constraints = constraintsTemp.replace('*', '%2A') // temporary solution for a bug - may still be unable to download some text searches with special characters
+    let constraints = params.constraints ? `&constraints=${encodeURIComponent(JSON.stringify(params.constraints))}` : ''
+    constraints = constraints.replace('*', '%2A') // temporary solution for a bug - may still be unable to download some text searches with special characters
+    constraints = constraints.replace('(', '%28')
+    constraints = constraints.replace(')', '%29')
+    constraints = constraints.replace('!', '%21')
     return `${apiUrl}/faceted-search/${this.props.resultClass}/all?facetClass=${this.props.facetClass}&resultFormat=csv${constraints}`
   }
 
@@ -77,9 +81,9 @@ class ExportCSV extends React.Component {
           </Button>
         </a>
         </div>
-      <div>
-        <p>Voit ladata tästä maksimissaan 100 puhetta CSV muodossa.</p>
-      </div>
+        <div>
+          <p>{intl.get(`csvDownload.${this.props.facetClass}`)}</p>
+        </div>
       </Paper>
     )
   }

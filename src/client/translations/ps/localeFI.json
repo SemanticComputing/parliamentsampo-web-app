@@ -82,6 +82,9 @@
   "table": {
     "rowsPerPage": "Riviä sivulla"
   },
+  "csvDownload": {
+    "speeches": "Voit ladata tästä maksimissaan 1000 puhetta CSV muodossa."
+  },
   "exportToYasgui": "Avaa tuloskysely yasgui-editorissa",
   "lineChart": {
     "speech": "Puhe",
