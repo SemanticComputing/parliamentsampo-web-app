@@ -11,7 +11,7 @@
     "subheading": "Eduskunta semanttisessa webissä"
   },
   "selectPerspective": "Valitse näkymä aineiston hakua ja tutkimista varten:",
-  "mainPageImageLicence": "Etusivun kuvien <a href='https://dev.parlamenttisampo.fi/fi/imagelicence' target='_blank'>lisenssitiedot</a>",
+  "mainPageImageLicence": "Etusivun kuvien <a href='https://dev.parlamenttisampo.fi/fi/imagelicence' target='_top'>lisenssitiedot</a>",
   "backendErrorText": "Palvelin ei ole käytettävissä juuri nyt. Kokeile myöhemmin uuudestaan.",
   "speechesMainPage": {
     "title": "Täysistuntojen puheenvuorot",
