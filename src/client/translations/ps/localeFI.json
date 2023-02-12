@@ -6,7 +6,7 @@
   },
   "appTitle": {
     "short": "Parlamenttisampo",
-    "mobile": "P",
+    "mobile": "",
     "long": "Parlamenttisampo",
     "subheading": "Eduskunta semanttisessa webissä"
   },
@@ -83,7 +83,7 @@
     "rowsPerPage": "Riviä sivulla"
   },
   "csvDownload": {
-    "speeches": "Voit ladata tästä maksimissaan 1000 puhetta CSV muodossa."
+    "speeches": "Voit ladata tästä maksimissaan 1000 puhetta CSV muodossa. (UTF-8 koodaus, erotin ',')"
   },
   "exportToYasgui": "Avaa tuloskysely yasgui-editorissa",
   "lineChart": {

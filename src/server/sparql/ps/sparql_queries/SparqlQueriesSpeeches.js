@@ -689,5 +689,5 @@ export const csvSpeechesQuery = `
       ?id semparls:content ?content .
     }
   }
-  LIMIT 100
+  LIMIT 1000
 `

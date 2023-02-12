@@ -79,6 +79,7 @@
         "paginationToolbarHeight": 37,
         "tableFontSize": "0.8rem",
         "topBar": {
+            "logoImage": "logos/paikat.png",
             "logoTextTransform": "none",
             "showLanguageButton": false,
             "showSearchField": true,
