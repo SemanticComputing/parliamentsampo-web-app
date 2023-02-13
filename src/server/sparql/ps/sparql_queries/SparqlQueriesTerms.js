@@ -17,7 +17,7 @@ UNION
 }
 UNION
 { 
-  ?id sch:relatedLink ?exlink__id .
+  ?id sch:sameAs ?exlink__id .
   BIND ("Kansanedustajat" AS ?exlink__prefLabel)
   BIND(?exlink__id AS ?exlink__dataProviderUrl)
 }
