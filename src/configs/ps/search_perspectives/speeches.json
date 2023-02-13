@@ -477,7 +477,7 @@
             "facetType": "list",
             "filterType": "uriFilter",
             "pieChartButton": true,
-            "predicate": "facets:speaker",
+            "predicate": "facets:facet_speaker",
             "searchField": true,
             "sortButton": true,
             "sortBy": "instanceCount",
