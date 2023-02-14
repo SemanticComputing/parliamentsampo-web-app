@@ -27,7 +27,7 @@
       "aboutTheRegisterUrl": "https://seco.cs.aalto.fi/projects/semparl/parlamenttisampo-rekisteriseloste.pdf"
     },
     "searchBarPlaceHolder": "Hae entiteettien kotisivuja",
-    "searchBarPlaceHolderShort": "Hae...",
+    "searchBarPlaceHolderShort": "Hae entiteettien sivuja",
     "instructions": "ohjeet",
     "instructionsUrl": "https://seco.cs.aalto.fi/projects/semparl/parlamenttisammon-ohje.pdf",
     "speechesDropdown": {
@@ -367,7 +367,7 @@
       "longDescription": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Tässä näkymässä voit hakea, selata ja visualisoida puheenvuoroja vuodesta 2000 vuoteen 2014. Voit hakea puheenvuoroja käyttäen vasemmalla (mobiiliversiossa tulosten yllä) olevia suodattamia tai fasetteja. Nopein keino hakea puheenvuoroja on ensimmaisenä oleva sisältö tekstihaku-suodatin. Voit hakea sille puheenvuorossa esiintyviä termejä. Faseteilla voit hakea myös erilaisten ominaisuuksien, kuten puhujan puolueen tai sukupuolen perusteella. Tuloksia voit visualisoida seuraalla välilehdillä: </p> <ul class=\"MuiTypography-root MuiTypography-body1\"> <li> <strong>TAULUKKO</STRONG> välilehti näyttää tulokset listana.</li> <li> <strong>AIKAJANA</STRONG> visualisoi puheenvuorojen määriä vuosittain viivakaaviona.</li>  <li> <strong>PIIRAKKA/VIIVAKAAVIO</STRONG> visualisoi puheenvuorojen suhteellisia määriä valikosta valittavan ominaisuuden mukaan joko piirakka- tai pylväskaaviona. (Huomaa, että kaaviot voivat tuottaa vääriä tuloksia, jos teet uusia fasettivalintoja tulosten haun olleessa vielä kesken.) </li> <li> <strong>CSV</STRONG> välilehdellä voit ladata tuloksia taulukkomuodossa omalle koneellesi. Voit kuitenkin suorituskykysyistä ladata vain rajatun määrän tuloksia. Kaikkien puheenvuorojen tiedot julkaistaan myös erillisenä pakattuna tiedostona tutkimuskäyttöön. </li> <li> <strong>SPARQL-KYSELY</STRONG> välilehdeltä voit seurata linkkie Yasgui-palveluun, ja voit nähdä kyselyn, jolla tulokset haetaan tietokannasta. </li> </ul>"
     },
     "speeches-2015-": {
-      "label": "Uusimmat puheenvuorot",
+      "label": "Puheenvuorot 2015-2022",
       "shortLabel": "Puheenvuorot 2015–",
       "shortDescription": "Uusimmat puheenvuorot ajalta 2015-2022",
       "subMain": {
