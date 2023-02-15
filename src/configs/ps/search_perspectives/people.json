@@ -10,7 +10,7 @@
     "URITemplate": "<BASE_URI>/people/<LOCAL_ID>",
     "facetClass": "bioc:Person",
     "langTag": "fi",
-    "frontPageImage": "main_page/kekkonen.jpg",
+    "frontPageImage": "main_page/virolainen.jpg",
     "searchMode": "faceted-search",
     "defaultActiveFacets": [],
     "defaultTab": "table",
