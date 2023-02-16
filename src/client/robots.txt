@@ -1,2 +1,16 @@
 User-agent: *
-Disallow: /
+Disallow: /speeches/page/*
+Disallow: /people/page/*
+Disallow: /committees/page/*
+Disallow: /districts/page/*
+Disallow: /documents/page/*
+Disallow: /events/page/*
+Disallow: /groups/page/*
+Disallow: /interruptions/page/*
+Disallow: /items/page/*
+Disallow: /occupations/page/*
+Disallow: /parliamentarySessions/page/*
+Disallow: /places/page/*
+Disallow: /plenarySessions/page/*
+Disallow: /publications/page/*
+Disallow: /terms/page/*
