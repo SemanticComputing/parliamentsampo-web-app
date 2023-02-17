@@ -522,7 +522,7 @@ SELECT DISTINCT ?source ?target (COUNT(DISTINCT ?sp) AS ?weight) (STR(COUNT(DIST
  GROUPBY ?source ?target ORDERBY DESC(?weight) 
 `
 
-//  https://api.triplydb.com/s/Akju-2eeb
+//  network
 export const networkNodeQuery = `
 SELECT DISTINCT ?id ?prefLabel (SAMPLE(?_color) AS ?color) ?href
 WHERE {
@@ -530,6 +530,17 @@ WHERE {
     ?id xl:prefLabel/skos:prefLabel ?prefLabel .
     OPTIONAL { ?id semparls:has_party_membership/semparls:party/semparls:hexcolor ?_color }
     BIND(CONCAT("../", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1"),"/network") AS ?href)
+} GROUP BY ?id ?prefLabel ?href
+`
+
+//  referencenetwork
+export const referenceNetworkNodeQuery = `
+SELECT DISTINCT ?id ?prefLabel (SAMPLE(?_color) AS ?color) ?href
+WHERE {
+    VALUES ?id { <ID_SET> }
+    ?id xl:prefLabel/skos:prefLabel ?prefLabel .
+    OPTIONAL { ?id semparls:has_party_membership/semparls:party/semparls:hexcolor ?_color }
+    BIND(CONCAT("../", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1"),"/referencenetwork") AS ?href)
 } GROUP BY ?id ?prefLabel ?href
 `
 

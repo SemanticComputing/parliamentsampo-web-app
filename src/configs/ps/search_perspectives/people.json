@@ -220,7 +220,7 @@
                         "pageType": "instancePage",
                         "facetClass": "people",
                         "sparqlQuery": "networkLinkQuery",
-                        "sparqlQueryNodes": "networkNodeQuery",
+                        "sparqlQueryNodes": "referenceNetworkNodeQuery",
                         "useNetworkAPI": true,
                         "limit": 50,
                         "optimize": 1.0,                  
