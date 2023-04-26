@@ -189,7 +189,7 @@
         },
         "contentTextFacet": {
           "label": "Sisältö",
-          "description": "Hae puheita tekstihaulla niiden sisällön perusteella",
+          "description": "Hae puheita tekstihaulla niiden sisällön perusteella. Haku perustuu Apache Lucene indeksihakuun. Yksinkertaisten hakujen lisäksi voit käyttää jokerimerkkiä *, esim. näin maanviljel*. Voit myös käyttää loogisia operaattoreita AND, OR ja NOT, mutta silloin haku tulee kirjoittaa sulkeiden sisään esim näin: (demarit AND kokoomus). Voit myös hakea usean sanan fraaseja kirjoittamalle ne lainausmerkkien sisään, esim. näin: \"suomen nato jäsenyys\"." ,
           "textFacetInputPlaceholder": "Hae..."
         },
         "prefLabel": {
