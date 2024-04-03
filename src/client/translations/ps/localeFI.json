@@ -83,7 +83,10 @@
     "rowsPerPage": "Riviä sivulla"
   },
   "csvDownload": {
-    "speeches": "Voit ladata tästä maksimissaan 1000 puhetta CSV muodossa. (UTF-8 koodaus, erotin ',')"
+    "speeches": "<p>Voit ladata tästä maksimissaan 10000 puhetta CSV muodossa. (UTF-8 koodaus, erotin ',')</p>"
+  },
+  "csvDownloadInfo": {
+    "speeches": "<p>Lisätietoa portaallin datasta ja eri tavoista sen lataamiseen löytyy <a href=\"https://seco.cs.aalto.fi/projects/semparl/\" target=\"_blank\" rel=\"noopener noreferrer\">projektin kotisivuilta.</a></p>"
   },
   "exportToYasgui": "Avaa tuloskysely yasgui-editorissa",
   "lineChart": {

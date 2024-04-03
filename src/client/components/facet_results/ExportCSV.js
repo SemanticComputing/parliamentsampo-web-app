@@ -82,7 +82,8 @@ class ExportCSV extends React.Component {
         </a>
         </div>
         <div>
-          <p>{intl.get(`csvDownload.${this.props.facetClass}`)}</p>
+          {intl.getHTML(`csvDownload.${this.props.facetClass}`)}
+          {intl.getHTML(`csvDownloadInfo.${this.props.facetClass}`)}
         </div>
       </Paper>
     )
