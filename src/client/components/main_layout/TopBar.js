@@ -63,6 +63,9 @@ const TopBar = props => {
   }
 
   const renderMobileMenuItem = perspective => {
+    if (perspective.id == 'fullTextSearch') {
+      return
+    }
     if (has(perspective, 'externalUrl')) {
       return (
         <Box
