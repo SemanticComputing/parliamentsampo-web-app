@@ -177,7 +177,7 @@ const TopBar = props => {
         open={isMobileMenuOpen}
         onClose={handleMobileMenuClose}
       >
-        {perspectives.map(perspective => perspective.hideTopPerspectiveButton ? null : renderMobileMenuItem(perspective))}
+        {perspectives.map(perspective => renderMobileMenuItem(perspective))}
         <Divider />
         {renderMobileMenuItem({
           id: 'feedback',
