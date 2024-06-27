@@ -1,7 +1,7 @@
 {
     "id": "speeches-1946-1979",
     "endpoint": {
-        "url": "https://ldf.fi/semparl-rahti/sparql",
+        "url": "https://ldf.fi/semparl/sparql",
         "useAuth": true,
         "prefixesFile": "SparqlQueriesPrefixes.js"
     },
