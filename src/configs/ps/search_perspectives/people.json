@@ -1,7 +1,7 @@
 {
     "id": "people",
     "endpoint": {
-        "url": "https://ldf.fi/semparl/sparql",
+        "url": "https://ldf.fi/semparl-dev/sparql",
         "useAuth": true,
         "prefixesFile": "SparqlQueriesPrefixes.js"
     },

@@ -1,6 +1,11 @@
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 # ParliamentSampo User Interface
 
+Release branch online: (https://parlamentttisampo.fi)
+
+Master branch online: (https://dev.parlamentttisampo.fi)
+
+
 Based on [Sampo-UI &ndash; A framework for building semantic portal user interfaces](https://github.com/SemanticComputing/sampo-ui)
 
 The Sampo-UI framework is being developed by the [Semantic Computing Research Group (SeCo)](https://seco.cs.aalto.fi) 
