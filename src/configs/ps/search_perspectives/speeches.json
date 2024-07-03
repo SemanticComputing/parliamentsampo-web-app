@@ -532,7 +532,7 @@
             "predicate": "dct:date",
             "sortByPredicate": "dct:date",
             "min": "1907-05-23",
-            "max": "2022-03-11"
+            "max": "2024-02-05"
         },
         "parliamentarySession": {
             "containerClass": "ten",
