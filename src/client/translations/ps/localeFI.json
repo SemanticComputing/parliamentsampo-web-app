@@ -323,6 +323,10 @@
           "label": "Asiakohdan kirjastoluokitus (autom. tunnistettu) ",
           "description": "Hae puheenvuoroja niiden asiakohdan automaattisesti tunnistetun luokituksen mukaan, joka perustuu Eduskunnan kirjaston asiasanaston (EKS) kategrioihin."
         },
+        "interrupter": {
+          "label": "Keskeyttäjä",
+          "description": "Henkilö, joka on keskeyttänyt puheen. Tässä vain tunnistetut henkilöt. Mukana puhemiehen keskeytyksiä ja keskeytyksiä, joissa tarkkaa henkilöä ei ole tunnistettu."
+        },
         "videoLink": {
           "label": "Video",
           "description": "Linkki videoon istunnosta."
