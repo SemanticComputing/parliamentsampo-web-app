@@ -325,7 +325,7 @@
         },
         "interrupter": {
           "label": "Keskeyttäjä",
-          "description": "Henkilö, joka on keskeyttänyt puheen. Tässä vain tunnistetut henkilöt. Mukana puhemiehen keskeytyksiä ja keskeytyksiä, joissa tarkkaa henkilöä ei ole tunnistettu."
+          "description": "Henkilö, joka on keskeyttänyt puheen. Mukana ei puhemiehen keskeytyksiä, eikä keskeytyksiä, joissa tarkkaa henkilöä ei ole tunnistettu."
         },
         "videoLink": {
           "label": "Video",

@@ -568,6 +568,19 @@
             "sortByPredicate": "facets:facet_document_type/skos:prefLabel",
             "sortDirection": "desc",
             "hideUnknownValue": true
+        },
+        "interrupter": {
+            "containerClass": "ten",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "pieChartButton": true,
+            "predicate": "semparls:isInterruptedBy/semparls:speaker",
+            "searchField": true,
+            "sortButton": true,
+            "sortBy": "instanceCount",
+            "sortByPredicate": "semparls:isInterruptedBy/semparls:speaker",
+            "sortDirection": "desc",
+            "hideUnknownValue": true
         }
     }
 }
