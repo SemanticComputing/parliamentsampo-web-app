@@ -327,6 +327,10 @@
           "label": "Keskeyttäjä",
           "description": "Henkilö, joka on keskeyttänyt puheen. Mukana ei puhemiehen keskeytyksiä, eikä keskeytyksiä, joissa tarkkaa henkilöä ei ole tunnistettu."
         },
+        "interruptionType": {
+          "label": "Naurua",
+          "description": "Tällä fasetilla voi etsi onko puhetta keskeytetty naurulla vai ei. Fasetin arvot on laskettu hakemalla puheiden keskeytyksistä tekstiä 'naurua'. Lähes saman tuloksen saa hakemalla suoraan puheista tekstihaulla termiä 'naurua', mutta keskeytysten käyttö poistaa tapauksia joissa puhuja on itse käyttänyt 'naurua' sanaa."
+        },
         "videoLink": {
           "label": "Video",
           "description": "Linkki videoon istunnosta."

@@ -521,6 +521,19 @@
             "sortByPredicate": "semparls:isInterruptedBy/semparls:speaker",
             "sortDirection": "desc",
             "hideUnknownValue": true
+        },
+        "interruptionType": {
+            "containerClass": "ten",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "pieChartButton": true,
+            "predicate": "facets:hasInterruptionType",
+            "searchField": true,
+            "sortButton": true,
+            "sortBy": "instanceCount",
+            "sortByPredicate": "facets:hasInterruptionType/skos:prefLabel",
+            "sortDirection": "desc",
+            "hideUnknownValue": true
         }
     }
 }
