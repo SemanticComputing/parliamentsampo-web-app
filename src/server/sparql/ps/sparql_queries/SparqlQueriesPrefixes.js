@@ -23,5 +23,4 @@ export const prefixes = `
   PREFIX xl: <http://www.w3.org/2008/05/skos-xl#>
   PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
   PREFIX facets: <http://ldf.fi/schema/parliamentsampo-portal/>
-
 `

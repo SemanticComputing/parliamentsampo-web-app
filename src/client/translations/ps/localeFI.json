@@ -11,7 +11,7 @@
     "subheading": "Eduskunta semanttisessa webissä"
   },
   "selectPerspective": "Valitse näkymä aineiston hakua ja tutkimista varten:",
-  "mainPageImageLicence": "Parlamenttisampo on Aalto- ja Helsingin yliopiston <a href='https://seco.cs.aalto.fi/'  target='_blank'>  SeCo-tutkimusryhmässä </a> kehitetty <a href='https://seco.cs.aalto.fi/projects/semparl/'  target='_blank'> prototyyppi </a> eduskunnan avoimien aineistojen älykästä hakua, selailua ja data-analyysejä varten. Enemmän tietoa datasta, sen päivityksistä, lisensseistä, ja eri tavoista ladata data omaan käyttöön on saatavilla <a href='https://www.ldf.fi/dataset/semparl' target='_blank'>LDF.fi-sivustolla</a>.<p> Etusivun kuvien <a href='https://parlamenttisampo.fi/fi/imagelicence' target='_top'>lisenssitiedot</a>",
+  "mainPageImageLicence": "Parlamenttisampo on Aalto- ja Helsingin yliopiston <a href='https://seco.cs.aalto.fi/'  target='_blank'>  SeCo-tutkimusryhmässä </a> kehitetty <a href='https://seco.cs.aalto.fi/projects/semparl/'  target='_blank'> prototyyppi </a> eduskunnan avoimien aineistojen älykästä hakua, selailua ja data-analyysejä varten. <p>Dataa on päivitetty joulukuussa 2024. Lisätty loppuvuoden 2022 ja valtiopäivien 2023 puheet, sekä puheita muutamasta istunnosta, jotka aiemmin puuttuivat Eduskunnan API:sta (oleellisimpana noin 200 uutta puhetta istunnosta 54/2016). Enemmän tietoa datasta, sen päivityksistä, lisensseistä, ja eri tavoista ladata data omaan käyttöön on saatavilla <a href='https://www.ldf.fi/dataset/semparl' target='_blank'>LDF.fi-sivustolla</a> tai Parlamenttisammon <a href='https://seco.cs.aalto.fi/projects/semparl/parlamenttisammon-ohje.pdf' target='_blank'>ohjeissa</a>.<p> Etusivun kuvien <a href='https://parlamenttisampo.fi/fi/imagelicence' target='_top'>lisenssitiedot</a>",
   "backendErrorText": "Tapahtui virhe haettaessa tuloksia tietokannasta. Tekstihaun muotoilussa saattaa olla virhe, tai palvelin ei ole käytettävissä juuri nyt esimerkiksi ruuhkan tai päityksen vuoksi. Kokeile myöhemmin uudestaan.",
   "speechesMainPage": {
     "title": "Täysistuntojen puheenvuorot",
@@ -328,8 +328,8 @@
           "description": "Henkilö, joka on keskeyttänyt puheen. Mukana ei puhemiehen keskeytyksiä, eikä keskeytyksiä, joissa tarkkaa henkilöä ei ole tunnistettu."
         },
         "interruptionType": {
-          "label": "Naurua",
-          "description": "Tällä fasetilla voi etsi onko puhetta keskeytetty naurulla vai ei. Fasetin arvot on laskettu hakemalla puheiden keskeytyksistä tekstiä 'naurua'. Lähes saman tuloksen saa hakemalla suoraan puheista tekstihaulla termiä 'naurua', mutta keskeytysten käyttö poistaa tapauksia joissa puhuja on itse käyttänyt 'naurua' sanaa."
+          "label": "Naurua tai hilpeyttä puheelle",
+          "description": "Tällä fasetilla voi etsi onko puhetta keskeytetty naurulla tai 'hilpeydellä' ('hilpeyttä' käytetty jonkin verran vanhassa aineistossa, joskus harvoin myös 'skratt') vai ei. Keskeytykset on merkitty sulilla, joko () tai []. Fasetin arvot on laskettu hakemalla puheista tekstiä 'naurua', 'hilpeyttä tai 'skratt' joka on ollut sulkeiden välissä. Lähes saman tuloksen saa hakemalla suoraan puheista tekstihaulla, mutta tämä tapa pyrkii olemaan tarkempi. Fasetin arvot on laskettu SPARQL kyselyssä säännöllisen lausekkeen avulla. Käytetty lauseke: FILTER regex(?content, '\\\\([^\\\\)]*(naurua|hilpeyttä|skratt)[^\\\\)]*\\\\)|\\\\[[^\\\\]]*(naurua|hilpeyttä|skratt)[^\\\\]]*\\\\]'', 'i')"
         },
         "videoLink": {
           "label": "Video",

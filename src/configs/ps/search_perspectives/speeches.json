@@ -583,7 +583,7 @@
             "hideUnknownValue": true
         },
         "interruptionType": {
-            "containerClass": "ten",
+            "containerClass": "three",
             "facetType": "list",
             "filterType": "uriFilter",
             "pieChartButton": true,
