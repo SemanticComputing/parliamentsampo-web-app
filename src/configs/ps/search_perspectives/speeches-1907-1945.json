@@ -508,6 +508,32 @@
             "sortBy": "instanceCount",
             "sortByPredicate": "facets:facet_document_type",
             "sortDirection": "desc"
+        },
+        "interrupter": {
+            "containerClass": "ten",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "pieChartButton": true,
+            "predicate": "semparls:isInterruptedBy/semparls:speaker",
+            "searchField": true,
+            "sortButton": true,
+            "sortBy": "instanceCount",
+            "sortByPredicate": "semparls:isInterruptedBy/semparls:speaker",
+            "sortDirection": "desc",
+            "hideUnknownValue": true
+        },
+        "interruptionType": {
+            "containerClass": "three",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "pieChartButton": true,
+            "predicate": "facets:hasInterruptionType",
+            "searchField": false,
+            "sortButton": true,
+            "sortBy": "instanceCount",
+            "sortByPredicate": "facets:hasInterruptionType/skos:prefLabel",
+            "sortDirection": "desc",
+            "hideUnknownValue": true
         }
     }
 }
