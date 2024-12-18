@@ -588,7 +588,7 @@
             "filterType": "uriFilter",
             "pieChartButton": true,
             "predicate": "facets:hasInterruptionType",
-            "searchField": true,
+            "searchField": false,
             "sortButton": true,
             "sortBy": "instanceCount",
             "sortByPredicate": "facets:hasInterruptionType/skos:prefLabel",
