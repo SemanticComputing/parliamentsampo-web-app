@@ -329,7 +329,7 @@
         },
         "interruptionType": {
           "label": "Naurua tai hilpeyttä puheelle",
-          "description": "Tällä fasetilla voi etsi onko puhetta keskeytetty naurulla tai 'hilpeydellä' ('hilpeyttä' käytetty jonkin verran vanhassa aineistossa, joskus harvoin myös 'skratt') vai ei. Keskeytykset on merkitty sulilla, joko () tai []. Fasetin arvot on laskettu hakemalla puheista tekstiä 'naurua', 'hilpeyttä tai 'skratt' joka on ollut sulkeiden välissä. Lähes saman tuloksen saa hakemalla suoraan puheista tekstihaulla, mutta tämä tapa pyrkii olemaan tarkempi. Fasetin arvot on laskettu SPARQL kyselyssä säännöllisen lausekkeen avulla. Käytetty lauseke: FILTER regex(?content, '\\\\([^\\\\)]*(naurua|hilpeyttä|skratt)[^\\\\)]*\\\\)|\\\\[[^\\\\]]*(naurua|hilpeyttä|skratt)[^\\\\]]*\\\\]'', 'i')"
+          "description": "Tällä fasetilla voi etsiä onko puhetta keskeytetty naurulla tai 'hilpeydellä' ('hilpeyttä' käytetty jonkin verran vanhassa aineistossa, joskus harvoin myös 'skratt') vai ei. Keskeytykset on merkitty suluilla, joko () tai []. Fasetin arvot on laskettu hakemalla puheista tekstiä 'naurua', 'hilpeyttä tai 'skratt' joka on ollut sulkeiden välissä. Lähes saman tuloksen saa hakemalla suoraan puheista tekstihaulla, mutta tämä tapa pyrkii olemaan tarkempi. Fasetin arvot on laskettu SPARQL kyselyssä säännöllisen lausekkeen avulla. Käytetty lauseke: FILTER regex(?content, '\\\\([^\\\\)]*(naurua|hilpeyttä|skratt)[^\\\\)]*\\\\)|\\\\[[^\\\\]]*(naurua|hilpeyttä|skratt)[^\\\\]]*\\\\]'', 'i')"
         },
         "videoLink": {
           "label": "Video",
