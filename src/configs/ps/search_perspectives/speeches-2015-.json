@@ -521,7 +521,7 @@
             "predicate": "dct:date",
             "sortByPredicate": "dct:date",
             "min": "2015-04-28",
-            "max": "2024-02-05"
+            "max": "2024-12-20"
         },
         "parliamentarySession": {
             "containerClass": "ten",
