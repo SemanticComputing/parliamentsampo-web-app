@@ -175,10 +175,10 @@
       "labelMainPage": "Puheenvuorot eri ajanjaksoilta",
       "shortLabel": "Puheenvuorot 1907–2024",
       "facetResultsType": "puheenvuoroa",
-      "shortDescription": "Puheenvuorot kaikilta valtiopäiviltä ajalta 1907-2024",
+      "shortDescription": "Puheenvuorot kaikilta valtiopäiviltä ajalta 1907–2024",
       "subMain": {
-        "label": "Kaikki puheenvuorot 1907-",
-        "shortDescription": "Puheenvuorot kaikilta valtiopäiviltä ajalta 1907-2024"
+        "label": "Kaikki puheenvuorot 1907–",
+        "shortDescription": "Puheenvuorot kaikilta valtiopäiviltä ajalta 1907–2024"
       },
       "longDescription": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Tässä näkymässä voit hakea, selata ja visualisoida kaikkia puheenvuoroja eduskunnan alusta vuodesta 1907 lähtien. Voit hakea puheenvuoroja käyttäen vasemmalla (mobiiliversiossa tulosten yllä) olevia suodattamia tai fesetteja. Nopein keino hakea puheenvuoroja on ensimmöisenä oleva tekstihaku suodatin. Voit hakea sille puheenvuorossa esiintyviä termejä. Faseteilla voit hakea myös erilaiten ominaisuuksien, kuten puhujan puolueen perusteella. Tuloksia voit visualisoida seuraalla välilehdillä: </p> <ul class=\"MuiTypography-root MuiTypography-body1\"> <li> <strong>TAULUKKO</STRONG> välilehti näyttää tulokset listana.</li> <li> <strong>AIKAJANA</STRONG> visualisoi puheenvuorojen määriä vuosittain viivakaaviona.</li>  <li> <strong>PIIRAKKA/VIIVAKAAVIO</STRONG> visualisoi puheenvuorojen suhteellisia määriä valikosta valittavan ominaisuuden mukaan joko piirakka- tai pylväskaaviona.</li> <li> <strong>CSV</STRONG> völilehdellä voit ladata tuloksia taulukkomuodossa omalle koneellesi. Voit kuitenkin suorituskykysyistä ladata vain rajatun määrän tuloksia. Kaikkien puheenvuorojen tiedot julkaistaan myös erillisenä pakattuna tiedostona tutkimuskäyttöön.</li> <li> <strong>SPARQL-KYSELY</STRONG> välilehdeltä voit seurata linkkie Yasgui-palveluun, ja voit nähdä kyselyn, jolla tulokset haetaan tietokannasta.</li> </ul>",
       "instancePage": {
@@ -378,9 +378,9 @@
       "longDescription": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Tässä näkymässä voit hakea, selata ja visualisoida puheenvuoroja vuodesta 2000 vuoteen 2014. Voit hakea puheenvuoroja käyttäen vasemmalla (mobiiliversiossa tulosten yllä) olevia suodattamia tai fasetteja. Nopein keino hakea puheenvuoroja on ensimmaisenä oleva sisältö tekstihaku-suodatin. Voit hakea sille puheenvuorossa esiintyviä termejä. Faseteilla voit hakea myös erilaisten ominaisuuksien, kuten puhujan puolueen tai sukupuolen perusteella. Tuloksia voit visualisoida seuraalla välilehdillä: </p> <ul class=\"MuiTypography-root MuiTypography-body1\"> <li> <strong>TAULUKKO</STRONG> välilehti näyttää tulokset listana.</li> <li> <strong>AIKAJANA</STRONG> visualisoi puheenvuorojen määriä vuosittain viivakaaviona.</li>  <li> <strong>PIIRAKKA/VIIVAKAAVIO</STRONG> visualisoi puheenvuorojen suhteellisia määriä valikosta valittavan ominaisuuden mukaan joko piirakka- tai pylväskaaviona. (Huomaa, että kaaviot voivat tuottaa vääriä tuloksia, jos teet uusia fasettivalintoja tulosten haun olleessa vielä kesken.) </li> <li> <strong>CSV</STRONG> välilehdellä voit ladata tuloksia taulukkomuodossa omalle koneellesi. Voit kuitenkin suorituskykysyistä ladata vain rajatun määrän tuloksia. Kaikkien puheenvuorojen tiedot julkaistaan myös erillisenä pakattuna tiedostona tutkimuskäyttöön. </li> <li> <strong>SPARQL-KYSELY</STRONG> välilehdeltä voit seurata linkkie Yasgui-palveluun, ja voit nähdä kyselyn, jolla tulokset haetaan tietokannasta. </li> </ul>"
     },
     "speeches-2015-": {
-      "label": "Puheenvuorot 2015-2024",
+      "label": "Puheenvuorot 2015–2024",
       "shortLabel": "Puheenvuorot 2015–",
-      "shortDescription": "Uusimmat puheenvuorot ajalta 2015-2024",
+      "shortDescription": "Uusimmat puheenvuorot ajalta 2015–2024",
       "subMain": {
         "label": "Puheenvuorot 2015–",
         "shortDescription": "Puheenvuorot valtiopäiviltä 2015 alkaen"
