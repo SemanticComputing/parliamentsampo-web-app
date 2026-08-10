@@ -24,10 +24,12 @@ export const getFacet = async ({
   sortDirection = null,
   constraints,
   resultFormat,
-  constrainSelf
+  constrainSelf,
+  dynamicLangTag
 }) => {
   const facetConfig = backendSearchConfig[facetClass].facets[facetID]
-  const { endpoint, defaultConstraint = null, langTag = null } = backendSearchConfig[facetClass]
+  const { endpoint, defaultConstraint = null, enableDynamicLanguageChange } = backendSearchConfig[facetClass]
+  const langTag = enableDynamicLanguageChange ? dynamicLangTag : backendSearchConfig[facetClass].langTag || null
   // choose query template and result mapper:
   let q = ''
   let mapper = null
@@ -138,6 +140,11 @@ export const getFacet = async ({
   }
   q = q.replace(/<FILTER>/g, filterBlock)
   q = q.replace(/<FACET_CLASS>/g, backendSearchConfig[facetClass].facetClass)
+  if (has(backendSearchConfig[facetClass], 'facetClassPredicate')) {
+    q = q.replace(/<FACET_CLASS_PREDICATE>/g, backendSearchConfig[facetClass].facetClassPredicate)
+  } else {
+    q = q.replace(/<FACET_CLASS_PREDICATE>/g, 'a')
+  }
   q = q.replace('<UNKNOWN_SELECTED>', unknownSelected)
   q = q.replace('<MISSING_PREDICATE>', facetConfig.predicate)
   if (has(facetConfig, 'labelPattern')) {
@@ -294,7 +301,7 @@ const unknownBlock = `
       SELECT DISTINCT (count(DISTINCT ?instance) as ?instanceCount) {
         <FILTER>
         VALUES ?facetClass { <FACET_CLASS> }
-        ?instance a ?facetClass .
+        ?instance <FACET_CLASS_PREDICATE> ?facetClass .
         FILTER NOT EXISTS {
           ?instance <MISSING_PREDICATE> [] .
         }

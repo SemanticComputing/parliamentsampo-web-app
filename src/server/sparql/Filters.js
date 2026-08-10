@@ -121,6 +121,14 @@ export const generateTextFilter = ({
   let queryObject = ''
   let textQueryMaxInstances = ''
   let textQueryHiglightingOptions = ''
+
+  if (facetConfig.textQueryType === 'regex') {
+    return `
+    ${queryTargetVariable} ${facetConfig.textQueryProperty} ?regexTarget .
+    FILTER(REGEX(STR(?regexTarget), "${queryString}", "i"))
+    `
+  }
+
   if (facetConfig.textQueryMaxInstances) {
     textQueryMaxInstances = facetConfig.textQueryMaxInstances
   }
@@ -241,17 +249,17 @@ const generateIntegerFilter = ({
   const { start, end } = values
   const typecasting = facetConfig.typecasting
     ? facetConfig.typecasting
-    : 'BIND(xsd:integer(?value) as ?valueAsInteger)'
+    : `BIND(xsd:integer(?value${facetID}) as ?valueAsInteger${facetID})`
   let integerFilter = ''
   if (start === '') {
-    integerFilter = `?valueAsInteger <= ${end}`
+    integerFilter = `?valueAsInteger${facetID} <= ${end}`
   } else if (end === '') {
-    integerFilter = `?valueAsInteger >= ${start}`
+    integerFilter = `?valueAsInteger${facetID} >= ${start}`
   } else {
-    integerFilter = `?valueAsInteger >= ${start} && ?valueAsInteger <= ${end}`
+    integerFilter = `?valueAsInteger${facetID} >= ${start} && ?valueAsInteger${facetID} <= ${end}`
   }
   const filterStr = `
-    ?${filterTarget} ${facetConfig.predicate} ?value .
+    ?${filterTarget} ${facetConfig.predicate} ?value${facetID} .
     ${typecasting}
     FILTER(
       ${integerFilter}
@@ -377,7 +385,7 @@ export const handleUnknownValue = values => {
 const generateMissingValueBlock = ({ predicate, filterTarget }) => {
   return ` 
     VALUES ?facetClass { <FACET_CLASS> }
-    ?${filterTarget} a ?facetClass .
+    ?${filterTarget} <FACET_CLASS_PREDICATE> ?facetClass .
     FILTER NOT EXISTS {
       ?${filterTarget} ${predicate} [] .
     }

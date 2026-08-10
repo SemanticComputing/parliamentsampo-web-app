@@ -10,7 +10,7 @@ Based on [Sampo-UI &ndash; A framework for building semantic portal user interfa
 
 The Sampo-UI framework is being developed by the [Semantic Computing Research Group (SeCo)](https://seco.cs.aalto.fi) 
 at the Aalto University, Finland. See the [research page](https://seco.cs.aalto.fi/tools/sampo-ui) for 
-more information. 
+more information plus instructions and tutorials.
 
 ## Requirements
 
