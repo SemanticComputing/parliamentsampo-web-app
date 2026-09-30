@@ -54,7 +54,7 @@ export const speechPropertiesInstancePage = `
   }
   UNION
   {
-    ?id semparl_linguistics:referencedNamedEntity/skos:prefLabel ?namedEntity .
+    ?id semparl_linguistics:referenceToNamedEntity/skos:prefLabel ?namedEntity .
   }
   UNION
   {
