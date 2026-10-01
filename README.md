@@ -1,9 +1,9 @@
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 # ParliamentSampo User Interface
 
-Release branch online: (https://parlamentttisampo.fi)
+Release branch online: (https://parlamenttisampo.fi)
 
-Master branch online: (https://dev.parlamentttisampo.fi)
+Master branch online: (https://dev.parlamenttisampo.fi)
 
 
 Based on [Sampo-UI &ndash; A framework for building semantic portal user interfaces](https://github.com/SemanticComputing/sampo-ui)
